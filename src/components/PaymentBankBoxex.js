@@ -16,7 +16,37 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 export function PaymentBankBoxex() {
     return <Box paddingTop={3}>
-        <HStack justifyContent={'space-between'}>
+        <HStack bgColor={'#fcf5eb'} h={59} borderRadius={5}>
+            <VStack w={'17%'} alignItems={'center'} justifyContent={'center'}>
+                <Image
+                    alt="A descriptive text about the image"
+                    size={'5'}
+                    resizeMode="cover"
+                    borderRadius={3}
+                    source={{
+                    uri: "https://wallpaperaccess.com/full/317501.jpg"
+                }}/>
+            </VStack>
+            <VStack w={'68%'} paddingX={0} justifyContent={'center'} space={1}>
+                <VStack>
+                    <Text bold>Bank Central Asia</Text>
+                </VStack>
+                <VStack>
+                    <Text>Checked Automatically</Text>
+                </VStack>
+            </VStack>
+            <VStack w={'15%'} alignItems={'center'} justifyContent={'center'}>
+                <Icon size={20} // md-radio-button-on-outline
+                    name={'md-radio-button-off'} ba style={{
+                    color: '#ffa94d',
+                    padding: 4
+                }}></Icon>
+
+               
+            </VStack>
+        </HStack>
+
+        {/* <HStack justifyContent={'space-between'}>
 
             <VStack width={'29%'} bg={'green.100'}>
                 <Box>
@@ -54,6 +84,6 @@ export function PaymentBankBoxex() {
                 </HStack>
 
             </VStack>
-        </HStack>
+        </HStack> */}
     </Box>
 }
