@@ -7,12 +7,12 @@ import {
     Button
    
 } from 'native-base';
-import { Alert } from 'react-native';
+// import { Alert } from 'react-native';
 import ShippingAddressBox from '../components/ShippingAddressBox'
 import OrderSummary from '../components/OrderSummary'
 import VoucherBox from '../components/VoucherBox'
-import {useNavigation} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// import {useNavigation} from '@react-navigation/native';
+// import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 export function CartScreen({navigation}) {
     const showAlert = () => {

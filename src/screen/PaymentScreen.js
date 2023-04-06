@@ -1,49 +1,56 @@
 import React from 'react';
 import {ScrollView, Text, Box, VStack, Button} from 'native-base';
-import ShippingAddressBox from '../components/ShippingAddressBox'
-import OrderSummary from '../components/OrderSummary'
-import VoucherBox from '../components/VoucherBox'
-import {useNavigation} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// import ShippingAddressBox from '../components/ShippingAddressBox'
+// import OrderSummary from '../components/OrderSummary'
+// import VoucherBox from '../components/VoucherBox'
+// import {useNavigation} from '@react-navigation/native';
+// import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {PaymentBankTransfer} from '../components/PaymentBankTransfer';
 import PaymentCreditDebit from '../components/PaymentCreditDebit';
 import PaymentPaypal from '../components/PaymentPaypal';
 
 
-export default function PaymentScreen() {
+export default function PaymentScreen({navigation}) {
+    const showAlert = () => {
+        navigation.navigate('Success');
+      };
 
     return (
-        <Box>
+        <Box h={'100%'}>
             <ScrollView>
 
                 <PaymentBankTransfer/>
                 <PaymentCreditDebit />
                 <PaymentPaypal />
+                <Box h={127}></Box>
             </ScrollView>
 
-            {/* <Box
+            <Box 
                 p={2}
                 width="100%"
-                justifyContent={'center'}
+              
                 style={{
                 position: 'absolute',
                 bottom: 0,
                 width: '99%'
             }}>
-                <VStack   backgroundColor={'red.100'}>
+                <VStack>
                     <Button
-                        
+                         onPress={showAlert}
                         backgroundColor={'#ffa94d'}
                         _text={{
                         color: "white",
                         fontSize: 17,
                         fontWeight: 'bold'
                     }}>
-                        Go to Payment
+                      Confirm Payment
                     </Button>
                 </VStack>
-            </Box> */}
+            </Box>
 
         </Box>
+       
+       
+               
     )
 }
