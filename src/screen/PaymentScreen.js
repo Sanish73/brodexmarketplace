@@ -7,6 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {PaymentBankTransfer} from '../components/PaymentBankTransfer';
 import PaymentCreditDebit from '../components/PaymentCreditDebit';
+import PaymentPaypal from '../components/PaymentPaypal';
 
 
 export default function PaymentScreen() {
@@ -17,6 +18,7 @@ export default function PaymentScreen() {
 
                 <PaymentBankTransfer/>
                 <PaymentCreditDebit />
+                <PaymentPaypal />
             </ScrollView>
 
             {/* <Box

@@ -23,7 +23,7 @@ export function PaymentBankTransfer() {
 
                 <VStack>
                     <Text fontSize={20} fontWeight={'thin'}>
-                        Shipping Address
+                        Bank Transfer
                     </Text>
                 </VStack>
                 <VStack
@@ -46,7 +46,7 @@ export function PaymentBankTransfer() {
             <PaymentBankBoxex/>
             <PaymentBankBoxex/>
 
-                    <VStack alignItems="center" paddingY={5}>
+                    <VStack alignItems="center" paddingTop={5} >
                        <Button
                             
                             backgroundColor={'#FAEFCD'}

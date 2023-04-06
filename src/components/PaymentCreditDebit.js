@@ -1,14 +1,38 @@
-import {VStack ,HStack} from 'native-base'
+import {VStack, HStack, Text, Box} from 'native-base'
 import React from 'react'
-import {Text} from 'react-native-svg'
+import Icon from 'react-native-vector-icons/Ionicons';
+// import {Text} from 'react-native-svg'
 
 function PaymentCreditDebit() {
     return (
-        <HStack>
-        <VStack>
-            <Text>ldksf</Text>
+        <VStack  px={4} py={3}>
+            <Box>
+                <HStack style={{
+                    alignItems: 'center'
+                }}>
+
+                    <VStack>
+                        <Text fontSize={20} fontWeight={'thin'}>
+                            Credit/Debit Card
+                        </Text>
+                    </VStack>
+                    <VStack
+                        marginLeft={2}
+                        style={{
+                        backgroundColor: '#FAEFCD',
+                        borderRadius: 50
+                    }}>
+                        {/* #ffa94d */}
+                        <Icon size={20} // md-chevron-forward-outline --chevron-up
+                            name={'md-chevron-forward-outline'} ba style={{
+                            color: '#ffa94d',
+                            padding: 4
+                        }}></Icon>
+                    </VStack>
+                </HStack>
+
+            </Box>
         </VStack>
-</HStack>
     )
 }
 
