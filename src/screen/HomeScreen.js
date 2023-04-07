@@ -1,69 +1,144 @@
 import React from 'react';
-import {Text,Box, VStack, Center ,HStack ,Button ,Heading ,useColorMode} from 'native-base';
-import { View, StyleSheet ,Alert} from 'react-native';
+import {Text,Box, VStack, Center ,HStack ,Button ,Heading ,useColorMode } from 'native-base';
+import { View, StyleSheet ,Alert ,ScrollView ,FlatList ,Image ,TouchableOpacity} from 'react-native';
 import {COLORS} from '../constants';
 import Icon   from 'react-native-vector-icons/Ionicons';
 
 
-export function HomeScreen(){
-    return(
-    <Box maxW="100%"  style={{height:60}} p={1}>
-     <VStack h={10}>
-     <HStack  w="100%"  px={0} h={10}  >
-      <Box  style={{height:50}} w="15%" >
-        <Center paddingY={1}>
-          <Button key={1} size={10}  variant="link" title="Press me"
-        onPress={() => Alert.alert('Simple Button pressed')}>
-          <Icon name={'ios-apps-outline'} size={27} color={'#8e8a8d'} />
-          </Button>
-         </Center>
-      </Box>
-      <Box style={{height:50}} w="70%" shadow={3} color={'#ffa94d'}>
-        <Center paddingY={2}>
-          <Heading size="2xl" color={'#FF5C4D' } style={{letterSpacing:0}}  >W
-          <Icon name={'menu'} h={20} size={39}  />
-          LCOME</Heading>
-        </Center>
-      </Box>
-      <Box style={{height:50}} w="15%" shadow={3}>
-        <Center paddingY={1}>
-          <Button key={1} size={10}  variant="link">
-          <Icon name={'heart'} h={20} size={27} color={'#8e8a8d'} />
-          </Button>
-          </Center>
-      </Box>
-    </HStack>
-    </VStack>
-
-    </Box>
-    )
+const products = [
+  {
+    id: 1,
+    name: 'Product 1',
+    image: 'https://wallpaperaccess.com/full/317501.jpg',
+    price: 10.99,
+  },
+  {
+    id: 2,
+    name: 'Product 2',
+    image: 'https://wallpaperaccess.com/full/317501.jpg',
+    price: 19.99,
   }
+  ,
+  {
+    id: 2,
+    name: 'Product 2',
+    image: 'https://wallpaperaccess.com/full/317501.jpg',
+    price: 19.99,
+  }
+  ,
+  {
+    id: 2,
+    name: 'Product 2',
+    image: 'https://wallpaperaccess.com/full/317501.jpg',
+    price: 19.99,
+  }
+  ,
+  {
+    id: 2,
+    name: 'Product 2',
+    image: 'https://wallpaperaccess.com/full/317501.jpg',
+    price: 19.99,
+  }
+  ,
+  {
+    id: 2,
+    name: 'Product 2',
+    image: 'https://wallpaperaccess.com/full/317501.jpg',
+    price: 19.99,
+  }
+  // Add more products here
+];
+
+export function HomeScreen(){
+  const renderProduct = (product) => (
+    <TouchableOpacity style={styles.product} key={product.id}>
+      <Image source={{ uri: product.image }} style={styles.image} />
+      <Text style={styles.name}>{product.name}</Text>
+      <Text style={styles.price}>{product.price}</Text>
+    </TouchableOpacity>
+  );
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.row}>
+        {products.slice(0, 5).map((product) => renderProduct(product))}
+      </View>
+      <View style={styles.row}>
+        {products.slice(5, 10).map((product) => renderProduct(product))}
+      </View>
+    </View>
+  );
+  }
+
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginVertical: 1,
+    },
+    row: {
       flexDirection: 'row',
-      // alignItems: 'center',
       justifyContent: 'space-between',
-      paddingHorizontal: 20,
-      backgroundColor:'red'
+      marginHorizontal: 10,
+      marginVertical: 5,
     },
-    menu: {
-      width: 40,
-      height: 40,
-      backgroundColor: 'grey',
-      borderRadius: 20,
+    product: {
+      flex: 1,
+      marginHorizontal: 5,
+      padding: 10,
+      borderRadius: 5,
+      borderWidth: 1,
+      borderColor: '#ccc',
+      backgroundColor: '#fff',
+      width: 150,
+      height: 200,
     },
-    profile: {
-      width: 40,
-      height: 40,
-      alignItems:'center',
-      backgroundColor: 'grey',
-      borderRadius: 20,
+    image: {
+      flex: 1,
+      width: '100%',
+      height: 100,
+      resizeMode: 'contain',
     },
-    text: {
-      fontSize: 24,
+    name: {
+      fontSize: 16,
       fontWeight: 'bold',
-      textAlign: 'center',
+      marginTop: 5,
+      marginBottom: 10,
+    },
+    price: {
+      fontSize: 14,
+      color: '#888',
     },
   });
+
+  // const styles = StyleSheet.create({
+  //   container: {
+  //     flex: 1,
+  //     flexDirection: 'row',
+  //     // alignItems: 'center',
+  //     justifyContent: 'space-between',
+  //     paddingHorizontal: 20,
+  //     backgroundColor:'red'
+  //   },
+  //   menu: {
+  //     width: 40,
+  //     height: 40,
+  //     backgroundColor: 'grey',
+  //     borderRadius: 20,
+  //   },
+  //   profile: {
+  //     width: 40,
+  //     height: 40,
+  //     alignItems:'center',
+  //     backgroundColor: 'grey',
+  //     borderRadius: 20,
+  //   },
+  //   text: {
+  //     fontSize: 24,
+  //     fontWeight: 'bold',
+  //     textAlign: 'center',
+  //   },
+  // });
