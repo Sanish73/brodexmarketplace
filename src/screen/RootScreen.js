@@ -45,11 +45,12 @@ export function RootScreen() {
                 backgroundColor: 'white'
             }
         })}>
+         <Tab.Screen name="Home" component={HomeScreen}/>
             <Tab.Screen name="Cart" component={CartScreen}/>
             <Tab.Screen name="Category" component={CategoryScreen}/>
             <Tab.Screen name="Account" component={AccountScreen}/>
 
-            <Tab.Screen name="Home" component={HomeScreen}/>
+           
 
         </Tab.Navigator>
     )
