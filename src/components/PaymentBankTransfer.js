@@ -12,9 +12,16 @@ import VoucherBox from '../components/VoucherBox'
 import {useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {PaymentBankBoxex} from './PaymentBankBoxex';
+import PaymentBankBoxex from './PaymentBankBoxex';
+import React, {useState} from 'react';
 
 export function PaymentBankTransfer() {
+    const [selectedIcon,
+        setSelectedIcon] = useState('');
+
+    const handleIconPress = (iconName) => {
+        setTimeout(() => setSelectedIcon(iconName), 1);
+    };
     return <VStack p={4}>
         <Box>
             <HStack style={{
@@ -41,21 +48,32 @@ export function PaymentBankTransfer() {
                 </VStack>
             </HStack>
 
-            <PaymentBankBoxex/>
-            <PaymentBankBoxex/>
-            <PaymentBankBoxex/>
-            <PaymentBankBoxex/>
+            <PaymentBankBoxex
+                iconName="heart"
+                selected={selectedIcon === "heart"}
+                onPress={() => handleIconPress("heart")}/>
+            <PaymentBankBoxex
+                iconName="star"
+                selected={selectedIcon === "star"}
+                onPress={() => handleIconPress("star")}/>
+            <PaymentBankBoxex
+                iconName="diamond"
+                selected={selectedIcon === "diamond"}
+                onPress={() => handleIconPress("diamond")}/>
+            <PaymentBankBoxex
+                iconName="circle"
+                selected={selectedIcon === "circle"}
+                onPress={() => handleIconPress("circle")}/>
 
-                    <VStack alignItems="center" paddingTop={5} >
-                       <Button
-                            
-                            backgroundColor={'#FAEFCD'}
-                            _text={{
-                            color: "#ffa94d",
-                            fontSize: 15,
-                            fontWeight: 'bold'
-                        }}>Show More</Button>
-                    </VStack>
+            <VStack alignItems="center" paddingTop={5}>
+                <Button
+                    backgroundColor={'#FAEFCD'}
+                    _text={{
+                    color: "#ffa94d",
+                    fontSize: 15,
+                    fontWeight: 'bold'
+                }}>Show More</Button>
+            </VStack>
         </Box>
     </VStack>
 }
