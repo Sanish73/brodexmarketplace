@@ -21,18 +21,22 @@ import {
 } from 'react-native';
 import {COLORS} from '../constants';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { HomeSearchBox } from '../components/HomeSearchBox';
+import {HomeSearchBox} from '../components/HomeSearchBox';
 import SlideShowBox from '../components/SlideShowBox';
-
+import HomeImageGrid from '../components/HomeImageGrid';
 
 export function HomeScreen() {
     return (
-        <TouchableOpacity>
-      
-            <VStack bgColor={'blue.100'} p={3} h={'100%'}>
-                <HomeSearchBox />
-                <SlideShowBox />
-            </VStack>
-        </TouchableOpacity>
-    );
+        <VStack>
+            <HomeSearchBox/>
+            <ScrollView>
+                <VStack p={3} h={'100%'}>
+                    <SlideShowBox/>
+                    <HomeImageGrid/>
+                    <HomeImageGrid/>
+                    <FlashDetaisHead />
+                </VStack>
+            </ScrollView>
+        </VStack>
+    )
 }
