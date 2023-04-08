@@ -5,7 +5,7 @@ import {Text, View} from 'react-native'
 export default function HomeImageGrid() {
 
     return (
-        <Box>
+        <Box paddingTop={2}>
             <HStack
                 justifyContent="center"
                 space={'5%'}
