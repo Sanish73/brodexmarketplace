@@ -21,10 +21,11 @@ import {
 } from 'react-native';
 import {COLORS} from '../constants';
 import Icon from 'react-native-vector-icons/Ionicons';
+//////////////////////////////////
 import {HomeSearchBox} from '../components/HomeSearchBox';
 import SlideShowBox from '../components/SlideShowBox';
 import HomeImageGrid from '../components/HomeImageGrid';
-
+import FlashDetaisHead from '../components/FlashDetaisHead';
 export function HomeScreen() {
     return (
         <VStack>
@@ -34,7 +35,9 @@ export function HomeScreen() {
                     <SlideShowBox/>
                     <HomeImageGrid/>
                     <HomeImageGrid/>
-                    <FlashDetaisHead />
+                    
+                    <FlashDetaisHead/>
+                    <Box h={100}></Box>
                 </VStack>
             </ScrollView>
         </VStack>
