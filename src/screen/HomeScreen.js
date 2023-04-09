@@ -26,6 +26,7 @@ import {HomeSearchBox} from '../components/HomeSearchBox';
 import SlideShowBox from '../components/SlideShowBox';
 import HomeImageGrid from '../components/HomeImageGrid';
 import HomeFlashDetaisHead from '../components/HomeFlashDetaisHead';
+import {PLACES, TOP_PLACES} from '../data';
 
 
 export function HomeScreen() {
@@ -37,8 +38,8 @@ export function HomeScreen() {
                     <SlideShowBox/>
                     <HomeImageGrid/>
                     <HomeImageGrid/>
-                    <HomeImageGrid/>
-                    <HomeFlashDetaisHead/>
+                    <HomeFlashDetaisHead list={TOP_PLACES} />
+                  
                     <Box h={100}></Box>
                 </VStack>
             </ScrollView>

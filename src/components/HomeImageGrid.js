@@ -14,7 +14,7 @@ export default function HomeImageGrid() {
                 w={'100%'}
                 h={81}>
                 <VStack
-                    flexWrap="wrap"
+                    // flexWrap="wrap"
                    
                     maxW={'20%'}
                     h={'100%'}
