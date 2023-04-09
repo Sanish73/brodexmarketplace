@@ -34,7 +34,7 @@ export function HomeScreen() {
         <VStack>
             <HomeSearchBox/>
             <ScrollView>
-                <VStack p={3} h={'100%'}>
+                <VStack px={3} h={'100%'}>
                     <SlideShowBox/>
                     <HomeImageGrid/>
                     <HomeImageGrid/>

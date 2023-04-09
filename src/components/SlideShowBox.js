@@ -20,18 +20,22 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
-import {COLORS} from '../constants';
+
 import Slideshow from 'react-native-slideshow';
-import PropTypes from 'prop-types';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 import React, {useState} from 'react';
 
 function SliderShowBox() {
 
     return (
-        <HStack paddingY={5}>
+        <HStack paddingBottom={5} paddingTop={2}>
+         <Box
+                borderRadius={8}
+                overflow="hidden"
+                // borderWidth={}
+            >
             <Slideshow
+            
                 dataSource={[
                 {
                     title: 'Title 1',
@@ -47,6 +51,7 @@ function SliderShowBox() {
                     url: 'http://placeimg.com/640/480/any'
                 }
             ]}/>
+            </Box>
         </HStack>
     )
 }
