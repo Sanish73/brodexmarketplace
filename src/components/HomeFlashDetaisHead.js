@@ -7,10 +7,10 @@ import {
     Image
 } from 'react-native';
 import {colors, shadow, sizes, spacing} from '../constants/theme';
-import FavoriteButton from './FavoriteButton';
 
-const CARD_WIDTH = sizes.width - 80;
-const CARD_HEIGHT = 200;
+
+const CARD_WIDTH = sizes.width -200;
+const CARD_HEIGHT = 170;
 const CARD_WIDTH_SPACING = CARD_WIDTH + spacing.l;
 
 const HomFlashPhoto = ({list}) => {
@@ -25,27 +25,24 @@ const HomFlashPhoto = ({list}) => {
             renderItem={({item, index}) => {
             return (
                 <TouchableOpacity
+                
                     style={{
-                    marginLeft: spacing.l,
-                    marginRight: index === list.length - 1
-                        ? spacing.l
-                        : 0
+                        spacing:50,
+                        // justifyContent:'space-between',
+                    marginLeft: spacing.s,
+                    // marginRight: index === list.length -10
+                    //     ? spacing.l
+                    //     : 0
                 }}>
                     <View style={[styles.card, shadow.dark]}>
-                        {/* <FavoriteButton
-                     
-                            styles={{
-                            position: 'absolute',
-                            top: spacing.m,
-                            right: spacing.m,
-                            zIndex: 1
-                        }}/> */}
+                      
                         <View style={styles.imageBox}>
                             <Image source={item.image} style={styles.image}/>
                         </View>
                         <View style={styles.titleBox}>
                             <Text style={styles.title}>{item.title}</Text>
                             <Text style={styles.location}>{item.location}</Text>
+                            {/* <Text style={styles.location}>{item.location}</Text> */}
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -59,7 +56,7 @@ const styles = StyleSheet.create({
         width: CARD_WIDTH,
         height: CARD_HEIGHT,
         marginVertical: 10,
-        backgroundColor:'red'
+        // backgroundColor:'red'
     },
     
     imageBox: {
@@ -67,17 +64,19 @@ const styles = StyleSheet.create({
         height: CARD_HEIGHT,
         borderRadius: 9,
         overflow: 'hidden',
-        backgroundColor:'green'
+        // backgroundColor:'green'
     },
     image: {
         width: CARD_WIDTH,
         height: CARD_HEIGHT,
-        resizeMode: 'cover'
+        resizeMode: 'cover',
+        // backgroundColor:'blue'
     },
     titleBox: {
         position: 'absolute',
         top: CARD_HEIGHT - 80,
-        left: 16
+        left: 16,
+        // backgroundColor:'orange'
     },
     title: {
         fontSize: sizes.h2,

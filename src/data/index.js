@@ -2,7 +2,7 @@ export const TOP_PLACES = [
     {
       id: 1,
       image: require('../../assets/images/645d5f28e26c7de2a280f71db15c2141.jpeg'),
-      title: 'Amalfi',
+      title: 'Amalfidfgsdfgdsfgdsfg',
       location: 'Italy',
       description:
         'The ultimate Amalfi Coast travel guide, where to stay, where to eat, and what areas to visit in the Amalfi Coast of Italy. Positano, Ravello, Amalfi and more',
