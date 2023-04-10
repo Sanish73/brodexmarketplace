@@ -39,7 +39,7 @@ export function HomeScreen() {
                     <HomeImageGrid/>
                     <HomeImageGrid/>
                     <HomeFlashDetaisTop />
-                    <HomeFlashDetaisHead list={TOP_PLACES} />
+                    <HomeFlashDetaisHead/>
                   
                     <Box h={100}></Box>
                 </VStack>
