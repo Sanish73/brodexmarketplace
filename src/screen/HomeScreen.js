@@ -42,8 +42,8 @@ export function HomeScreen() {
                     <HomeImageGrid/>
                     <HomeFlashDetaisTop />
                     <HomeFlashDetaisHead />
-                    <HomeFlashDetaisTop />
-                    <HomeFlashDetaisHead />
+                    {/* <HomeFlashDetaisTop />
+                    <HomeFlashDetaisHead /> */}
                  
                   {/* <Products /> */}
                     <Box h={100}></Box>
