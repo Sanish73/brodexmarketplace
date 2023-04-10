@@ -21,6 +21,7 @@ import {
 } from 'react-native';
 import {COLORS} from '../constants';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {NavigationContainer} from '@react-navigation/native';
 //////////////////////////////////
 import {HomeSearchBox} from '../components/HomeSearchBox';
 import SlideShowBox from '../components/SlideShowBox';
@@ -28,6 +29,7 @@ import HomeImageGrid from '../components/HomeImageGrid';
 import HomeFlashDetaisHead from '../components/HomeFlashDetaisHead';
 import {PLACES, TOP_PLACES} from '../data';
 import { HomeFlashDetaisTop } from '../components/HomeFlashDetaisTop';
+import { Products } from '../components/Products';
 
 export function HomeScreen() {
     return (
@@ -40,8 +42,10 @@ export function HomeScreen() {
                     <HomeImageGrid/>
                     <HomeFlashDetaisTop />
                     <HomeFlashDetaisHead />
+                    <HomeFlashDetaisTop />
+                    <HomeFlashDetaisHead />
                  
-                  
+                  {/* <Products /> */}
                     <Box h={100}></Box>
                 </VStack>
             </ScrollView>
