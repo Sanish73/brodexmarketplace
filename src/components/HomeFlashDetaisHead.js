@@ -13,34 +13,32 @@ const data = [
     {
         id: 1,
         image: require('../../assets/images/645d5f28e26c7de2a280f71db15c2141.jpeg'),
-        price: '$20',
+        text: 'Item 1sjdaklfkljsdklfklsdjlfkjksldjfkljsdklfj',
         rating: 3
     }, {
         id: 3,
         image: require('../../assets/images/2082f59465c39094ce90bebd0fcf8fa7.jpeg'),
-        price: '$20',
+        text: 'Item 2',
         rating: 2
     }, {
         id: 2,
         image: require('../../assets/images/ss.jpeg'),
-        price: '$20',
+        text: 'Item 3',
         rating: 3
     }, {
         id: 4,
         image: require('../../assets/images/645d5f28e26c7de2a280f71db15c2141.jpeg'),
-        price: '$20',
+        text: 'Item 4',
         rating: 1
     }, {
         id: 5,
         image: require('../../assets/images/2082f59465c39094ce90bebd0fcf8fa7.jpeg'),
-        price: '$20',
+        text: 'Item 5',
         rating: 3
     }
-
-    // add more data here as needed
 ];
 
-const ITEM_WIDTH = (Dimensions.get('window').width - 20) / 2; // calculate item width based on screen width
+const ITEM_WIDTH = (Dimensions.get('window').width - 20) / 2;
 const ITEM_MARGIN = 10;
 
 const Item = ({item}) => {
@@ -48,8 +46,8 @@ const Item = ({item}) => {
         <View style={styles.item}>
             <Image source={item.image} style={styles.image}/>
             <View style={styles.details}>
-                <Text style={styles.price}>{item.price}</Text>
-                <StarRating rating={item.rating}/>
+                <Text style={styles.text}>{item.text}</Text>
+                <StarRating rating={item.rating} style={styles.rating}/>
             </View>
         </View>
     );
@@ -82,18 +80,24 @@ const styles = StyleSheet.create({
     },
     image: {
         width: ITEM_WIDTH,
-        height: ITEM_WIDTH * 1.5, // increase height by 50%
+        height: ITEM_WIDTH * 1.5,
         resizeMode: 'cover'
     },
     details: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'space-between',
-        alignItems: 'center',
+        alignItems: 'flex-start',
+      
         marginTop: 10
     },
-    price: {
+    text: {
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'left' 
+    },
+    rating: {
+        marginTop: 90,
+        alignSelf: 'flex-start' 
     },
     contentContainer: {
         paddingHorizontal: 10
