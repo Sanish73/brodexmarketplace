@@ -43,11 +43,11 @@ const ITEM_MARGIN = 10;
 
 const Item = ({item}) => {
     return (
-        <View style={styles.item}>
+        <View style={styles.item} >
             <Image source={item.image} style={styles.image}/>
             <View style={styles.details}>
                 <Text style={styles.text}>{item.text}</Text>
-                <StarRating rating={item.rating} style={styles.rating}/>
+                <StarRating  rating={item.rating} style={styles.rating}/>
             </View>
         </View>
     );
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
         resizeMode: 'cover'
     },
     details: {
+        // backgroundColor:'red',
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'flex-start',
@@ -96,8 +97,11 @@ const styles = StyleSheet.create({
         textAlign: 'left' 
     },
     rating: {
-        marginTop: 90,
-        alignSelf: 'flex-start' 
+        marginTop: 50,
+        alignSelf: 'flex-start' ,
+        width: 80,
+        height: 20,
+        // padding:10
     },
     contentContainer: {
         paddingHorizontal: 10

@@ -16,6 +16,7 @@ export function HomeFlashDetaisTop() {
         <HStack
             alignItems={'center'}
             px={5}
+            py={3}
             // bgColor={'blue.100'}
             justifyContent={'space-between'}
             w={'100%'}>

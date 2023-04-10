@@ -8,7 +8,7 @@ const StarRating = ({ rating }) => {
   const emptyStars = 5 - fullStars - halfStars;
 
   const { width } = Dimensions.get('window');
-  const starSize = width / 30;
+  const starSize = width / 22;
 
   return (
     <View style={{ flexDirection: 'row' }}>
