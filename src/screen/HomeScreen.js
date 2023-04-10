@@ -40,6 +40,7 @@ export function HomeScreen() {
                     <HomeImageGrid/>
                     <HomeFlashDetaisTop />
                     <HomeFlashDetaisHead />
+                 
                   
                     <Box h={100}></Box>
                 </VStack>

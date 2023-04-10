@@ -1,7 +1,7 @@
 export const TOP_PLACES = [
     {
       id: 1,
-      image: require('../../assets/images/645d5f28e26c7de2a280f71db15c2141.jpeg'),
+      image:'https://www.colorlitelens.com/images/test/color%20blind%20test%20RG300_710_1.jpg',
       title: 'Amalfidfgsdfgdsfgdsfg',
       location: 'Italy',
       description:
