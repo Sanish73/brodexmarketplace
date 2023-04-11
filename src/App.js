@@ -20,6 +20,7 @@ function AppBox() {
                 <Stack.Screen name="Root" component={RootScreen}/>
                 <Stack.Screen name="Payments" component={PaymentScreen}/>
                 <Stack.Screen name='Success' component={PaymentSuccessScreen}/>
+                
             </Stack.Navigator>
         </NavigationContainer>
     );

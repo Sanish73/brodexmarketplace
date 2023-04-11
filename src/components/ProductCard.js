@@ -51,7 +51,7 @@ export const ProductCard = ({data}) => {
             <View
                 style={{
                 padding: 8,
-                backgroundColor:'#E9E7E5',
+                // backgroundColor:'#E9E7E5',
                 //  borderBottomLeftRadius: ,
                 borderBottomRightRadius: 18
 

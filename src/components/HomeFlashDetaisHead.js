@@ -12,7 +12,7 @@ import StarRating from './StarRating';
 const data = [
     {
         id: 1,
-        image:require('../../assets/images/c08000131_1750x1285.webp'),
+        image: require('../../assets/images/c08000131_1750x1285.webp'),
         text: 'HP Laptop ',
         rating: 3
     }, {
@@ -48,12 +48,41 @@ const ITEM_MARGIN = 10;
 
 const Item = ({item}) => {
     return (
-        <View style={styles.item} >
-            <Image source={item.image} style={styles.image}/>
-            <View style={styles.details}>
-                <Text style={styles.text}>{item.text}</Text>
-                <StarRating  rating={item.rating} style={styles.rating}/>
-            
+        <View
+            style={{
+            width: ITEM_WIDTH,
+            marginRight: ITEM_MARGIN
+        }}>
+            <Image
+                source={item.image}
+                style={{
+                width: ITEM_WIDTH,
+                height: ITEM_WIDTH * 1.5,
+                resizeMode: 'cover',
+                borderRadius: 5
+            }}/>
+            <View
+                style={{
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+                marginTop: 10
+            }}>
+                <Text
+                    style={{
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    textAlign: 'left'
+                }}>{item.text}</Text>
+                <StarRating
+                    rating={item.rating}
+                    style={{
+                    marginTop: 50,
+                    alignSelf: 'flex-start',
+                    width: 80,
+                    height: 20
+                }}/>
+
             </View>
         </View>
     );
@@ -72,47 +101,18 @@ const HomFlashPhoto = () => {
             index
         })}
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.contentContainer}
+            contentContainerStyle={{
+            paddingHorizontal: 10
+        }}
             snapToInterval={ITEM_WIDTH + ITEM_MARGIN}
             snapToAlignment="start"
             decelerationRate={0.9}/>
     );
 };
 
-const styles = StyleSheet.create({
-    item: {
-        width: ITEM_WIDTH,
-        marginRight: ITEM_MARGIN
-    },
-    image: {
-        width: ITEM_WIDTH,
-        height: ITEM_WIDTH * 1.5,
-        resizeMode: 'cover',
-        borderRadius:5
-    },
-    details: {
-        // backgroundColor:'red',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'flex-start',
-      
-        marginTop: 10
-    },
-    text: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        textAlign: 'left' 
-    },
-    rating: {
-        marginTop: 50,
-        alignSelf: 'flex-start' ,
-        width: 80,
-        height: 20,
+const styles = StyleSheet.create({item: {}, image: {}, text: {}, rating: {
+
         // padding:10
-    },
-    contentContainer: {
-        paddingHorizontal: 10
-    }
-});
+    }, contentContainer: {}});
 
 export default HomFlashPhoto;
