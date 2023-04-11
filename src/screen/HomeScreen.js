@@ -42,10 +42,11 @@ export function HomeScreen() {
                     <HomeImageGrid/>
                     <HomeFlashDetaisTop />
                     <HomeFlashDetaisHead />
-                    {/* <HomeFlashDetaisTop />
-                    <HomeFlashDetaisHead /> */}
+                    {/* <HomeFlashDetaisTop /> */}
+                    {/* <HomeFlashDetaisHead /> */}
                  
-                  {/* <Products /> */}
+                  <Products />
+                  <Products />
                     <Box h={100}></Box>
                 </VStack>
             </ScrollView>
