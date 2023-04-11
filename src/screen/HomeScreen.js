@@ -46,7 +46,7 @@ export function HomeScreen() {
                     {/* <HomeFlashDetaisHead /> */}
                  
                   <Products />
-                  <Products />
+                  {/* <Products /> */}
                     <Box h={100}></Box>
                 </VStack>
             </ScrollView>

@@ -12,15 +12,17 @@ export const ProductCard = ({data}) => {
             style={{
             backgroundColor: COLOURS.white,
             width: '48%',
-            borderRadius: 8,
+            borderRadius: 5,
             marginBottom: 16
         }}>
             <View
                 style={{
                 height: 150,
                 overflow: 'hidden',
-                borderTopLeftRadius: 8,
-                borderTopRightRadius: 8
+                borderTopLeftRadius: 18,
+                // borderTopRightRadius: 8,
+                // borderBottomLeftRadius: 1,
+                // borderTopRightRadius: 8
             }}>
                 <Image
                     source={data.productImage}
@@ -48,7 +50,11 @@ export const ProductCard = ({data}) => {
             </View>
             <View
                 style={{
-                padding: 8
+                padding: 8,
+                backgroundColor:'#E9E7E5',
+                //  borderBottomLeftRadius: ,
+                borderBottomRightRadius: 18
+
             }}>
                 <View
                     style={{
@@ -64,14 +70,14 @@ export const ProductCard = ({data}) => {
                     }}>
                         {data.productName}
                     </Text>
-                    {data.isAvailable ? <Entypo name="check" size={16} color={COLOURS.green}/> : <Entypo name="cross" size={16} color={COLOURS.red}/>}
+                    {/* {data.isAvailable ? <Entypo name="check" size={16} color={COLOURS.green}/> : <Entypo name="cross" size={16} color={COLOURS.red}/>} */}
                 </View>
                 <View
                     style={{
                     flexDirection: 'row',
                     alignItems: 'center'
                 }}>
-                    <FontAwesome name="rupee" size={14} color={COLOURS.black}/>
+                    <FontAwesome name="rupee" size={14} color={COLOURS.re}/>
                     <Text
                         style={{
                         fontSize: 16,
