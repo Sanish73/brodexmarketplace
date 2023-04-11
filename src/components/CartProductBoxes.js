@@ -10,20 +10,20 @@ import {
 } from "native-base";
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function OrderSummaryBoxes({data}) {
+export default function CartProductBoxes({data}) {
 
     return (
         <Box paddingTop={3}>
-            <HStack justifyContent={'space-between'}>
+            <HStack justifyContent={'space-between'} bgColor={'red.100'} h={71}>
 
-                <VStack width={'29%'} bg={'green.100'}>
+                <VStack width={'19%'} bg={'green.100'} h={'100%'}>
                     <Box>
                         <Image
-                            source={{
-                            uri: "https://wallpaperaccess.com/full/317501.jpg"
-                        }}
+                            source={data.productImage}
                             alt="Alternate Text"
                             size="lg"
+                            height="100%"
+                            resizeMode="contain"
                             borderRadius={7}/>
                     </Box>
                 </VStack>
