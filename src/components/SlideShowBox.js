@@ -1,4 +1,4 @@
-import { View } from 'native-base';
+import {View} from 'native-base';
 import React, {Component} from 'react';
 import Slideshow from 'react-native-slideshow';
 
@@ -44,8 +44,8 @@ export default class SlideshowTest extends Component {
     render() {
         return (
             <View
-            bgColor={'red.100'}
-            m={2}
+                bgColor={'red.100'}
+                m={2}
                 style={{
                 borderRadius: 8,
                 overflow: 'hidden'
@@ -54,7 +54,7 @@ export default class SlideshowTest extends Component {
                     dataSource={this.state.dataSource}
                     position={this.state.position}
                     onPositionChanged={position => this.setState({position})}
-                    height={123}
+                    height={140}
                     width={200}/>
             </View>
         );

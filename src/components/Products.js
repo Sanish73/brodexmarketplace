@@ -148,8 +148,8 @@ export function Products() {
                 ],
               }
         ]);
-    const [accessory,
-        setAccessory] = useState([]);
+    // const [accessory,
+    //     setAccessory] = useState([]);
 
     // get called on screen loads
     // useEffect(() => {
@@ -163,7 +163,7 @@ export function Products() {
     //get data from DB
 
 
-    console.log(products)
+    // console.log(products)
 
     return (
         <Box>
@@ -205,10 +205,10 @@ export function Products() {
                     <Text
                         style={{
                         fontSize: 14,
-                        color: COLOURS.blue,
+                        color: COLOURS.black,
                         fontWeight: '400'
                     }}>
-                        SeeAll
+                        See All
                     </Text>
                 </View>
                 <View
