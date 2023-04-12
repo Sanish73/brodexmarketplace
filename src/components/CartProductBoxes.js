@@ -17,11 +17,9 @@ export default function CartProductBoxes({data}) {
 
     return (
         <Box paddingTop={3}>
-            <HStack h={68} style={{
-                // backgroundColor: 'pink'
-            }}>
+            <HStack h={68} style={{}}>
 
-                <VStack width={'18%'} bg={'green.100'} h={'100%'}>
+                <VStack width={'18%'} h={'100%'}>
                     <Box>
                         <Image
                             source={data.productImage}
@@ -33,9 +31,7 @@ export default function CartProductBoxes({data}) {
                     </Box>
                 </VStack>
                 <VStack width={'58%'} paddingX={3} justifyContent={'space-between'}>
-                    <VStack
-                        style={{
-                        // backgroundColor: 'blue',
+                    <VStack style={{
                         height: '60%'
                     }}>
                         <Text bold fontSize={16}>Scarlett Whistening</Text>
@@ -45,15 +41,17 @@ export default function CartProductBoxes({data}) {
                     <HStack
                         alignItems={'center'}
                         style={{
-                        // backgroundColor: 'green',
                         height: '40%'
                     }}>
-                        <Box p={1} >
+                        <Box p={1}>
+                        {/* style={{ fontWeight: 'bold' }} */}
 
-                            <FontAwesome name="rupee" size={10} color={'red.100'}/>
+                        <FontAwesome name="rupee" size={12} color={'black'}  />
+
+                            {/* <FontAwesome name="rupee" size={12} color={'black'} style={{ fontWeight: 'bold' }} /> */}
                         </Box>
                         <Box>
-                            <Text fontSize={14} color={'#8C8A89'}>10,3</Text>
+                            <Text  bold fontSize={15} color={'black'}>10,3</Text>
                         </Box>
 
                     </HStack>
@@ -62,7 +60,6 @@ export default function CartProductBoxes({data}) {
                 <VStack
                     width={'25%'}
                     justifyContent={'space-between'}
-                    // bgColor={'green.100'}
                     style={{
                     height: '100%'
                 }}>
@@ -70,15 +67,14 @@ export default function CartProductBoxes({data}) {
                         alignItems={'center'}
                         justifyContent={'space-between'}
                         style={{
-                        // backgroundColor: 'blue',
                         height: '60%'
                     }}>
-                        <Box borderRadius={5} backgroundColor={'blue.100'} >
+                        <Box borderRadius={5} backgroundColor={'#DEDCDB'}>
                             <Icon
                                 size={24}
                                 name={'remove-sharp'}
                                 style={{
-                                color: '#ffa94d',
+                                color: '#F57F17',
                                 padding: 2
                             }}></Icon>
 
@@ -86,12 +82,12 @@ export default function CartProductBoxes({data}) {
                         <Text bold fontSize={19}>
                             2
                         </Text>
-                        <Box    borderRadius={5} backgroundColor={'blue.100'}>
+                        <Box borderRadius={5} backgroundColor={'#DEDCDB'}>
                             <Icon
                                 size={24}
                                 name={'add'}
                                 style={{
-                                color: '#ffa94d',
+                                color: '#F57F17',
                                 padding: 2
                             }}></Icon>
 
@@ -99,17 +95,16 @@ export default function CartProductBoxes({data}) {
                     </HStack>
                     <HStack
                         style={{
-                        // backgroundColor: 'green',
                         height: '40%',
                         alignItems: 'center',
-                        alignSelf:'flex-end'
+                        alignSelf: 'flex-end'
                     }}>
 
                         <Box p={1}>
-                            <FontAwesome name="rupee" size={10} color={'red.100'}/>
+                            <FontAwesome name="rupee" size={12} color={'black'}/>
 
                         </Box>
-                        <Text>
+                        <Text bold fontSize={15} color={'black'}>
                             19.00
                         </Text>
 

@@ -1,51 +1,53 @@
-import {Box, HStack, VStack} from 'native-base'
-import { background } from 'native-base/lib/typescript/theme/styled-system';
+import {Box, HStack, VStack, Text, Center} from 'native-base'
+import {background} from 'native-base/lib/typescript/theme/styled-system';
 import React from 'react'
-import {Text, View} from 'react-native'
+import {View} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function CartBox() {
 
     return (
-        <View>
-            <HStack  w={'100%'} style={{
-                background:'red',
-                height:55,
-                
-             } }>
-                <Box bg={'pink.100'} >
+        <HStack bgColor={'#FFECB3'} w={'100%'} borderRadius={5}>
+            <HStack
+                alignItems={'center'}
+                style={{
+                height: 55,
+                width: '100%'
+            }}>
+                <Center w={'15%'}>
                     <Icon
                         size={27}
-                        name={'add'}
+                        name={'location'}
+                        ba
                         style={{
-                        color: '#ffa94d',
+                        color: '#F57F17',
                         padding: 2
                     }}></Icon>
 
-                </Box>
-                <VStack bg={'red.100'}>
-                    <HStack>
-                        <Text>
+                </Center>
+                <VStack w={'66%'}>
+                    <HStack alignSelf={'flex-start'} alignItems={'center'}>
+                        <Text fontSize={16}>
                             Deliver at:
                         </Text>
-                        <Text bold>
+                        <Text bold fontSize={17} pl={1}>
                             Home
                         </Text>
 
                     </HStack>
 
-                    <Text>
-                        sdjfjsdklfjsdlkfjdsjfljsdkfj
+                    <Text alignSelf={'flex-start'}>
+                        2023 Kathmandu, Baneshwor
                     </Text>
                 </VStack>
-                <Box bg={'green.100'}>
-                    <Text>
-                        lskdjflkj
+                <VStack w={'14%'}>
+                    <Text fontSize={16} color={'#F57F17'} bold>
+                        Change
                     </Text>
-                </Box>
+                </VStack>
             </HStack>
 
-        </View>
+        </HStack>
 
     )
 }
