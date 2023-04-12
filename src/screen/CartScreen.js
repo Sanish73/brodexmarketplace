@@ -46,7 +46,7 @@ export default function CartScreen() {
             isAvailable: true,
             productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
         }, {
-            id: 2,
+            id: 3,
             category: 'product',
             productName: 'MI Super Bass Bluetooth Wireless Headphones',
             SinglePrice: 9,
