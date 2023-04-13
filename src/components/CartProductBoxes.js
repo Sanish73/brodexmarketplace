@@ -16,7 +16,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 export default function CartProductBoxes({data}) {
 
     return (
-        <Box paddingTop={3}>
+        <Box paddingTop={3} style={{
+            overflow: 'hidden'
+        }}>
             <HStack h={68} style={{}}>
 
                 <VStack width={'18%'} h={'100%'}>
@@ -30,7 +32,7 @@ export default function CartProductBoxes({data}) {
                             borderRadius={7}/>
                     </Box>
                 </VStack>
-                <VStack width={'58%'} paddingX={3} justifyContent={'space-between'}>
+                <VStack width={'56%'} paddingX={3} justifyContent={'space-between'}>
                     <VStack style={{
                         height: '60%'
                     }}>
@@ -43,22 +45,20 @@ export default function CartProductBoxes({data}) {
                         style={{
                         height: '40%'
                     }}>
+
                         <Box p={1}>
-                        {/* style={{ fontWeight: 'bold' }} */}
 
-                        <FontAwesome name="rupee" size={12} color={'black'}  />
-
-                            {/* <FontAwesome name="rupee" size={12} color={'black'} style={{ fontWeight: 'bold' }} /> */}
+                            <FontAwesome name="rupee" size={10} color={'black'}/>
                         </Box>
                         <Box>
-                            <Text  bold fontSize={15} color={'black'}>10,3</Text>
+                            <Text bold fontSize={15} color={'black'}>10,3</Text>
                         </Box>
 
                     </HStack>
                 </VStack>
 
                 <VStack
-                    width={'25%'}
+                    width={'27%'}
                     justifyContent={'space-between'}
                     style={{
                     height: '100%'
@@ -67,7 +67,8 @@ export default function CartProductBoxes({data}) {
                         alignItems={'center'}
                         justifyContent={'space-between'}
                         style={{
-                        height: '60%'
+                        height: '60%',
+                        marginRight: 3
                     }}>
                         <Box borderRadius={5} backgroundColor={'#DEDCDB'}>
                             <Icon
@@ -82,7 +83,13 @@ export default function CartProductBoxes({data}) {
                         <Text bold fontSize={19}>
                             2
                         </Text>
-                        <Box borderRadius={5} backgroundColor={'#DEDCDB'}>
+                        <Box
+                            borderRadius={5}
+                            backgroundColor={'#DEDCDB'}
+                            style={{
+                            overflow: 'hidden',
+                            width: 30
+                        }}>
                             <Icon
                                 size={24}
                                 name={'add'}
@@ -97,7 +104,8 @@ export default function CartProductBoxes({data}) {
                         style={{
                         height: '40%',
                         alignItems: 'center',
-                        alignSelf: 'flex-end'
+                        alignSelf: 'flex-end',
+                        marginRight: 3
                     }}>
 
                         <Box p={1}>
