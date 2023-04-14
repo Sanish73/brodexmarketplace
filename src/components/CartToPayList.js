@@ -1,73 +1,41 @@
-import {Box, HStack, VStack, Text, Center} from 'native-base'
-import {background} from 'native-base/lib/typescript/theme/styled-system';
+import { Box, HStack, Text } from 'native-base'
 import React from 'react'
-import {View} from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function CartToPayList() {
+  return (
+    <Box>
+      <HStack justifyContent={'space-between'}>
+        <Text>Item total</Text>
+        <HStack>
+          <Text>$</Text>
+          <Text>23.06</Text>
+        </HStack>
+      </HStack>
 
-    return (
-        <Box>
-            <HStack>
-                <Text>
-                    isdjlksdjlf
-                </Text>
-                <HStack>
-                    <Text>
-                        sakldaksdjlk
-                    </Text>
-                    <Text>
-                        sakldaksdjlk
-                    </Text>
-                </HStack>
+      <HStack justifyContent={'space-between'} mt={1}>
+        <Text>Delivery charges</Text>
+        <HStack>
+          <Text>$</Text>
+          <Text>2.24</Text>
+        </HStack>
+      </HStack>
 
-            </HStack>
-            <HStack>
-                <Text>
-                    isdjlksdjlf
-                </Text>
-                <HStack>
-                    <Text>
-                        sakldaksdjlk
-                    </Text>
-                    <Text>
-                        sakldaksdjlk
-                    </Text>
-                </HStack>
+      <HStack justifyContent={'space-between'} mt={1}>
+        <Text>Tax</Text>
+        <Text>Remove</Text>
+        <HStack>
+          <Text>$</Text>
+          <Text>1.00</Text>
+        </HStack>
+      </HStack>
 
-            </HStack>
-            <HStack>
-                <Text>
-                    isdjlksdjlf
-                </Text>
-                <Text>
-                    isdjlksdjlf
-                </Text>
-                <HStack>
-                    <Text>
-                        sakldaksdjlk
-                    </Text>
-                    <Text>
-                        sakldaksdjlk
-                    </Text>
-                </HStack>
-
-            </HStack>
-            <HStack>
-                <Text>
-                    isdjlksdjlf
-                </Text>
-                <HStack>
-                    <Text>
-                        sakldaksdjlk
-                    </Text>
-                    <Text>
-                        sakldaksdjlk
-                    </Text>
-                </HStack>
-
-            </HStack>
-        </Box>
-
-    )
+      <HStack justifyContent={'space-between'} my={1}>
+        <Text bold fontSize={16}>To Pay</Text>
+        <HStack>
+          <Text>$</Text>
+          <Text bold fontSize={16}>26.06</Text>
+        </HStack>
+      </HStack>
+    </Box>
+  )
 }

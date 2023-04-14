@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {HomeScreen} from './HomeScreen';
 import CategoryScreen from './CategoryScreen';
-import {OrderScreen} from './OrderScreen';
+
 import {AccountScreen} from './AccountScreen';
 import CartScreen from './CartScreen';
 
@@ -48,14 +48,12 @@ export function RootScreen() {
                 backgroundColor: 'white'
             }
         })}>
-        <Tab.Screen name="Cart" component={CartScreen}/>
-         <Tab.Screen name="Home" component={HomeScreen}/>
-            
+          <Tab.Screen name="Cart" component={CartScreen}/>
+            <Tab.Screen name="Home" component={HomeScreen}/>
             <Tab.Screen name="Category" component={CategoryScreen}/>
+          
+          
             <Tab.Screen name="Account" component={AccountScreen}/>
-            <Tab.Screen name="Order" component={OrderScreen}/>
-
-           
 
         </Tab.Navigator>
     )

@@ -16,9 +16,10 @@ import React, {useState, useEffect} from 'react';
 import CartProductBoxes from '../components/CartProductBoxes';
 import CartBoxSecond from '../components/CartBoxSecond';
 import CartToPayList from '../components/CartToPayList';
+import CartBoxThird from '../components/CartBoxThird';
+import CartBoxFourth from '../components/CartBoxFourth';
 
-
-export default function CartScreen() {
+export default function CartScreen({navigation}) {
     const [cartProducts,
         setProducts] = useState([
         {
@@ -66,20 +67,54 @@ export default function CartScreen() {
         }
     ]);
 
-    return (
-        <VStack p={4}>
-            <ScrollView >
-                <CartBox/>
+    const handlePress = () => {
+        navigation.navigate('Order');
+    }
 
-                <View>
-                    {cartProducts.map(data => {
-                        return <CartProductBoxes data={data} key={data.id}/>;
-                    })}
-                </View>
-                <CartBoxSecond/>
-                <CartToPayList/>
-                
+    return (
+        <View>
+            <ScrollView >
+
+                <VStack p={4}>
+
+                    <CartBox/>
+
+                    <View>
+                        {cartProducts.map(data => {
+                            return <CartProductBoxes data={data} key={data.id}/>;
+                        })}
+                    </View>
+                    <CartBoxSecond/>
+                    <CartToPayList/>
+                    <CartBoxThird/>
+                    <Box h={100}></Box>
+
+                </VStack>
+
             </ScrollView>
-        </VStack>
+            <Box
+                p={2}
+                width="100%"
+                justifyContent={'center'}
+                style={{
+                position: 'absolute',
+                bottom: 0,
+                width: '99%'
+            }}>
+                <VStack>
+                    <Button
+                        onPress={handlePress}
+                        backgroundColor={'#ffa94d'}
+                        _text={{
+                        color: "white",
+                        fontSize: 17,
+                        fontWeight: 'bold'
+                    }}>
+                        Go to Payment
+                    </Button>
+                </VStack>
+            </Box>
+
+        </View>
     )
 }

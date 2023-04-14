@@ -8,6 +8,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RootScreen} from './screen/RootScreen';
 import PaymentScreen from './screen/PaymentScreen';
 import PaymentSuccessScreen from './screen/PaymentSuccessScreen';
+import { OrderScreen } from './screen/OrderScreen';
 
 function AppBox() {
     const Stack = createNativeStackNavigator();
@@ -20,7 +21,8 @@ function AppBox() {
                 <Stack.Screen name="Root" component={RootScreen}/>
                 <Stack.Screen name="Payments" component={PaymentScreen}/>
                 <Stack.Screen name='Success' component={PaymentSuccessScreen}/>
-                
+                <Stack.Screen name="Order" component={OrderScreen}/>
+
             </Stack.Navigator>
         </NavigationContainer>
     );

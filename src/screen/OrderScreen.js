@@ -21,7 +21,7 @@ export function OrderScreen({navigation}) {
     return (
         <Box>
             <ScrollView>
-                <ShippingAddressBox/>
+                <ShippingAddressBox head='Shipping Address' />
                 <OrderSummary/>
                 <VoucherBox/>
                 <Box h={100}></Box>
