@@ -28,8 +28,8 @@ import SlideShowBox from '../components/SlideShowBox';
 import HomeImageGrid from '../components/HomeImageGrid';
 import HomeFlashDetaisHead from '../components/HomeFlashDetaisHead';
 import {PLACES, TOP_PLACES} from '../data';
-import { HomeFlashDetaisTop } from '../components/HomeFlashDetaisTop';
-import { Products } from '../components/Products';
+import {HomeFlashDetaisTop} from '../components/HomeFlashDetaisTop';
+import {Products} from '../components/Products';
 
 export function HomeScreen() {
     return (
@@ -40,13 +40,11 @@ export function HomeScreen() {
                     <SlideShowBox/>
                     <HomeImageGrid/>
                     <HomeImageGrid/>
-                    <HomeFlashDetaisTop />
-                    <HomeFlashDetaisHead />
-                    {/* <HomeFlashDetaisTop /> */}
-                    {/* <HomeFlashDetaisHead /> */}
-                 
-                  <Products />
-                  {/* <Products /> */}
+                    <HomeFlashDetaisTop/>
+                    <HomeFlashDetaisHead/>
+
+                    <Products/>
+
                     <Box h={100}></Box>
                 </VStack>
             </ScrollView>

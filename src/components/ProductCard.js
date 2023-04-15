@@ -12,7 +12,7 @@ export const ProductCard = ({data}) => {
 
     const handlePress = () => {
         // navigate to another screen
-        navigation.navigate('ProductInfo'  ,{productId:data.id});
+        navigation.navigate('ProductInfo'  ,data);
     }
 
     return (
