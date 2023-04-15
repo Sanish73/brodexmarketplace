@@ -25,7 +25,7 @@ export default function CartBox() {
                     }}></Icon>
 
                 </Center>
-                <VStack w={'66%'}>
+                <VStack w={'64%'}>
                     <HStack alignSelf={'flex-start'} alignItems={'center'}>
                         <Text fontSize={16}>
                             Deliver at:
@@ -40,7 +40,7 @@ export default function CartBox() {
                         2023 Kathmandu, Baneshwor
                     </Text>
                 </VStack>
-                <VStack w={'14%'}>
+                <VStack w={'16%'}>
                     <Text fontSize={16} color={'#F57F17'} bold>
                         Change
                     </Text>

@@ -16,12 +16,12 @@ const data = [
         text: 'HP Laptop ',
         rating: 3
     }, {
-        id: 3,
+        id: 2,
         image: require('../../assets/images/29032316800754916423eae35ddce.webp'),
         text: 'Exfoliate',
         rating: 2
     }, {
-        id: 2,
+        id: 3,
         image: require('../../assets/images/01042316803342086427dd809514b.webp'),
         text: 'Loreal',
         rating: 3
@@ -36,9 +36,29 @@ const data = [
         text: 'Tripode',
         rating: 3
     }, {
-        id: 5,
+        id: 6,
         image: require('../../assets/images/1004231681129687643400d71e70b.webp'),
         text: 'T500 Watch',
+        rating: 3
+    }, {
+        id: 7,
+        image: require('../../assets/images/1004231681129687643400d71e70b.webp'),
+        text: 'T500 Watch',
+        rating: 3
+    }, {
+        id: 8,
+        image: require('../../assets/images/1004231681129687643400d71e70b.webp'),
+        text: 'T500 Watch',
+        rating: 3
+    }, {
+        id: 9,
+        image: require('../../assets/images/01042316803342086427dd809514b.webp'),
+        text: 'T500 Watch',
+        rating: 3
+    }, {
+        id: 10,
+        image: require('../../assets/images/c08000131_1750x1285.webp'),
+        text: 'HP Laptop ',
         rating: 3
     }
 ];
@@ -110,9 +130,5 @@ const HomFlashPhoto = () => {
     );
 };
 
-const styles = StyleSheet.create({item: {}, image: {}, text: {}, rating: {
-
-        // padding:10
-    }, contentContainer: {}});
 
 export default HomFlashPhoto;
