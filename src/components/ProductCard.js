@@ -4,11 +4,21 @@ import {COLOURS} from '../database/Database';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 
 
 export const ProductCard = ({data}) => {
+    const navigation = useNavigation();
+
+    const handlePress = () => {
+        // navigate to another screen
+        navigation.navigate('ProductInfo'  ,{productId:data.id});
+    }
+
     return (
         <TouchableOpacity
+        // onPress={()=> navigation.navigate('ProductInfo' ,{productId:data.id})}
+        onPress={handlePress}
             style={{
             backgroundColor: COLOURS.white,
             width: '48%',

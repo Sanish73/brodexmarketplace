@@ -9,6 +9,7 @@ import {RootScreen} from './screen/RootScreen';
 import PaymentScreen from './screen/PaymentScreen';
 import PaymentSuccessScreen from './screen/PaymentSuccessScreen';
 import { OrderScreen } from './screen/OrderScreen';
+import {ProductInfoScreen} from './screen/ProductInfoScreen';
 
 function AppBox() {
     const Stack = createNativeStackNavigator();
@@ -22,6 +23,8 @@ function AppBox() {
                 <Stack.Screen name="Payments" component={PaymentScreen}/>
                 <Stack.Screen name='Success' component={PaymentSuccessScreen}/>
                 <Stack.Screen name="Order" component={OrderScreen}/>
+                <Stack.Screen name="ProductInfo" component={ProductInfoScreen}/>
+           
 
             </Stack.Navigator>
         </NavigationContainer>
