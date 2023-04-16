@@ -10,15 +10,15 @@ import { useNavigation } from '@react-navigation/native';
 export const ProductCard = ({data}) => {
     const navigation = useNavigation();
 
-    const handlePress = () => {
-        // navigate to another screen
-        navigation.navigate('ProductInfo'  ,data);
+    const handlePress = (item) => {
+    //    console.log(item)
+        navigation.navigate('ProductInfo'  , data);
     }
 
     return (
         <TouchableOpacity
-        // onPress={()=> navigation.navigate('ProductInfo' ,{productId:data.id})}
-        onPress={handlePress}
+        
+        onPress={()=>handlePress(data)}
             style={{
             backgroundColor: COLOURS.white,
             width: '48%',
@@ -30,9 +30,7 @@ export const ProductCard = ({data}) => {
                 height: 150,
                 overflow: 'hidden',
                 borderTopLeftRadius: 18,
-                // borderTopRightRadius: 8,
-                // borderBottomLeftRadius: 1,
-                // borderTopRightRadius: 8
+              
             }}>
                 <Image
                     source={data.productImage}
@@ -40,7 +38,7 @@ export const ProductCard = ({data}) => {
                     width: '100%',
                     height: '100%'
                 }}/>
-                {data.isOff && <View
+                {data.isOff ? <View
                     style={{
                     position: 'absolute',
                     top: 0,
@@ -56,13 +54,12 @@ export const ProductCard = ({data}) => {
                     }}>
                         {data.offPercentage}% OFF
                     </Text>
-                </View>}
+                </View>:<></>}
             </View>
             <View
                 style={{
                 padding: 8,
-                // backgroundColor:'#E9E7E5',
-                //  borderBottomLeftRadius: ,
+               
                 borderBottomRightRadius: 18
 
             }}>
@@ -80,7 +77,7 @@ export const ProductCard = ({data}) => {
                     }}>
                         {data.productName}
                     </Text>
-                    {/* {data.isAvailable ? <Entypo name="check" size={16} color={COLOURS.green}/> : <Entypo name="cross" size={16} color={COLOURS.red}/>} */}
+                 
                 </View>
                 <View
                     style={{
@@ -130,7 +127,7 @@ export const ProductCard = ({data}) => {
                         fontWeight: '400',
                         marginLeft: 4
                     }}>
-                        (2563)
+                        2563
                     </Text>
                 </View>
             </View>

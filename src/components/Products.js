@@ -30,8 +30,8 @@ export function Products() {
                 productImage: require('../../assets/images/29032316800754916423eae35ddce.webp'),
                 isAvailable: true,
                 productImageList: [
-                  require('../../assets/images/c08000131_1750x1285.webp'),
-                  require('../../assets/images/c08000131_1750x1285.webp'),
+                  require('../../assets/images/01042316803342086427dd809514b.webp'),
+                  require('../../assets/images/2503231679712494641e60eed7930.webp'),
                   require('../../assets/images/c08000131_1750x1285.webp'),
                 ],
               },
@@ -144,32 +144,16 @@ export function Products() {
                 productImageList: [
                   require('../../assets/images/c08000131_1750x1285.webp'),
                   require('../../assets/images/c08000131_1750x1285.webp'),
-                  require('../../assets/images/c08000131_1750x1285.webp'),
+                  require('../../assets/images/2082f59465c39094ce90bebd0fcf8fa7.jpeg'),
                 ],
               }
         ]);
-    // const [accessory,
-    //     setAccessory] = useState([]);
-
-    // get called on screen loads
-    // useEffect(() => {
-    //     const unsubscribe = navigation.addListener('focus', () => {
-    //         getDataFromDB();
-    //     });
-
-    //     return unsubscribe;
-    // }, [navigation]);
-
-    //get data from DB
-
-
-    // console.log(products)
+  
 
     return (
         <Box>
             <View style={{
-                padding: 4,
-                // backgroundColor:'green'
+                padding: 4
             }}>
                 <View
                     style={{
