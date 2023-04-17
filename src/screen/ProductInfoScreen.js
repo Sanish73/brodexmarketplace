@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {
     View,
-    Text,
+
     StatusBar,
     ScrollView,
     TouchableOpacity,
@@ -11,13 +11,49 @@ import {
     Animated,
     ToastAndroid
 } from 'react-native';
+4
+import {
+    Box,
+    Text,
+    Center,
+    HStack,
+    VStack,
+    Radio,
+    Stack
+} from 'native-base';
 import {COLOURS, Items} from '../database/Database';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 
+import Icon from 'react-native-vector-icons/Ionicons';
+
 export function ProductInfoScreen({route}) {
+
+    const options = [
+        {
+            value: 'Black',
+            label: 'Black',
+            color: 'black'
+        }, {
+            value: 'Red',
+            label: 'Red',
+            color: 'red'
+        }, {
+            value: 'Green',
+            label: 'Green',
+            color: 'green'
+        }, {
+            value: 'Blue',
+            label: 'Blue',
+            color: 'blue'
+        }
+    ];
+
+    const [selectedColor,
+        setselectedColor] = useState('Black');
+
     const navigation = useNavigation();
     const {
         category,
@@ -28,6 +64,7 @@ export function ProductInfoScreen({route}) {
         isOff,
         productImage,
         isAvailable,
+        offPercentage,
         productImageList
     } = route.params;
 
@@ -60,7 +97,7 @@ export function ProductInfoScreen({route}) {
             height: '100%',
             backgroundColor: COLOURS.white,
             position: 'relative',
-            padding:4
+            padding: 4
         }}>
             <StatusBar backgroundColor={COLOURS.backgroundLight} barStyle="dark-content"/>
             <ScrollView>
@@ -89,7 +126,7 @@ export function ProductInfoScreen({route}) {
                     <View
                         style={{
                         position: 'absolute',
-                        bottom: 25,
+                        bottom: 22,
                         left: 0,
                         right: 0,
                         flexDirection: 'row',
@@ -114,7 +151,7 @@ export function ProductInfoScreen({route}) {
                                     key={index}
                                     style={{
                                     width: 70,
-                                    height: 7,
+                                    height: 5,
                                     backgroundColor: '#ffa94d',
                                     opacity,
                                     marginHorizontal: 2,
@@ -122,9 +159,152 @@ export function ProductInfoScreen({route}) {
                                 }}/>);
                             })
                             : null}
+
                     </View>
+                    {isOff ? <View
+                    style={{
+                    position: 'absolute',
+                    margin:10,
+                    top: 0,
+                    backgroundColor: COLOURS.red,
+                    padding: 4,
+                    // borderBottomRightRadius: 8,
+                    borderRadius: 5
+                }}>
+                    <Text
+                        style={{
+                        color: COLOURS.white,
+                        fontWeight: 'bold'
+                    }}>
+                        {offPercentage}% OFF
+                    </Text>
+                </View>:<></>}
+
                 </View>
+
+                <HStack>
+                    <HStack>
+                        <Text>
+                            {productName}
+                        </Text>
+                        <Text>
+                            {category}
+                        </Text>
+                    </HStack>
+                    <HStack>
+                        <Box>
+                            <Icon
+                                size={27}
+                                name={'location'}
+                                style={{
+                                color: '#F57F17',
+                                padding: 2
+                            }}></Icon>
+                        </Box>
+                        <Box>
+                            <Icon
+                                size={27}
+                                name={'location'}
+                                style={{
+                                color: '#F57F17',
+                                padding: 2
+                            }}></Icon>
+                        </Box>
+
+                    </HStack>
+                </HStack>
+                <Box>
+                    <VStack>
+                        <Text>
+                            {description}
+                        </Text>
+                    </VStack>
+                </Box>
+                <HStack>
+                    <HStack>
+                        <Icon
+                            size={27}
+                            name={'location'}
+                            style={{
+                            color: '#F57F17',
+                            padding: 2
+                        }}></Icon>
+                        <Text>
+                            4.5
+                        </Text>
+                    </HStack>
+                    <Box>
+                        4 Reviews
+                    </Box>
+
+                </HStack>
+                <VStack>
+                    <HStack>
+                        <Text>
+                            Color:
+                        </Text>
+                        <Text bold>
+                            {selectedColor}
+                        </Text>
+                    </HStack>
+                    <HStack>
+
+                        <Radio.Group
+                            name="myRadioGroup"
+                            accessibilityLabel="favorite number"
+                            onChange={nextValue => {
+                            console.log(nextValue);
+                            setselectedColor(nextValue);
+                        }}>
+                            <Stack
+                                direction={{
+                                base: "row",
+                                md: "row"
+                            }}
+                                alignItems={{
+                                base: "flex-start",
+                                md: "center"
+                            }}
+                                space={7}
+                                w="75%"
+                                maxW="300px">
+
+                                {options.map((option) => (<Radio
+                                    value={option.value}
+                        
+                                    colorScheme={option.color}
+                                    isChecked={selectedColor === option.value}
+                                    _checked={{
+                                    bg: option.color,
+                                    borderColor: option.color,
+                                   
+                                    color: "white"
+                                }}
+                                    _hover={{
+                                    borderColor: option.color,
+                                    borderWidth: "1px"
+                                }}
+                                    _focus={{
+                                    borderColor: option.color,
+                                    boxShadow: "outline"
+                                }}
+                                    borderRadius="full"
+                                    borderWidth="1px"
+                                    borderColor={selectedColor === option.value
+                                    ? option.color
+                                    : "gray.200"}
+                                    size="sm"
+                                    marginRight={1}>Rjsldkfjld
+                                    </Radio>))}
+
+                            </Stack>
+                        </Radio.Group>
+
+                    </HStack>
+                </VStack>
+
             </ScrollView>
+
         </View>
     );
 }
