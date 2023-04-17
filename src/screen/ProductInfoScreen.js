@@ -294,7 +294,7 @@ export function ProductInfoScreen({route}) {
                                     ? option.color
                                     : "gray.200"}
                                     size="sm"
-                                    marginRight={1}>Rjsldkfjld
+                                    marginRight={1}>Rjsldkfjl
                                     </Radio>))}
 
                             </Stack>
