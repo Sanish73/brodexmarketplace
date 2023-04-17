@@ -33,6 +33,8 @@ export function Products() {
                   require('../../assets/images/01042316803342086427dd809514b.webp'),
                   require('../../assets/images/2503231679712494641e60eed7930.webp'),
                   require('../../assets/images/c08000131_1750x1285.webp'),
+                  require('../../assets/images/01042316803342086427dd809514b.webp'),
+                 
                 ],
               },
               {
