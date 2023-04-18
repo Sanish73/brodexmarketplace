@@ -6,10 +6,10 @@ import {
     ScrollView,
     TouchableOpacity,
     FlatList,
-    Image,
+    
     Dimensions,
     Animated,
-    ToastAndroid
+    ToastAndroid,Alert,
 } from 'react-native';
 4
 import {
@@ -20,40 +20,68 @@ import {
     VStack,
     Radio,
     Stack,
-    Button
+    Button,
+    Heading,
+    Image,
 } from 'native-base';
 import {COLOURS, Items} from '../database/Database';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
+import { Rating } from 'react-native-elements';
 
 import Icon from 'react-native-vector-icons/Ionicons';
+import { color } from 'native-base/lib/typescript/theme/styled-system';
 
 export function ProductInfoScreen({route}) {
 
     const options = [
         {
             value: 'Black',
-            label: 'Black',
+            index: 'Black',
             color: 'black'
         }, {
             value: 'Red',
-            label: 'Red',
+            index: 'Red',
             color: 'red'
         }, {
             value: 'Green',
-            label: 'Green',
+            index: 'Green',
             color: 'green'
         }, {
             value: 'Blue',
-            label: 'Blue',
+            index: 'Blue',
             color: 'blue'
+        }, {
+            value: 'Pink',
+            index: 'Pink',
+            color: 'pink'
+        }, {
+            value: 'Orange',
+            index: 'Orange',
+            color: 'orange'
+        }, {
+            value: 'Yellow',
+            index: 'Yellow',
+            color: 'yellow'
         }
     ];
 
+    const ColorPress =(item)=>{
+        // Alert.alert(item);
+        setselectedColor(item);
+        setselectedHeight(9);
+        setselectedHWidtht(9);
+
+    }
+
     const [selectedColor,
         setselectedColor] = useState('Black');
+        const [selectedHeight,
+            setselectedHeight] = useState(8);
+            const [selectedWidth,
+                setselectedHWidtht] = useState(8);
 
     const navigation = useNavigation();
     const {
@@ -175,7 +203,6 @@ export function ProductInfoScreen({route}) {
                     top: 0,
                     backgroundColor: COLOURS.red,
                     padding: 4,
-                    // borderBottomRightRadius: 8,
                     borderRadius: 5
                 }}>
                     <Text
@@ -192,30 +219,30 @@ export function ProductInfoScreen({route}) {
                 <HStack  paddingTop={2}>
                     <HStack  w={'80%'} alignItems={'center'} paddingX={2}>
                         <Text  bold fontSize={15}>
-                          Lorem 
+                          Lorreal the Face Cleaner
                         </Text>
                         {/* <Text>
                            AED 266.6
                         </Text> */}
                     </HStack>
-                    <HStack w={'20%'} justifyContent={'space-between'}>
+                    <HStack w={'20%'} justifyContent={'space-between'} alignItems={'center'}>
                         <Box>
-                            <Icon
-                                size={27}
-                                name={'location'}
-                                style={{
-                                color: '#F57F17',
-                                padding: 2
-                            }}></Icon>
+                           
+                             <Ionicons
+                                name="share-outline"
+                                size={22}
+                                color="#F57F17"
+                                style={{ marginRight: 10 }}
+                                />
                         </Box>
                         <Box>
-                            <Icon
-                                size={27}
-                                name={'location'}
-                                style={{
-                                color: '#F57F17',
-                                padding: 2
-                            }}></Icon>
+                         
+                            <Ionicons
+                                name="heart-outline"
+                                size={22}
+                                color="#F57F17"
+                                style={{ marginRight: 10 }}
+                           />
                         </Box>
 
                     </HStack>
@@ -227,15 +254,11 @@ export function ProductInfoScreen({route}) {
                         </Text>
                     </VStack>
                 </Box>
+
                 <HStack paddingTop={2} >
                     <HStack  rounded={15} alignItems={'center'} paddingX={2}>
-                        <Icon
-                            size={20}
-                            name={'location'}
-                            style={{
-                            color: '#F57F17',
-                            padding: 2
-                        }}></Icon>
+                                                   
+                    <Icon name="star" size={20} color="#FFA500" />
                         <Text bold paddingLeft={1}> 
                             4.5
                         </Text>
@@ -251,88 +274,76 @@ export function ProductInfoScreen({route}) {
                     </HStack>
 
                 </HStack>
+
+                            <VStack paddingY={3} space={2}>
+                                <Box>
+                                <Image size={"xs"} w={20} borderRadius={1} source={{
+                                uri: "https://wallpaperaccess.com/full/317501.jpg"
+                                }} alt="Alternate Text" />
+                                </Box>
+                                <Box>
+                                    <Text underline>
+                            hsdk3jflksdfjlsjdjflj
+                                    </Text>
+                                </Box>
+                            </VStack>
+
                 <VStack paddingTop={2}>
                     <HStack>
-                        <Text>
-                            Color:
-                        </Text>
-                        <Text bold>
+                        <Heading size="sm">
+                            Choosed Color:
+                        </Heading>
+                        <Text >
                             {selectedColor}
                         </Text>
                     </HStack>
-                    <HStack paddingTop={2}>
+                    <HStack  flexDirection={'row'}  alignSelf={'flex-start'} alignItems={'center'}  w={'100%'} h={10}>
+                       {options.map((item,index)=>( <TouchableOpacity onPress={()=>ColorPress(item.value)}>
+                               
+                                    <Box   shadow={5} h={item.index === selectedColor ? selectedHeight : 8} w={item.index === selectedColor ? selectedWidth : 8} rounded={100} marginLeft={2} key={index} style={{
+                                         backgroundColor: item.color,
+                                         borderWidth:1
+                                        
+                                    }}>
 
-                        <Radio.Group
-                            name="myRadioGroup"
-                            accessibilityLabel="favorite number"
-                            onChange={nextValue => {
-                            console.log(nextValue);
-                            setselectedColor(nextValue);
-                        }}>
-                            <Stack
-                                direction={{
-                                base: "row",
-                                md: "row"
-                            }}
-                                alignItems={{
-                                base: "flex-start",
-                                md: "center"
-                            }}
-                                space={7}
-                                w="75%"
-                                maxW="300px">
-
-                                {options.map((option) => (<Radio
-                                    value={option.value}
+                                    </Box>
+                              
+                        </TouchableOpacity>))}
+                            
                         
-                                    colorScheme={option.color}
-                                    isChecked={selectedColor === option.value}
-                                    _checked={{
-                                    bg: option.color,
-                                    borderColor: option.color,
-                                   
-                                    color: "white"
-                                }}
-                                    _hover={{
-                                    borderColor: option.color,
-                                    borderWidth: "1px"
-                                }}
-                                    _focus={{
-                                    borderColor: option.color,
-                                    boxShadow: "outline"
-                                }}
-                                    borderRadius="full"
-                                    borderWidth="1px"
-                                    borderColor={selectedColor === option.value
-                                    ? option.color
-                                    : "gray.200"}
-                                    size="sm"
-                                    marginRight={1}>{option.value}
-                                    </Radio>))}
-
-                            </Stack>
-                        </Radio.Group>
-
                     </HStack>
                 </VStack>
 
                 <VStack paddingTop={2}>
                     <Box>
-                        <Text>
+                        <Heading size="sm">
                             Capacity
-                        </Text>
+                        </Heading>
                     </Box>
                     <HStack paddingTop={2}>
-                        <Button rounded={10}>
+                        <Button rounded={10} size="md" variant="outline" colorScheme="secondary">
                             Inner Pot 7L
                         </Button>
-                        <Button marginLeft={4} rounded={10}>
+                        <Button marginLeft={4} rounded={10} size="md" variant="outline">
                             Inner Pot 7L
                         </Button>
                     </HStack>
                 </VStack>
+                
 
             </ScrollView>
+            <HStack bottom={2} >
+                 <Button w={'48%'} rounded={6} leftIcon={<Ionicons name="cart-outline" size={18} color="white" />}>
+                    Add to Cart
+                </Button>
+                <Box w={'5%'}>
+
+                </Box>
+                <Button w={'47%'} rounded={6}   leftIcon={<Ionicons name="cart-outline" size={18} color="white" /> }>
+                    Buy Now
+                </Button>
+            </HStack>
+
 
         </View>
     );
