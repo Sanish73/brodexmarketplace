@@ -16,11 +16,8 @@ import OrderItems from '../components/OrderItems';
 import MyTab from '../components/MyTab'
 import AccountInformation from '../components/AccountInformation';
 import CategorySearch from '../components/CategorySearch';
-import {CategoryLeftList} from '../components/CategoryLeftList';
-import {CategoryRightList} from '../components/CategoryRightList';
 
-function CategoryScreen() {
-
+export function CategoryLeftList() {
     const data = [
         {
             id: 1,
@@ -40,25 +37,28 @@ function CategoryScreen() {
         }, {
             id: 6,
             categoryName: 'Flash Details'
+        }, {
+            id: 7,
+            categoryName: 'Flash Details'
+        }, {
+            id: 8,
+            categoryName: 'Flash Details'
+        }, {
+            id: 9,
+            categoryName: 'Flash Details'
+        },, {
+            id: 10,
+            categoryName: 'Flash Details'
         }
     ];
+    return (
+        <VStack w={'20%'} h={'100%'} bgColor={'blue.100'} space={2}>
 
-    return <VStack>
-
-        <CategorySearch/>
-
-        <ScrollView>
-            <HStack h={'100%'}>
-                <CategoryLeftList/>
-                <CategoryRightList/>
-            </HStack>
-            <Box h={100}></Box>
-        </ScrollView>
-
-    </VStack>
-
+            {data.map((item, index) => (
+                <Box key={item.id} bgColor={'orange.100'} alignItems={'center'}>
+                    <Text fontSize={'md'} p={1} bold>{item.categoryName} </Text>
+                </Box>
+            ))}
+        </VStack>
+    )
 }
-
-export default CategoryScreen;
-
-// <
