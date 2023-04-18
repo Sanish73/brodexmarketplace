@@ -12,7 +12,6 @@ import {
     Center
 } from "native-base";
 
-
 export function CategoryRightList() {
     const data = [
         {
@@ -51,7 +50,7 @@ export function CategoryRightList() {
     ]
 
     return (
-        <VStack w={'80%'} h={'100%'}  p={3} space={2}>
+        <VStack w={'80%'} h={'100%'} p={3} space={2}>
             <Box>
                 <Image
                     rounded={15}
