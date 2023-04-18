@@ -1,5 +1,4 @@
 import React from 'react';
-import {Alert, Button, ScrollView, TouchableOpacity} from 'react-native';
 import {
     Text,
     VStack,
@@ -12,9 +11,7 @@ import {
     Center
 } from "native-base";
 import Icon from 'react-native-vector-icons/Ionicons';
-import OrderItems from '../components/OrderItems';
-import MyTab from '../components/MyTab'
-import AccountInformation from '../components/AccountInformation';
+
 
 export default function CategorySearch() {
 

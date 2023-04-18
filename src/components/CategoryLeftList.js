@@ -52,13 +52,17 @@ export function CategoryLeftList() {
         }
     ];
     return (
-        <VStack w={'20%'} h={'100%'} bgColor={'blue.100'} space={2}>
+        <VStack w={'20%'} h={'100%'} space={2}>
 
             {data.map((item, index) => (
-                <Box key={item.id} bgColor={'orange.100'} alignItems={'center'}>
-                    <Text fontSize={'md'} p={1} bold>{item.categoryName} </Text>
-                </Box>
+                <TouchableOpacity>
+                    <Box key={item.id}  alignItems={'center'}>
+                        <Text fontSize={'md'} p={1} bold>{item.categoryName}
+                        </Text>
+                    </Box>
+                </TouchableOpacity>
             ))}
+
         </VStack>
     )
 }

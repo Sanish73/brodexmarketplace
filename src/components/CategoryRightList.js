@@ -11,12 +11,7 @@ import {
     Badge,
     Center
 } from "native-base";
-import Icon from 'react-native-vector-icons/Ionicons';
-import OrderItems from '../components/OrderItems';
-import MyTab from '../components/MyTab'
-import AccountInformation from '../components/AccountInformation';
-import CategorySearch from '../components/CategorySearch';
-import {CategoryLeftList} from '../components/CategoryLeftList';
+
 
 export function CategoryRightList() {
     const data = [
@@ -56,7 +51,7 @@ export function CategoryRightList() {
     ]
 
     return (
-        <VStack w={'80%'} h={'100%'} bgColor={'green.100'} p={3} space={2}>
+        <VStack w={'80%'} h={'100%'}  p={3} space={2}>
             <Box>
                 <Image
                     rounded={15}
