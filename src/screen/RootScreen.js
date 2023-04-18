@@ -7,6 +7,7 @@ import CategoryScreen from './CategoryScreen';
 
 import {AccountScreen} from './AccountScreen';
 import CartScreen from './CartScreen';
+import OOOrder from './OOOrder';
 
 
 // import OrderScreen from './OrderScreen';
@@ -42,6 +43,10 @@ export function RootScreen() {
                     iconName = focused
                         ? 'person'
                         : 'person-outline';
+                }else if (route.name === 'Ooorder') {
+                    iconName = focused
+                        ? 'person'
+                        : 'person-outline';
                 }
                 return <Icon name={iconName} size={fontSize} color={color}/>;
             },
@@ -49,12 +54,14 @@ export function RootScreen() {
                 backgroundColor: 'white'
             }
         })}>
+         <Tab.Screen name="Category" component={CategoryScreen}/>
           
-            <Tab.Screen name="Home" component={HomeScreen}/>
-            <Tab.Screen name="Category" component={CategoryScreen}/>
             <Tab.Screen name="Cart" component={CartScreen}/>
+            <Tab.Screen name="Home" component={HomeScreen}/>
+           
           
             <Tab.Screen name="Account" component={AccountScreen}/>
+            <Tab.Screen name="Ooorder" component={OOOrder}/>
            
 
         </Tab.Navigator>
