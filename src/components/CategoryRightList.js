@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Alert, Button, ScrollView, TouchableOpacity} from 'react-native';
 import {
     Text,
@@ -12,26 +12,27 @@ import {
     Center
 } from "native-base";
 
-export function CategoryRightList() {
+export function CategoryRightList({selectedCategory}) {
+
     const data = [
         {
             id: 1,
-            categoryName: 'Flash Details'
+            categoryName: ' Shampoo 1'
         }, {
             id: 2,
-            categoryName: 'Flash Details'
+            categoryName: 'Shampoo 2'
         }, {
             id: 3,
-            categoryName: 'Flash Details'
+            categoryName: 'Shampoo 3'
         }, {
             id: 4,
-            categoryName: 'Flash Details'
+            categoryName: 'Shampoo 4'
         }, {
             id: 5,
-            categoryName: 'Flash Details'
+            categoryName: 'Shampoo 5'
         }, {
             id: 6,
-            categoryName: 'Flash Details'
+            categoryName: 'Shampoo 6'
         }
     ];
 
@@ -49,6 +50,10 @@ export function CategoryRightList() {
 
     ]
 
+    const handleCategorySelect = (item) => {
+        Alert.alert(JSON.stringify('jljlk'));
+    };
+
     return (
         <VStack w={'80%'} h={'100%'} p={3} space={2}>
             <Box>
@@ -64,7 +69,14 @@ export function CategoryRightList() {
             </Box>
             <Box>
                 <Text fontSize={'md'} bold>
-                    Kitchen Applicatoin
+                    {selectedCategory.map((item, index) => {
+                        return (
+                            <Text>
+                                {item.category_name}
+                            </Text>
+                        )
+                    })}
+
                 </Text>
             </Box>
             <Box
@@ -73,9 +85,9 @@ export function CategoryRightList() {
                 style={{
                 flexWrap: 'wrap'
             }}>
-                {data.map((item, index) => {
+                {selectedCategory.map((item, index) => {
                     return (
-                        <TouchableOpacity key={index}>
+                        <TouchableOpacity key={index} onPress={() => handleCategorySelect(item)}>
                             <Box
                                 style={{
                                 marginRight: 20,
@@ -100,7 +112,7 @@ export function CategoryRightList() {
 
                                 <Box marginTop={2}>
                                     <Text>
-                                        {item.categoryName}
+                                        {item.category_name}
                                     </Text>
                                 </Box>
 

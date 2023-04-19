@@ -36,6 +36,22 @@ import { color } from 'native-base/lib/typescript/theme/styled-system';
 
 export function ProductInfoScreen({route}) {
 
+    const [selectedColor,
+        setselectedColor] = useState('Black');
+        const [selectedHeight,
+            setselectedHeight] = useState(8);
+            const [selectedWidth,
+                setselectedHWidtht] = useState(8);
+
+
+                const ColorPress =(item)=>{
+                    // Alert.alert(item);
+                    setselectedColor(item);
+                    setselectedHeight(9);
+                    setselectedHWidtht(9);
+            
+                }
+
     const options = [
         {
             value: 'Black',
@@ -68,20 +84,9 @@ export function ProductInfoScreen({route}) {
         }
     ];
 
-    const ColorPress =(item)=>{
-        // Alert.alert(item);
-        setselectedColor(item);
-        setselectedHeight(9);
-        setselectedHWidtht(9);
+ 
 
-    }
-
-    const [selectedColor,
-        setselectedColor] = useState('Black');
-        const [selectedHeight,
-            setselectedHeight] = useState(8);
-            const [selectedWidth,
-                setselectedHWidtht] = useState(8);
+   
 
     const navigation = useNavigation();
     const {
