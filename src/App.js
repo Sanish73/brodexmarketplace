@@ -6,10 +6,11 @@ import {RootTagContext, SafeAreaView, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RootScreen} from './screen/RootScreen';
-import PaymentScreen from './screen/PaymentScreen';
-import PaymentSuccessScreen from './screen/PaymentSuccessScreen';
+import PaymentScreen from './components/PaymentScreen';
+import PaymentSuccessScreen from './components/PaymentSuccessScreen';
 import { OrderScreen } from './screen/OrderScreen';
-import {ProductInfoScreen} from './screen/ProductInfoScreen';
+import { ProductInfoScreen } from './components/ProductInfoScreen';
+import {CategorySubCatDetailScree} from './screen/CategorySubCatDetailScree';
 
 function AppBox() {
     const Stack = createNativeStackNavigator();
@@ -24,6 +25,7 @@ function AppBox() {
                 <Stack.Screen name='Success' component={PaymentSuccessScreen}/>
                 <Stack.Screen name="Order" component={OrderScreen}/>
                 <Stack.Screen name="ProductInfo" component={ProductInfoScreen}/>
+                <Stack.Screen name="CategorySubCategoDetails" component={CategorySubCatDetailScree}/>
            
 
             </Stack.Navigator>

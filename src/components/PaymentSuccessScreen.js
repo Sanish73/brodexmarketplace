@@ -13,8 +13,15 @@ import {
 // '../components/VoucherBox' import {useNavigation} from
 // '@react-navigation/native'; import {createNativeStackNavigator} from
 // '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function PaymentSuccessScreen({navigation}) {
+
+    
+
+
+    const navigation = useNavigation();
 
     const showAlert =()=>{
      

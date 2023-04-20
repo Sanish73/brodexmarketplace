@@ -18,8 +18,11 @@ import CartBoxSecond from '../components/CartBoxSecond';
 import CartToPayList from '../components/CartToPayList';
 import CartBoxThird from '../components/CartBoxThird';
 import CartBoxFourth from '../components/CartBoxFourth';
+import {useNavigation} from '@react-navigation/native';
 
-export default function CartScreen({navigation}) {
+export default function CartScreen() {
+
+    const navigation = useNavigation();
     const [cartProducts,
         setProducts] = useState([
         {

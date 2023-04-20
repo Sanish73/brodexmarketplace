@@ -379,6 +379,7 @@ function CategoryScreen() {
     const handleCategorySelectAndClickEvent = (category) => {
         handleCategorySelect(category);
         handlClickEvent(category);
+       
        ;
     };
 
@@ -397,6 +398,9 @@ function CategoryScreen() {
                 <CategoryLeftList
                     categories={data}
                     onSelectCategory={handleCategorySelectAndClickEvent}/>
+                    <Text>
+                    {/* {JSON.stringify(collection, null ,2)} */}
+                    </Text>
                 <CategoryRightList selectedCategory={collection} selectedParentCategories={selectedParentCategory}/>
             </HStack>
             <Box h={100}></Box>
