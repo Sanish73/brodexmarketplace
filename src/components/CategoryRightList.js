@@ -18,10 +18,8 @@ export function CategoryRightList({selectedCategory, selectedParentCategories}) 
 
     const handleCategorySelect = (item) => {
         if (navigation) {
-            navigation.navigate('CategorySubCategoDetails');
-            // navigation.navigate('CategorySubCategoDetails'); Alert.alert('ljslk');
-            // Alert.alert(JSON.stringify(selectedParentCategories));
-            // Alert.alert(JSON.stringify(item));
+            navigation.navigate('CategorySubCategoDetails' , item);
+            
         } else {
             console.warn("Navigation prop is not defined");
         }

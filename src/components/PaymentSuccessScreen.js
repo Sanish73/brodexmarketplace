@@ -16,15 +16,10 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 
-export default function PaymentSuccessScreen({navigation}) {
-
-    
-
-
+export default function PaymentSuccessScreen() {
     const navigation = useNavigation();
 
     const showAlert =()=>{
-     
         navigation.navigate('Payments');
     }
 

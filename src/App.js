@@ -10,7 +10,7 @@ import PaymentScreen from './components/PaymentScreen';
 import PaymentSuccessScreen from './components/PaymentSuccessScreen';
 import { OrderScreen } from './screen/OrderScreen';
 import { ProductInfoScreen } from './components/ProductInfoScreen';
-import {CategorySubCatDetailScree} from './screen/CategorySubCatDetailScree';
+import {CategorySubCatDetailScree} from './components/CategorySubCatDetailScree';
 
 function AppBox() {
     const Stack = createNativeStackNavigator();

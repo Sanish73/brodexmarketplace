@@ -29,10 +29,8 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
-import { Rating } from 'react-native-elements';
-
 import Icon from 'react-native-vector-icons/Ionicons';
-import { color } from 'native-base/lib/typescript/theme/styled-system';
+
 
 export function ProductInfoScreen({route}) {
 
