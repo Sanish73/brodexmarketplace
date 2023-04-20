@@ -12,7 +12,7 @@ import {
     Center
 } from "native-base";
 
-export function CategoryRightList({selectedCategory}) {
+export function CategoryRightList({selectedCategory, selectedParentCategories}) {
 
     const data = [
         {
@@ -51,21 +51,27 @@ export function CategoryRightList({selectedCategory}) {
     ]
 
     const handleCategorySelect = (item) => {
-        Alert.alert(JSON.stringify('jljlk'));
+        //Alert.alert(JSON.stringify(selectedParentCategories));
     };
 
     return (
         <VStack w={'80%'} h={'100%'} p={3} space={2}>
+
             <Box>
-                <Image
-                    rounded={15}
-                    source={{
-                    uri: "https://wallpaperaccess.com/full/317501.jpg"
-                }}
-                    alt="Alternate Text"
-                    resizeMode="stretch"
-                    aspectRatio={2}
-                    w="100%"/>
+            {/* <Text>
+                {JSON.stringify(selectedParentCategories , null , 2)}
+            </Text> */}
+                
+                   <Image
+                        rounded={15}
+                        source={{
+                        uri:selectedParentCategories.image
+                    }}
+                        alt="Alternate Text"
+                        resizeMode="stretch"
+                        aspectRatio={2}
+                        w="100%"/>
+
             </Box>
             <Box>
                 <Text fontSize={'md'} bold>
@@ -85,13 +91,18 @@ export function CategoryRightList({selectedCategory}) {
                 style={{
                 flexWrap: 'wrap'
             }}>
+              {/* <Text>
+                {JSON.stringify(selectedCategory , null , 2)}
+            </Text> */}
+
                 {selectedCategory.map((item, index) => {
                     return (
                         <TouchableOpacity key={index} onPress={() => handleCategorySelect(item)}>
                             <Box
                                 style={{
                                 marginRight: 20,
-                                marginTop: 15
+                                marginTop: 15,
+                                alignItems:'center'
                             }}>
                                 <Center
                                     rounded={15}
@@ -101,9 +112,12 @@ export function CategoryRightList({selectedCategory}) {
                                     height: 50,
                                     rounded: 50
                                 }}>
+
                                     <Image
                                         alt={'sdfkjsjdf'}
-                                        source={require('../../assets/images/black-liquid-soap-container.png')}
+                                        source={{
+                                        uri: item.image_link
+                                    }}
                                         style={{
                                         width: 45,
                                         height: 50
