@@ -74,7 +74,7 @@ export function CategoryRightList({selectedCategory, selectedParentCategories}) 
 
             </Box>
             <Box>
-                <Text fontSize={'md'} bold>
+                {/* <Text fontSize={'md'} bold>
                     {selectedCategory.map((item, index) => {
                         return (
                             <Text>
@@ -83,7 +83,7 @@ export function CategoryRightList({selectedCategory, selectedParentCategories}) 
                         )
                     })}
 
-                </Text>
+                </Text> */}
             </Box>
             <Box
                 flexDirection='row'
@@ -135,7 +135,7 @@ export function CategoryRightList({selectedCategory, selectedParentCategories}) 
                     );
                 })}
             </Box>
-            <Box>
+            {/* <Box>
                 <Text fontSize={'md'} bold>
                     Kitchen Applicatoin
                 </Text>
@@ -230,7 +230,7 @@ export function CategoryRightList({selectedCategory, selectedParentCategories}) 
                         </TouchableOpacity>
                     );
                 })}
-            </Box>
+            </Box> */}
 
         </VStack>
     )
