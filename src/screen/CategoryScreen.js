@@ -385,8 +385,7 @@ function CategoryScreen() {
     const handleCategorySelect = (category) => {
         setSelectedParentCategory(category)
         setSelectedCategory(category);
-        // console.log(selectedParentCategory); 
-        // Do something with the selected 
+      
     };
     
     return <VStack>
