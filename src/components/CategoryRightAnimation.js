@@ -16,7 +16,7 @@ import {ProductCard} from './ProductCard';
 import {Animated} from 'react-native';
 import CategoryLeftAnimation from './CategoryLeftAnimation';
 
-export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offsetvalue,_scalevalue,_closebuttonoffsetvalue}) {
+export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offsetvalue, _scalevalue, _closebuttonoffsetvalue}) {
 
     const [products,
         setProducts] = useState([
@@ -115,114 +115,113 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
     return (
 
         <Animated.View
-        style={{
-        flex: 1,
-        position: 'absolute',
-        backgroundColor: 'white',
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        borderRadius: _showMenu
-            ? 15
-            : 0,
-        transform: [
-            {
-                scale: _scalevalue
-            }, {
-                translateX: _offsetvalue
-            }
-        ]
-    }}>
-
-        <Button
-            onPress={() => {
-            Animated.timing(_scalevalue, {
-                toValue: _showMenu
-                    ? 1
-                    : 0.88,
-                duration: 300,
-                useNativeDriver: true
-            });
-            Animated
-                .timing(_offsetvalue, {
-                toValue: _showMenu
-                    ? 0
-                    : 220,
-                duration: 300,
-                useNativeDriver: true
-            })
-                .start();
-            _setShowMenu(!_showMenu);
+            style={{
+            flex: 1,
+            position: 'absolute',
+            backgroundColor: 'white',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            borderRadius: _showMenu
+                ? 15
+                : 0,
+            transform: [
+                {
+                    scale: _scalevalue
+                }, {
+                    translateX: _offsetvalue
+                }
+            ]
         }}>
-            Scroll
-        </Button>
 
-        <VStack>
-            <ScrollView>
-                <Box>
-                    <View
-                        style={{
-                        padding: 4
-                    }}>
+            <Button
+                onPress={() => {
+                Animated.timing(_scalevalue, {
+                    toValue: _showMenu
+                        ? 1
+                        : 0.88,
+                    duration: 300,
+                    useNativeDriver: true
+                });
+                Animated
+                    .timing(_offsetvalue, {
+                    toValue: _showMenu
+                        ? 0
+                        : 220,
+                    duration: 300,
+                    useNativeDriver: true
+                })
+                    .start();
+                _setShowMenu(!_showMenu);
+            }}>
+                Scroll
+            </Button>
+
+            <VStack>
+                <ScrollView>
+                    <Box>
                         <View
                             style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            justifyContent: 'space-between'
+                            padding: 4
                         }}>
                             <View
                                 style={{
                                 flexDirection: 'row',
-                                alignItems: 'center'
+                                alignItems: 'center',
+                                justifyContent: 'space-between'
                             }}>
-                                <Text
+                                <View
                                     style={{
-                                    fontSize: 18,
-                                    color: COLOURS.black,
-                                    fontWeight: '500',
-                                    letterSpacing: 1
+                                    flexDirection: 'row',
+                                    alignItems: 'center'
                                 }}>
-                                    Products
-                                </Text>
+                                    <Text
+                                        style={{
+                                        fontSize: 18,
+                                        color: COLOURS.black,
+                                        fontWeight: '500',
+                                        letterSpacing: 1
+                                    }}>
+                                        Products
+                                    </Text>
+                                    <Text
+                                        style={{
+                                        fontSize: 14,
+                                        color: COLOURS.black,
+                                        fontWeight: '400',
+                                        opacity: 0.5,
+                                        marginLeft: 10
+                                    }}>
+                                        41
+                                    </Text>
+                                </View>
                                 <Text
                                     style={{
                                     fontSize: 14,
                                     color: COLOURS.black,
-                                    fontWeight: '400',
-                                    opacity: 0.5,
-                                    marginLeft: 10
+                                    fontWeight: '400'
                                 }}>
-                                    41
+                                    See All
                                 </Text>
                             </View>
-                            <Text
+                            <View
                                 style={{
-                                fontSize: 14,
-                                color: COLOURS.black,
-                                fontWeight: '400'
+                                flexDirection: 'row',
+                                flexWrap: 'wrap',
+                                justifyContent: 'space-between',
+                                paddingTop: 10
                             }}>
-                                See All
-                            </Text>
+                                {products.map(data => {
+                                    return <ProductCard data={data} key={data.id}/>;
+                                })}
+                            </View>
                         </View>
-                        <View
-                            style={{
-                            flexDirection: 'row',
-                            flexWrap: 'wrap',
-                            justifyContent: 'space-between',
-                            paddingTop: 10
-                        }}>
-                            {products.map(data => {
-                                return <ProductCard data={data} key={data.id}/>;
-                            })}
-                        </View>
-                    </View>
-                </Box>
-            </ScrollView>
-        </VStack>
+                    </Box>
+                </ScrollView>
+            </VStack>
 
-    </Animated.View>
-       
+        </Animated.View>
 
     )
 }

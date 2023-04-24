@@ -4,7 +4,6 @@ import {Animated} from 'react-native';
 import CategoryLeftAnimation from './CategoryLeftAnimation';
 import CategoryRightAnimation from './CategoryRightAnimation';
 
-
 export function CategorySubCatDetailScree({route}) {
     const [currentTab,
         setCurrentTab] = useState("Home");
@@ -27,7 +26,12 @@ export function CategorySubCatDetailScree({route}) {
     return (
         <VStack>
             <CategoryLeftAnimation _currentTab={currentTab} _setCurrentTab={setCurrentTab}/>
-            <CategoryRightAnimation _showMenu={showMenu} _setShowMenu={setShowMenu} _offsetvalue={offsetvalue}  _scalevalue={scalevalue} _closebuttonoffsetvalue={closebuttonoffsetvalue}/>  
+            <CategoryRightAnimation
+                _showMenu={showMenu}
+                _setShowMenu={setShowMenu}
+                _offsetvalue={offsetvalue}
+                _scalevalue={scalevalue}
+                _closebuttonoffsetvalue={closebuttonoffsetvalue}/>
         </VStack>
 
     )
