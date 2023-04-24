@@ -164,7 +164,7 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                             .timing(_offsetvalue, {
                             toValue: _showMenu
                                 ? 0
-                                :800,
+                                :300,
                             duration: 300,
                             useNativeDriver: true
                         })
