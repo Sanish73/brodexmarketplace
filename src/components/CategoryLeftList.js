@@ -19,9 +19,7 @@ export function CategoryLeftList({categories, onSelectCategory}) {
    
     return (
         <VStack w={'20%'} h={'100%'} space={2}>
-            {/* <Text>
-console.log({categories.categoryName});
-</Text> */}
+  
             {categories.map((category) => (
                 <TouchableOpacity
                     key={category.id}

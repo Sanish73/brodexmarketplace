@@ -138,7 +138,7 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
         }}>
 
             <HStack w={'100%'} justifyContent={'space-around'} py={2}>
-                <Box>
+                <Box bg={'red.100'}>
 
                     <Button
                         _text={{
@@ -164,7 +164,7 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                             .timing(_offsetvalue, {
                             toValue: _showMenu
                                 ? 0
-                                : 220,
+                                :800,
                             duration: 300,
                             useNativeDriver: true
                         })
@@ -181,7 +181,7 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                     <Button
                         variant="outline"
                         size="xs"
-                        startIcon={< Icon  style = {{ color: '#F57F17' }} name = "md-options-outline" size = {
+                        startIcon={< Icon style = {{ color: '#F57F17' }}name = "md-options-outline" size = {
                         20
                     }
                     color = "#fff" />}></Button>
@@ -189,7 +189,7 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                         variant="outline"
                         ml={3}
                         size="xs"
-                        startIcon={< Icon   style = {{ color: '#F57F17' }} name = "md-options-outline" size = {
+                        startIcon={< Icon style = {{ color: '#F57F17' }}name = "md-options-outline" size = {
                         20
                     }
                     color = "#fff" />}></Button>
@@ -200,28 +200,26 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
             <ScrollView >
                 <Box >
                     <View style={{
-                        padding: 4
+                        padding: 4,
+                        alignItems:'center'
                     }}>
                         <View
+                            
                             style={{
+                                // backgroundColor:'red',
+                                width:'93%',
+                                
                             flexDirection: 'row',
                             alignItems: 'center',
                             justifyContent: 'space-between'
                         }}>
                             <View
+                             
                                 style={{
                                 flexDirection: 'row',
                                 alignItems: 'center'
                             }}>
-                                <Text
-                                    style={{
-                                    fontSize: 18,
-                                    color: COLOURS.black,
-                                    fontWeight: '500',
-                                    letterSpacing: 1
-                                }}>
-                                    Products
-                                </Text>
+
                                 <Text
                                     style={{
                                     fontSize: 14,
@@ -230,20 +228,25 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                                     opacity: 0.5,
                                     marginLeft: 10
                                 }}>
-                                    41
+                                    Showing 1 – 4 of 4 results
                                 </Text>
                             </View>
-                            <Text
-                                style={{
-                                fontSize: 14,
-                                color: COLOURS.black,
-                                fontWeight: '400'
-                            }}>
-                                See All
-                            </Text>
+                            <Box>
+                                <Text
+                                    style={{
+                                    fontSize: 14,
+                                    color: COLOURS.black,
+                                    fontWeight: '400',
+                                    opacity: 0.5,
+                                    marginLeft: 10
+                                }}>
+                                    See All
+                                </Text>
+                            </Box>
                         </View>
                         <View
                             style={{
+                                paddingHorizontal:6,
                             flexDirection: 'row',
                             flexWrap: 'wrap',
                             justifyContent: 'space-between',

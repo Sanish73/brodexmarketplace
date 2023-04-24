@@ -25,13 +25,23 @@ export function CategorySubCatDetailScree({route}) {
 
     return (
         <VStack >
-            <CategoryLeftAnimation _currentTab={currentTab} _setCurrentTab={setCurrentTab}/>
+            <VStack>
+                <CategoryLeftAnimation
+                    _offsetvalue={offsetvalue}
+                    _showMenu={showMenu}
+                    _setShowMenu={setShowMenu}
+                    _currentTab={currentTab}
+                    _scalevalue={scalevalue}
+                    _setCurrentTab={setCurrentTab}/>
+            </VStack>
+            <VStack></VStack>
             <CategoryRightAnimation
                 _showMenu={showMenu}
                 _setShowMenu={setShowMenu}
                 _offsetvalue={offsetvalue}
                 _scalevalue={scalevalue}
                 _closebuttonoffsetvalue={closebuttonoffsetvalue}/>
+
         </VStack>
 
     )
