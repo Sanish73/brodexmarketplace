@@ -11,10 +11,12 @@ import {COLOURS, Items} from '../database/Database';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {Box, VStack, Button} from 'native-base';
+import {Box, VStack, Button, HStack, Center} from 'native-base';
 import {ProductCard} from './ProductCard';
 import {Animated} from 'react-native';
 import CategoryLeftAnimation from './CategoryLeftAnimation';
+import Icon from 'react-native-vector-icons/Ionicons';
+// import { Ionicons } from '@expo/vector-icons';
 
 export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offsetvalue, _scalevalue, _closebuttonoffsetvalue}) {
 
@@ -135,91 +137,125 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
             ]
         }}>
 
-            <Button
-                onPress={() => {
-                Animated.timing(_scalevalue, {
-                    toValue: _showMenu
-                        ? 1
-                        : 0.88,
-                    duration: 300,
-                    useNativeDriver: true
-                });
-                Animated
-                    .timing(_offsetvalue, {
-                    toValue: _showMenu
-                        ? 0
-                        : 220,
-                    duration: 300,
-                    useNativeDriver: true
-                })
-                    .start();
-                _setShowMenu(!_showMenu);
-            }}>
-                Scroll
-            </Button>
+            <HStack w={'100%'} justifyContent={'space-around'} py={2}>
+                <Box>
 
-            <VStack>
-                <ScrollView>
-                    <Box>
+                    <Button
+                        _text={{
+                        color: "#F57F17",
+                        fontSize: 20,
+                        fontWeight: 'bold'
+                    }}
+                        variant="outline"
+                        size="xs"
+                        startIcon={< Icon style = {{ color: '#F57F17' }}name = "md-options-outline" size = {
+                        22
+                    }
+                    color = "#fff" />}
+                        onPress={() => {
+                        Animated.timing(_scalevalue, {
+                            toValue: _showMenu
+                                ? 1
+                                : 0.88,
+                            duration: 300,
+                            useNativeDriver: true
+                        });
+                        Animated
+                            .timing(_offsetvalue, {
+                            toValue: _showMenu
+                                ? 0
+                                : 220,
+                            duration: 300,
+                            useNativeDriver: true
+                        })
+                            .start();
+                        _setShowMenu(!_showMenu);
+                    }}>
+
+                        Filter
+
+                    </Button>
+
+                </Box>
+                <HStack>
+                    <Button
+                        variant="outline"
+                        size="xs"
+                        startIcon={< Icon  style = {{ color: '#F57F17' }} name = "md-options-outline" size = {
+                        20
+                    }
+                    color = "#fff" />}></Button>
+                    <Button
+                        variant="outline"
+                        ml={3}
+                        size="xs"
+                        startIcon={< Icon   style = {{ color: '#F57F17' }} name = "md-options-outline" size = {
+                        20
+                    }
+                    color = "#fff" />}></Button>
+                </HStack>
+
+            </HStack>
+
+            <ScrollView >
+                <Box >
+                    <View style={{
+                        padding: 4
+                    }}>
                         <View
                             style={{
-                            padding: 4
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'space-between'
                         }}>
                             <View
                                 style={{
                                 flexDirection: 'row',
-                                alignItems: 'center',
-                                justifyContent: 'space-between'
+                                alignItems: 'center'
                             }}>
-                                <View
+                                <Text
                                     style={{
-                                    flexDirection: 'row',
-                                    alignItems: 'center'
+                                    fontSize: 18,
+                                    color: COLOURS.black,
+                                    fontWeight: '500',
+                                    letterSpacing: 1
                                 }}>
-                                    <Text
-                                        style={{
-                                        fontSize: 18,
-                                        color: COLOURS.black,
-                                        fontWeight: '500',
-                                        letterSpacing: 1
-                                    }}>
-                                        Products
-                                    </Text>
-                                    <Text
-                                        style={{
-                                        fontSize: 14,
-                                        color: COLOURS.black,
-                                        fontWeight: '400',
-                                        opacity: 0.5,
-                                        marginLeft: 10
-                                    }}>
-                                        41
-                                    </Text>
-                                </View>
+                                    Products
+                                </Text>
                                 <Text
                                     style={{
                                     fontSize: 14,
                                     color: COLOURS.black,
-                                    fontWeight: '400'
+                                    fontWeight: '400',
+                                    opacity: 0.5,
+                                    marginLeft: 10
                                 }}>
-                                    See All
+                                    41
                                 </Text>
                             </View>
-                            <View
+                            <Text
                                 style={{
-                                flexDirection: 'row',
-                                flexWrap: 'wrap',
-                                justifyContent: 'space-between',
-                                paddingTop: 10
+                                fontSize: 14,
+                                color: COLOURS.black,
+                                fontWeight: '400'
                             }}>
-                                {products.map(data => {
-                                    return <ProductCard data={data} key={data.id}/>;
-                                })}
-                            </View>
+                                See All
+                            </Text>
                         </View>
-                    </Box>
-                </ScrollView>
-            </VStack>
+                        <View
+                            style={{
+                            flexDirection: 'row',
+                            flexWrap: 'wrap',
+                            justifyContent: 'space-between',
+                            paddingTop: 10
+                        }}>
+                            {products.map(data => {
+                                return <ProductCard data={data} key={data.id}/>;
+                            })}
+                        </View>
+                    </View>
+                </Box>
+            </ScrollView>
 
         </Animated.View>
 

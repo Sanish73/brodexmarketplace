@@ -24,7 +24,7 @@ export function CategorySubCatDetailScree({route}) {
     } = route.params
 
     return (
-        <VStack>
+        <VStack >
             <CategoryLeftAnimation _currentTab={currentTab} _setCurrentTab={setCurrentTab}/>
             <CategoryRightAnimation
                 _showMenu={showMenu}
