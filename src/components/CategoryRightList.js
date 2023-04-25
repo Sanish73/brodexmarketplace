@@ -1,50 +1,42 @@
 import React, {useState} from 'react';
-import {Alert, ScrollView, TouchableOpacity} from 'react-native';
-import {
-    Text,
-    VStack,
-    Button,
-    HStack,
-    Box,
-    Image,
-    Input,
-    Badge,
-    Center
-} from "native-base";
+import {TouchableOpacity} from 'react-native';
+import {Text, VStack, Box, Image, Center} from "native-base";
 import {useNavigation} from '@react-navigation/native';
 
 export function CategoryRightList({selectedCategory, selectedParentCategories, subCategoryList}) {
     const navigation = useNavigation();
-    const [collection,
-        setCollection] = useState([]);
+ 
 
     const handleCategorySelect = (item) => {
         var collectionSubCLassLIst = [];
 
         for (var i = 0; i < subCategoryList.length; i++) {
             const classItem = subCategoryList[i];
+
             if (item.id == classItem.parent_id) {
                 collectionSubCLassLIst.push(classItem)
+
+            } else {
+                console.warn("The child items are emply");
             }
         }
-        setCollection(collectionSubCLassLIst);
+       
 
         if (navigation) {
-            navigation.navigate('CategorySubCategoDetails', collection);
+
+            navigation.navigate('CategorySubCategoDetails', collectionSubCLassLIst);
+            // console.warn(JSON.stringify(collectionSubCLassLIst, null, 2));
+
         } else {
             console.warn("Navigation prop is not defined");
         }
 
-        // console.warn(JSON.stringify(subCategoryList.length, null, 2));
     };
 
     return (
         <VStack w={'80%'} h={'100%'} p={3} space={2}>
 
             <Box>
-                {/* <Text>
-                {JSON.stringify(selectedParentCategories , null , 2)}
-            </Text> */}
 
                 <Image
                     rounded={15}

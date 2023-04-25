@@ -12,108 +12,16 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Box, VStack, Button, HStack, Center} from 'native-base';
-import {ProductCard} from './ProductCard';
+import {CategoryRightAnimationList} from './CategoryRightAnimationList';
 import {Animated} from 'react-native';
 import CategoryLeftAnimation from './CategoryLeftAnimation';
 import Icon from 'react-native-vector-icons/Ionicons';
 // import { Ionicons } from '@expo/vector-icons';
 
-export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offsetvalue, _scalevalue, _closebuttonoffsetvalue}) {
 
-    const [products,
-        setProducts] = useState([
-        {
-            id: 1,
-            category: 'product',
-            productName: 'MI Super Bass Bluetooth Wireless Headphones',
-            productPrice: 1799,
-            description: 'Up to 20 hours battery life | Super powerful Bass | 40mm dynamic driver | Pressu' +
-                    're less ear muffs | Bluetooth 5.0 | Voice control',
-            isOff: true,
-            offPercentage: 10,
-            productImage: require('../../assets/images/29032316800754916423eae35ddce.webp'),
-            isAvailable: true,
-            productImageList: [require('../../assets/images/01042316803342086427dd809514b.webp'), require('../../assets/images/2503231679712494641e60eed7930.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/01042316803342086427dd809514b.webp')]
-        }, {
-            id: 2,
-            category: 'product',
-            productName: 'boAt Rockerz 450 Bluetooth Headphone',
-            productPrice: 1499,
-            description: 'boAt Rockerz 450 M is an on-ear wireless headset that has been ergonomically des' +
-                    'igned to meet the needs of music lovers.',
-            isOff: false,
-            productImage: require('../../assets/images/01042316803342086427dd809514b.webp'),
-            isAvailable: true,
-            productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
-        }, {
-            id: 3,
-            category: 'product',
-            productName: 'boAt Rockerz 450 Bluetooth Headphone',
-            productPrice: 1499,
-            description: 'boAt Rockerz 450 M is an on-ear wireless headset that has been ergonomically des' +
-                    'igned to meet the needs of music lovers.',
-            isOff: false,
-            productImage: require('../../assets/images/2503231679712494641e60eed7930.webp'),
-            isAvailable: true,
-            productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
-        }, {
-            id: 4,
-            category: 'product',
-            productName: 'boAt Rockerz 450 Bluetooth Headphone',
-            productPrice: 1499,
-            description: 'boAt Rockerz 450 M is an on-ear wireless headset that has been ergonomically des' +
-                    'igned to meet the needs of music lovers.',
-            isOff: false,
-            productImage: require('../../assets/images/29032316800754916423eae35ddce.webp'),
-            isAvailable: true,
-            productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
-        }, {
-            id: 5,
-            category: 'product',
-            productName: 'MI Super Bass Bluetooth Wireless Headphones',
-            productPrice: 1799,
-            description: 'Up to 20 hours battery life | Super powerful Bass | 40mm dynamic driver | Pressu' +
-                    're less ear muffs | Bluetooth 5.0 | Voice control',
-            isOff: true,
-            offPercentage: 10,
-            productImage: require('../../assets/images/29032316800754916423eae35ddce.webp'),
-            isAvailable: true,
-            productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
-        }, {
-            id: 6,
-            category: 'product',
-            productName: 'boAt Rockerz 450 Bluetooth Headphone',
-            productPrice: 1499,
-            description: 'boAt Rockerz 450 M is an on-ear wireless headset that has been ergonomically des' +
-                    'igned to meet the needs of music lovers.',
-            isOff: false,
-            productImage: require('../../assets/images/01042316803342086427dd809514b.webp'),
-            isAvailable: true,
-            productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
-        }, {
-            id: 7,
-            category: 'product',
-            productName: 'boAt Rockerz 450 Bluetooth Headphone',
-            productPrice: 1499,
-            description: 'boAt Rockerz 450 M is an on-ear wireless headset that has been ergonomically des' +
-                    'igned to meet the needs of music lovers.',
-            isOff: false,
-            productImage: require('../../assets/images/2503231679712494641e60eed7930.webp'),
-            isAvailable: true,
-            productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
-        }, {
-            id: 8,
-            category: 'product',
-            productName: 'boAt Rockerz 450 Bluetooth Headphone',
-            productPrice: 1499,
-            description: 'boAt Rockerz 450 M is an on-ear wireless headset that has been ergonomically des' +
-                    'igned to meet the needs of music lovers.',
-            isOff: false,
-            productImage: require('../../assets/images/29032316800754916423eae35ddce.webp'),
-            isAvailable: true,
-            productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/2082f59465c39094ce90bebd0fcf8fa7.jpeg')]
-        }
-    ]);
+export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offsetvalue, _scalevalue,collectionOfSubcategoryList}) {
+
+  
     return (
 
         <Animated.View
@@ -244,6 +152,9 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                                 </Text>
                             </Box>
                         </View>
+                        {/* <Text>
+                            {JSON.stringify(collectionOfSubcategoryList,null,2)}
+                        </Text> */}
                         <View
                             style={{
                                 paddingHorizontal:6,
@@ -252,8 +163,8 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                             justifyContent: 'space-between',
                             paddingTop: 10
                         }}>
-                            {products.map(data => {
-                                return <ProductCard data={data} key={data.id}/>;
+                            {collectionOfSubcategoryList.map(data => {
+                                return <CategoryRightAnimationList data={data} key={data.id}/>;
                             })}
                         </View>
                     </View>

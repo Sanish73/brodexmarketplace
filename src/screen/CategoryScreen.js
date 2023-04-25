@@ -229,108 +229,122 @@ function CategoryScreen() {
             image_link: "https://example.com/watersports.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Makeup",
-            id: 22,
+            id: 222,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }
     ];
 
     const childChild = [
+        {
+            id: 1,
+            category: 'product',
+            parent_id: 23,
+            productName: 'MI Super Bass Bluetooth Wireless Headphones',
+            productPrice: 1799,
+            description: 'Up to 20 hours battery life | Super powerful Bass | 40mm dynamic driver | Pressu' +
+                    're less ear muffs | Bluetooth 5.0 | Voice control',
+            isOff: true,
+            offPercentage: 10,
+            productImage: require('../../assets/images/29032316800754916423eae35ddce.webp'),
+            isAvailable: true,
+            productImageList: [require('../../assets/images/01042316803342086427dd809514b.webp'), require('../../assets/images/2503231679712494641e60eed7930.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/01042316803342086427dd809514b.webp')]
+        },
         {
             id: 1,
             category: 'product',

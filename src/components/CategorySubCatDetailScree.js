@@ -1,10 +1,11 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {Box, VStack, Button} from 'native-base';
+import {Box, VStack, Button, Text, ScrollView} from 'native-base';
 import {Animated} from 'react-native';
 import CategoryLeftAnimation from './CategoryLeftAnimation';
 import CategoryRightAnimation from './CategoryRightAnimation';
+import {useRoute} from '@react-navigation/native';
 
-export function CategorySubCatDetailScree({route}) {
+export function CategorySubCatDetailScree() {
     const [currentTab,
         setCurrentTab] = useState("Home");
     const [showMenu,
@@ -16,12 +17,8 @@ export function CategorySubCatDetailScree({route}) {
     const scalevalue = useRef(new Animated.Value(1)).current;
     const closebuttonoffsetvalue = useRef(new Animated.Value(0)).current;
 
-    const subCatParams = {
-        category_name,
-        id,
-        parent_id,
-        image_link
-    } = route.params
+    const route = useRoute();
+    const collectionOfSubcategoryList = route.params;
 
     return (
         <VStack >
@@ -36,6 +33,7 @@ export function CategorySubCatDetailScree({route}) {
             </VStack>
             <VStack></VStack>
             <CategoryRightAnimation
+                collectionOfSubcategoryList={collectionOfSubcategoryList}
                 _showMenu={showMenu}
                 _setShowMenu={setShowMenu}
                 _offsetvalue={offsetvalue}
