@@ -11,19 +11,31 @@ import {
     Badge,
     Center
 } from "native-base";
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
-export function CategoryRightList({selectedCategory, selectedParentCategories}) {
+export function CategoryRightList({selectedCategory, selectedParentCategories, subCategoryList}) {
     const navigation = useNavigation();
+    const [collection,
+        setCollection] = useState([]);
 
     const handleCategorySelect = (item) => {
+        var collectionSubCLassLIst = [];
+
+        for (var i = 0; i < subCategoryList.length; i++) {
+            const classItem = subCategoryList[i];
+            if (item.id == classItem.parent_id) {
+                collectionSubCLassLIst.push(classItem)
+            }
+        }
+        setCollection(collectionSubCLassLIst);
+
         if (navigation) {
-            navigation.navigate('CategorySubCategoDetails' , item);
-            
+            navigation.navigate('CategorySubCategoDetails', collection);
         } else {
             console.warn("Navigation prop is not defined");
         }
 
+        // console.warn(JSON.stringify(subCategoryList.length, null, 2));
     };
 
     return (
@@ -45,18 +57,7 @@ export function CategoryRightList({selectedCategory, selectedParentCategories}) 
                     w="100%"/>
 
             </Box>
-            <Box>
-                {/* <Text fontSize={'md'} bold>
-                    {selectedCategory.map((item, index) => {
-                        return (
-                            <Text>
-                                {item.category_name}
-                            </Text>
-                        )
-                    })}
 
-                </Text> */}
-            </Box>
             <Box
                 flexDirection='row'
                 justifyContent={'center'}
