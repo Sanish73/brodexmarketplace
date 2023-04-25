@@ -15,9 +15,10 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
 
             if (item.id == classItem.parent_id) {
                 collectionSubCLassLIst.push(classItem)
+                // console.warn("The child not emply");
 
             } else {
-                console.warn("The child items are emply");
+                console.log("The child items are emply");
             }
         }
        

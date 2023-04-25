@@ -147,12 +147,12 @@ function CategoryScreen() {
             image_link: "https://th.bing.com/th/id/OIP.gr8FMnXeCRpYcLD9X4vS6gHaE8?w=260&h=180&c=7&r=0&o=5" +
                     "&dpr=1.3&pid=1.7"
         }, {
-            category_name: "Skincare",
+            category_name: "Makeup",
             id: 21,
             parent_id: 2,
             image_link: "https://i.pinimg.com/originals/96/e3/18/96e318abf445792e258bb94a6a38a4d4.jpg"
         }, {
-            category_name: "Makeup",
+            category_name: "Skincare",
             id: 22,
             parent_id: 2,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"

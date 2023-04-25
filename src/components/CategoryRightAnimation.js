@@ -18,10 +18,8 @@ import CategoryLeftAnimation from './CategoryLeftAnimation';
 import Icon from 'react-native-vector-icons/Ionicons';
 // import { Ionicons } from '@expo/vector-icons';
 
+export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offsetvalue, _scalevalue, collectionOfSubcategoryList}) {
 
-export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offsetvalue, _scalevalue,collectionOfSubcategoryList}) {
-
-  
     return (
 
         <Animated.View
@@ -72,7 +70,7 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                             .timing(_offsetvalue, {
                             toValue: _showMenu
                                 ? 0
-                                :300,
+                                : 300,
                             duration: 300,
                             useNativeDriver: true
                         })
@@ -107,27 +105,23 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
 
             <ScrollView >
                 <Box >
-                    <View style={{
+                    <View
+                        style={{
                         padding: 4,
-                        alignItems:'center'
+                        alignItems: 'center'
                     }}>
                         <View
-                            
                             style={{
-                                // backgroundColor:'red',
-                                width:'93%',
-                                
+                            width: '93%',
                             flexDirection: 'row',
                             alignItems: 'center',
                             justifyContent: 'space-between'
                         }}>
                             <View
-                             
                                 style={{
                                 flexDirection: 'row',
                                 alignItems: 'center'
                             }}>
-
                                 <Text
                                     style={{
                                     fontSize: 14,
@@ -136,9 +130,15 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                                     opacity: 0.5,
                                     marginLeft: 10
                                 }}>
-                                    Showing 1 – 4 of 4 results
+                                    Showing {collectionOfSubcategoryList.length === 0
+                                        ? 0
+                                        : 1}
+                                    {collectionOfSubcategoryList.length !== 0
+                                        ? ` – ${collectionOfSubcategoryList.length} of ${collectionOfSubcategoryList.length} results`
+                                        : ' of 0 results'}
                                 </Text>
                             </View>
+
                             <Box>
                                 <Text
                                     style={{
@@ -152,12 +152,13 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                                 </Text>
                             </Box>
                         </View>
+
                         {/* <Text>
                             {JSON.stringify(collectionOfSubcategoryList,null,2)}
                         </Text> */}
                         <View
                             style={{
-                                paddingHorizontal:6,
+                            paddingHorizontal: 6,
                             flexDirection: 'row',
                             flexWrap: 'wrap',
                             justifyContent: 'space-between',
