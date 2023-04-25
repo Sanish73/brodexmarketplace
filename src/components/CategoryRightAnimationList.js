@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {COLOURS} from '../database/Database';
+
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -70,10 +71,12 @@ export const CategoryRightAnimationList = ({data}) => {
                     justifyContent: 'space-between'
                 }}>
                     <Text
+                   
                         style={{
-                        fontSize: 14,
+                        fontSize: 16,
                         color: COLOURS.black,
-                        fontWeight: '500'
+                        fontWeight: '500',
+                        fontWeight: 'bold',
                     }}>
                         {data.productName}
                     </Text>
@@ -86,6 +89,7 @@ export const CategoryRightAnimationList = ({data}) => {
                 }}>
                     <FontAwesome name="rupee" size={14} color={COLOURS.re}/>
                     <Text
+                   
                         style={{
                         fontSize: 16,
                         color: COLOURS.black,
@@ -120,7 +124,7 @@ export const CategoryRightAnimationList = ({data}) => {
                     }}>
                         4.5
                     </Text>
-                    <Text
+                    {/* <Text
                         style={{
                         fontSize: 14,
                         color: COLOURS.grey,
@@ -128,7 +132,7 @@ export const CategoryRightAnimationList = ({data}) => {
                         marginLeft: 4
                     }}>
                         2563
-                    </Text>
+                    </Text> */}
                 </View>
             </View>
         </TouchableOpacity>

@@ -30,8 +30,7 @@ function CategoryScreen() {
         }, {
             categoryname: "Beauty and Personal Care",
             id: 2,
-            image: "https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?a" +
-                    "uto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            image: "https://cosmetica.brodox.com/uploads/79/23/04/1682050370.jpg"
         }, {
             categoryname: "Fashion",
             id: 3,
@@ -349,98 +348,100 @@ function CategoryScreen() {
             id: 1,
             category: 'product',
             parent_id: 21,
-            productName: 'MI Super Bass Bluetooth Wireless Headphones',
-            productPrice: 1799,
+            productName: 'Lipstick',
+            productPrice: 350.00,
             description: 'Up to 20 hours battery life | Super powerful Bass | 40mm dynamic driver | Pressu' +
                     're less ear muffs | Bluetooth 5.0 | Voice control',
             isOff: true,
             offPercentage: 10,
-            productImage: require('../../assets/images/29032316800754916423eae35ddce.webp'),
+            productImage: require('../../assets/images/makeup/644215ed690682104231682052589.webp'),
             isAvailable: true,
             productImageList: [require('../../assets/images/01042316803342086427dd809514b.webp'), require('../../assets/images/2503231679712494641e60eed7930.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/01042316803342086427dd809514b.webp')]
         }, {
             id: 2,
             category: 'product',
             parent_id: 21,
-            productName: 'boAt Rockerz 450 Bluetooth Headphone',
+            productName: 'Eyeshadow',
             productPrice: 1499,
             description: 'boAt Rockerz 450 M is an on-ear wireless headset that has been ergonomically des' +
                     'igned to meet the needs of music lovers.',
             isOff: false,
-            productImage: require('../../assets/images/01042316803342086427dd809514b.webp'),
+           
+            productImage: require('../../assets/images/makeup/6442155c263502104231682052444.webp'),
             isAvailable: true,
             productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
         }, {
             id: 3,
             category: 'product',
             parent_id: 21,
-            productName: 'boAt Rockerz 450 Bluetooth Headphone',
+            productName: 'Highlighter',
             productPrice: 1499,
             description: 'boAt Rockerz 450 M is an on-ear wireless headset that has been ergonomically des' +
                     'igned to meet the needs of music lovers.',
-            isOff: false,
-            productImage: require('../../assets/images/2503231679712494641e60eed7930.webp'),
+            isOff: true,
+            offPercentage: 30,
+            productImage: require('../../assets/images/makeup/644487618b6a42304231682212705.jpg'),
             isAvailable: true,
             productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
         }, {
             id: 4,
             category: 'product',
             parent_id: 21,
-            productName: 'boAt Rockerz 450 Bluetooth Headphone',
+            productName: 'Eyeshadow',
             productPrice: 1499,
             description: 'boAt Rockerz 450 M is an on-ear wireless headset that has been ergonomically des' +
                     'igned to meet the needs of music lovers.',
             isOff: false,
-            productImage: require('../../assets/images/29032316800754916423eae35ddce.webp'),
+            productImage: require('../../assets/images/makeup/6444867f8f3202304231682212479.jpg'),
             isAvailable: true,
             productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
         }, {
             id: 5,
             category: 'product',
             parent_id: 21,
-            productName: 'MI Super Bass Bluetooth Wireless Headphones',
+            productName: 'Eyelashes',
             productPrice: 1799,
             description: 'Up to 20 hours battery life | Super powerful Bass | 40mm dynamic driver | Pressu' +
                     're less ear muffs | Bluetooth 5.0 | Voice control',
             isOff: true,
-            offPercentage: 10,
-            productImage: require('../../assets/images/29032316800754916423eae35ddce.webp'),
+            offPercentage: 25,
+            productImage: require('../../assets/images/makeup/64421203f26722104231682051587.webp'),
             isAvailable: true,
             productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
         }, {
             id: 6,
             category: 'product',
             parent_id: 21,
-            productName: 'boAt Rockerz 450 Bluetooth Headphone',
+            productName: 'Primer Oil',
             productPrice: 1499,
             description: 'boAt Rockerz 450 M is an on-ear wireless headset that has been ergonomically des' +
                     'igned to meet the needs of music lovers.',
             isOff: false,
-            productImage: require('../../assets/images/01042316803342086427dd809514b.webp'),
+            productImage: require('../../assets/images/makeup/64421039a94602104231682051129.jpg'),
             isAvailable: true,
             productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
         }, {
             id: 7,
             category: 'product',
             parent_id: 21,
-            productName: 'boAt Rockerz 450 Bluetooth Headphone',
+            productName: 'Lotus Moisturizer',
             productPrice: 1499,
             description: 'boAt Rockerz 450 M is an on-ear wireless headset that has been ergonomically des' +
                     'igned to meet the needs of music lovers.',
             isOff: false,
-            productImage: require('../../assets/images/2503231679712494641e60eed7930.webp'),
+            productImage: require('../../assets/images/makeup/6442037b041c22104231682047867.webp'),
             isAvailable: true,
             productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
         }, {
             id: 8,
             category: 'product',
             parent_id: 21,
-            productName: 'boAt Rockerz 450 Bluetooth Headphone',
+            productName: 'Blush',
             productPrice: 1499,
             description: 'boAt Rockerz 450 M is an on-ear wireless headset that has been ergonomically des' +
                     'igned to meet the needs of music lovers.',
             isOff: false,
-            productImage: require('../../assets/images/29032316800754916423eae35ddce.webp'),
+            productImage: require('../../assets/images/makeup/6442112532b392104231682051365.jpg'),
             isAvailable: true,
             productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/2082f59465c39094ce90bebd0fcf8fa7.jpeg')]
         }
