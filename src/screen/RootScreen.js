@@ -7,7 +7,7 @@ import CategoryScreen from './CategoryScreen';
 
 import {AccountScreen} from './AccountScreen';
 import CartScreen from './CartScreen';
-import OOOrder from './OOOrder';
+
 
 
 // import OrderScreen from './OrderScreen';
@@ -61,7 +61,7 @@ export function RootScreen() {
            
           
             <Tab.Screen name="Account" component={AccountScreen}/>
-            <Tab.Screen name="Ooorder" component={OOOrder}/>
+            
            
 
         </Tab.Navigator>

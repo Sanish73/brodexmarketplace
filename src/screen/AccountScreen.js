@@ -1,4 +1,5 @@
 import React from 'react';
+import { Alert } from 'react-native';
 import {
     Text,
     Button,
@@ -14,48 +15,36 @@ import {
 } from 'native-base';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useNavigation} from '@react-navigation/native';
 
-function ProfileListItem({name, firsticonName, FinaliconName}) {
-    return <View style={{
-        marginTop: 10
-    }}>
-
-        <TouchableOpacity style={{}}>
-            <VStack
-                style={{
-                backgroundColor: 'white',
-                borderColor: 'white',
-                borderWidth: 9,
-                flexDirection: 'row',
-                justifyContent: 'space-between'
-            }}>
-                <View
-                    style={{
-                    flexDirection: 'row',
-                    paddingTop: 12,
-                    paddingHorizontal: 10,
-                    justifyContent: 'center',
-                    backgroundColor: 'white'
-                }}>
+function ProfileListItem({name, firsticonName, FinaliconName , callback=()=>{} }) {
+    return <TouchableOpacity  style={{
+        backgroundColor: 'white',
+        borderColor: 'white',
+        borderWidth: 9,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        padding:8
+    }} onPress={()=>typeof(callback) == 'function' ? callback() : ()=>{}}>
+        <VStack>
+            <HStack>
+                <Box w={'15%'}>
                     <Icon name={firsticonName} color='#ff8e50' size={30}/>
-                    <Text paddingLeft={4} fontSize={22}>{name}</Text>
-
-                </View>
-                <View
-                    style={{
-                    paddingTop: 12,
-                    backgroundColor: 'white'
-                }}>
-                    <Icon name={FinaliconName} size={30}/>
-                </View>
-            </VStack>
-        </TouchableOpacity>
-    </View>
+                </Box>
+                <Box w={'75%'}>
+                    <Text paddingLeft={0} fontSize={22}>{name}</Text>
+                </Box>
+                <Box w={'10%'}>
+                    <Icon name={'chevron-forward'} color='#ff8e50' size={30}/>
+                </Box>
+            </HStack>
+        </VStack>
+</TouchableOpacity>
 }
 
 function ProfilHeader() {
     return (
-        <Box style={styles.mainBackground}>
+        <Box style={styles.mainBackground} shadow={3}>
             <VStack >
                 <Box mt={20}>
                     <VStack >
@@ -76,11 +65,11 @@ function ProfilHeader() {
                                 style={{
                                 fontSize: 24,
                                 fontWeight: 'bold'
-                            }}>Sanish Thapa</Heading>
+                            }}>Nirik Shan</Heading>
                         </HStack>
 
                         <HStack pt={0}>
-                            <Text fontSize="xl" color='white'>9844554622</Text>
+                            <Text fontSize="xl" color='white'>999999999</Text>
                         </HStack>
                     </VStack>
 
@@ -91,32 +80,68 @@ function ProfilHeader() {
 }
 
 export function AccountScreen() {
+    const navigation = useNavigation();
+
+    const logoutApp = () => {
+        
+    };
+
+    const askForLogout = () => {
+        Alert.alert(
+            'Logout',
+            'Are you sure you want to logout?',
+            [
+                {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+                },
+                { text: 'OK', onPress: ()=>{} },
+            ],
+            { cancelable: false }
+        );
+    }
+
+    const askForOder =()=>{
+
+        navigation.navigate('MyOrder');
+     
+    }
+
+
     return (
 
         <ScrollView style={{}}>
 
             <ProfilHeader/>
-
-            <ProfileListItem
-                firsticonName={'settings-sharp'}
-                name={'Edit Info'}
-                FinaliconName={'caret-forward'}/>
-            <ProfileListItem
-                firsticonName={'reader'}
-                name={'WishList'}
-                FinaliconName={'caret-forward'}/>
-            <ProfileListItem
-                firsticonName={'reader'}
-                name={'My Order'}
-                FinaliconName={'caret-forward'}/>
-            <ProfileListItem
-                firsticonName={'eye'}
-                name={'Dark Mode'}
-                FinaliconName={'caret-forward'}/>
-            <ProfileListItem
-                firsticonName={'log-out'}
-                name={'Logout'}
-                FinaliconName={'caret-forward'}/>
+            
+            <Box p={4}>
+                <Box p={5} bg={'white'} rounded={'xl'} shadow={2}>
+                    <ProfileListItem
+                        firsticonName={'business'}
+                        name={'Edit Info'}
+                        FinaliconName={'caret-forward'}
+                        callback={()=>{
+                           alert('sjdfkj');
+                        }}
+                    />
+                    {/*My ORders*/}
+                    <ProfileListItem
+                        firsticonName={'log-out'}
+                        name={'My Orders'}
+                        FinaliconName={'caret-forward'}
+                        callback={askForOder}
+                    />
+                   {/* logoutaction */}
+                
+                    <ProfileListItem
+                        firsticonName={'log-out'}
+                        name={'Logout'}
+                        FinaliconName={'caret-forward'}
+                        callback={askForLogout}
+                    />
+                </Box>
+            </Box>
 
             <Box h={100}></Box>
         </ScrollView>
@@ -130,8 +155,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#ff8e50',
         maxW: '100%',
         height: 280,
-        borderBottomLeftRadius: 14,
-        borderBottomRightRadius: 14
+        borderBottomLeftRadius: 39,
+        borderBottomRightRadius: 39
     },
 
     // ppImage:{   w={115},     h={115},      bg={ "indigo.500"} ,      mt={59},

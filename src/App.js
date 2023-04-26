@@ -11,6 +11,7 @@ import PaymentSuccessScreen from './components/PaymentSuccessScreen';
 import { OrderScreen } from './screen/OrderScreen';
 import { ProductInfoScreen } from './components/ProductInfoScreen';
 import {CategorySubCatDetailScree} from './components/CategorySubCatDetailScree';
+import OOOrder from './screen/OOOrder';
 
 function AppBox() {
     const Stack = createNativeStackNavigator();
@@ -26,6 +27,7 @@ function AppBox() {
                 <Stack.Screen name="Order" component={OrderScreen}/>
                 <Stack.Screen name="ProductInfo" component={ProductInfoScreen}/>
                 <Stack.Screen name="CategorySubCategoDetails" component={CategorySubCatDetailScree}/>
+                <Stack.Screen name="MyOrder" component={OOOrder}/>
            
 
             </Stack.Navigator>
