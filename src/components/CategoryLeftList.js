@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {
+    Alert,
     Text,
     VStack,
 } from "native-base";
@@ -13,12 +14,12 @@ export function CategoryLeftList({categories, onSelectCategory}) {
     const handleCategorySelectAndClickEvent = (category) => {
         setSelectedCategory(category);
         onSelectCategory(category);
-        //   Alert.alert(JSON.stringify(category));
+         
     };
     
    
     return (
-        <VStack w={'20%'} h={'100%'} space={2}>
+        <VStack w={'20%'} h={'100%'} space={2} bgColor={'red.100'}>
   
             {categories.map((category) => (
                 <TouchableOpacity

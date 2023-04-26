@@ -160,9 +160,6 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 39,
         borderBottomRightRadius: 39
     },
-
-    // ppImage:{   w={115},     h={115},      bg={ "indigo.500"} ,      mt={59},
-    // borderRadius={90}, },
     mainText: {
         color: 'white',
         fontSize: 50

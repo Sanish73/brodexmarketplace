@@ -5,7 +5,6 @@ import {useNavigation} from '@react-navigation/native';
 
 export function CategoryRightList({selectedCategory, selectedParentCategories, subCategoryList}) {
     const navigation = useNavigation();
- 
 
     const handleCategorySelect = (item) => {
         var collectionSubCLassLIst = [];
@@ -21,7 +20,6 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
                 console.log("The child items are emply");
             }
         }
-       
 
         if (navigation) {
 
@@ -38,17 +36,19 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
         <VStack w={'80%'} h={'100%'} p={3} space={2}>
 
             <Box>
-
-                <Image
-                    rounded={15}
-                    source={{
-                    uri: selectedParentCategories.image
-                }}
-                    alt="Alternate Text"
-                    resizeMode="stretch"
-                    aspectRatio={2}
-                    w="100%"/>
-
+                {selectedParentCategories.image
+                    ? (<Image
+                        rounded={15}
+                        source={{
+                        uri: selectedParentCategories.image
+                    }}
+                        alt="Alternate Text"
+                        resizeMode="stretch"
+                        aspectRatio={2}
+                        w="100%"/>)
+                    : (
+                        <Text>asdasd</Text>
+                    )}
             </Box>
 
             <Box

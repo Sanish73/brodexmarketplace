@@ -13,7 +13,7 @@ import {
 } from "native-base";
 import Icon from 'react-native-vector-icons/Ionicons';
 import OrderItems from '../components/OrderItems';
-import MyTab from '../components/MyTab'
+import MyTab from '../components/MyTab';
 import AccountInformation from '../components/AccountInformation';
 import CategorySearch from '../components/CategorySearch';
 import {CategoryLeftList} from '../components/CategoryLeftList';
@@ -63,14 +63,10 @@ function CategoryScreen() {
                     "s=tinysrgb&w=1260&h=750&dpr=1"
         }, {
             categoryname: "Office Supplies",
-            id: 9,
-            image: "https://example.com/images/office.jpg"
-        }, {
-            category_name: "Pet Supplies",
-            id: 10,
-            image: "https://example.com/images/pet.jpg"
+            id: 9
         }
     ];
+
     const childData = [
 
         {
@@ -343,8 +339,7 @@ function CategoryScreen() {
             productImage: require('../../assets/images/29032316800754916423eae35ddce.webp'),
             isAvailable: true,
             productImageList: [require('../../assets/images/01042316803342086427dd809514b.webp'), require('../../assets/images/2503231679712494641e60eed7930.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/01042316803342086427dd809514b.webp')]
-        },
-        {
+        }, {
             id: 1,
             category: 'product',
             parent_id: 21,
@@ -366,7 +361,7 @@ function CategoryScreen() {
             description: 'boAt Rockerz 450 M is an on-ear wireless headset that has been ergonomically des' +
                     'igned to meet the needs of music lovers.',
             isOff: false,
-           
+
             productImage: require('../../assets/images/makeup/6442155c263502104231682052444.webp'),
             isAvailable: true,
             productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
@@ -448,10 +443,10 @@ function CategoryScreen() {
     ];
 
     const [selectedCategory,
-        setSelectedCategory] = useState(data[0]);
+        setSelectedCategory] = useState([]);
 
     const [selectedParentCategory,
-        setSelectedParentCategory] = useState(data[0]);
+        setSelectedParentCategory] = useState([]);
 
     const [collection,
         setCollection] = useState([]);
@@ -475,11 +470,8 @@ function CategoryScreen() {
     }
 
     const handleCategorySelectAndClickEvent = (category) => {
-        handleCategorySelect(category);
-        handlClickEvent(category);;
-    };
 
-    const handleCategorySelect = (category) => {
+        handlClickEvent(category);
         setSelectedParentCategory(category)
         setSelectedCategory(category);
 
@@ -493,14 +485,12 @@ function CategoryScreen() {
             <HStack h={'100%'}>
                 <CategoryLeftList
                     categories={data}
-                    onSelectCategory={handleCategorySelectAndClickEvent}/>
-                <Text>
-                    {/* {JSON.stringify(collection, null ,2)} */}
-                </Text>
+                    onSelectCategory={handleCategorySelectAndClickEvent}/> 
                 <CategoryRightList
                     subCategoryList={childChild}
                     selectedCategory={collection}
                     selectedParentCategories={selectedParentCategory}/>
+                    {/* <Text>{JSON.stringify(category,null,2)}</Text> */}
             </HStack>
             <Box h={100}></Box>
         </ScrollView>
