@@ -8,13 +8,11 @@ import {
     Image
 } from 'react-native';
 import {COLOURS, Items} from '../database/Database';
-import Entypo from 'react-native-vector-icons/Entypo';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 import {Box, VStack, Button, HStack, Center} from 'native-base';
 import {CategoryRightAnimationList} from './CategoryRightAnimationList';
 import {Animated} from 'react-native';
-import CategoryLeftAnimation from './CategoryLeftAnimation';
+
 import Icon from 'react-native-vector-icons/Ionicons';
 // import { Ionicons } from '@expo/vector-icons';
 

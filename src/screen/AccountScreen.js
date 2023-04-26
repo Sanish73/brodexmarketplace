@@ -107,6 +107,10 @@ export function AccountScreen() {
         navigation.navigate('MyOrder');
      
     }
+    const askForMyProfilEdit =()=>{
+        navigation.navigate('MyProfil');
+     
+    }
 
 
     return (
@@ -121,9 +125,7 @@ export function AccountScreen() {
                         firsticonName={'business'}
                         name={'Edit Info'}
                         FinaliconName={'caret-forward'}
-                        callback={()=>{
-                           alert('sjdfkj');
-                        }}
+                        callback={askForMyProfilEdit}
                     />
                     {/*My ORders*/}
                     <ProfileListItem
