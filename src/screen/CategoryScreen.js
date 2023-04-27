@@ -63,7 +63,16 @@ function CategoryScreen() {
                     "s=tinysrgb&w=1260&h=750&dpr=1"
         }, {
             categoryname: "Office Supplies",
-            id: 9
+            id: 10
+        }, {
+            categoryname: "Office Supplies",
+            id: 11
+        }, {
+            categoryname: "Office Supplies",
+            id: 12
+        }, {
+            categoryname: "Office Supplies",
+            id: 13
         }
     ];
 
@@ -166,62 +175,62 @@ function CategoryScreen() {
             category_name: "Men's Clothing",
             id: 31,
             parent_id: 3,
-            image_link: "https://example.com/mensclothing.jpg"
+            image_link: 0
         }, {
             category_name: "Women's Clothing",
             id: 32,
             parent_id: 3,
-            image_link: "https://example.com/womensclothing.jpg"
+            image_link: 0
         }, {
             category_name: "Shoes",
             id: 33,
             parent_id: 3,
-            image_link: "https://example.com/shoes.jpg"
+            image_link: 0
         }, {
             category_name: "Accessories",
             id: 34,
             parent_id: 3,
-            image_link: "https://example.com/accessories.jpg"
+            image_link: 0
         }, {
             category_name: "Furniture",
             id: 41,
             parent_id: 4,
-            image_link: "https://example.com/furniture.jpg"
+            image_link: 0
         }, {
             category_name: "Home Decor",
             id: 42,
             parent_id: 4,
-            image_link: "https://example.com/homedecor.jpg"
+            image_link: 0
         }, {
             category_name: "Kitchenware",
             id: 43,
             parent_id: 4,
-            image_link: "https://example.com/kitchenware.jpg"
+            image_link: 0
         }, {
             category_name: "Outdoor",
             id: 44,
             parent_id: 4,
-            image_link: "https://example.com/outdoor.jpg"
+            image_link: 0
         }, {
             category_name: "Fitness",
             id: 51,
             parent_id: 5,
-            image_link: "https://example.com/fitness.jpg"
+            image_link: 0
         }, {
             category_name: "Cycling",
             id: 52,
             parent_id: 5,
-            image_link: "https://example.com/cycling.jpg"
+            image_link: 0
         }, {
             category_name: "Camping",
             id: 53,
             parent_id: 5,
-            image_link: "https://example.com/camping.jpg"
+            image_link: 0
         }, {
             category_name: "Water Sports",
             id: 54,
             parent_id: 5,
-            image_link: "https://example.com/watersports.jpg"
+            image_link: 0
         }, {
             category_name: "Makeup",
             id: 222,
@@ -481,19 +490,28 @@ function CategoryScreen() {
 
         <CategorySearch/>
 
-        <ScrollView>
-            <HStack h={'100%'}>
-                <CategoryLeftList
-                    categories={data}
-                    onSelectCategory={handleCategorySelectAndClickEvent}/> 
-                <CategoryRightList
-                    subCategoryList={childChild}
-                    selectedCategory={collection}
-                    selectedParentCategories={selectedParentCategory}/>
-                    {/* <Text>{JSON.stringify(category,null,2)}</Text> */}
-            </HStack>
-            <Box h={100}></Box>
-        </ScrollView>
+        <HStack h={'100%'}>
+
+            <VStack w={'20%'} h={'100%'}>
+                <ScrollView>
+                    <CategoryLeftList
+                        categories={data}
+                        onSelectCategory={handleCategorySelectAndClickEvent}/>
+                    <Box h={100}></Box>
+                </ScrollView>
+            </VStack>
+
+            <VStack w={'80%'} h={'100%'}>
+                <ScrollView>
+                    <CategoryRightList
+                        subCategoryList={childChild}
+                        selectedCategory={collection}
+                        selectedParentCategories={selectedParentCategory}/>
+                    <Box h={100}></Box>
+                </ScrollView>
+            </VStack>
+
+        </HStack>
 
     </VStack>
 

@@ -33,7 +33,7 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
     };
 
     return (
-        <VStack w={'80%'} h={'100%'} p={3} space={2}>
+        <VStack p={3} space={2}>
 
             <Box>
                 {selectedParentCategories.image
@@ -72,22 +72,33 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
                             }}>
                                 <Center
                                     rounded={15}
-                                    bgColor={'red.100'}
                                     style={{
                                     width: 60,
                                     height: 50,
                                     rounded: 50
                                 }}>
 
-                                    <Image
-                                        alt={'sdfkjsjdf'}
-                                        source={{
-                                        uri: item.image_link
-                                    }}
-                                        style={{
-                                        width: 45,
-                                        height: 50
-                                    }}/>
+                                    {item.image_link != 0
+                                        ? <Image
+                                                alt={'sdfkjsjdf'}
+                                                source={{
+                                                uri: item.image_link
+                                            }}
+                                                style={{
+                                                borderRadius: 15,
+                                                width: '100%',
+                                                height: '100%'
+                                            }}/>
+                                        : <Image
+                                            alt={'sdfkjsjdf'}
+                                            source={{
+                                            uri: 'https://fancystore.brodox.com/uploads/default.png'
+                                        }}
+                                            style={{
+                                            borderRadius: 15,
+                                            width: '100%',
+                                            height: '100%'
+                                        }}/>}
                                 </Center>
 
                                 <Box marginTop={2}>

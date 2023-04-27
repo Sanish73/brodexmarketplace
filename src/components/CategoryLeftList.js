@@ -1,11 +1,6 @@
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
-import {
-    Alert,
-    Text,
-    VStack,
-} from "native-base";
-
+import {Alert, Box, Text, VStack} from "native-base";
 
 export function CategoryLeftList({categories, onSelectCategory}) {
     const [selectedCategory,
@@ -14,24 +9,41 @@ export function CategoryLeftList({categories, onSelectCategory}) {
     const handleCategorySelectAndClickEvent = (category) => {
         setSelectedCategory(category);
         onSelectCategory(category);
-         
+
     };
-    
-   
+
     return (
-        <VStack w={'20%'} h={'100%'} space={2} bgColor={'red.100'}>
-  
+        <VStack space={2} alignSelf={'flex-start'}>
+
             {categories.map((category) => (
                 <TouchableOpacity
                     key={category.id}
                     onPress={() => handleCategorySelectAndClickEvent(category)}>
-                    <Text
-                        color={selectedCategory
+
+                    {selectedCategory
                         ?.id === category.id
-                            ? 'blue.500'
-                            : 'gray.500'}>{category.categoryname}
-                               </Text>
-                         
+                            ? <Box
+                                    style={{
+                                    minHeight: 46,
+                                    borderTopRightRadius: 7,
+                                borderBottomRightRadius: 7,
+                                    elevation: 3,
+                                    backgroundColor: '#F57F17'
+                                }}>
+                                    <Text p={1} bold color={'white'}>{category.categoryname}
+                                    </Text>
+                                </Box>
+                            : <Box
+                                style={{
+                                minHeight: 45,
+                                borderTopRightRadius: 7,
+                                borderBottomRightRadius: 7,
+                                elevation: 3,
+                                backgroundColor: '#EBEBEB'
+                            }}>
+                                <Text p={1}  color={'gray.500'}>{category.categoryname}
+                                </Text>
+                            </Box>}
                 </TouchableOpacity>
             ))}
 
