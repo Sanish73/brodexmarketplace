@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {Alert, Button, ScrollView, TouchableOpacity} from 'react-native';
 import {
     Text,
@@ -20,6 +20,33 @@ import {CategoryLeftList} from '../components/CategoryLeftList';
 import {CategoryRightList} from '../components/CategoryRightList';
 
 function CategoryScreen() {
+
+
+////////////////////
+    const [parentData,
+        setParentData] = useState([]);
+
+        useEffect(() => {
+            fetchData();
+        }, []);
+    
+        const fetchData = async() => {
+            try {
+    
+                const response = await fetch('http://192.168.1.16/brodoxsupermarketapiv1/api/brocato');
+                // const response = await
+                // fetch('http://192.168.1.16/brodoxsupermarketapiv1/api/categories/15');
+                const jsonData = await response.json();
+    
+                // console.log(jsonData.name);
+                const parentdata = jsonData.map(item => item);
+                setParentData(parentdata);
+                // console.log(names);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+/////////////////////////////
 
     const data = [
         {
@@ -451,6 +478,8 @@ function CategoryScreen() {
         }
     ];
 
+
+
     const [selectedCategory,
         setSelectedCategory] = useState([]);
 
@@ -496,6 +525,7 @@ function CategoryScreen() {
                 <ScrollView>
                     <CategoryLeftList
                         categories={data}
+                        parentData={parentData}
                         onSelectCategory={handleCategorySelectAndClickEvent}/>
                     <Box h={100}></Box>
                 </ScrollView>
