@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import {Alert, Box, Text, VStack} from "native-base";
 
-export function CategoryLeftList({categories, parentData, onSelectCategory}) {
 
+export function CategoryLeftList({categories, parentData, onSelectCategory}) {
+  
     // const names = parentData.map(item => item.name); console.log(names);
 
     const [selectedParentData,

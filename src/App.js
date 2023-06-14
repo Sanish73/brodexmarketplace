@@ -13,10 +13,15 @@ import { ProductInfoScreen } from './components/ProductInfoScreen';
 import {CategorySubCatDetailScree} from './components/CategorySubCatDetailScree';
 import OOOrder from './screen/OOOrder';
 import MyProfilScreen from './components/MyProfilScreen';
+import { Provider } from 'react-redux';
+import { store } from './Redux/store';
+
+
 
 function AppBox() {
     const Stack = createNativeStackNavigator();
     return (
+        <Provider store={store}>
         <NavigationContainer>
             <Stack.Navigator
                 screenOptions={{
@@ -34,6 +39,7 @@ function AppBox() {
 
             </Stack.Navigator>
         </NavigationContainer>
+        </Provider>
     );
 }
 

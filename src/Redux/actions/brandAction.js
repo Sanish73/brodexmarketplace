@@ -1,56 +1,3 @@
-import {  request } from '../../Common/index';
-
-export const brandAddAction = async ( dataset , token  , callback , endpoint = 'addBrand') => {
-    await request(endpoint , dataset ,function(v , data){
-        return callback(
-            data?.result , 
-            data?.message || "Request Failed. Please try again later."
-        );
-    },function(){
-        return callback(
-            false, 
-            "Please check your internet connection and try again later."
-        );
-    } , token)
-};
-
-
-export const removeBrandImage = async ( dataset , token  , callback , $addEndpoint = 'remcatimg' ) => {
-  await request($addEndpoint , dataset ,function(v , data){
-      return callback(
-          data?.result , 
-          data?.message || "Request Failed. Please try again later."
-      );
-  },function(){
-      return callback(
-          false, 
-          "Please check your internet connection and try again later."
-      );
-  } , token)
-}
-
-export const removeBrand = async ( dataset , token  , callback ) => {
-  await request('delbrand' , dataset ,function(v , data){
-      return callback(
-          data?.result , 
-          data?.message || "Request Failed. Please try again later."
-      );
-  },function(){
-      return callback(
-          false, 
-          "Please check your internet connection and try again later."
-      );
-  } , token)
-}
-
-
-export const reduceRemovedBrand = (id) => async (dispatch) => {
-    return dispatch({
-      type    : 'REDUCE_FROM_LIST_BRAND',
-      payload : { id }
-    });
-};
-
 
 // Action creators for waiting, success, and error states
 const onBrandListWaiting = (refresh) => ({
@@ -69,29 +16,53 @@ const onBrandListError = (message) => ({
 });
   
 export const listingBrands = (token, page, refresh) => async (dispatch) => {
-    dispatch(onBrandListWaiting(refresh));
-    await request(
-      "getBrand",
-      { page },
-      function (val, data) {
-        if (data?.result) {
-          dispatch(onBrandListSuccess(data, page, refresh));
-        } else {
-          dispatch(
-            onBrandListError(
-              data?.message || "Request Failed. Please try again later."
-            )
-          );
-        }
-      },
-      function () {
-        dispatch(
-          onBrandListError(
-            "Please check your internet connection and try again later."
-          )
-        );
-      },
-      token
-    );
+
+  // try {
+  //   const response =await fetch('',{
+  //     header:{
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   })
+
+  //   if (!response.ok) {
+  //     throw new Error('Failed to fetch brands');
+  //   }
+
+  //   const data = await response.json();
+  //    // Dispatch an action with the fetched data
+  //   dispatch({ type: 'BRANDS_FETCHED', payload: data });
+
+  // } catch (error) {
+
+  //   console.error('Error fetching brands:', error);
+  //   // Dispatch an error action or handle the error in another way
+    
+  // }
+    // dispatch(onBrandListWaiting(refresh));
+    // await request(
+    //   "getBrand",
+    //   { page },
+    //   function (val, data) {
+    //     if (data?.result) {
+    //       dispatch(onBrandListSuccess(data, page, refresh));
+    //     } else {
+    //       dispatch(
+    //         onBrandListError(
+    //           data?.message || "Request Failed. Please try again later."
+    //         )
+    //       );
+    //     }
+    //   },
+    //   function () {
+    //     dispatch(
+    //       onBrandListError(
+    //         "Please check your internet connection and try again later."
+    //       )
+    //     );
+    //   },
+    //   token
+    // );
+
+    
 };
   
