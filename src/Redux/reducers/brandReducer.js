@@ -1,7 +1,21 @@
 const BrandState = {
     bListingWaiting: false,
+    clicked: false
 };
 
+
+
+export const buttonReducer = (state = BrandState, action) => {
+  switch (action.type) {
+    case 'CLICK_BUTTON':
+      return {
+        ...state,
+        clicked: true
+      };
+    default:
+      return state;
+  }
+};
 
 export const useBrandListingReducer = (state = BrandState, action) => {
     switch (action.type) {

@@ -1,18 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import {Alert, Box, Text, VStack} from "native-base";
-
+import { demo } from '../Redux';
+import { useDispatch ,useSelector} from 'react-redux';
+import { clickButton } from '../Redux';
 
 export function CategoryLeftList({categories, parentData, onSelectCategory}) {
   
     // const names = parentData.map(item => item.name); console.log(names);
+    const clicked = useSelector(state => state.clicked);
+    const dispatch = useDispatch();
+
 
     const [selectedParentData,
         setPatentData] = useState([]);
 
     const handleparentData = (parentDatas) => {
         setPatentData(parentDatas);
-    }
+      }
 
     console.log(JSON.stringify(selectedParentData, null, 2));
 
@@ -24,8 +29,12 @@ export function CategoryLeftList({categories, parentData, onSelectCategory}) {
     const handleCategorySelectAndClickEvent = (category) => {
         setSelectedCategory(category);
         onSelectCategory(category);
+        dispatch(clickButton());
+      
+        // console.log("clicked");
 
     };
+ 
 
     return (
         <VStack space={2} alignSelf={'flex-start'}>
@@ -34,6 +43,8 @@ export function CategoryLeftList({categories, parentData, onSelectCategory}) {
                 <TouchableOpacity
                     key={parentDatas.id}
                     onPress={() => handleparentData(parentDatas)}>
+              
+
                     <Box
                         style={{
                         minHeight: 46,
