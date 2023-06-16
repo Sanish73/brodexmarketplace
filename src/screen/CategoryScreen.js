@@ -19,6 +19,8 @@ import CategorySearch from '../components/CategorySearch';
 import {CategoryLeftList} from '../components/CategoryLeftList';
 import {CategoryRightList} from '../components/CategoryRightList';
 
+
+
 function CategoryScreen() {
 
 

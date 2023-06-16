@@ -8,20 +8,18 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RootScreen} from './screen/RootScreen';
 import PaymentScreen from './components/PaymentScreen';
 import PaymentSuccessScreen from './components/PaymentSuccessScreen';
-import { OrderScreen } from './screen/OrderScreen';
-import { ProductInfoScreen } from './components/ProductInfoScreen';
+import {OrderScreen} from './screen/OrderScreen';
+import {ProductInfoScreen} from './components/ProductInfoScreen';
 import {CategorySubCatDetailScree} from './components/CategorySubCatDetailScree';
 import OOOrder from './screen/OOOrder';
 import MyProfilScreen from './components/MyProfilScreen';
-import { Provider } from 'react-redux';
-import { store } from './Redux/store';
-
-
+import {Provider} from 'react-redux';
+import {store} from './Redux/store';
 
 function AppBox() {
     const Stack = createNativeStackNavigator();
     return (
-        <Provider store={store}>
+
         <NavigationContainer>
             <Stack.Navigator
                 screenOptions={{
@@ -32,24 +30,26 @@ function AppBox() {
                 <Stack.Screen name='Success' component={PaymentSuccessScreen}/>
                 <Stack.Screen name="Order" component={OrderScreen}/>
                 <Stack.Screen name="ProductInfo" component={ProductInfoScreen}/>
-                <Stack.Screen name="CategorySubCategoDetails" component={CategorySubCatDetailScree}/>
+                <Stack.Screen
+                    name="CategorySubCategoDetails"
+                    component={CategorySubCatDetailScree}/>
                 <Stack.Screen name="MyOrder" component={OOOrder}/>
                 <Stack.Screen name="MyProfil" component={MyProfilScreen}/>
-           
-
             </Stack.Navigator>
         </NavigationContainer>
-        </Provider>
+
     );
 }
 
 export default function App() {
 
     return (
-        <NativeBaseProvider>
-            <AppBox/>
+        <Provider store={store}>
+            <NativeBaseProvider>
+                <AppBox/>
 
-        </NativeBaseProvider>
+            </NativeBaseProvider>
+        </Provider>
     );
 }
 

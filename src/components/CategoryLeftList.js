@@ -1,40 +1,38 @@
 import React, {useState, useEffect} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import {Alert, Box, Text, VStack} from "native-base";
-import { demo } from '../Redux';
-import { useDispatch ,useSelector} from 'react-redux';
-import { clickButton } from '../Redux';
+import {useDispatch, useSelector} from 'react-redux';
+import { featchData } from '../Redux/actions/brandAction';
 
-export function CategoryLeftList({categories, parentData, onSelectCategory}) {
-  
-    // const names = parentData.map(item => item.name); console.log(names);
-    const clicked = useSelector(state => state.clicked);
+export function CategoryLeftList({categories, parentData, onSelectCategory, data, fetchData}) {
     const dispatch = useDispatch();
 
+    // const names = parentData.map(item => item.name); console.log(names);
+    const dddfatasa = useSelector(state => state.dataReducer.child);
+
+    useEffect(() => {
+        dispatch(featchData());
+    }, [dispatch])
 
     const [selectedParentData,
         setPatentData] = useState([]);
 
     const handleparentData = (parentDatas) => {
         setPatentData(parentDatas);
-      }
+    }
 
-    console.log(JSON.stringify(selectedParentData, null, 2));
+    // console.log(JSON.stringify(selectedParentData, null, 2));
 
     const [selectedCategory,
         setSelectedCategory] = useState(null);
 
-  
-
     const handleCategorySelectAndClickEvent = (category) => {
         setSelectedCategory(category);
         onSelectCategory(category);
-        dispatch(clickButton());
-      
-        // console.log("clicked");
+
+        console.log(dddfatasa);
 
     };
- 
 
     return (
         <VStack space={2} alignSelf={'flex-start'}>
@@ -43,7 +41,6 @@ export function CategoryLeftList({categories, parentData, onSelectCategory}) {
                 <TouchableOpacity
                     key={parentDatas.id}
                     onPress={() => handleparentData(parentDatas)}>
-              
 
                     <Box
                         style={{

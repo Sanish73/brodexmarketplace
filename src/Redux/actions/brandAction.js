@@ -27,46 +27,22 @@ const onProductListError = (message) => ({type: 'LIST_PRODUCT_ERROR', payload: {
         message
     }});
 
-export const clickButton = () => {
-      return {
-        type: 'CLICK_BUTTON'
-      };
-    };
 
-export const baseUri = 'http://192.168.1.28/brodoxsupermarketapiv1/api/';
-
-export const request = async($endpoint, data, $callback, $catchFeedback = (e) => {}, authToken = false) => {
-    var option = {
-        method: 'GET',
-        body: objectToFormData(data)
-    };
-
-    if (authToken && authToken
-        ?.length > 10) {
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${authToken}`);
-        option['headers'] = myHeaders;
-    }
-
-    console.log(baseUri + $endpoint, data, option);
-
-    try {
-        const response = await fetch(baseUri + $endpoint, option);
-
-        if (response
-            ?.status === 429) {
-            return $callback(false, {message: 'Too Many Requests, Please Try again later.'});
-        }
-
-        const json = await response.json();
-        console.log('jsdklfjlkdf');
-        console.log(json);
-        return $callback(true, json);
-    } catch (error) {
-        console.log("Error >>", error, "<< error");
-        $catchFeedback(false);
-    }
-};
+export const featchData = () => {
+        return (dispatch) => {
+          dispatch({ type: 'FETCH_DATA_REQUEST' }); // Dispatch an action to indicate the start of the request
+      
+          fetch('http://192.168.1.64/brodoxsupermarketapiv1/api/brocato')
+            .then((response) => response.json())
+            .then((data) => {
+              dispatch({ type: 'FETCH_DATA_SUCCESS', payload: data }); // Dispatch an action with the retrieved data
+            })
+            .catch((error) => {
+              dispatch({ type: 'FETCH_DATA_FAILURE', payload: error.message }); // Dispatch an action to handle errors
+            });
+        };
+ };
+      
 
 
 
