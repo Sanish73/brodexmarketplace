@@ -2,16 +2,16 @@ import React, {useState, useEffect} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import {Alert, Box, Text, VStack} from "native-base";
 import {useDispatch, useSelector} from 'react-redux';
-import { featchData } from '../Redux/actions/brandAction';
+import { fetchData } from '../Redux/actions/brandAction';
 
-export function CategoryLeftList({categories, parentData, onSelectCategory, data, fetchData}) {
+export function CategoryLeftList({categories, parentData, onSelectCategory}) {
     const dispatch = useDispatch();
 
     // const names = parentData.map(item => item.name); console.log(names);
-    const dddfatasa = useSelector(state => state.dataReducer.child);
+    const dddfatasa = useSelector(state => state.dataReducer);
 
     useEffect(() => {
-        dispatch(featchData());
+        dispatch(fetchData());
     }, [dispatch])
 
     const [selectedParentData,
