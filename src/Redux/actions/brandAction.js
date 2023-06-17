@@ -32,7 +32,7 @@ export const fetchData = () => {
         return (dispatch) => {
           dispatch({ type: 'FETCH_DATA_REQUEST' }); // Dispatch an action to indicate the start of the request
       
-          fetch('http://192.168.1.64/brodoxsupermarketapiv1/api/brocato')
+          fetch('http://192.168.1.64/brodoxsupermarketapiv1/api/categories/15')
           .then((response) => {
             if (response.ok) {
               return response.json(); // Successful response, parse the JSON data
