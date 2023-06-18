@@ -28,26 +28,30 @@ const onProductListError = (message) => ({type: 'LIST_PRODUCT_ERROR', payload: {
     }});
 
 
-export const fetchData = () => {
-        return (dispatch) => {
-          dispatch({ type: 'FETCH_DATA_REQUEST' }); // Dispatch an action to indicate the start of the request
+export const fetchData = () => (dispatch) => {
+        
+        //   dispatch({ type: 'FETCH_DATA_REQUEST' }); // Dispatch an action to indicate the start of the request
+          console.log('fetch <----------');
       
-          fetch('http://192.168.1.64/brodoxsupermarketapiv1/api/categories/15')
+          fetch('http://192.168.2.179/brodoxsupermarketapiv1/api/brocato')
           .then((response) => {
-            if (response.ok) {
-              return response.json(); // Successful response, parse the JSON data
-            } else {
-              throw new Error('Network response was not OK'); // Throw an error for non-successful response
-            }
+            console.log(response , '----===========')
+            // if (response.ok) {
+              return response.json();
+            // } else {
+            //   throw new Error('Network response was not OK'); 
+            // }
           })
           .then((data) => {
-            dispatch({ type: 'FETCH_DATA_SUCCESS', payload: data }); // Dispatch an action with the retrieved data
+            console.log(data , 'datttttt')
+            // dispatch({ type: 'FETCH_DATA_SUCCESS', payload: data }); 
           })
           .catch((error) => {
-            dispatch({ type: 'FETCH_DATA_FAILURE', payload: error.message }); // Dispatch an action to handle errors
+            console.log(error)
+        //   dispatch({ type: 'FETCH_DATA_FAILURE', payload: error.message });
           });
         
-        };
+     
         
  };
 //  export const fetchData = () => {

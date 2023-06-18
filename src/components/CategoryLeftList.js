@@ -8,11 +8,11 @@ export function CategoryLeftList({categories, parentData, onSelectCategory}) {
     const dispatch = useDispatch();
 
     // const names = parentData.map(item => item.name); console.log(names);
-    const dddfatasa = useSelector(state => state.dataReducer);
+    const {loading , error , data , isDataFetched } = useSelector(state => state.dataReducer);
 
     useEffect(() => {
-        dispatch(fetchData());
-    }, [dispatch])
+        fetchData()(dispatch);
+    }, [])
 
     const [selectedParentData,
         setPatentData] = useState([]);
@@ -20,6 +20,10 @@ export function CategoryLeftList({categories, parentData, onSelectCategory}) {
     const handleparentData = (parentDatas) => {
         setPatentData(parentDatas);
     }
+
+    useEffect(() => {
+        // console.log(data);
+    }, [data])
 
     // console.log(JSON.stringify(selectedParentData, null, 2));
 
@@ -29,8 +33,8 @@ export function CategoryLeftList({categories, parentData, onSelectCategory}) {
     const handleCategorySelectAndClickEvent = (category) => {
         setSelectedCategory(category);
         onSelectCategory(category);
-
-        console.log(dddfatasa);
+        fetchData()(dispatch);
+       
 
     };
 
