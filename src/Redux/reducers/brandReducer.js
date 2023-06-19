@@ -3,33 +3,19 @@ const BrandState = {
     clicked: false
 };
 
-
-
-export const buttonReducer = (state = BrandState, action) => {
-  switch (action.type) {
-    case 'CLICK_BUTTON':
-      return {
-        ...state,
-        clicked: true
-      };
-    default:
-      return state;
-  }
-};
-
 export const useBrandListingReducer = (state = BrandState, action) => {
     switch (action.type) {
-      case 'LIST_BRAND_WAITING':
+      case 'LIST_PRODUCT_WAITING':
         const context = {
           ...state
         };
         return context;
-      case 'LIST_BRAND_SUCCESS':
+      case 'LIST_PRODUCT_SUCCESS':
         return {
           ...state,
         
         };
-      case 'LIST_BRAND_ERROR':
+      case 'LIST_PRODUCT_ERROR':
         return {
           ...state,
         };
