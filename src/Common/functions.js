@@ -12,7 +12,8 @@ export const request = async($endpoint, data, $callback, $catchFeedback = (e) =>
         option['headers'] = myHeaders
     }
 
-    console.log(baseUri + $endpoint, data, option)
+    console.log(baseUri + $endpoint, data, option);
+
     await fetch(baseUri + $endpoint, option).then(response => {
         if (response
             ?.status == 429) {

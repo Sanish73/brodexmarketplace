@@ -1,15 +1,20 @@
 const BrandState = {
     bListingWaiting: false,
-    clicked: false
-};
+    clicked: false,
+    loading: false,
+    _page: null,
+    _refresh: null,
+  };
 
 export const useBrandListingReducer = (state = BrandState, action) => {
     switch (action.type) {
       case 'LIST_PRODUCT_WAITING':
-        const context = {
-          ...state
+        return {
+          ...state,
+          loading: action.payload.loading,
+          _page: action.payload._page,
+          _refresh: action.payload._refresh
         };
-        return context;
       case 'LIST_PRODUCT_SUCCESS':
         return {
           ...state,

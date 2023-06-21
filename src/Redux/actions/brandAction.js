@@ -46,22 +46,21 @@ export const productListing = (token, page, refresh) => async dispatch => {
 // .then((response) => {             // if(response.ok == true){
 // console.log(response);                 return response.json();             //
 // }else{             //     throw new Error("Something went wrong!");   // }
-//  })           .then((data) => {             console.log(data , 'datttttt')
-//          // dispatch({ type: 'FETCH_DATA_SUCCESS', payload: data });     })
-//         .catch((error) => { console.log(error)  //   dispatch({ type:
+// })           .then((data) => {             console.log(data , 'datttttt')
+//      // dispatch({ type: 'FETCH_DATA_SUCCESS', payload: data });     })
+//   .catch((error) => { console.log(error)  //   dispatch({ type:
 // 'FETCH_DATA_FAILURE', payload: error.message });     });  };  export const
 // fetchData = () => {     return async (dispatch) => {       dispatch({ type:
 // 'FETCH_DATA_REQUEST' }); // Dispatch an action to indicate the start of the
 // request       const url =
 // 'https://realtor.p.rapidapi.com/locations/v2/auto-complete?input=new%20york&l
 // i mit=10';       const options = {         method: 'GET',         headers: {
-//     'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',           'X-RapidAPI-Host':
+//    'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',           'X-RapidAPI-Host':
 // 'realtor.p.rapidapi.com'         }       };       try {         const
 // response = await fetch(url, options);         if (response.ok) { const data =
-// await response.json(); // Successful response, parse the JSON data
-// dispatch({ type: 'FETCH_DATA_SUCCESS', payload: data }); // Dispatch an
-// action with the retrieved data         } else {           throw new
-// Error('Network response was not OK'); // Throw an error for non-successful
-// response         }       } catch (error) {         dispatch({ type:
-// 'FETCH_DATA_FAILURE', payload: error.message }); // Dispatch an action to
-// handle errors       }     };   };
+// await response.json(); // Successful response, parse the JSON data dispatch({
+// type: 'FETCH_DATA_SUCCESS', payload: data }); // Dispatch an action with the
+// retrieved data         } else {           throw new Error('Network response
+// was not OK'); // Throw an error for non-successful response         }       }
+// catch (error) {         dispatch({ type: 'FETCH_DATA_FAILURE', payload:
+// error.message }); // Dispatch an action to handle errors       }     };   };
