@@ -4,6 +4,7 @@ const BrandState = {
     loading: false,
     _page: null,
     _refresh: null,
+    _data:null
   };
 
 export const useBrandListingReducer = (state = BrandState, action) => {
@@ -19,6 +20,9 @@ export const useBrandListingReducer = (state = BrandState, action) => {
       case 'LIST_PRODUCT_SUCCESS':
         return {
           ...state,
+          _data : action.payload.data,
+          _page: action.payload._page,
+          _refresh: action.payload._refresh
         
         };
       case 'LIST_PRODUCT_ERROR':

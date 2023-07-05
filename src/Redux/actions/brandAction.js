@@ -12,7 +12,7 @@ const onProductListWaiting = (page, refresh) => ({
 const onProductListSuccess = (data, page, refresh) => ({
     type: 'LIST_PRODUCT_SUCCESS',
     payload: {
-        ...data,
+        data,
         _page: page,
         _refresh: refresh
     }
@@ -22,15 +22,15 @@ const onProductListError = (message) => ({type: 'LIST_PRODUCT_ERROR', payload: {
         message
     }});
 
-    
+
 export const productListing = (token, page, refresh) => async dispatch => {
     dispatch(onProductListWaiting(page, refresh));
   
     await request('get_category', {
         page
     }, function (val, data) {
-        if (data
-            ?.status) {
+        if (data) {
+            console.log(data , '------')
             dispatch(onProductListSuccess(data, page, refresh));
         } else {
             dispatch(onProductListError(data

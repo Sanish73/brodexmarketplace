@@ -6,6 +6,19 @@ import {productListing} from '../Redux/actions/brandAction';
 
 export function CategoryLeftList({categories, parentData, onSelectCategory}) {
 
+    const {
+        bListingWaiting,
+        clicked,
+        loading,
+        _page,
+        _refresh,
+        _data
+    } = useSelector(state => state.listBrand);
+
+    // Rest of your component code... Example usage of the listBrand state
+    // useEffect(() => { You can access and use the listBrand state as needed   },
+    // [listBrand]); Access and use the data from the Redux store
+
     const page = 1;
     const refresh = true;
 
@@ -26,13 +39,13 @@ export function CategoryLeftList({categories, parentData, onSelectCategory}) {
     const handleCategorySelectAndClickEvent = (category) => {
         setSelectedCategory(category);
         onSelectCategory(category);
-        ////////////////////////////////////
-        dispatch(productListing('', page, refresh)).then(response => {
-            console.log('API Response:', response);
-        }).catch(error => {
-            console.log('API Error:', error);
-        });
-        //////////////////////////////
+        //////////////////////
+        productListing('', page, refresh)(dispatch);
+        // ////////////////////////////////// dispatch(productListing('', page,
+        // refresh)).then(response => {     console.log('API Response:', response);
+        // }).catch(error => {     console.log('API Error:', error); });
+        // ////////////////////////////
+
     };
 
     return (
