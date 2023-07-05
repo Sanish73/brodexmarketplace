@@ -7,6 +7,7 @@ const BrandState = {
   };
 
 export const useBrandListingReducer = (state = BrandState, action) => {
+  
     switch (action.type) {
       case 'LIST_PRODUCT_WAITING':
         return {

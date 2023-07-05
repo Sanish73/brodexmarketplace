@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import OrderItems from './../components/OrderItems';
 import { ordersListing } from './../redux';
 import { useSelector  , useDispatch } from 'react-redux';
-import { formatCurrency , formatPrice } from './../Common'
+// import { formatCurrency , formatPrice } from './../Common';
 import NavigationBar from './../components/NavigationBar';
 
 function OrdersScreen(parms) {

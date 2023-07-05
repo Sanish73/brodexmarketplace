@@ -2,23 +2,14 @@ import React, {useState, useEffect} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import {Alert, Box, Text, VStack} from "native-base";
 import {useDispatch, useSelector} from 'react-redux';
-import {fetchData} from '../Redux/actions/brandAction';
+import {productListing} from '../Redux/actions/brandAction';
 
 export function CategoryLeftList({categories, parentData, onSelectCategory}) {
+
+    const page = 1;
+    const refresh = true;
+
     const dispatch = useDispatch();
-
-    const renderData = (currentPage, refresh = false) => {
-        ordersListing(loginData
-            ?.data
-                ?.token, currentPage, refresh)(dispatch)
-    };
-    
-    // const names = parentData.map(item => item.name); console.log(names);
-    const {loading, error, data, isDataFetched} = useSelector(state => state.dataReducer);
-
-    useEffect(() => {
-        fetchData()(dispatch);
-    }, [])
 
     const [selectedParentData,
         setPatentData] = useState([]);
@@ -35,8 +26,13 @@ export function CategoryLeftList({categories, parentData, onSelectCategory}) {
     const handleCategorySelectAndClickEvent = (category) => {
         setSelectedCategory(category);
         onSelectCategory(category);
-        fetchData()(dispatch);
-
+        ////////////////////////////////////
+        dispatch(productListing('', page, refresh)).then(response => {
+            console.log('API Response:', response);
+        }).catch(error => {
+            console.log('API Error:', error);
+        });
+        //////////////////////////////
     };
 
     return (

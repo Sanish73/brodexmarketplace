@@ -1,4 +1,16 @@
-export const baseUri = 'http://localhost/brodoxsupermarketapiv1/api/';
+export const baseUri = 'http://192.168.2.183/FinalSuperMarketAPI/api/';
+
+export const objectToFormData = (data) => {
+    var formBox = new FormData();
+    if(typeof(data) == 'object'){
+        for (const key in data) {
+            if (data && key in data) {
+                formBox.append(key, data[key]);
+            }
+        }
+    }
+    return formBox;
+};
 
 export const request = async($endpoint, data, $callback, $catchFeedback = (e) => {}, authToken = false) => {
     var option = {
@@ -23,7 +35,7 @@ export const request = async($endpoint, data, $callback, $catchFeedback = (e) =>
     }).then((response) => response.json()).then((json) => {
         console.log(" ");
         console.log(" ");
-        console.log('===>', json);
+        console.log('===>', JSON.stringify( json , null , 4 ));
         console.log(" ");
         console.log(" ");
         console.log(" ");
