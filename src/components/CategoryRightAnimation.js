@@ -162,9 +162,10 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                             justifyContent: 'space-between',
                             paddingTop: 10
                         }}>
-                            {collectionOfSubcategoryList.map(data => {
+                            {/* {collectionOfSubcategoryList.map(data => {
                                 return <CategoryRightAnimationList data={data} key={data.id}/>;
-                            })}
+                            })} */}
+                            <Text>{collectionOfSubcategoryList}</Text>
                         </View>
                     </View>
                 </Box>

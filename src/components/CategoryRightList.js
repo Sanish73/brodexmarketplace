@@ -7,6 +7,10 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
     const navigation = useNavigation();
 
     const handleCategorySelect = (item) => {
+
+        console.log(JSON.stringify(item, null, 2));
+        // yate mero mehenat ley banako  yautai database bata vaya compare garera terms
+        // haru jhikna milxa
         var collectionSubCLassLIst = [];
 
         for (var i = 0; i < subCategoryList.length; i++) {
@@ -22,10 +26,8 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
         }
 
         if (navigation) {
-
-            navigation.navigate('CategorySubCategoDetails', collectionSubCLassLIst);
-            // console.warn(JSON.stringify(collectionSubCLassLIst, null, 2));
-
+            navigation.navigate('CategorySubCategoDetails', item.id);
+            // console.warn(JSON.stringify(item.id, null, 2));
         } else {
             console.warn("Navigation prop is not defined");
         }
@@ -57,7 +59,7 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
                 style={{
                 flexWrap: 'wrap'
             }}>
-{/* 
+                {/*
                 <Text>
                     {JSON.stringify(selectedParentCategories, null, 2)}
                 </Text> */}
