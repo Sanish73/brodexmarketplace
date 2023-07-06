@@ -57,6 +57,7 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
                 style={{
                 flexWrap: 'wrap'
             }}>
+            {/* ?//////// */}
                 {/* <Text>
                 {JSON.stringify(selectedCategory , null , 2)}
             </Text> */}
