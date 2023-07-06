@@ -43,6 +43,7 @@ function CategoryScreen() {
         _data
     } = useSelector(state => state.listBrand);
 
+
     const _dataOnlyParent = _data.filter(item => item.type === 'category');
 
     

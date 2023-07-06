@@ -24,6 +24,7 @@ const onProductListError = (message) => ({type: 'LIST_PRODUCT_ERROR', payload: {
 
 
 export const productListing = (token, page, refresh) => async dispatch => {
+    console.log('done');
     dispatch(onProductListWaiting(page, refresh));
   
     await request('get_category', {
