@@ -1,4 +1,6 @@
-export const baseUri = 'http://192.168.2.183/FinalSuperMarketAPI/api/';
+
+export const baseUri = 'http://192.168.1.10/FinalSuperMarketAPI/api/';
+
 
 export const objectToFormData = (data) => {
     var formBox = new FormData();
@@ -13,6 +15,7 @@ export const objectToFormData = (data) => {
 };
 
 export const request = async($endpoint, data, $callback, $catchFeedback = (e) => {}, authToken = false) => {
+    
     var option = {
         method: 'POST',
         body: objectToFormData(data)
@@ -40,7 +43,7 @@ export const request = async($endpoint, data, $callback, $catchFeedback = (e) =>
         console.log(" ");
         console.log(" ");
         console.log("----------------------------------------------------------------");
-        return $callback(true, json)
+        return $callback(true, json);
     })
         .catch(function (quot, x) {
             console.log("Error >>", quot, x, '<< error');

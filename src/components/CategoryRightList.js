@@ -12,7 +12,7 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
         for (var i = 0; i < subCategoryList.length; i++) {
             const classItem = subCategoryList[i];
 
-            if (item.id == classItem.parent_id) {
+            if (item.id == classItem.p_id) {
                 collectionSubCLassLIst.push(classItem)
                 // console.warn("The child not emply");
 
@@ -78,11 +78,11 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
                                     rounded: 50
                                 }}>
 
-                                    {item.image_link != 0
+                                    {item.image != 0
                                         ? <Image
                                                 alt={'sdfkjsjdf'}
                                                 source={{
-                                                uri: item.image_link
+                                                uri: item.image
                                             }}
                                                 style={{
                                                 borderRadius: 15,
@@ -103,7 +103,7 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
 
                                 <Box marginTop={2}>
                                     <Text>
-                                        {item.category_name}
+                                        {item.name}
                                     </Text>
                                 </Box>
 

@@ -11,44 +11,43 @@ import {
     Badge,
     Center
 } from "native-base";
-import Icon from 'react-native-vector-icons/Ionicons';
-import OrderItems from '../components/OrderItems';
-import MyTab from '../components/MyTab';
-import AccountInformation from '../components/AccountInformation';
+// import Icon from 'react-native-vector-icons/Ionicons';
+// import OrderItems from '../components/OrderItems';
+// import MyTab from '../components/MyTab';
+// import AccountInformation from '../components/AccountInformation';
 import CategorySearch from '../components/CategorySearch';
 import {CategoryLeftList} from '../components/CategoryLeftList';
 import {CategoryRightList} from '../components/CategoryRightList';
+import {useDispatch, useSelector} from 'react-redux';
+import {productListing} from '../Redux/actions/brandAction';
 
 
 
 function CategoryScreen() {
+  
+    const page = 1;
+    const refresh = true;
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        productListing('', page, refresh)(dispatch);
+    }, []);
+
+    const {
+        bListingWaiting,
+        clicked,
+        loading,
+        _page,
+        _refresh,
+        _data
+    } = useSelector(state => state.listBrand);
+
+    const _dataOnlyParent = _data.filter(item => item.type === 'category');
+
+    
 
 
-////////////////////
-    const [parentData,
-        setParentData] = useState([]);
-
-        useEffect(() => {
-            fetchData();
-        }, []);
-    
-        const fetchData = async() => {
-            try {
-    
-                const response = await fetch('http://192.168.1.16/brodoxsupermarketapiv1/api/brocato');
-                // const response = await
-                // fetch('http://192.168.1.16/brodoxsupermarketapiv1/api/categories/15');
-                const jsonData = await response.json();
-    
-                // console.log(jsonData.name);
-                const parentdata = jsonData.map(item => item);
-                setParentData(parentdata);
-                // console.log(names);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-/////////////////////////////
 
     const data = [
         {
@@ -110,115 +109,115 @@ function CategoryScreen() {
         {
             category_name: "laptop",
             id: 21,
-            parent_id: 1,
+            parent_id: 111,
             image_link: "https://th.bing.com/th/id/OIP.gr8FMnXeCRpYcLD9X4vS6gHaE8?w=260&h=180&c=7&r=0&o=5" +
                     "&dpr=1.3&pid=1.7"
         }, {
             category_name: "laptop",
             id: 21,
-            parent_id: 1,
+            parent_id: 111,
             image_link: "https://th.bing.com/th/id/OIP.gr8FMnXeCRpYcLD9X4vS6gHaE8?w=260&h=180&c=7&r=0&o=5" +
                     "&dpr=1.3&pid=1.7"
         }, {
             category_name: "laptop",
             id: 21,
-            parent_id: 1,
+            parent_id: 111,
             image_link: "https://th.bing.com/th/id/OIP.gr8FMnXeCRpYcLD9X4vS6gHaE8?w=260&h=180&c=7&r=0&o=5" +
                     "&dpr=1.3&pid=1.7"
         }, {
             category_name: "laptop",
             id: 21,
-            parent_id: 1,
+            parent_id: 111,
             image_link: "https://th.bing.com/th/id/OIP.gr8FMnXeCRpYcLD9X4vS6gHaE8?w=260&h=180&c=7&r=0&o=5" +
                     "&dpr=1.3&pid=1.7"
         }, {
             category_name: "laptop",
             id: 21,
-            parent_id: 1,
+            parent_id: 111,
             image_link: "https://th.bing.com/th/id/OIP.gr8FMnXeCRpYcLD9X4vS6gHaE8?w=260&h=180&c=7&r=0&o=5" +
                     "&dpr=1.3&pid=1.7"
         }, {
             category_name: "laptop",
             id: 21,
-            parent_id: 1,
+            parent_id: 111,
             image_link: "https://th.bing.com/th/id/OIP.gr8FMnXeCRpYcLD9X4vS6gHaE8?w=260&h=180&c=7&r=0&o=5" +
                     "&dpr=1.3&pid=1.7"
         }, {
             category_name: "laptop",
             id: 21,
-            parent_id: 1,
+            parent_id: 111,
             image_link: "https://th.bing.com/th/id/OIP.gr8FMnXeCRpYcLD9X4vS6gHaE8?w=260&h=180&c=7&r=0&o=5" +
                     "&dpr=1.3&pid=1.7"
         }, {
             category_name: "laptop",
             id: 21,
-            parent_id: 1,
+            parent_id: 111,
             image_link: "https://th.bing.com/th/id/OIP.gr8FMnXeCRpYcLD9X4vS6gHaE8?w=260&h=180&c=7&r=0&o=5" +
                     "&dpr=1.3&pid=1.7"
         }, {
             category_name: "laptop",
             id: 21,
-            parent_id: 1,
+            parent_id: 111,
             image_link: "https://th.bing.com/th/id/OIP.gr8FMnXeCRpYcLD9X4vS6gHaE8?w=260&h=180&c=7&r=0&o=5" +
                     "&dpr=1.3&pid=1.7"
         }, {
             category_name: "laptop",
             id: 21,
-            parent_id: 1,
+            parent_id:111,
             image_link: "https://th.bing.com/th/id/OIP.gr8FMnXeCRpYcLD9X4vS6gHaE8?w=260&h=180&c=7&r=0&o=5" +
                     "&dpr=1.3&pid=1.7"
         }, {
             category_name: "laptop",
             id: 21,
-            parent_id: 1,
+            parent_id: 111,
             image_link: "https://th.bing.com/th/id/OIP.gr8FMnXeCRpYcLD9X4vS6gHaE8?w=260&h=180&c=7&r=0&o=5" +
                     "&dpr=1.3&pid=1.7"
         }, {
             category_name: "laptop",
             id: 21,
-            parent_id: 1,
+            parent_id: 111,
             image_link: "https://th.bing.com/th/id/OIP.gr8FMnXeCRpYcLD9X4vS6gHaE8?w=260&h=180&c=7&r=0&o=5" +
                     "&dpr=1.3&pid=1.7"
         }, {
             category_name: "Makeup",
             id: 21,
-            parent_id: 2,
+            parent_id: 111,
             image_link: "https://i.pinimg.com/originals/96/e3/18/96e318abf445792e258bb94a6a38a4d4.jpg"
         }, {
             category_name: "Skincare",
             id: 22,
-            parent_id: 2,
+            parent_id: 111,
             image_link: "https://i.pinimg.com/564x/91/0f/72/910f72d92165fc424717ee9a5a9b42ae.jpg"
         }, {
             category_name: "Haircare",
             id: 23,
-            parent_id: 2,
+            parent_id: 111,
             image_link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS75249EyIRZIEIm3GPEjIFqsy" +
                     "fwn8YZvukTfJhMkz9UUIklI8FRAduM8wZutODYfT3aI&usqp=CAU"
         }, {
             category_name: "Fragrance",
             id: 24,
-            parent_id: 2,
+            parent_id: 111,
             image_link: "https://i.pinimg.com/originals/30/a3/18/30a318db10210d533fdbebf0b85881e3.jpg"
         }, {
             category_name: "Men's Clothing",
             id: 31,
-            parent_id: 3,
+            parent_id: 111,
             image_link: 0
         }, {
             category_name: "Women's Clothing",
             id: 32,
-            parent_id: 3,
+            parent_id: 111,
             image_link: 0
         }, {
             category_name: "Shoes",
             id: 33,
-            parent_id: 3,
+            parent_id: 111,
             image_link: 0
         }, {
             category_name: "Accessories",
             id: 34,
-            parent_id: 3,
+            parent_id: 111,
             image_link: 0
         }, {
             category_name: "Furniture",
@@ -480,7 +479,7 @@ function CategoryScreen() {
         }
     ];
 
-
+//////////////////////////////
 
     const [selectedCategory,
         setSelectedCategory] = useState([]);
@@ -491,13 +490,13 @@ function CategoryScreen() {
     const [collection,
         setCollection] = useState([]);
 
-    function handlClickEvent(c) {
+    function handlClickEvent(category) {
         var collection2 = [];
 
-        for (var i = 0; i < childData.length; i++) {
-            const item = childData[i];
+        for (var i = 0; i < _data.length; i++) {
+            const item = _data[i];
 
-            if (item.parent_id == c.id) {
+            if (item.p_id == category.id) {
                 collection2.push(item);
 
             }
@@ -513,21 +512,21 @@ function CategoryScreen() {
 
         handlClickEvent(category);
         setSelectedParentCategory(category)
-        setSelectedCategory(category);
+        // setSelectedCategory(category);
 
     };
 
     return <VStack>
 
         <CategorySearch/>
+        {/* <Text>{JSON.stringify(selectedParentCategory , null , 1)}</Text> */}
 
         <HStack h={'100%'}>
-
             <VStack w={'20%'} h={'100%'}>
                 <ScrollView>
                     <CategoryLeftList
                         categories={data}
-                        parentData={parentData}
+                        APIcat={_dataOnlyParent}
                         onSelectCategory={handleCategorySelectAndClickEvent}/>
                     <Box h={100}></Box>
                 </ScrollView>
@@ -536,13 +535,12 @@ function CategoryScreen() {
             <VStack w={'80%'} h={'100%'}>
                 <ScrollView>
                     <CategoryRightList
-                        subCategoryList={childChild}
+                        subCategoryList={_data}
                         selectedCategory={collection}
                         selectedParentCategories={selectedParentCategory}/>
                     <Box h={100}></Box>
                 </ScrollView>
             </VStack>
-
         </HStack>
 
     </VStack>

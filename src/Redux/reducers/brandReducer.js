@@ -4,7 +4,7 @@ const BrandState = {
     loading: false,
     _page: null,
     _refresh: null,
-    _data:null
+    _data:[]
   };
 
 export const useBrandListingReducer = (state = BrandState, action) => {
