@@ -1,5 +1,5 @@
 
-export const baseUri = 'http://192.168.1.10/FinalSuperMarketAPI/api/';
+export const baseUri = 'http://192.168.2.241/FinalSuperMarketAPI/api/';
 
 
 export const objectToFormData = (data) => {
@@ -38,7 +38,7 @@ export const request = async($endpoint, data, $callback, $catchFeedback = (e) =>
     }).then((response) => response.json()).then((json) => {
         console.log(" ");
         console.log(" ");
-        console.log('===>', JSON.stringify( json , null , 4 ));
+        // console.log('===>', JSON.stringify( json , null , 4 ));
         console.log(" ");
         console.log(" ");
         console.log(" ");

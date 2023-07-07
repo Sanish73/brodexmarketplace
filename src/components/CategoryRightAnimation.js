@@ -8,15 +8,35 @@ import {
     Image
 } from 'react-native';
 import {COLOURS, Items} from '../database/Database';
-
 import {Box, VStack, Button, HStack, Center} from 'native-base';
 import {CategoryRightAnimationList} from './CategoryRightAnimationList';
 import {Animated} from 'react-native';
-
 import Icon from 'react-native-vector-icons/Ionicons';
 // import { Ionicons } from '@expo/vector-icons';
+import {termCatoListing} from '../Redux/actions/brandAction';
+import {useDispatch, useSelector} from 'react-redux';
 
 export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offsetvalue, _scalevalue, collectionOfSubcategoryList}) {
+
+
+    const page = 1;
+    const refresh = true;
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        termCatoListing('',collectionOfSubcategoryList, page, refresh)(dispatch);
+    }, []);
+
+    const {
+        bListingWaiting,
+        clicked,
+        loading,
+        _page,
+        _refresh,
+        _termData
+    } = useSelector(state => state.termCatoReducer);
+
 
     return (
 
@@ -151,9 +171,9 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                             </Box>
                         </View>
 
-                        {/* <Text>
-                            {JSON.stringify(collectionOfSubcategoryList,null,2)}
-                        </Text> */}
+                        <Text>
+                            {JSON.stringify(_termData,null,2)}
+                        </Text>
                         <View
                             style={{
                             paddingHorizontal: 6,
@@ -165,7 +185,7 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                             {/* {collectionOfSubcategoryList.map(data => {
                                 return <CategoryRightAnimationList data={data} key={data.id}/>;
                             })} */}
-                            <Text>{collectionOfSubcategoryList}</Text>
+                           
                         </View>
                     </View>
                 </Box>

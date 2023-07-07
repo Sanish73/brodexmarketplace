@@ -81,7 +81,7 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
                                     rounded: 50
                                 }}>
 
-                                    {item.image != 0
+                                    {item.image && item.image !== 0
                                         ? <Image
                                                 alt={'sdfkjsjdf'}
                                                 source={{
