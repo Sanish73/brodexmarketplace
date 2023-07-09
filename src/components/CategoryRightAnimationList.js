@@ -8,7 +8,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 
 export const CategoryRightAnimationList = ({data}) => {
+    const special_pricePercent = ((data.special_price / data.regular_price) * 100).toFixed(0);
 
+    const randomRating = Math.floor(Math.random() * 7) / 2 + 2; // Generate random rating between 2 and 5, with a step of 0.5
 
     const navigation = useNavigation();
 
@@ -28,7 +30,7 @@ export const CategoryRightAnimationList = ({data}) => {
             marginBottom: 16
         }}>
 
-          <Text>{JSON.stringify(data.prouctImage, null, 2)}</Text>
+          {/* <Text>{JSON.stringify(data.prouctImage, null, 2)}</Text> */}
             <View
                 style={{
                 height: 150,
@@ -42,7 +44,7 @@ export const CategoryRightAnimationList = ({data}) => {
                     width: '100%',
                     height: '100%'
                 }}/>
-                {data.isOff ? <View
+                {data.special_price ? <View
                     style={{
                     position: 'absolute',
                     top: 0,
@@ -56,7 +58,10 @@ export const CategoryRightAnimationList = ({data}) => {
                         color: COLOURS.white,
                         fontWeight: 'bold'
                     }}>
-                        {data.offPercentage}% OFF
+                        {/* {data.offPercentage}% OFF */}
+                         {/* 59% OFF */}
+                         {/* {data.productPrice + (data.productPrice * data.offPercentage) / 100} */}
+                         {special_pricePercent}% OFF
                     </Text>
                 </View>:<></>}
             </View>
@@ -101,7 +106,7 @@ export const CategoryRightAnimationList = ({data}) => {
                     }}>
                         {data.productPrice}
                     </Text>
-                    {data.isOff && <Text
+                     {(data.special_price == 0 || data.productPrice == data.special_price)?<></>:<Text
                         style={{
                         fontSize: 14,
                         color: COLOURS.grey,
@@ -109,7 +114,8 @@ export const CategoryRightAnimationList = ({data}) => {
                         marginLeft: 4,
                         textDecorationLine: 'line-through'
                     }}>
-                        {data.productPrice + (data.productPrice * data.offPercentage / 100)}
+                  
+                              {(data.productPrice) * (1-special_pricePercent/100)}
                     </Text>}
                 </View>
                 <View
@@ -125,7 +131,7 @@ export const CategoryRightAnimationList = ({data}) => {
                         fontWeight: '500',
                         marginLeft: 4
                     }}>
-                        4.5
+                       {randomRating}
                     </Text>
                     {/* <Text
                         style={{

@@ -137,11 +137,11 @@ export default function CategoryRightAnimation({
                                     opacity: 0.5,
                                     marginLeft: 10
                                 }}>
-                                    Showing {get_related_products.length === 0
+                                    Showing {(get_related_products||[]).length === 0
                                         ? 0
                                         : 1}
-                                    {get_related_products.length !== 0
-                                        ? ` – ${get_related_products.length} of ${get_related_products.length} results`
+                                    {(get_related_products||[]).length !== 0
+                                        ? ` – ${(get_related_products||[]).length} of ${(get_related_products||[]).length} results`
                                         : ' of 0 results'}
                                 </Text>
                             </View>
@@ -171,7 +171,7 @@ export default function CategoryRightAnimation({
                             justifyContent: 'space-between',
                             paddingTop: 10
                         }}>
-                            {/* <Text>{JSON.stringify(get_related_products, null, 2)}</Text> */}
+                            <Text>{JSON.stringify(get_related_products, null, 2)}</Text>
                             <View
                                 style={{
                                 paddingHorizontal: 6,
