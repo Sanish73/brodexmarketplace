@@ -74,7 +74,7 @@ export const termCatoListing = (token, categoryId, page, refresh) => async dispa
         page
     }, function (val, data) {
         if (data) {
-            console.log(data, 'BrandAction.js------------------')
+            // console.log(data, 'BrandAction.js------------------')
             dispatch(onTermCatoListSuccess(data, page, refresh));
         } else {
             dispatch(onTermCatoListError(data

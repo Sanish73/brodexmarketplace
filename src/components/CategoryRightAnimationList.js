@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import {COLOURS} from '../database/Database';
-
+import {Image} from 'native-base'
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -11,8 +11,14 @@ export const CategoryRightAnimationList = ({data}) => {
     const special_pricePercent = ((data.special_price / data.regular_price) * 100).toFixed(0);
 
     const randomRating = Math.floor(Math.random() * 7) / 2 + 2; // Generate random rating between 2 and 5, with a step of 0.5
+    const fallbackImage = require('../../assets/images/makeup/6442112532b392104231682051365.jpg');
+    const discountAmount = (special_pricePercent/100)*(data.regular_price)
+    const discountAmountTofix = discountAmount.toFixed(0);
+    
+
 
     const navigation = useNavigation();
+    // console.log(data.productImage);
 
     const handlePress = (item) => {
     //    console.log(item)
@@ -20,6 +26,9 @@ export const CategoryRightAnimationList = ({data}) => {
     }
 
     return (
+
+
+
         <TouchableOpacity
         
         onPress={()=>handlePress(data)}
@@ -30,7 +39,7 @@ export const CategoryRightAnimationList = ({data}) => {
             marginBottom: 16
         }}>
 
-          {/* <Text>{JSON.stringify(data.prouctImage, null, 2)}</Text> */}
+          {/* <Text>{JSON.stringify(data.productImage, null, 2)}</Text> */}
             <View
                 style={{
                 height: 150,
@@ -38,12 +47,20 @@ export const CategoryRightAnimationList = ({data}) => {
                 borderTopLeftRadius: 18,
               
             }}>
-                <Image
-                    source={data.prouctImage}
-                    style={{
+            <Image
+            alt="image"
+                source={{ uri: data.productImage }}
+                onError={() => {
+                    console.log('Failed to load image');
+                }}
+                style={{
                     width: '100%',
-                    height: '100%'
-                }}/>
+                    height: '100%',
+                }}
+            />
+
+
+
                 {data.special_price ? <View
                     style={{
                     position: 'absolute',
@@ -58,9 +75,6 @@ export const CategoryRightAnimationList = ({data}) => {
                         color: COLOURS.white,
                         fontWeight: 'bold'
                     }}>
-                        {/* {data.offPercentage}% OFF */}
-                         {/* 59% OFF */}
-                         {/* {data.productPrice + (data.productPrice * data.offPercentage) / 100} */}
                          {special_pricePercent}% OFF
                     </Text>
                 </View>:<></>}
@@ -106,7 +120,7 @@ export const CategoryRightAnimationList = ({data}) => {
                     }}>
                         {data.productPrice}
                     </Text>
-                     {(data.special_price == 0 || data.productPrice == data.special_price)?<></>:<Text
+                     {(data.special_price == null ||data.special_price == 0 || data.regular_price == data.special_price)?<></>:<Text
                         style={{
                         fontSize: 14,
                         color: COLOURS.grey,
@@ -115,7 +129,7 @@ export const CategoryRightAnimationList = ({data}) => {
                         textDecorationLine: 'line-through'
                     }}>
                   
-                              {(data.productPrice) * (1-special_pricePercent/100)}
+                            {data.regular_price}
                     </Text>}
                 </View>
                 <View
