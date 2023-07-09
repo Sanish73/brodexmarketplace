@@ -7,13 +7,14 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 
-
 export const CategoryRightAnimationList = ({data}) => {
+
+
     const navigation = useNavigation();
 
     const handlePress = (item) => {
     //    console.log(item)
-        navigation.navigate('ProductInfo'  , data);
+        // navigation.navigate('ProductInfo'  , data);
     }
 
     return (
@@ -26,6 +27,8 @@ export const CategoryRightAnimationList = ({data}) => {
             borderRadius: 5,
             marginBottom: 16
         }}>
+
+          <Text>{JSON.stringify(data.prouctImage, null, 2)}</Text>
             <View
                 style={{
                 height: 150,
@@ -34,7 +37,7 @@ export const CategoryRightAnimationList = ({data}) => {
               
             }}>
                 <Image
-                    source={data.productImage}
+                    source={data.prouctImage}
                     style={{
                     width: '100%',
                     height: '100%'

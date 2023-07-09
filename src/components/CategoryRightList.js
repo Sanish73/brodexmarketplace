@@ -1,30 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect } from 'react';
 import {TouchableOpacity} from 'react-native';
 import {Text, VStack, Box, Image, Center} from "native-base";
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import {termCatoListing} from '../Redux/actions/brandAction';
 
 export function CategoryRightList({selectedCategory, selectedParentCategories, subCategoryList}) {
+    // const page = 1;
+    // const refresh = true;
+    // const dispatch = useDispatch();
+
     const navigation = useNavigation();
 
     const handleCategorySelect = (item) => {
 
-        console.log(JSON.stringify(item, null, 2));
-        // yate mero mehenat ley banako  yautai database bata vaya compare garera terms
-        // haru jhikna milxa
-        var collectionSubCLassLIst = [];
-
-        for (var i = 0; i < subCategoryList.length; i++) {
-            const classItem = subCategoryList[i];
-
-            if (item.id == classItem.p_id) {
-                collectionSubCLassLIst.push(classItem)
-                // console.warn("The child not emply");
-
-            } else {
-                console.log("The child items are emply");
-            }
-        }
-
+      
         if (navigation) {
             navigation.navigate('CategorySubCategoDetails', item.id);
             // console.warn(JSON.stringify(item.id, null, 2));

@@ -4,8 +4,38 @@ import {Animated} from 'react-native';
 import CategoryLeftAnimation from './CategoryLeftAnimation';
 import CategoryRightAnimation from './CategoryRightAnimation';
 import {useRoute} from '@react-navigation/native';
+import {termCatoListing} from '../Redux/actions/brandAction';
+import {useDispatch, useSelector} from 'react-redux';
+
 
 export function CategorySubCatDetailScree() {
+    const route = useRoute();
+
+    const collectionOfSubcategoryList = route.params;
+
+    const page = 1;
+     const refresh = true;
+     const dispatch = useDispatch();
+
+    
+
+    useEffect(() => {
+      
+        termCatoListing('', collectionOfSubcategoryList, page, refresh)(dispatch);
+      },[collectionOfSubcategoryList]);
+
+
+      const {
+        bListingWaiting,
+        clicked,
+        loading,
+        _page,
+        _refresh,
+        _termData
+    } = useSelector(state => state.termCatoReducer);
+
+
+    
     const [currentTab,
         setCurrentTab] = useState("Home");
     const [showMenu,
@@ -17,8 +47,8 @@ export function CategorySubCatDetailScree() {
     const scalevalue = useRef(new Animated.Value(1)).current;
     const closebuttonoffsetvalue = useRef(new Animated.Value(0)).current;
 
-    const route = useRoute();
-    const collectionOfSubcategoryList = route.params;
+   
+    
 
     return (
         <VStack >
@@ -33,7 +63,8 @@ export function CategorySubCatDetailScree() {
             </VStack>
             <VStack></VStack>
             <CategoryRightAnimation
-                collectionOfSubcategoryList={collectionOfSubcategoryList}
+                _termData={_termData}
+                loading={loading}
                 _showMenu={showMenu}
                 _setShowMenu={setShowMenu}
                 _offsetvalue={offsetvalue}

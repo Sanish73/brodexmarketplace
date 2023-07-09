@@ -13,9 +13,10 @@ export const termCatoReducer = (state = TermState, action) => {
       case 'TERM_CATO_LIST_PRODUCT_WAITING':
         return {
           ...state,
-          loading: action.payload.loading,
+          loading: true,
           _page: action.payload._page,
-          _refresh: action.payload._refresh
+          _refresh: action.payload._refresh,
+          _termData : []
         };
       case 'TERM_CATO_LIST_PRODUCT_SUCCESS':
         return {

@@ -66,15 +66,15 @@ export const productListing = (token, page, refresh) => async dispatch => {
 }
 
 export const termCatoListing = (token, categoryId, page, refresh) => async dispatch => {
-    console.log({categoryId});
-    // dispatch(onTermCatoListWaiting(page, refresh));
+    console.log("this is brandAction===============",{categoryId});
+    dispatch(onTermCatoListWaiting(page, refresh));
 
-    const categoryEndpoint = `categories/330/terms`;
+    const categoryEndpoint = `relatedProduct/${categoryId}`;
     await request(categoryEndpoint, {
         page
     }, function (val, data) {
         if (data) {
-            console.log(data, '------')
+            console.log(data, 'BrandAction.js------------------')
             dispatch(onTermCatoListSuccess(data, page, refresh));
         } else {
             dispatch(onTermCatoListError(data

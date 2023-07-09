@@ -12,31 +12,20 @@ import {Box, VStack, Button, HStack, Center} from 'native-base';
 import {CategoryRightAnimationList} from './CategoryRightAnimationList';
 import {Animated} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-// import { Ionicons } from '@expo/vector-icons';
-import {termCatoListing} from '../Redux/actions/brandAction';
-import {useDispatch, useSelector} from 'react-redux';
 
-export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offsetvalue, _scalevalue, collectionOfSubcategoryList}) {
+export default function CategoryRightAnimation({
+    _showMenu,
+    _setShowMenu,
+    _offsetvalue,
+    _scalevalue,
+    _termData,
+    loading
+}) {
 
+    // console.log("oooooooooooooooooooooooooooooooooooooo",get_related_products);
 
-    const page = 1;
-    const refresh = true;
-
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        termCatoListing('',collectionOfSubcategoryList, page, refresh)(dispatch);
-    }, []);
-
-    const {
-        bListingWaiting,
-        clicked,
-        loading,
-        _page,
-        _refresh,
-        _termData
-    } = useSelector(state => state.termCatoReducer);
-
+    const {get_related_products} = _termData;
+    const {_loading} = loading;
 
     return (
 
@@ -148,11 +137,11 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                                     opacity: 0.5,
                                     marginLeft: 10
                                 }}>
-                                    Showing {collectionOfSubcategoryList.length === 0
+                                    Showing {get_related_products.length === 0
                                         ? 0
                                         : 1}
-                                    {collectionOfSubcategoryList.length !== 0
-                                        ? ` – ${collectionOfSubcategoryList.length} of ${collectionOfSubcategoryList.length} results`
+                                    {get_related_products.length !== 0
+                                        ? ` – ${get_related_products.length} of ${get_related_products.length} results`
                                         : ' of 0 results'}
                                 </Text>
                             </View>
@@ -171,9 +160,9 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                             </Box>
                         </View>
 
-                        <Text>
+                        {/* <Text>
                             {JSON.stringify(_termData,null,2)}
-                        </Text>
+                        </Text> */}
                         <View
                             style={{
                             paddingHorizontal: 6,
@@ -182,10 +171,21 @@ export default function CategoryRightAnimation({_showMenu, _setShowMenu, _offset
                             justifyContent: 'space-between',
                             paddingTop: 10
                         }}>
-                            {/* {collectionOfSubcategoryList.map(data => {
-                                return <CategoryRightAnimationList data={data} key={data.id}/>;
-                            })} */}
-                           
+                            {/* <Text>{JSON.stringify(get_related_products, null, 2)}</Text> */}
+                            <View
+                                style={{
+                                paddingHorizontal: 6,
+                                flexDirection: 'row',
+                                flexWrap: 'wrap',
+                                justifyContent: 'space-between',
+                                paddingTop: 10
+                            }}>
+                                {_loading
+                                    ? <Text>Loading...</Text>
+                                    : (get_related_products || []).map(data => (<CategoryRightAnimationList data={data} key={data.id}/>))
+}
+                            </View>
+
                         </View>
                     </View>
                 </Box>
