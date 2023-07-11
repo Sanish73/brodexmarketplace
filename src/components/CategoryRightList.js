@@ -1,6 +1,6 @@
 import React, {useState,useEffect } from 'react';
 import {TouchableOpacity} from 'react-native';
-import {Text, VStack, Box, Image, Center} from "native-base";
+import {Text, VStack, Box, Image, Center , View} from "native-base";
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {termCatoListing} from '../Redux/actions/brandAction';
@@ -28,26 +28,31 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
         <VStack p={3} space={2}>
 
             <Box>
-                {selectedParentCategories.image
-                    ? (<Image
-                        rounded={15}
-                        source={{
-                        uri: selectedParentCategories.image
-                    }}
-                        alt="Alternate Text"
-                        resizeMode="stretch"
-                        aspectRatio={2}
-                        w="100%"/>)
-                    : (
-                        <Text>asdasd</Text>
-                    )}
+         {selectedParentCategories.image ? (
+            <View style={{ flexDirection: 'row' }}>
+                <Image
+                rounded={15}
+                source={{
+                    uri: selectedParentCategories.image,
+                }}
+                alt="Alternate Text"
+                resizeMode="stretch"
+                aspectRatio={2}
+                style={{ flex: 1 }}
+                />
+            </View>
+            ) : (
+            <Text>asdasd</Text>
+            )}
             </Box>
 
             <Box
                 flexDirection='row'
                 justifyContent={'center'}
                 style={{
-                flexWrap: 'wrap'
+                flexWrap: 'wrap',
+                width:"100%",
+                height:"50%"
             }}>
                 {/*
                 <Text>

@@ -21,8 +21,8 @@ export const CategoryRightAnimationList = ({data}) => {
     // console.log(data.productImage);
 
     const handlePress = (item) => {
-    //    console.log(item)
-        // navigation.navigate('ProductInfo'  , data);
+    //    console.log("cateforyRightANiationList---------------",item)
+        navigation.navigate('ProductInfo'  , item);
     }
 
     return (
@@ -39,7 +39,7 @@ export const CategoryRightAnimationList = ({data}) => {
             marginBottom: 16
         }}>
 
-          {/* <Text>{JSON.stringify(data.productImage, null, 2)}</Text> */}
+          {/* <Text>{JSON.stringify(data, null, 2)}</Text> */}
             <View
                 style={{
                 height: 150,

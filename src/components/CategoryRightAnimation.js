@@ -50,7 +50,7 @@ export default function CategoryRightAnimation({
             ]
         }}>
 
-            <HStack w={'100%'} justifyContent={'space-around'} py={2}>
+            {/* <HStack w={'100%'} justifyContent={'space-around'} py={2}>
                 <Box bg={'red.100'}>
 
                     <Button
@@ -108,7 +108,7 @@ export default function CategoryRightAnimation({
                     color = "#fff" />}></Button>
                 </HStack>
 
-            </HStack>
+            </HStack> */}
 
             <ScrollView >
                 <Box >
@@ -137,11 +137,11 @@ export default function CategoryRightAnimation({
                                     opacity: 0.5,
                                     marginLeft: 10
                                 }}>
-                                    Showing {(get_related_products||[]).length === 0
+                                    Showing {(get_related_products || []).length === 0
                                         ? 0
                                         : 1}
-                                    {(get_related_products||[]).length !== 0
-                                        ? ` – ${(get_related_products||[]).length} of ${(get_related_products||[]).length} results`
+                                    {(get_related_products || []).length !== 0
+                                        ? ` – ${ (get_related_products || []).length} of ${ (get_related_products || []).length} results`
                                         : ' of 0 results'}
                                 </Text>
                             </View>
@@ -183,9 +183,7 @@ export default function CategoryRightAnimation({
                                 {_loading
                                     ? <Text>Loading...</Text>
                                     : (get_related_products || []).map(data => (<CategoryRightAnimationList data={data} key={data.id}/>))
-                                }
-                                {/* <CategoryRightAnimationList /> */}
-
+}
                             </View>
 
                         </View>

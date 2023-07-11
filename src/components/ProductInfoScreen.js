@@ -11,7 +11,8 @@ import {
     Animated,
     ToastAndroid,Alert,
 } from 'react-native';
-4
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 import {
     Box,
     Text,
@@ -33,7 +34,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export function ProductInfoScreen({route}) {
-
+   
     const [selectedColor,
         setselectedColor] = useState('Black');
         const [selectedHeight,
@@ -88,17 +89,28 @@ export function ProductInfoScreen({route}) {
 
     const navigation = useNavigation();
     const {
-        category,
+        url,
         id,
+        productImage,
         productName,
         productPrice,
         description,
         isOff,
-        productImage,
+        meta,
+        regular_price,
         isAvailable,
         offPercentage,
+        special_price,
+        stock,
+        featured,
+        category,
         productImageList
+       
     } = route.params;
+    // console.log(productImage);
+    const special_pricePercent = ((special_price / regular_price) * 100).toFixed(0);
+    const randomRating = Math.floor(Math.random() * 7) / 2 + 2;
+
 
     const {width} = Dimensions.get('window');
     const [scrollX,
@@ -110,13 +122,16 @@ export function ProductInfoScreen({route}) {
                 width,
                 height: 250
             }}>
+             {/* <Text>{JSON.stringify(productName, null, 2)}</Text> */}
+             {/* <Text>Topppppppppppppppppppppppp</Text> */}
                 <Image
-                    source={item}
+                 alt="image"
+                    source={{uri : productImage}}
                     resizeMode="cover"
                     style={{
                     flex: 1,
-                    width: undefined,
-                    height: undefined
+                    width: '100%',
+                    height: '100%',
                 }}/>
             </View>
         );
@@ -144,7 +159,7 @@ export function ProductInfoScreen({route}) {
                     <FlatList
                    
                  
-                        data={productImageList || []}
+                        data={productImage || []}
                         horizontal
                         renderItem={renderProduct}
                         showsHorizontalScrollIndicator={false}
@@ -199,7 +214,7 @@ export function ProductInfoScreen({route}) {
                             : null}
 
                     </View>
-                    {isOff ? <View
+                    {stock==1 ? <View
                     style={{
                     position: 'absolute',
                     margin:10,
@@ -213,7 +228,7 @@ export function ProductInfoScreen({route}) {
                         color: COLOURS.white,
                         fontWeight: 'bold'
                     }}>
-                        {offPercentage}% OFF
+                        {special_pricePercent}% OFF
                     </Text>
                 </View>:<></>}
 
@@ -221,8 +236,8 @@ export function ProductInfoScreen({route}) {
 
                 <HStack  paddingTop={2}>
                     <HStack  w={'80%'} alignItems={'center'} paddingX={2}>
-                        <Text  bold fontSize={15}>
-                          Lorreal the Face Cleaner
+                        <Text  bold fontSize={19}>
+                        {productName}
                         </Text>
                         {/* <Text>
                            AED 266.6
@@ -250,31 +265,105 @@ export function ProductInfoScreen({route}) {
 
                     </HStack>
                 </HStack>
-                <Box paddingX={2} >
-                    <VStack>
-                        <Text>
-                            {description}
-                        </Text>
-                    </VStack>
-                </Box>
+              
 
-                <HStack paddingTop={2} >
+                <View
+                 
+                    style={{
+                        paddingHorizontal:10,
+                    flexDirection: 'row',
+                    alignItems: 'center'
+                }}>
+                    <FontAwesome name="rupee" size={14} color={COLOURS.blue}/>
+                    <Text
+                   
+                        style={{
+                        fontSize: 16,
+                        color: COLOURS.blue,
+                        fontWeight: 'bold',
+                        marginLeft: 4
+                    }}>
+                      {productPrice}
+                    </Text>
+                </View>
+
+                
+
+                <HStack paddingTop={1} >
                     <HStack  rounded={15} alignItems={'center'} paddingX={2}>
                                                    
                     <Icon name="star" size={20} color="#FFA500" />
                         <Text bold paddingLeft={1}> 
-                            4.5
+                          0
                         </Text>
                     </HStack>
-                    <HStack rounded={15} marginLeft={2} alignItems={'center'} paddingX={2}> 
-                    <Text bold>
-                    4
-                    </Text>
-                    <Text bold paddingLeft={1}>
-                Reviews
-                    </Text>
-                       
-                    </HStack>
+                        <HStack rounded={15} marginLeft={2} alignItems={'center'} paddingX={2}> 
+                            <Text   style={{
+                                fontSize: 16,
+                                color: COLOURS.brown,
+                                fontWeight: 'bold',
+                                marginLeft: 4
+                            }}>
+                                 0
+                            </Text>
+                        <Text style={{
+                                fontSize: 16,
+                                color: COLOURS.brown,
+                                fontWeight: 'bold',
+                                marginLeft: 4
+                            }} paddingLeft={1}>
+                                reviews
+                        </Text>
+                        <Text   style={{
+                                fontSize: 16,
+                                color: COLOURS.brown,
+                                fontWeight: 'bold',
+                                marginLeft: 4
+                            }}>
+                                 |
+                            </Text>
+                            <Text   style={{
+                                fontSize: 16,
+                                color: COLOURS.brown,
+                                fontWeight: 'bold',
+                                marginLeft: 4
+                            }}>
+                                 0
+                            </Text>
+                        <Text style={{
+                                fontSize: 16,
+                                color: COLOURS.brown,
+                                fontWeight: 'bold',
+                                marginLeft: 4
+                            }} paddingLeft={1}>
+                                orderes
+                        </Text>
+                        <Text   style={{
+                                fontSize: 16,
+                                color: COLOURS.brown,
+                                fontWeight: 'bold',
+                                marginLeft: 4
+                            }}>
+                                 |
+                            </Text>
+                            <Text   style={{
+                                fontSize: 16,
+                                color: COLOURS.brown,
+                                fontWeight: 'bold',
+                                marginLeft: 4
+                            }}>
+                                 0
+                            </Text>
+                        <Text style={{
+                                fontSize: 16,
+                                color: COLOURS.brown,
+                                fontWeight: 'bold',
+                                marginLeft: 4
+                            }} paddingLeft={1}>
+                                wish
+                        </Text>
+                        
+                        </HStack>
 
                 </HStack>
 
@@ -286,12 +375,12 @@ export function ProductInfoScreen({route}) {
                                 </Box>
                                 <Box>
                                     <Text underline>
-                            hsdk3jflksdfjlsjdjflj
+                            {/* {meta} */}
                                     </Text>
                                 </Box>
                             </VStack>
 
-                <VStack paddingTop={2}>
+                {/* <VStack paddingTop={2}>
                     <HStack>
                         <Heading size="sm">
                             Choosed Color:
@@ -315,7 +404,7 @@ export function ProductInfoScreen({route}) {
                             
                         
                     </HStack>
-                </VStack>
+                </VStack> */}
 
                 <VStack paddingTop={2}>
                     <Box>
