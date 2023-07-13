@@ -5,11 +5,16 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {termCatoListing} from '../Redux/actions/brandAction';
 
-export function CategoryRightList({selectedCategory, selectedParentCategories, subCategoryList}) {
+export function CategoryRightList({selectedCategory,selectedParentCategories, ForSelectingFirstCategory,subCategoryList}) {
     // const page = 1;
     // const refresh = true;
     // const dispatch = useDispatch();
 
+    // const [getget, setGetget] = useState(ForSelectingFirstCategory[0]);
+    // useEffect(() => {
+    //     setGetget(ForSelectingFirstCategory[0]);
+    //   }, [ForSelectingFirstCategory]);
+      
     const navigation = useNavigation();
 
     const handleCategorySelect = (item) => {
@@ -17,34 +22,48 @@ export function CategoryRightList({selectedCategory, selectedParentCategories, s
       
         if (navigation) {
             navigation.navigate('CategorySubCategoDetails', item.id);
-            // console.warn(JSON.stringify(item.id, null, 2));
+            // console.warn(JSON.stringify(ForSelectingFirstCategory, null, 2));
         } else {
             console.warn("Navigation prop is not defined");
         }
 
+          console.log("CategoryRightList------", selectedParentCategories);
+
     };
 
+
+    // Initialize the state variable
+const [showImage, setShowImage] = useState(!!selectedParentCategories.image);
+
+// Update the state variable based on the availability of the image
+useEffect(() => {
+  setShowImage(!!selectedParentCategories.image);
+}, [selectedParentCategories.image]);
+
     return (
+
+    
         <VStack p={3} space={2}>
 
-            <Box>
-         {selectedParentCategories.image ? (
-            <View style={{ flexDirection: 'row' }}>
-                <Image
-                rounded={15}
-                source={{
-                    uri: selectedParentCategories.image,
-                }}
-                alt="Alternate Text"
-                resizeMode="stretch"
-                aspectRatio={2}
-                style={{ flex: 1 }}
-                />
-            </View>
-            ) : (
-            <Text>asdasd</Text>
-            )}
-            </Box>
+
+<Box>
+  {showImage ? (
+    <View style={{ flexDirection: 'row' }}>
+      <Image
+        rounded={15}
+        source={{
+          uri: selectedParentCategories.image,
+        }}
+        alt="Alternate Text"
+        resizeMode="stretch"
+        aspectRatio={2}
+        style={{ flex: 1, height: '100%', width: '100%' }}
+      />
+    </View>
+  ) : (
+    <Text>Alternate Text</Text>
+  )}
+</Box>
 
             <Box
                 flexDirection='row'

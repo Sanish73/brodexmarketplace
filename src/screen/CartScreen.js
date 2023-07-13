@@ -1,26 +1,40 @@
 import {
     ScrollView,
-    Text,
     Box,
     VStack,
     Button,
     View
 } from 'native-base';
-import ShippingAddressBox from '../components/ShippingAddressBox'
-import OrderSummary from '../components/OrderSummary'
-import VoucherBox from '../components/VoucherBox'
 import CartBox from '../components/CartBox';
-import OrderSummaryBoxes from '../components/OrderSummaryBoxes';
 import React, {useState, useEffect} from 'react';
-// import OrderSummaryBoxes from '../components/OrderSummaryBoxes';
 import CartProductBoxes from '../components/CartProductBoxes';
 import CartBoxSecond from '../components/CartBoxSecond';
 import CartToPayList from '../components/CartToPayList';
 import CartBoxThird from '../components/CartBoxThird';
-import CartBoxFourth from '../components/CartBoxFourth';
 import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function CartScreen() {
+
+
+export default function CartScreen({ route }) {
+
+    const [cartItems, setCartItems] = useState([]);
+
+    useEffect(() => {
+      const fetchCartItems = async () => {
+        try {
+          // Retrieve cart items from AsyncStorage on component mount
+          const storedCartItems = await AsyncStorage.getItem('cartItems');
+         
+          const parsedCartItems = storedCartItems ? JSON.parse(storedCartItems) : [];
+          setCartItems(parsedCartItems);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+  
+      fetchCartItems();
+    }, []);
 
     const navigation = useNavigation();
     const [cartProducts,
@@ -70,12 +84,28 @@ export default function CartScreen() {
         }
     ]);
 
-    const handlePress = () => {
-        navigation.navigate('Order');
+    const handlePressGoToPayment = async() => {
+        try {
+            await AsyncStorage.clear();
+            console.log("cartScreen",cartItems)
+        } catch (error) {
+            
+        }
+        // navigation.navigate('Order');
+        
     }
+
+    // const cartItems  = route.params;
+
+   
+    // console.log('cartScreen',route.params.id);
+    console.log("cartScreen",cartItems)
+    // console.warn(JSON.stringify((route.params, null, 2)));
+    // console.log(productPrice)
 
     return (
         <View>
+
             <ScrollView >
 
                 <VStack p={4}>
@@ -83,6 +113,10 @@ export default function CartScreen() {
                     <CartBox/>
 
                     <View>
+                    {/* {cartItems.map(data=>{
+                        <Text>data.id</Text>
+                    })}
+                    */}
                         {cartProducts.map(data => {
                             return <CartProductBoxes data={data} key={data.id}/>;
                         })}
@@ -106,7 +140,7 @@ export default function CartScreen() {
             }}>
                 <VStack>
                     <Button
-                        onPress={handlePress}
+                        onPress={handlePressGoToPayment}
                         backgroundColor={'#ffa94d'}
                         _text={{
                         color: "white",

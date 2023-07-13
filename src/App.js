@@ -15,6 +15,8 @@ import OOOrder from './screen/OOOrder';
 import MyProfilScreen from './components/MyProfilScreen';
 import {Provider} from 'react-redux';
 import {store} from './Redux/store';
+// import CartBox from './components/CartBox';
+import CartScreen from './screen/CartScreen';
 
 function AppBox() {
     const Stack = createNativeStackNavigator();
@@ -34,6 +36,7 @@ function AppBox() {
                     name="CategorySubCategoDetails"
                     component={CategorySubCatDetailScree}/>
                 <Stack.Screen name="MyOrder" component={OOOrder}/>
+                <Stack.Screen name="cartScreen" component={CartScreen}/>
                 <Stack.Screen name="MyProfil" component={MyProfilScreen}/>
             </Stack.Navigator>
         </NavigationContainer>

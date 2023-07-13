@@ -31,63 +31,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function ProductInfoScreen({route}) {
-   
-    const [selectedColor,
-        setselectedColor] = useState('Black');
-        const [selectedHeight,
-            setselectedHeight] = useState(8);
-            const [selectedWidth,
-                setselectedHWidtht] = useState(8);
-
-
-                const ColorPress =(item)=>{
-                    // Alert.alert(item);
-                    setselectedColor(item);
-                    setselectedHeight(9);
-                    setselectedHWidtht(9);
-            
-                }
-
-    const options = [
-        {
-            value: 'Black',
-            index: 'Black',
-            color: 'black'
-        }, {
-            value: 'Red',
-            index: 'Red',
-            color: 'red'
-        }, {
-            value: 'Green',
-            index: 'Green',
-            color: 'green'
-        }, {
-            value: 'Blue',
-            index: 'Blue',
-            color: 'blue'
-        }, {
-            value: 'Pink',
-            index: 'Pink',
-            color: 'pink'
-        }, {
-            value: 'Orange',
-            index: 'Orange',
-            color: 'orange'
-        }, {
-            value: 'Yellow',
-            index: 'Yellow',
-            color: 'yellow'
-        }
-    ];
-
- 
-
-   
 
     const navigation = useNavigation();
+
     const {
         url,
         id,
@@ -107,6 +56,76 @@ export function ProductInfoScreen({route}) {
         productImageList
        
     } = route.params;
+   
+    const [selectedColor,
+        setselectedColor] = useState('Black');
+        const [selectedHeight,
+            setselectedHeight] = useState(8);
+            const [selectedWidth,
+                setselectedHWidtht] = useState(8);
+
+
+               
+                const [cartItems, setCartItems] = useState([]);
+
+                const handleButtonClickStore = async () => {
+                  try {
+                    const item = {
+                      id: route.params.id,
+                      productImage: route.params.productImage,
+                      productName: route.params.productName,
+                      productPrice: route.params.productPrice,
+                    };
+              
+                    // Retrieve existing cart items from AsyncStorage
+                    const storedCartItems = await AsyncStorage.getItem('cartItems');
+                    const parsedCartItems = storedCartItems ? JSON.parse(storedCartItems) : [];
+              
+                    // Add the current item to the cart
+                    parsedCartItems.push(item);
+              
+                    // Store the updated cart items in AsyncStorage
+                    await AsyncStorage.setItem('cartItems', JSON.stringify(parsedCartItems));
+              
+                    // Update the cart items state
+                    setCartItems(parsedCartItems);
+              
+                   
+
+                                
+                if (navigation) {
+                    navigation.navigate('cartScreen');
+                    // console.log('Item added to cart:', item);
+                } else {
+                    console.warn('Navigation prop is not defined');
+                }
+                  } catch (error) {
+                    console.log(error);
+                  }
+                };
+              
+                useEffect(() => {
+                  const fetchCartItems = async () => {
+                    try {
+                      // Retrieve cart items from AsyncStorage on component mount
+                      const storedCartItems = await AsyncStorage.getItem('cartItems');
+                      const parsedCartItems = storedCartItems ? JSON.parse(storedCartItems) : [];
+                      setCartItems(parsedCartItems);
+                    } catch (error) {
+                      console.log(error);
+                    }
+                  };
+              
+                  fetchCartItems();
+                }, []);
+  
+
+ 
+
+   
+
+    
+   
     // console.log(productImage);
     const special_pricePercent = ((special_price / regular_price) * 100).toFixed(0);
     const randomRating = Math.floor(Math.random() * 7) / 2 + 2;
@@ -235,7 +254,7 @@ export function ProductInfoScreen({route}) {
                 </View>
 
                 <HStack  paddingTop={2}>
-                    <HStack  w={'80%'} alignItems={'center'} paddingX={2}>
+                    <HStack  w={'80%'} alignItems={'center'} paddingX={0}>
                         <Text  bold fontSize={19}>
                         {productName}
                         </Text>
@@ -270,7 +289,8 @@ export function ProductInfoScreen({route}) {
                 <View
                  
                     style={{
-                        paddingHorizontal:10,
+                        paddingHorizontal:1,
+                        paddingVertical:4,
                     flexDirection: 'row',
                     alignItems: 'center'
                 }}>
@@ -281,7 +301,8 @@ export function ProductInfoScreen({route}) {
                         fontSize: 16,
                         color: COLOURS.blue,
                         fontWeight: 'bold',
-                        marginLeft: 4
+                        marginLeft: 5,
+                        // marginTop:-1
                     }}>
                       {productPrice}
                     </Text>
@@ -290,7 +311,7 @@ export function ProductInfoScreen({route}) {
                 
 
                 <HStack paddingTop={1} >
-                    <HStack  rounded={15} alignItems={'center'} paddingX={2}>
+                    <HStack  rounded={15} alignItems={'center'} paddingX={0}>
                                                    
                     <Icon name="star" size={20} color="#FFA500" />
                         <Text bold paddingLeft={1}> 
@@ -425,7 +446,7 @@ export function ProductInfoScreen({route}) {
 
             </ScrollView>
             <HStack bottom={2} >
-                 <Button w={'48%'} rounded={6} leftIcon={<Ionicons name="cart-outline" size={18} color="white" />}>
+                 <Button   onPress={handleButtonClickStore} w={'48%'} rounded={6} leftIcon={<Ionicons name="cart-outline" size={18} color="white" />}>
                     Add to Cart
                 </Button>
                 <Box w={'5%'}>

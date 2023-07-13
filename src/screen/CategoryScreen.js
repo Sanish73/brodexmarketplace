@@ -512,6 +512,7 @@ function CategoryScreen() {
     const handleCategorySelectAndClickEvent = (category) => {
 
         handlClickEvent(category);
+        console.log("cateforyScreen-------", category);
         setSelectedParentCategory(category)
         // setSelectedCategory(category);
 
@@ -528,14 +529,20 @@ function CategoryScreen() {
                     <CategoryLeftList
                         categories={data}
                         APIcat={_dataOnlyParent}
+                        APIcatToPreSelect={_dataOnlyParent[0]}
                         onSelectCategory={handleCategorySelectAndClickEvent}/>
                     <Box h={100}></Box>
                 </ScrollView>
             </VStack>
 
+            
+  {/* <Text>{JSON.stringify(collection , null , 1)}</Text> */}
+
+
             <VStack w={'80%'} h={'100%'}>
                 <ScrollView>
                     <CategoryRightList
+                        ForSelectingFirstCategory={_dataOnlyParent}
                         subCategoryList={_data}
                         selectedCategory={collection}
                         selectedParentCategories={selectedParentCategory}/>

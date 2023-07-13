@@ -1,5 +1,5 @@
 
-export const baseUri = 'http://192.168.1.64/FinalSuperMarketAPI/api/';
+export const baseUri = 'http://192.168.2.216/FinalSuperMarketAPI/api/';
 
 
 export const objectToFormData = (data) => {
