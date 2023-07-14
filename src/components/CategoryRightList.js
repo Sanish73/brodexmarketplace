@@ -54,14 +54,14 @@ useEffect(() => {
         source={{
           uri: selectedParentCategories.image,
         }}
-        alt="Alternate Text"
+        alt="Alternate "
         resizeMode="stretch"
         aspectRatio={2}
         style={{ flex: 1, height: '100%', width: '100%' }}
       />
     </View>
   ) : (
-    <Text>Alternate Text</Text>
+    <Text>ajsdkljkajdljd</Text>
   )}
 </Box>
 
