@@ -7,6 +7,7 @@ import CategoryScreen from './CategoryScreen';
 
 import {AccountScreen} from './AccountScreen';
 import CartScreen from './CartScreen';
+import LoginScreen from './LoginScreen';
 
 
 
@@ -54,6 +55,7 @@ export function RootScreen() {
                 backgroundColor: 'white'
             }
         })}>
+
          <Tab.Screen name="Category" component={CategoryScreen}/>
           
             <Tab.Screen name="Cart" component={CartScreen}/>
@@ -61,7 +63,7 @@ export function RootScreen() {
            
           
             <Tab.Screen name="Account" component={AccountScreen}/>
-            
+           
            
 
         </Tab.Navigator>

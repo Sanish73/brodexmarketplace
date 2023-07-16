@@ -17,33 +17,37 @@ import {Provider} from 'react-redux';
 import {store} from './Redux/store';
 // import CartBox from './components/CartBox';
 import CartScreen from './screen/CartScreen';
-
+import LoginScreen from './screen/LoginScreen';
 function AppBox() {
     const Stack = createNativeStackNavigator();
+    const isLoggedIn = true; // Example login status, replace with your logic
+  
     return (
-
-        <NavigationContainer>
-            <Stack.Navigator
-                screenOptions={{
-                headerShown: false
-            }}>
-                <Stack.Screen name="Root" component={RootScreen}/>
-                <Stack.Screen name="Payments" component={PaymentScreen}/>
-                <Stack.Screen name='Success' component={PaymentSuccessScreen}/>
-                <Stack.Screen name="Order" component={OrderScreen}/>
-                <Stack.Screen name="ProductInfo" component={ProductInfoScreen}/>
-                <Stack.Screen
-                    name="CategorySubCategoDetails"
-                    component={CategorySubCatDetailScree}/>
-                <Stack.Screen name="MyOrder" component={OOOrder}/>
-                <Stack.Screen name="cartScreen" component={CartScreen}/>
-                <Stack.Screen name="MyProfil" component={MyProfilScreen}/>
-            </Stack.Navigator>
-        </NavigationContainer>
-
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {isLoggedIn ? (
+            <>
+            <Stack.Screen name="Root" component={RootScreen} />
+              <Stack.Screen name="Payments" component={PaymentScreen} />
+              <Stack.Screen name="Success" component={PaymentSuccessScreen} />
+              <Stack.Screen name="Order" component={OrderScreen} />
+              <Stack.Screen name="ProductInfo" component={ProductInfoScreen} />
+              <Stack.Screen
+                name="CategorySubCategoDetails"
+                component={CategorySubCatDetailScree}
+              />
+              <Stack.Screen name="MyOrder" component={OOOrder} />
+              <Stack.Screen name="cartScreen" component={CartScreen} />
+              <Stack.Screen name="MyProfil" component={MyProfilScreen} />
+              </>
+          ) : (
+            <Stack.Screen name="Account" component={LoginScreen} />          
+          )}
+        </Stack.Navigator>
+      </NavigationContainer>
     );
-}
-
+  }
+  
 export default function App() {
 
     return (
