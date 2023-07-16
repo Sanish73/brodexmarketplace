@@ -45,7 +45,21 @@ const onTermCatoListError = (message) => ({type: 'TERM_CATO_LIST_PRODUCT_ERROR',
         message
     }});
 
-// =======================================termcato====================================================
+// =======================================login====================================================
+const onLoginSuccess = (data, page, refresh) => ({
+   
+    type: 'LOGIN_SUCCESS',
+    payload:data
+        
+     
+});
+
+
+const OnLoginError = (message) => ({type: 'LOGIN_ERROR', payload: {
+    message
+}});
+
+// =====================================================
 export const productListing = (token, page, refresh) => async dispatch => {
    
     dispatch(onProductListWaiting(page, refresh));
@@ -84,3 +98,28 @@ export const termCatoListing = (token, categoryId, page, refresh) => async dispa
         dispatch(onTermCatoListError("Please check your internet connection and try again later."));
     }, token);
 }
+
+export const login = (token, email , password, page, refresh) => async dispatch => {
+    console.log("this is Login===============",{email});
+    // dispatch(onTermCatoListWaiting(page, refresh));
+
+   
+  const loginEndpoint = `login`;
+    await request(loginEndpoint, {
+        email,
+        password
+    }, function (val, data) {
+
+        if (data) {
+            console.log(data, 'BrandAction.js------------------')
+            dispatch(onLoginSuccess(data, page, refresh));
+           
+        } else {
+            dispatch(OnLoginError(data
+                ?.message || "Login Failed. Please try again later."));
+        }
+    }, function () {
+        dispatch(onTermCatoListError("Please check your internet connection and try again later."));
+    }, token);
+}
+

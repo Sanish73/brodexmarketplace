@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert } from 'react-native';
+import {Alert} from 'react-native';
 import {
     Text,
     Button,
@@ -16,16 +16,27 @@ import {
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
-function ProfileListItem({name, firsticonName, FinaliconName , callback=()=>{} }) {
-    return <TouchableOpacity  style={{
+function ProfileListItem({
+    name,
+    firsticonName,
+    FinaliconName,
+    callback = () => {}
+}) {
+
+    return <TouchableOpacity
+        style={{
         backgroundColor: 'white',
         borderColor: 'white',
         borderWidth: 9,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding:8
-    }} onPress={()=>typeof(callback) == 'function' ? callback() : ()=>{}}>
+        padding: 8
+    }}
+        onPress={() => typeof(callback) == 'function'
+        ? callback()
+        : () => {}}>
         <VStack>
             <HStack>
                 <Box w={'15%'}>
@@ -39,10 +50,13 @@ function ProfileListItem({name, firsticonName, FinaliconName , callback=()=>{} }
                 </Box>
             </HStack>
         </VStack>
-</TouchableOpacity>
+    </TouchableOpacity>
 }
 
 function ProfilHeader() {
+    const {token, email, status, error, user_name,userId} = useSelector(state => state.loginReducer);
+    console.log('AccountScreen UserId',userId);
+
     return (
         <Box style={styles.mainBackground} shadow={3}>
             <VStack >
@@ -65,11 +79,11 @@ function ProfilHeader() {
                                 style={{
                                 fontSize: 24,
                                 fontWeight: 'bold'
-                            }}>Nirik Shan</Heading>
+                            }}>{user_name}</Heading>
                         </HStack>
 
                         <HStack pt={0}>
-                            <Text fontSize="xl" color='white'>999999999</Text>
+                            <Text fontSize="xl" color='white'>{email}</Text>
                         </HStack>
                     </VStack>
 
@@ -82,66 +96,55 @@ function ProfilHeader() {
 export function AccountScreen() {
     const navigation = useNavigation();
 
-    const logoutApp = () => {
-        
-    };
+    const logoutApp = () => {};
 
     const askForLogout = () => {
-        Alert.alert(
-            'Logout',
-            'Are you sure you want to logout?',
-            [
-                {
+        Alert.alert('Logout', 'Are you sure you want to logout?', [
+            {
                 text: 'Cancel',
                 onPress: () => console.log('Cancel Pressed'),
-                style: 'cancel',
-                },
-                { text: 'OK', onPress: ()=>{} },
-            ],
-            { cancelable: false }
-        );
+                style: 'cancel'
+            }, {
+                text: 'OK',
+                onPress: () => {}
+            }
+        ], {cancelable: false});
     }
 
-    const askForOder =()=>{
+    const askForOder = () => {
 
         navigation.navigate('MyOrder');
-     
-    }
-    const askForMyProfilEdit =()=>{
-        navigation.navigate('MyProfil');
-     
-    }
 
+    }
+    const askForMyProfilEdit = () => {
+        navigation.navigate('MyProfil');
+
+    }
 
     return (
 
         <ScrollView style={{}}>
 
             <ProfilHeader/>
-            
+
             <Box p={4}>
                 <Box p={5} bg={'white'} rounded={'xl'} shadow={2}>
                     <ProfileListItem
                         firsticonName={'business'}
                         name={'Edit Info'}
                         FinaliconName={'caret-forward'}
-                        callback={askForMyProfilEdit}
-                    />
-                    {/*My ORders*/}
+                        callback={askForMyProfilEdit}/> {/*My ORders*/}
                     <ProfileListItem
                         firsticonName={'log-out'}
                         name={'My Orders'}
                         FinaliconName={'caret-forward'}
-                        callback={askForOder}
-                    />
-                   {/* logoutaction */}
-                
+                        callback={askForOder}/> {/* logoutaction */}
+
                     <ProfileListItem
                         firsticonName={'log-out'}
                         name={'Logout'}
                         FinaliconName={'caret-forward'}
-                        callback={askForLogout}
-                    />
+                        callback={askForLogout}/>
                 </Box>
             </Box>
 

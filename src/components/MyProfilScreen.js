@@ -1,8 +1,12 @@
 import {View} from 'react-native'
 import React from 'react'
 import {Box, Input, VStack, Text, Button, HStack, Heading} from 'native-base'
+import {useSelector} from 'react-redux';
 
 function EditProfilInfo({Username, Email, Number, Password}) {
+    const {token, email, status, error, user_name,userId} = useSelector(state => state.loginReducer);
+    console.log('MyProfilScreen.js UserId',userId);
+
     return (
         <VStack space={3}>
            <HStack>
@@ -19,7 +23,7 @@ function EditProfilInfo({Username, Email, Number, Password}) {
                     </Text>
                 </Box>
                 <Box>
-                    <Input size="lg" placeholder={Username} h={10}/>
+                    <Input size="lg" placeholder={user_name} h={10}/>
                 </Box>
             </VStack>
             <VStack w={'100%'} alignSelf={'flex-start'} space={1}>
@@ -29,7 +33,7 @@ function EditProfilInfo({Username, Email, Number, Password}) {
                     </Text>
                 </Box>
                 <Box>
-                    <Input size="lg" placeholder={Email} h={10}/>
+                    <Input size="lg" placeholder={email} h={10}/>
                 </Box>
             </VStack>
             <VStack w={'100%'} alignSelf={'flex-start'} space={1}>

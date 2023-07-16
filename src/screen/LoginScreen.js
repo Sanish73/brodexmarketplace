@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {login} from '../Redux/actions/brandAction';
+
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
+  const page = 1;
+  const refresh = true;
+
+  const dispatch = useDispatch();
+
+
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const email  = 'admin@admin.com';
+  const password = 'fancystore';
+
   const handleLogin = () => {
-    // Implement login functionality here
-    console.log('Email:', email);
-    console.log('Password:', password);
+    login('', email , password, page, refresh)(dispatch);
+   
   };
 
   return (
@@ -23,14 +35,14 @@ const LoginScreen = () => {
         <TextInput
           style={styles.input}
           value={email}
-          onChangeText={setEmail}
+          // onChangeText={setEmail}
           placeholder="Enter your email"
         />
         <Text style={styles.label}>Password</Text>
         <TextInput
           style={styles.input}
           value={password}
-          onChangeText={setPassword}
+          // onChangeText={setPassword}
           placeholder="Enter your password"
           secureTextEntry
         />

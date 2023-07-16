@@ -18,14 +18,27 @@ import {store} from './Redux/store';
 // import CartBox from './components/CartBox';
 import CartScreen from './screen/CartScreen';
 import LoginScreen from './screen/LoginScreen';
+import { useSelector } from 'react-redux';
 function AppBox() {
     const Stack = createNativeStackNavigator();
-    const isLoggedIn = true; // Example login status, replace with your logic
+
+      const { 
+        token,
+        email,
+        status,
+        error,
+        user_name,
+        userId
+        // isLoggedIn
+
+       } =  useSelector( state => state.loginReducer );
+       console.log("App.js Token GLobal ----->>>>>",token);
   
+   
     return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {isLoggedIn ? (
+          {status && token !== null?(
             <>
             <Stack.Screen name="Root" component={RootScreen} />
               <Stack.Screen name="Payments" component={PaymentScreen} />
