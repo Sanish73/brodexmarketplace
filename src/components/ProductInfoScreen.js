@@ -69,6 +69,7 @@ export function ProductInfoScreen({route}) {
                 const [cartItems, setCartItems] = useState([]);
 
                 const handleButtonClickStore = async () => {
+                    console.log('cartScreen.js------------------')
                   try {
                     const item = {
                       id: route.params.id,

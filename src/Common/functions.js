@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const baseUri = 'http://192.168.1.15/FinalSuperMarketAPI/api/';
 
@@ -49,4 +50,24 @@ export const request = async($endpoint, data, $callback, $catchFeedback = (e) =>
             console.log("Error >>", quot, x, '<< error');
             $catchFeedback(false);
         });
+}
+
+export const storeData = async ($key , value , $callback = ()=>{}) => {
+    //    console.log("++++++++++++++++++++++++++++++++++++++++");
+    try {
+      const jsonValue = JSON.stringify(value)
+      await AsyncStorage.setItem($key , jsonValue)
+      return $callback(value);
+    } catch (e) {
+      return $callback({})
+    }
+}
+
+export const getStoredData = async ($key , $callback) => {
+    try {
+      const jsonValue = await AsyncStorage.getItem($key);
+      return $callback( true , jsonValue != null ? JSON.parse(jsonValue) : {});
+    } catch(e) {
+      return $callback( false , {});
+    }
 }

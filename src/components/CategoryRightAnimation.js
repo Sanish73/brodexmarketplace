@@ -22,7 +22,7 @@ export default function CategoryRightAnimation({
     loading
 }) {
 
-    // console.log("oooooooooooooooooooooooooooooooooooooo",get_related_products);
+    console.log("CategoryRIghtANimiton");
 
     const {get_related_products} = _termData;
     const {_loading} = loading;

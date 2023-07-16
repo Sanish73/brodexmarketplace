@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, {useState, useEffect} from 'react';
 import {NativeBaseProvider} from 'native-base';
 
 import {RootTagContext, SafeAreaView, StyleSheet} from 'react-native';
@@ -15,30 +14,33 @@ import OOOrder from './screen/OOOrder';
 import MyProfilScreen from './components/MyProfilScreen';
 import {Provider} from 'react-redux';
 import {store} from './Redux/store';
-// import CartBox from './components/CartBox';
 import CartScreen from './screen/CartScreen';
 import LoginScreen from './screen/LoginScreen';
 import { useSelector } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getStoredData } from './Common/functions';
+
 function AppBox() {
     const Stack = createNativeStackNavigator();
 
       const { 
-        token,
-        email,
-        status,
-        error,
-        user_name,
-        userId
-        // isLoggedIn
+        loginStatus
 
-       } =  useSelector( state => state.loginReducer );
-       console.log("App.js Token GLobal ----->>>>>",token);
+       } =  useSelector( state => state.forTokenReducer );
+
+      
+      useEffect(() => {
+        getStoredData('@loginStatus', function(statee , dta){
+          (dta?.status , dta);
+        });
+      }, []);
+       console.log("App.js Token GLobal ----->>>>>",loginStatus);
   
    
     return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {status && token !== null?(
+          {loginStatus?(
             <>
             <Stack.Screen name="Root" component={RootScreen} />
               <Stack.Screen name="Payments" component={PaymentScreen} />

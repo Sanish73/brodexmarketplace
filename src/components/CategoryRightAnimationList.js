@@ -19,9 +19,11 @@ export const CategoryRightAnimationList = ({data}) => {
 
     const navigation = useNavigation();
     // console.log(data.productImage);
+          console.log("cateforyRightANiationList---------------")
+
 
     const handlePress = (item) => {
-    //    console.log("cateforyRightANiationList---------------",item)
+       console.log("ProductInfo---------------")
         navigation.navigate('ProductInfo'  , item);
     }
 

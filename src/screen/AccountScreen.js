@@ -17,6 +17,8 @@ import {StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 function ProfileListItem({
     name,
@@ -54,8 +56,16 @@ function ProfileListItem({
 }
 
 function ProfilHeader() {
-    const {token, email, status, error, user_name,userId} = useSelector(state => state.loginReducer);
-    console.log('AccountScreen UserId',userId);
+    const { 
+        loginStatus,
+        loginData 
+
+
+       } =  useSelector( state => state.forTokenReducer );
+
+    console.log('AccountScreen UserId',loginData);
+
+    const dispatch  = s
 
     return (
         <Box style={styles.mainBackground} shadow={3}>
@@ -106,8 +116,18 @@ export function AccountScreen() {
                 style: 'cancel'
             }, {
                 text: 'OK',
-                onPress: () => {}
+                onPress: async () => {
+               
+                    // const storedCartItems = await AsyncStorage.getItem('token');
+                    // console.log(storedCartItems)
+                  // Clear the token from AsyncStorage
+                  await AsyncStorage.removeItem('token');
+                  // Perform any other logout logic here
+          
+                  // Example: Redirect to the login screen or perform any other navigation
+                  // navigation.navigate('LoginScreen');
             }
+          }
         ], {cancelable: false});
     }
 

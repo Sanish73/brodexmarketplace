@@ -1,4 +1,6 @@
 import {request} from "../../Common/functions";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const onProductListWaiting = (page, refresh) => ({
     type: 'LIST_PRODUCT_WAITING',
@@ -59,7 +61,20 @@ const OnLoginError = (message) => ({type: 'LOGIN_ERROR', payload: {
     message
 }});
 
-// =====================================================
+// ===========================token==========================
+
+export const loginStateChange =(state = false , data={} , msg = "")=>async dispatch =>{
+    // console.log("happpppppppppppppppppppppppppppppppppppppp");
+    dispatch({
+        type : 'LOGIN_STATE_CHANGED',
+        payload:{
+            state, 
+            data,
+            msg
+        }
+    })
+}
+
 export const productListing = (token, page, refresh) => async dispatch => {
    
     dispatch(onProductListWaiting(page, refresh));
@@ -99,27 +114,47 @@ export const termCatoListing = (token, categoryId, page, refresh) => async dispa
     }, token);
 }
 
-export const login = (token, email , password, page, refresh) => async dispatch => {
+export const login = (token, email , password, page, refresh,successcallBack) => async dispatch => {
     console.log("this is Login===============",{email});
     // dispatch(onTermCatoListWaiting(page, refresh));
 
    
-  const loginEndpoint = `login`;
-    await request(loginEndpoint, {
-        email,
-        password
-    }, function (val, data) {
+        const loginEndpoint = `login`;
+            await request(loginEndpoint, {
+                email,
+                password
+            }, function (val, data) {
 
-        if (data) {
-            console.log(data, 'BrandAction.js------------------')
-            dispatch(onLoginSuccess(data, page, refresh));
-           
-        } else {
-            dispatch(OnLoginError(data
-                ?.message || "Login Failed. Please try again later."));
-        }
+             if(data?.status){
+                // console.log(data,"///////////////");
+                dispatch(onLoginSuccess(data, page, refresh));
+                successcallBack(data);
+             }
+     
     }, function () {
         dispatch(onTermCatoListError("Please check your internet connection and try again later."));
     }, token);
 }
+
+
+// export const storeUserData = (token, email, id) => {
+//   return async (dispatch) => {
+//     // Store the data in AsyncStorage
+//     try {
+//       await AsyncStorage.setItem('token', token);
+//       await AsyncStorage.setItem('email', email);
+//       await AsyncStorage.setItem('id', id);
+
+//       // Dispatch an action to update the Redux store with the payload
+//       dispatch({
+//         type: 'STORE_USER_DATA',
+//         payload: { token, email, id }
+//       });
+//     } catch (error) {
+//       // Handle any error that occurs during storage
+//       console.error('Error storing user data:', error);
+//     }
+//   };
+// };
+
 

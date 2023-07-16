@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {login} from '../Redux/actions/brandAction';
-
+import  {storeData}  from '../Common/functions';
+import  {getStoredData}  from '../Common/functions';
+import { loginStateChange } from '../Redux/actions/brandAction';
 
 const LoginScreen = () => {
 
@@ -20,7 +22,21 @@ const LoginScreen = () => {
   const password = 'fancystore';
 
   const handleLogin = () => {
-    login('', email , password, page, refresh)(dispatch);
+    login('', email , password, page, refresh, function(dt){
+      // console.log("++++++++++++++++++++++",dt);
+    
+      if(dt?.status){
+       
+        //  console.log("++++++++++++++++++++++++++++++++++++++++");
+        storeData("@loginstatus",dt,function(dtx){
+          loginStateChange( dt?.status , dtx)(dispatch);
+          //fortokenREduxer.js
+             });
+
+      }else(
+        Alert.alert("Error","Invalid Email or Password")
+      )
+    })(dispatch);
    
   };
 
