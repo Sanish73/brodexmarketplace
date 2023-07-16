@@ -3,7 +3,7 @@ import React from 'react'
 import {Box, Input, VStack, Text, Button, HStack, Heading} from 'native-base'
 import {useSelector} from 'react-redux';
 
-function EditProfilInfo({Username, Email, Number, Password}) {
+function EditProfilInfo({Number, Password}) {
     const {token, email, status, error, user_name,userId} = useSelector(state => state.loginReducer);
     console.log('MyProfilScreen.js UserId',userId);
 
@@ -73,8 +73,7 @@ const MyProfilScreen = () => {
             height:'100%'
         }}>
             <EditProfilInfo
-                Username={'Sanish Thapa'}
-                Email={'thapasanish73@gmail.com'}
+               
                 Number={'9844554655'}
                 Password={'password'}/>
 
