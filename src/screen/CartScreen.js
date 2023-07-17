@@ -17,24 +17,25 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function CartScreen({ route }) {
+    console.log('cartScreen.js------------------')
 
-    const [cartItems, setCartItems] = useState([]);
+    // const [cartItems, setCartItems] = useState([]);
 
-    useEffect(() => {
-      const fetchCartItems = async () => {
-        try {
-          // Retrieve cart items from AsyncStorage on component mount
-          const storedCartItems = await AsyncStorage.getItem('cartItems');
+    // useEffect(() => {
+    //   const fetchCartItems = async () => {
+    //     try {
+    //       // Retrieve cart items from AsyncStorage on component mount
+    //       const storedCartItems = await AsyncStorage.getItem('cartItems');
          
-          const parsedCartItems = storedCartItems ? JSON.parse(storedCartItems) : [];
-          setCartItems(parsedCartItems);
-        } catch (error) {
-          console.log(error);
-        }
-      };
+    //       const parsedCartItems = storedCartItems ? JSON.parse(storedCartItems) : [];
+    //       setCartItems(parsedCartItems);
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   };
   
-      fetchCartItems();
-    }, []);
+    //   fetchCartItems();
+    // }, []);
 
     const navigation = useNavigation();
     const [cartProducts,
@@ -85,12 +86,12 @@ export default function CartScreen({ route }) {
     ]);
 
     const handlePressGoToPayment = async() => {
-        try {
-            await AsyncStorage.clear();
-            console.log("cartScreen",cartItems)
-        } catch (error) {
+        // try {
+        //     await AsyncStorage.clear();
+        //     console.log("cartScreen",cartItems)
+        // } catch (error) {
             
-        }
+        // }
         // navigation.navigate('Order');
         
     }
@@ -99,7 +100,7 @@ export default function CartScreen({ route }) {
 
    
     // console.log('cartScreen',route.params.id);
-    console.log("cartScreen",cartItems)
+    // console.log("cartScreen",cartItems)
     // console.warn(JSON.stringify((route.params, null, 2)));
     // console.log(productPrice)
 

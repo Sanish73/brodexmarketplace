@@ -33,6 +33,7 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
 export function ProductInfoScreen({route}) {
 
     const navigation = useNavigation();
@@ -66,30 +67,30 @@ export function ProductInfoScreen({route}) {
 
 
                
-                const [cartItems, setCartItems] = useState([]);
+                // const [cartItems, setCartItems] = useState([]);
 
-                const handleButtonClickStore = async () => {
-                    console.log('cartScreen.js------------------')
-                  try {
-                    const item = {
-                      id: route.params.id,
-                      productImage: route.params.productImage,
-                      productName: route.params.productName,
-                      productPrice: route.params.productPrice,
-                    };
+                const handleButtonClickStore =  () => {
+                   
+                //   try {
+                //     const item = {
+                //       id: route.params.id,
+                //       productImage: route.params.productImage,
+                //       productName: route.params.productName,
+                //       productPrice: route.params.productPrice,
+                //     };
               
-                    // Retrieve existing cart items from AsyncStorage
-                    const storedCartItems = await AsyncStorage.getItem('cartItems');
-                    const parsedCartItems = storedCartItems ? JSON.parse(storedCartItems) : [];
+                //     // Retrieve existing cart items from AsyncStorage
+                //     const storedCartItems = await AsyncStorage.getItem('cartItems');
+                //     const parsedCartItems = storedCartItems ? JSON.parse(storedCartItems) : [];
               
-                    // Add the current item to the cart
-                    parsedCartItems.push(item);
+                //     // Add the current item to the cart
+                //     parsedCartItems.push(item);
               
-                    // Store the updated cart items in AsyncStorage
-                    await AsyncStorage.setItem('cartItems', JSON.stringify(parsedCartItems));
+                //     // Store the updated cart items in AsyncStorage
+                //     await AsyncStorage.setItem('cartItems', JSON.stringify(parsedCartItems));
               
-                    // Update the cart items state
-                    setCartItems(parsedCartItems);
+                //     // Update the cart items state
+                //     setCartItems(parsedCartItems);
               
                    
 
@@ -98,27 +99,27 @@ export function ProductInfoScreen({route}) {
                     navigation.navigate('cartScreen');
                     // console.log('Item added to cart:', item);
                 } else {
-                    console.warn('Navigation prop is not defined');
+                    console.warn('cartScreen Navigation prop is not defined');
                 }
-                  } catch (error) {
-                    console.log(error);
-                  }
+                //   } catch (error) {
+                //     console.log(error);
+                //   }
+                // };
+              
+                // useEffect(() => {
+                //   const fetchCartItems = async () => {
+                //     try {
+                //       // Retrieve cart items from AsyncStorage on component mount
+                //       const storedCartItems = await AsyncStorage.getItem('cartItems');
+                //       const parsedCartItems = storedCartItems ? JSON.parse(storedCartItems) : [];
+                //       setCartItems(parsedCartItems);
+                //     } catch (error) {
+                //       console.log(error);
+                //     }
+                //   };
+              
+                //   fetchCartItems();
                 };
-              
-                useEffect(() => {
-                  const fetchCartItems = async () => {
-                    try {
-                      // Retrieve cart items from AsyncStorage on component mount
-                      const storedCartItems = await AsyncStorage.getItem('cartItems');
-                      const parsedCartItems = storedCartItems ? JSON.parse(storedCartItems) : [];
-                      setCartItems(parsedCartItems);
-                    } catch (error) {
-                      console.log(error);
-                    }
-                  };
-              
-                  fetchCartItems();
-                }, []);
   
 
  

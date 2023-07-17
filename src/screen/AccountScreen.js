@@ -19,6 +19,7 @@ import {useNavigation} from '@react-navigation/native';
 import {useSelector , useDispatch} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { loginStateChange } from '../Redux/actions/brandAction';
+import { storeData } from '../Common/functions';
 
 
 
@@ -58,7 +59,13 @@ function ProfileListItem({
 }
 
 function ProfilHeader() {
-    
+    const { 
+        loginStatus,
+        loginData 
+
+
+       } =  useSelector( state => state.forTokenReducer );
+
 
     return (
         <Box style={styles.mainBackground} shadow={3}>
@@ -82,11 +89,11 @@ function ProfilHeader() {
                                 style={{
                                 fontSize: 24,
                                 fontWeight: 'bold'
-                            }}>user_name</Heading>
+                            }}>{loginData.data.user_name}</Heading>
                         </HStack>
 
                         <HStack pt={0}>
-                            <Text fontSize="xl" color='white'>email</Text>
+                            <Text fontSize="xl" color='white'>{loginData.data.email}</Text>
                         </HStack>
                     </VStack>
 
@@ -106,12 +113,19 @@ export function AccountScreen() {
 
        } =  useSelector( state => state.forTokenReducer );
 
-    console.log('AccountScreen UserId',loginData);
+    console.log('AccountScreen=>>>',loginData);
     const dispatch = useDispatch();
 
 
-const logOutDispatch =()=>{
-     loginStateChange( false , "hdsh")(dispatch)
+const logOutDispatch =  ()=>{
+
+    // console.log("-------------------------",storeData);
+    //  loginStateChange( false , loginData)(dispatch);
+     storeData("@loginstatus",(''),function(dtx){
+        loginStateChange( false, dtx)(dispatch);
+
+             });
+    
 
 }
     const askForLogout = () => {

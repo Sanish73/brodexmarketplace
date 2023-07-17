@@ -16,12 +16,16 @@ import {Provider} from 'react-redux';
 import {store} from './Redux/store';
 import CartScreen from './screen/CartScreen';
 import LoginScreen from './screen/LoginScreen';
-import { useSelector } from 'react-redux';
+import { useSelector ,useDispatch } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getStoredData } from './Common/functions';
+import { loginStateChange } from './Redux';
+
 
 function AppBox() {
     const Stack = createNativeStackNavigator();
+    const dispatch = useDispatch();
+
 
       const { 
         loginStatus
@@ -30,8 +34,10 @@ function AppBox() {
 
       
       useEffect(() => {
-        getStoredData('@loginStatus', function(statee , dta){
-          (dta?.status , dta);
+        getStoredData('@loginstatus', function(statee , dta){
+          loginStateChange( dta?.status , dta)(dispatch);
+
+          // console.log("2+++++++++++++++342342342342342342342=============",dta);
         });
       }, []);
        console.log("App.js Token GLobal ----->>>>>",loginStatus);
