@@ -40,10 +40,10 @@ export function HomeSearchBox() {
                 size = {
                     20
                 }
-                color = "gray.400" name = "md-search-outline" />}/>
+                name = "md-search-outline" />}/>
             </Box>
             <Box w={'15%'} alignItems={'center'} justifyContent={'center'} flex={1}>
-                <Icon name="scan" size={30} color="gray.400"/>
+                <Icon name="scan" size={30}/>
             </Box>
         </HStack>
     );
