@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Alert, ScrollView, TouchableOpacity} from 'react-native';
 import {
     Text,
@@ -14,6 +14,21 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function CartProductBoxes({data}) {
+
+    const [countedNumber,
+        setCountNumber] = useState(0);
+
+    const handlePlusClick = () => {
+        setCountNumber(1);
+        
+    }
+    const handleMinusClick = () =>{
+        if((countedNumber - 1) >= data['quantity']){
+            Alert.alert("You can't remove this item");
+            }else{
+                setCountNumber(-1)
+            }
+    }
 
     return (
         <Box paddingTop={3} style={{
@@ -70,35 +85,39 @@ export default function CartProductBoxes({data}) {
                         height: '60%',
                         marginRight: 3
                     }}>
-                        <Box borderRadius={5} backgroundColor={'#DEDCDB'}>
-                            <Icon
-                                size={24}
-                                name={'remove-sharp'}
-                                style={{
-                                color: '#F57F17',
-                                padding: 2
-                            }}></Icon>
+                        <TouchableOpacity onPress={handleMinusClick}>
+                            <Box borderRadius={5} backgroundColor={'#DEDCDB'}>
+                                <Icon
+                                    size={24}
+                                    name={'remove-sharp'}
+                                    style={{
+                                    color: '#F57F17',
+                                    padding: 2
+                                }}></Icon>
 
-                        </Box>
+                            </Box>
+                        </TouchableOpacity>
                         <Text bold fontSize={19}>
-                            2
+                            {countedNumber}
                         </Text>
-                        <Box
-                            borderRadius={5}
-                            backgroundColor={'#DEDCDB'}
-                            style={{
-                            overflow: 'hidden',
-                            width: 30
-                        }}>
-                            <Icon
-                                size={24}
-                                name={'add'}
+                        <TouchableOpacity onPress={handlePlusClick}>
+                            <Box
+                                borderRadius={5}
+                                backgroundColor={'#DEDCDB'}
                                 style={{
-                                color: '#F57F17',
-                                padding: 2
-                            }}></Icon>
+                                overflow: 'hidden',
+                                width: 30
+                            }}>
+                                <Icon
+                                    size={24}
+                                    name={'add'}
+                                    style={{
+                                    color: '#F57F17',
+                                    padding: 2
+                                }}></Icon>
 
-                        </Box>
+                            </Box>
+                        </TouchableOpacity>
                     </HStack>
                     <HStack
                         style={{
