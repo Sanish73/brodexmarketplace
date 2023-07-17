@@ -1,6 +1,7 @@
 import { Box, HStack, VStack, Text, Center } from 'native-base';
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Modal, TextInput, Button } from 'react-native';
+import {Picker} from '@react-native-picker/picker';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function CartBox() {
@@ -37,9 +38,11 @@ export default function CartBox() {
         <VStack w={'64%'}>
           <HStack alignSelf={'flex-start'} alignItems={'center'}>
             <Text fontSize={16}>Deliver at:</Text>
-            <Text bold fontSize={17} pl={1} onPress={handleTextClick}>
-              {deliveryLocation}
-            </Text>
+            <TouchableOpacity onPress={handleTextClick}>
+              <Text bold fontSize={17} pl={1}>
+                {deliveryLocation}
+              </Text>
+            </TouchableOpacity>
           </HStack>
           <Text alignSelf={'flex-start'}>{deliveryAddress}</Text>
         </VStack>
@@ -54,12 +57,18 @@ export default function CartBox() {
       <Modal visible={isModalVisible} animationType="slide">
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Text>Change Delivery Details</Text>
-          <TextInput
-            style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginVertical: 10 }}
-            placeholder="Deliver At"
-            onChangeText={(text) => setNewDeliveryLocation(text)}
-            value={newDeliveryLocation}
-          />
+          <View style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginVertical: 10 }}>
+  <Picker
+    selectedValue={newDeliveryLocation}
+    style={{ flex: 1 }}
+    onValueChange={(itemValue) => setNewDeliveryLocation(itemValue)}
+  >
+    <Picker.Item label="Home" value="Home" />
+    <Picker.Item label="Outside" value="Outside" />
+    <Picker.Item label="Office" value="Office" />
+  </Picker>
+</View>
+
           <TextInput
             style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginVertical: 10 }}
             placeholder="Address"
