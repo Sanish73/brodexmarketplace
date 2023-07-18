@@ -6,7 +6,7 @@ import {loginReducer} from './loginReducer';
 import { forTokenReducer } from './forTokenReducer';
 import cartReducer from './cartReducers/cartReducer';
 import getAllCartReducer from './cartReducers/getAllCartReducer';
-import { getCartTotalReducer } from './cartReducers/GetCartTotalReducer';
+import { getCartTotalReducer } from './cartReducers/getCartTotalReducer'; 
 
 
 const rootReducer = combineReducers({

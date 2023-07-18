@@ -14,10 +14,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useDispatch , useSelector } from 'react-redux';
 import { getAllCartTotal } from '../Redux/actions/cartAPIAction';
 
-
 export default function CartProductBoxes({data}) {
  
-    const [countedNumber, setCountNumber] = useState(1);
+    const [countedNumber, setCountNumber] = useState(data.qty);
     const dispatch = useDispatch();
   
 
