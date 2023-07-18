@@ -1,10 +1,4 @@
-import {
-    ScrollView,
-    Box,
-    VStack,
-    Button,
-    View
-} from 'native-base';
+import {ScrollView, Box, VStack, Button, View} from 'native-base';
 import CartBox from '../components/CartBox';
 import React, {useState, useEffect} from 'react';
 import CartProductBoxes from '../components/CartProductBoxes';
@@ -14,26 +8,25 @@ import CartBoxThird from '../components/CartBoxThird';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import cartReducer from '../Redux/reducers/cartReducer';
-import {useSelector , useDispatch} from 'react-redux';
-import { getAllCartItems } from '../Redux/actions/cartAPIAction';
+import {useSelector, useDispatch} from 'react-redux';
+import {getAllCartItems} from '../Redux/actions/cartAPIAction';
 
-
-
-export default function CartScreen({ route }) {
+export default function CartScreen({route}) {
     const dispatch = useDispatch();
     console.log('cartScreen.js------------------')
-    
-    useEffect(()=>{
 
-        getAllCartItems('',  1  )(dispatch);
-    
-    },[]);
+    useEffect(() => {
 
-    
-    const { 
-        cartItems
+        getAllCartItems('', 1)(dispatch);
 
-       } =  useSelector( state => state.getAllCartReducer );
+    }, []);
+
+    const {cartItems} = useSelector(state => state.getAllCartReducer);
+
+    const handleTotalPriceChange = (newTotalPrice) => {
+      setTotalPrice(newTotalPrice);
+      console.log(newTotalPrice);
+    };
 
     const navigation = useNavigation();
     const [cartProducts,
@@ -52,44 +45,14 @@ export default function CartScreen({ route }) {
             productImage: require('../../assets/images/29032316800754916423eae35ddce.webp'),
             isAvailable: true,
             productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
-        }, {
-            id: 2,
-            category: 'product',
-            productName: 'MI Super Bass Bluetooth Wireless Headphones',
-            SinglePrice: 9,
-            TotalPrice: 18,
-            NumberOfProducts: 10,
-            description: 'Up to 20 hours battery life | Super powerful Bass | 40mm dynamic driver | Pressu' +
-                    're less ear muffs | Bluetooth 5.0 | Voice control',
-            isOff: true,
-            offPercentage: 10,
-            productImage: require('../../assets/images/29032316800754916423eae35ddce.webp'),
-            isAvailable: true,
-            productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
-        }, {
-            id: 3,
-            category: 'product',
-            productName: 'MI Super Bass Bluetooth Wireless Headphones',
-            SinglePrice: 9,
-            TotalPrice: 18,
-            NumberOfProducts: 10,
-            description: 'Up to 20 hours battery life | Super powerful Bass | 40mm dynamic driver | Pressu' +
-                    're less ear muffs | Bluetooth 5.0 | Voice control',
-            isOff: true,
-            offPercentage: 10,
-            productImage: require('../../assets/images/29032316800754916423eae35ddce.webp'),
-            isAvailable: true,
-            productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
         }
     ]);
 
     const handlePressGoToPayment = async() => {
-        // navigation.navigate('Order');   
+        // navigation.navigate('Order');
     }
 
-  
     // console.warn(JSON.stringify((route.params, null, 2)));
-
 
     return (
         <View>
@@ -101,13 +64,16 @@ export default function CartScreen({ route }) {
                     <CartBox/>
                     <View>
                         {cartItems.map(data => {
-                            return <CartProductBoxes data={data} key={data.id}/>;
+                            return <CartProductBoxes
+                                data={data}
+                                key={data.id}/>;
                         })}
-                      
+
                     </View>
 
                     <CartBoxSecond/>
-                    <CartToPayList/>
+
+                    <CartToPayList />
                     <CartBoxThird/>
                     <Box h={100}></Box>
 

@@ -10,23 +10,41 @@ import {
     Center
 } from "native-base";
 import Icon from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function CartProductBoxes({data}) {
-    console.log("000000000000000000000",data.productImage);
-
-    const [countedNumber,
-        setCountNumber] = useState(0);
+ 
+    const [countedNumber, setCountNumber] = useState(1);
 
     const handlePlusClick = () => {
-        setCountNumber(1);
-
-    }
+      if (data.qty) {
+        if (countedNumber < data.qty) {
+          setCountNumber(countedNumber + 1);
+  
+          
+        } else {
+          Alert.alert('Product Unavailable', 'This product is currently not available.');
+        }
+      } else {
+        Alert.alert('Product Unavailable', 'Data This product is currently not available.');
+      }
+    };
+  
     const handleMinusClick = () => {
-        // if((countedNumber - 1) >= data['quantity']){     Alert.alert("You can't
-        // remove this item");     }else{         setCountNumber(-1)     }
-    }
+      if (countedNumber > 1) {
+        setCountNumber(countedNumber - 1);
+  
+       
+      }
+    };
+  
+    const totalProductPrice = countedNumber === 1 ? data.productPrice : data.productPrice * countedNumber;
+  
+    
+
+        // Calculate the total product price by multiplying the product price with the product count
+      
+    
 
     return (
         <Box paddingTop={3} style={{
@@ -50,7 +68,7 @@ export default function CartProductBoxes({data}) {
                         height: '60%'
                     }}>
                         <Text bold fontSize={16}>{data.productName}</Text>
-                        <Text fontSize={14} color={'#8C8A89'}>Brightly Serum</Text>
+                        <Text fontSize={14} color={'#8C8A89'}>Quantity: {data.qty}</Text>
                     </VStack>
 
                     <HStack
@@ -130,7 +148,7 @@ export default function CartProductBoxes({data}) {
 
                         </Box>
                         <Text bold fontSize={15} color={'black'}>
-                            19.00
+                        {totalProductPrice}
                         </Text>
 
                     </HStack>

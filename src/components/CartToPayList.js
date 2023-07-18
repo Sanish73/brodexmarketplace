@@ -8,7 +8,7 @@ export default function CartToPayList() {
         <Text>Item total</Text>
         <HStack>
           <Text>$</Text>
-          <Text>23.06</Text>
+          <Text>0</Text>
         </HStack>
       </HStack>
 
