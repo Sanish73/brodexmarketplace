@@ -14,6 +14,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function CartProductBoxes({data}) {
+    console.log("000000000000000000000",data);
 
     const [countedNumber,
         setCountNumber] = useState(0);
@@ -51,7 +52,7 @@ export default function CartProductBoxes({data}) {
                     <VStack style={{
                         height: '60%'
                     }}>
-                        <Text bold fontSize={16}>Scarlett Whistening</Text>
+                        <Text bold fontSize={16}>{data.productName}</Text>
                         <Text fontSize={14} color={'#8C8A89'}>Brightly Serum</Text>
                     </VStack>
 

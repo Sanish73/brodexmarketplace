@@ -13,11 +13,19 @@ import CartToPayList from '../components/CartToPayList';
 import CartBoxThird from '../components/CartBoxThird';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import cartReducer from '../Redux/reducers/cartReducer';
+import {useSelector , useDispatch} from 'react-redux';
 
 
 
 export default function CartScreen({ route }) {
     console.log('cartScreen.js------------------')
+
+
+    const { 
+        cartData
+
+       } =  useSelector( state => state.cartReducer );
 
     // const [cartItems, setCartItems] = useState([]);
 
@@ -102,7 +110,7 @@ export default function CartScreen({ route }) {
     // console.log('cartScreen',route.params.id);
     // console.log("cartScreen",cartItems)
     // console.warn(JSON.stringify((route.params, null, 2)));
-    // console.log(productPrice)
+    // console.log("dsfsdf",cartData.productName)
 
     return (
         <View>
@@ -118,7 +126,7 @@ export default function CartScreen({ route }) {
                         <Text>data.id</Text>
                     })}
                     */}
-                        {cartProducts.map(data => {
+                        {cartData.map(data => {
                             return <CartProductBoxes data={data} key={data.id}/>;
                         })}
                     </View>
