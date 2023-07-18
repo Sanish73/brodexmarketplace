@@ -5,6 +5,7 @@ import { termCatoReducer } from './termCatoReducer';
 import {loginReducer} from './loginReducer';
 import { forTokenReducer } from './forTokenReducer';
 import cartReducer from './cartReducer';
+import getAllCartReducer from './getAllCartReducer';
 
 
 const rootReducer = combineReducers({
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     termCatoReducer     :       termCatoReducer,
     loginReducer        :       loginReducer,
     forTokenReducer     :       forTokenReducer,
-    cartReducer         :       cartReducer
+    cartReducer         :       cartReducer,
+    getAllCartReducer   :       getAllCartReducer
 });
 
 export { rootReducer };

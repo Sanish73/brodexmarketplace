@@ -14,21 +14,18 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function CartProductBoxes({data}) {
-    console.log("000000000000000000000",data);
+    console.log("000000000000000000000",data.productImage);
 
     const [countedNumber,
         setCountNumber] = useState(0);
 
     const handlePlusClick = () => {
         setCountNumber(1);
-        
+
     }
-    const handleMinusClick = () =>{
-        if((countedNumber - 1) >= data['quantity']){
-            Alert.alert("You can't remove this item");
-            }else{
-                setCountNumber(-1)
-            }
+    const handleMinusClick = () => {
+        // if((countedNumber - 1) >= data['quantity']){     Alert.alert("You can't
+        // remove this item");     }else{         setCountNumber(-1)     }
     }
 
     return (
@@ -40,7 +37,7 @@ export default function CartProductBoxes({data}) {
                 <VStack width={'18%'} h={'100%'}>
                     <Box>
                         <Image
-                            source={data.productImage}
+                            source={{ uri: data.productImage }}
                             alt="Alternate Text"
                             size="lg"
                             height="100%"
@@ -67,7 +64,7 @@ export default function CartProductBoxes({data}) {
                             <FontAwesome name="rupee" size={10} color={'black'}/>
                         </Box>
                         <Box>
-                            <Text bold fontSize={15} color={'black'}>10,3</Text>
+                            <Text bold fontSize={15} color={'black'}>{data.productPrice}</Text>
                         </Box>
 
                     </HStack>

@@ -15,35 +15,25 @@ import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import cartReducer from '../Redux/reducers/cartReducer';
 import {useSelector , useDispatch} from 'react-redux';
+import { getAllCartItems } from '../Redux/actions/cartAPIAction';
 
 
 
 export default function CartScreen({ route }) {
+    const dispatch = useDispatch();
     console.log('cartScreen.js------------------')
+    
+    useEffect(()=>{
 
+        getAllCartItems('',  1  )(dispatch);
+    
+    },[]);
 
+    
     const { 
-        cartData
+        cartItems
 
-       } =  useSelector( state => state.cartReducer );
-
-    // const [cartItems, setCartItems] = useState([]);
-
-    // useEffect(() => {
-    //   const fetchCartItems = async () => {
-    //     try {
-    //       // Retrieve cart items from AsyncStorage on component mount
-    //       const storedCartItems = await AsyncStorage.getItem('cartItems');
-         
-    //       const parsedCartItems = storedCartItems ? JSON.parse(storedCartItems) : [];
-    //       setCartItems(parsedCartItems);
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   };
-  
-    //   fetchCartItems();
-    // }, []);
+       } =  useSelector( state => state.getAllCartReducer );
 
     const navigation = useNavigation();
     const [cartProducts,
@@ -94,23 +84,12 @@ export default function CartScreen({ route }) {
     ]);
 
     const handlePressGoToPayment = async() => {
-        // try {
-        //     await AsyncStorage.clear();
-        //     console.log("cartScreen",cartItems)
-        // } catch (error) {
-            
-        // }
-        // navigation.navigate('Order');
-        
+        // navigation.navigate('Order');   
     }
 
-    // const cartItems  = route.params;
-
-   
-    // console.log('cartScreen',route.params.id);
-    // console.log("cartScreen",cartItems)
+  
     // console.warn(JSON.stringify((route.params, null, 2)));
-    // console.log("dsfsdf",cartData.productName)
+
 
     return (
         <View>
@@ -120,16 +99,13 @@ export default function CartScreen({ route }) {
                 <VStack p={4}>
 
                     <CartBox/>
-
                     <View>
-                    {/* {cartItems.map(data=>{
-                        <Text>data.id</Text>
-                    })}
-                    */}
-                        {cartData.map(data => {
+                        {cartItems.map(data => {
                             return <CartProductBoxes data={data} key={data.id}/>;
                         })}
+                      
                     </View>
+
                     <CartBoxSecond/>
                     <CartToPayList/>
                     <CartBoxThird/>
