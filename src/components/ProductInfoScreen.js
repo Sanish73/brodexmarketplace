@@ -32,11 +32,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import {useSelector , useDispatch} from 'react-redux';
+import { cartAPIAction } from '../Redux/actions/cartAPIAction';
 
 export function ProductInfoScreen({route}) {
-
+    const dispatch = useDispatch();
     const navigation = useNavigation();
+
+
 
     const {
         url,
@@ -57,6 +60,7 @@ export function ProductInfoScreen({route}) {
         productImageList
        
     } = route.params;
+    console.log("productInfoScreen ID---->" , id);
    
     const [selectedColor,
         setselectedColor] = useState('Black');
@@ -71,6 +75,8 @@ export function ProductInfoScreen({route}) {
 
                 const handleButtonClickStore =  () => {
                    
+
+                    cartAPIAction('', id , 1 ,productPrice, productName )(dispatch);
                 //   try {
                 //     const item = {
                 //       id: route.params.id,

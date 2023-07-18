@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const baseUri = 'http://192.168.1.15/FinalSuperMarketAPI/api/';
+export const baseUri = 'http://192.168.1.64/FinalSuperMarketAPI/api/';
 
 
 export const objectToFormData = (data) => {

@@ -4,6 +4,7 @@ import { dataReducer } from './apiReducer';
 import { termCatoReducer } from './termCatoReducer';
 import {loginReducer} from './loginReducer';
 import { forTokenReducer } from './forTokenReducer';
+import cartReducer from './cartReducer';
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     dataReducer         :       dataReducer,
     termCatoReducer     :       termCatoReducer,
     loginReducer        :       loginReducer,
-    forTokenReducer     :       forTokenReducer
+    forTokenReducer     :       forTokenReducer,
+    cartReducer         :       cartReducer
 });
 
 export { rootReducer };
