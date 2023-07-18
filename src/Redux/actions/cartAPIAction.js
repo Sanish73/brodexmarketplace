@@ -11,6 +11,14 @@ const onGetAllCartSuccess = (data, page, refresh) => ({
 });
 
 
+const onGetAllCartTotalSuccess = (data) => ({
+    type: 'GET_ALL_CART_TOTAL_SUCCESS',
+    payload:data
+});
+
+
+
+
 
 
 export const cartAPIAction = (token, id,qty,productPrice,productName,productImage) => async dispatch => {
@@ -50,6 +58,30 @@ export const getAllCartItems = (token, page) => async dispatch => {
         if (data) {
             console.log(data, 'cartaAPIAction.js===getAllCartItems------------------')
             dispatch(onGetAllCartSuccess(data));
+        } else {
+            // dispatch(onTermCatoListError(data
+            //     ?.message || "Request Failed. Please try again later."));
+        }
+    }, function () {
+        // dispatch(onTermCatoListError("Please check your internet connection and try again later."));
+    }, token);
+}
+
+
+
+
+export const getAllCartTotal = (token, id, qty ) => async dispatch => {
+    console.log("this is getALlCartTotal===============");
+    // dispatch(onTermCatoListWaiting(page, refresh));
+
+    const Endpoint = `get_cart_total`;
+    await request(Endpoint, {
+        id,
+        qty
+    }, function (val, data) {
+        if (data) {
+            console.log(data, 'cartaAPIAction.js===getAllCartTotal------------------')
+            dispatch(onGetAllCartTotalSuccess(data));
         } else {
             // dispatch(onTermCatoListError(data
             //     ?.message || "Request Failed. Please try again later."));

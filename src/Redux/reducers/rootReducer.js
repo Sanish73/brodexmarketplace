@@ -4,8 +4,9 @@ import { dataReducer } from './apiReducer';
 import { termCatoReducer } from './termCatoReducer';
 import {loginReducer} from './loginReducer';
 import { forTokenReducer } from './forTokenReducer';
-import cartReducer from './cartReducer';
-import getAllCartReducer from './getAllCartReducer';
+import cartReducer from './cartReducers/cartReducer';
+import getAllCartReducer from './cartReducers/getAllCartReducer';
+import { getCartTotalReducer } from './cartReducers/GetCartTotalReducer';
 
 
 const rootReducer = combineReducers({
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     loginReducer        :       loginReducer,
     forTokenReducer     :       forTokenReducer,
     cartReducer         :       cartReducer,
-    getAllCartReducer   :       getAllCartReducer
+    getAllCartReducer   :       getAllCartReducer,
+    getCartTotalReducer :       getCartTotalReducer
 });
 
 export { rootReducer };

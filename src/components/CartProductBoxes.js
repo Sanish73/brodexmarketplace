@@ -11,20 +11,25 @@ import {
 } from "native-base";
 import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { useDispatch , useSelector } from 'react-redux';
+import { getAllCartTotal } from '../Redux/actions/cartAPIAction';
+
 
 export default function CartProductBoxes({data}) {
  
     const [countedNumber, setCountNumber] = useState(1);
+    const dispatch = useDispatch();
+  
 
     const handlePlusClick = () => {
       if (data.qty) {
-        if (countedNumber < data.qty) {
+        // if (countedNumber < 1) {
           setCountNumber(countedNumber + 1);
-  
+          getAllCartTotal('', data.id, countedNumber + 1)(dispatch);
           
-        } else {
-          Alert.alert('Product Unavailable', 'This product is currently not available.');
-        }
+        // } else {
+        //   Alert.alert('Product Unavailable', 'This product is currently not available.');
+        // }
       } else {
         Alert.alert('Product Unavailable', 'Data This product is currently not available.');
       }
@@ -33,12 +38,14 @@ export default function CartProductBoxes({data}) {
     const handleMinusClick = () => {
       if (countedNumber > 1) {
         setCountNumber(countedNumber - 1);
-  
+        getAllCartTotal('', data.id, countedNumber - 1)(dispatch);
        
       }
     };
   
     const totalProductPrice = countedNumber === 1 ? data.productPrice : data.productPrice * countedNumber;
+
+   
   
     
 
