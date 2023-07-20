@@ -1,7 +1,6 @@
 import {Box, HStack, Text, View} from 'native-base'
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux';
-import {getCartTotalReducer} from '../Redux/reducers/cartReducers/getCartTotalReducer';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function CartToPayList() {

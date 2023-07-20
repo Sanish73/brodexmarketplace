@@ -4,7 +4,7 @@ const initialState = {
   };
   
   export const getCartTotalReducer = (state = initialState, action) => {
-    console.log("s----------------------------------dljflkdf");
+    // console.log("s----------------------------------dljflkdf");
     
     switch (action.type) {
       case 'GET_ALL_CART_TOTAL_SUCCESS':

@@ -75,6 +75,16 @@ export const loginStateChange =(state = false , data={} , msg = "")=>async dispa
     })
 }
 
+
+// ===================================sadas=============
+const onHomePageProductSuccess = (data, page, refresh) => ({
+   
+    type: 'HOME_PAGE_PRODUCT_SUCCESS',
+    payload:data
+        
+     
+});
+
 export const productListing = (token, page, refresh) => async dispatch => {
    
     dispatch(onProductListWaiting(page, refresh));
@@ -136,6 +146,27 @@ export const login = (token, email , password, page, refresh,successcallBack) =>
     }, token);
 }
 
+
+
+export const getHomePageProducts = (token, latest_product, page, refresh) => async dispatch => {
+    console.log("this is latest_product===============",{latest_product});
+    // dispatch(onTermCatoListWaiting(page, refresh));
+
+    const categoryEndpoint = `latest_product`;
+    await request(categoryEndpoint, {
+        latest_product
+    }, function (val, data) {
+        if (data) {
+            // console.log(data, 'BrandAction.js------------------')
+            dispatch(onHomePageProductSuccess(data, page, refresh));
+        } else {
+            // dispatch(onTermCatoListError(data
+            //     ?.message || "Request Failed. Please try again later."));
+        }
+    }, function () {
+        // dispatch(onTermCatoListError("Please check your internet connection and try again later."));
+    }, token);
+}
 
 // export const storeUserData = (token, email, id) => {
 //   return async (dispatch) => {

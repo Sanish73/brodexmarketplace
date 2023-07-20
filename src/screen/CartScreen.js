@@ -10,6 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import cartReducer from '../Redux/reducers/cartReducers/cartReducer';
 import {useSelector, useDispatch} from 'react-redux';
 import {getAllCartItems} from '../Redux/actions/cartAPIAction';
+import { getAllCartTotal } from '../Redux/actions/cartAPIAction';
 
 export default function CartScreen({route}) {
     const dispatch = useDispatch();
