@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {COLOURS} from '../database/Database';
-import {Image} from 'native-base'
+import {Image} from 'native-base';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -19,7 +19,7 @@ export const CategoryRightAnimationList = ({data}) => {
 
     const navigation = useNavigation();
     // console.log(data.productImage);
-          console.log("cateforyRightANiationList---------------")
+    console.log("cateforyRightANiationList---------------")
 
 
     const handlePress = (item) => {

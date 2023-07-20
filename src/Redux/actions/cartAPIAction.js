@@ -21,6 +21,7 @@ const onGetAllCartTotalSuccess = (data) => ({
 
 
 
+
 export const cartAPIAction = (token, id,qty,productPrice,productName,productImage) => async dispatch => {
     // console.log("this is cartAPIAction===============",{id});
     // dispatch(onTermCatoListWaiting(page, refresh));
@@ -90,3 +91,5 @@ export const getAllCartTotal = (token, id, qty ) => async dispatch => {
         // dispatch(onTermCatoListError("Please check your internet connection and try again later."));
     }, token);
 }
+
+

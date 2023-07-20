@@ -77,10 +77,11 @@ export const loginStateChange =(state = false , data={} , msg = "")=>async dispa
 
 
 // ===================================sadas=============
-const onHomePageProductSuccess = (data, page, refresh) => ({
+const onHomePageProductSuccess = (data) => ({
    
     type: 'HOME_PAGE_PRODUCT_SUCCESS',
     payload:data
+   
         
      
 });
@@ -148,17 +149,17 @@ export const login = (token, email , password, page, refresh,successcallBack) =>
 
 
 
-export const getHomePageProducts = (token, latest_product, page, refresh) => async dispatch => {
+export const getHomePageProducts = (token, latest_product) => async dispatch => {
     console.log("this is latest_product===============",{latest_product});
     // dispatch(onTermCatoListWaiting(page, refresh));
 
-    const categoryEndpoint = `latest_product`;
+    const categoryEndpoint = `get_home_page_products`;
     await request(categoryEndpoint, {
         latest_product
     }, function (val, data) {
         if (data) {
-            // console.log(data, 'BrandAction.js------------------')
-            dispatch(onHomePageProductSuccess(data, page, refresh));
+            // console.log(data, 'BrandAction.js-000000000000000000000000000000000000000000000')
+            dispatch(onHomePageProductSuccess(data));
         } else {
             // dispatch(onTermCatoListError(data
             //     ?.message || "Request Failed. Please try again later."));

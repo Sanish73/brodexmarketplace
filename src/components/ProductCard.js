@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import {COLOURS} from '../database/Database';
+import {Image} from 'native-base';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -9,6 +10,9 @@ import { useNavigation } from '@react-navigation/native';
 
 export const ProductCard = ({data}) => {
     const navigation = useNavigation();
+    const special_pricePercent = ((data.special_price / data.regular_price) * 100).toFixed(0);
+    const randomRating = Math.floor(Math.random() * 7) / 2 + 2; // Generate random rating between 2 and 5, with a step of 0.5
+    const discountAmount = (special_pricePercent/100)*(data.regular_price)
 
     const handlePress = (item) => {
     //    console.log(item)
@@ -25,6 +29,10 @@ export const ProductCard = ({data}) => {
             borderRadius: 5,
             marginBottom: 16
         }}>
+{/* 
+<Text>
+          {JSON.stringify(data.MediaId, null ,1)};
+        </Text> */}
             <View
                 style={{
                 height: 150,
@@ -33,12 +41,13 @@ export const ProductCard = ({data}) => {
               
             }}>
                 <Image
-                    source={data.productImage}
+                 alt="image"
+                    source={{uri : data.productImage}}
                     style={{
                     width: '100%',
                     height: '100%'
                 }}/>
-                {data.isOff ? <View
+                {data.special_price  ? <View
                     style={{
                     position: 'absolute',
                     top: 0,
@@ -52,7 +61,7 @@ export const ProductCard = ({data}) => {
                         color: COLOURS.white,
                         fontWeight: 'bold'
                     }}>
-                        {data.offPercentage}% OFF
+                         {special_pricePercent}% OFF
                     </Text>
                 </View>:<></>}
             </View>
@@ -94,7 +103,7 @@ export const ProductCard = ({data}) => {
                     }}>
                         {data.productPrice}
                     </Text>
-                    {data.isOff && <Text
+                    {(data.special_price == null ||data.special_price == 0 || data.regular_price == data.special_price)?<></>:<Text
                         style={{
                         fontSize: 14,
                         color: COLOURS.grey,
@@ -102,7 +111,7 @@ export const ProductCard = ({data}) => {
                         marginLeft: 4,
                         textDecorationLine: 'line-through'
                     }}>
-                        {data.productPrice + (data.productPrice * data.offPercentage / 100)}
+                         {data.regular_price}
                     </Text>}
                 </View>
                 <View
@@ -127,7 +136,7 @@ export const ProductCard = ({data}) => {
                         fontWeight: '400',
                         marginLeft: 4
                     }}>
-                        2563
+                         {randomRating}
                     </Text>
                 </View>
             </View>

@@ -5,8 +5,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function CartToPayList() {
 
-    // const {cartTotalPrice} = useSelector(state => state.getCartTotalReducer);
-
+    const {cartTotalPrice} = useSelector(state => state.getCartTotalReducer);
+    console.log(cartTotalPrice,"---------------");
     return (
         <Box>
             <HStack justifyContent={'space-between'}>
@@ -16,7 +16,7 @@ export default function CartToPayList() {
                         <FontAwesome name="rupee" size={12} color={'black'}/>
                     </View>
                     <View pl={1}>
-                        <Text bold fontSize={13}>asd</Text>
+                        <Text bold fontSize={13}>{cartTotalPrice.item_total}</Text>
                     </View>
                 </HStack>
             </HStack>

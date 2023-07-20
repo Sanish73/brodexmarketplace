@@ -6,18 +6,20 @@ import {loginReducer} from './loginReducer';
 import { forTokenReducer } from './forTokenReducer';
 import cartReducer from './cartReducers/cartReducer';
 import getAllCartReducer from './cartReducers/getAllCartReducer';
-// import { getCartTotalReducer } from './cartReducers/getCartTotalReducer'; 
+import { getCartTotalReducer } from './cartReducers/getCartTotalReducer'; 
+import homeScreenProductsReducer from './homeScreenProductsReducer';
 
 
 const rootReducer = combineReducers({
-    listBrand           :       useBrandListingReducer,
-    dataReducer         :       dataReducer,
-    termCatoReducer     :       termCatoReducer,
-    loginReducer        :       loginReducer,
-    forTokenReducer     :       forTokenReducer,
-    cartReducer         :       cartReducer,
-    getAllCartReducer   :       getAllCartReducer,
-    // getCartTotalReducer :       getCartTotalReducer
+    listBrand                   :       useBrandListingReducer,
+    dataReducer                 :       dataReducer,
+    termCatoReducer             :       termCatoReducer,
+    loginReducer                :       loginReducer,
+    forTokenReducer             :       forTokenReducer,
+    cartReducer                 :       cartReducer,
+    getAllCartReducer           :       getAllCartReducer,
+    getCartTotalReducer         :       getCartTotalReducer,
+    homeScreenProductsReducer   :       homeScreenProductsReducer
 });
 
 export { rootReducer };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     Text,
     Box,
@@ -30,8 +30,22 @@ import HomeFlashDetaisHead from '../components/HomeFlashDetaisHead';
 import {PLACES, TOP_PLACES} from '../data';
 import {HomeFlashDetaisTop} from '../components/HomeFlashDetaisTop';
 import {Products} from '../components/Products';
+import { getHomePageProducts } from '../Redux';
+import {useSelector, useDispatch} from 'react-redux';
 
 export function HomeScreen() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+
+        getHomePageProducts('', 50)(dispatch);
+
+    }, []);
+
+    
+
+    
+    // console.log(homePageProducts,"0000000000000000000000000000000000000000000000000000000000000");
     return (
         <VStack>
             <HomeSearchBox/>
