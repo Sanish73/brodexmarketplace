@@ -20,6 +20,7 @@ import { useSelector ,useDispatch } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getStoredData } from './Common/functions';
 import { loginStateChange } from './Redux';
+import { getHomePageProducts } from '../Redux';
 
 
 function AppBox() {
@@ -34,8 +35,10 @@ function AppBox() {
 
       
       useEffect(() => {
+        // getHomePageProducts('', 50)(dispatch);
         getStoredData('@loginstatus', function(statee , dta){
           loginStateChange( dta?.status , dta)(dispatch);
+          
 
           // console.log("2+++++++++++++++342342342342342342342=============",dta);
         });
