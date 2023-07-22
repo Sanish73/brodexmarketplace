@@ -1,4 +1,4 @@
-import {ScrollView, Box, VStack, Button, View} from 'native-base';
+import {ScrollView, Box, VStack, Button, View , Text} from 'native-base';
 import CartBox from '../components/CartBox';
 import React, {useState, useEffect} from 'react';
 import CartProductBoxes from '../components/CartProductBoxes';
@@ -22,7 +22,7 @@ export default function CartScreen({route}) {
 
     }, []);
 
-    const {cartItems} = useSelector(state => state.getAllCartReducer);
+    const cartItems = useSelector(state => state.getAllCartReducer);
 
     const handleTotalPriceChange = (newTotalPrice) => {
       setTotalPrice(newTotalPrice);
@@ -50,7 +50,7 @@ export default function CartScreen({route}) {
     ]);
 
     const handlePressGoToPayment = async() => {
-        // navigation.navigate('Order');
+        navigation.navigate('Order');
     }
 
     // console.warn(JSON.stringify((route.params, null, 2)));
@@ -59,12 +59,13 @@ export default function CartScreen({route}) {
         <View>
 
             <ScrollView >
+            {/* <Text>{JSON.stringify(cartItems.cartItems, null , 4)}</Text> */}
 
                 <VStack p={4}>
 
                     <CartBox/>
                     <View>
-                        {cartItems.map(data => {
+                        {(cartItems.cartItems.items || []).map(data => {
                             return <CartProductBoxes
                                 data={data}
                                 key={data.id}/>;

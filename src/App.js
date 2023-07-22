@@ -20,7 +20,6 @@ import { useSelector ,useDispatch } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getStoredData } from './Common/functions';
 import { loginStateChange } from './Redux';
-import { getHomePageProducts } from '../Redux';
 
 
 function AppBox() {

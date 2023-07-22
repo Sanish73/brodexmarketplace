@@ -44,13 +44,6 @@ export default function CartProductBoxes({data}) {
   
     const totalProductPrice = countedNumber === 1 ? data.productPrice : data.productPrice * countedNumber;
 
-   
-  
-    
-
-        // Calculate the total product price by multiplying the product price with the product count
-      
-    
 
     return (
         <Box paddingTop={3} style={{
