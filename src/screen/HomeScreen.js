@@ -22,7 +22,6 @@ import {
 import {COLORS} from '../constants';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {NavigationContainer} from '@react-navigation/native';
-//////////////////////////////////
 import {HomeSearchBox} from '../components/HomeSearchBox';
 import SlideShowBox from '../components/SlideShowBox';
 import HomeImageGrid from '../components/HomeImageGrid';
@@ -38,7 +37,7 @@ export function HomeScreen() {
 
     useEffect(() => {
 
-        getHomePageProducts('', 50)(dispatch);
+        getHomePageProducts('', 10)(dispatch);
 
     }, []);
 

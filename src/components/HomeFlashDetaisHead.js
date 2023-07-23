@@ -1,13 +1,7 @@
 import React from 'react';
-import {
-    View,
-    Text,
-    Image,
-    StyleSheet,
-    FlatList,
-    Dimensions
-} from 'react-native';
+import { View, Text, Image, StyleSheet, FlatList, Dimensions } from 'react-native';
 import StarRating from './StarRating';
+
 
 const data = [
     {
@@ -63,72 +57,67 @@ const data = [
     }
 ];
 
+
 const ITEM_WIDTH = (Dimensions.get('window').width - 207) / 2;
 const ITEM_MARGIN = 10;
 
-const Item = ({item}) => {
-    return (
-        <View
-            style={{
-            width: ITEM_WIDTH,
-            marginRight: ITEM_MARGIN
-        }}>
-            <Image
-                source={item.image}
-                style={{
-                width: ITEM_WIDTH,
-                height: ITEM_WIDTH * 1.5,
-                resizeMode: 'cover',
-                borderRadius: 5
-            }}/>
-            <View
-                style={{
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                alignItems: 'flex-start',
-                marginTop: 10
-            }}>
-                <Text
-                    style={{
-                    fontSize: 16,
-                    fontWeight: 'bold',
-                    textAlign: 'left'
-                }}>{item.text}</Text>
-                <StarRating
-                    rating={item.rating}
-                    style={{
-                    marginTop: 50,
-                    alignSelf: 'flex-start',
-                    width: 80,
-                    height: 20
-                }}/>
-
-            </View>
-        </View>
-    );
-};
+const Item = React.memo(({ item }) => {
+  return (
+    <View style={{ width: ITEM_WIDTH, marginRight: ITEM_MARGIN }}>
+      {/* Your Image component with caching */}
+      <Image
+        source={item.image}
+        style={{
+          width: ITEM_WIDTH,
+          height: ITEM_WIDTH * 1.5,
+          resizeMode: 'cover',
+          borderRadius: 5,
+        }}
+      />
+      <View
+        style={{
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          marginTop: 10,
+        }}
+      >
+        <Text style={{ fontSize: 16, fontWeight: 'bold', textAlign: 'left' }}>{item.text}</Text>
+        <StarRating
+          rating={item.rating}
+          style={{
+            marginTop: 50,
+            alignSelf: 'flex-start',
+            width: 80,
+            height: 20,
+          }}
+        />
+      </View>
+    </View>
+  );
+});
 
 const HomFlashPhoto = () => {
-    return (
-        <FlatList
-            horizontal
-            data={data}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({item}) => <Item item={item}/>}
-            getItemLayout={(data, index) => ({
-            length: ITEM_WIDTH + ITEM_MARGIN,
-            offset: (ITEM_WIDTH + ITEM_MARGIN) * index,
-            index
-        })}
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{
-            paddingHorizontal: 10
-        }}
-            snapToInterval={ITEM_WIDTH + ITEM_MARGIN}
-            snapToAlignment="start"
-            decelerationRate={0.9}/>
-    );
+  return (
+    <FlatList
+      horizontal
+      data={data}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={({ item }) => <Item item={item} />}
+      getItemLayout={(data, index) => ({
+        length: ITEM_WIDTH + ITEM_MARGIN,
+        offset: (ITEM_WIDTH + ITEM_MARGIN) * index,
+        index,
+      })}
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={{ paddingHorizontal: 10 }}
+      snapToInterval={ITEM_WIDTH + ITEM_MARGIN}
+      snapToAlignment="start"
+      decelerationRate={0.9}
+      windowSize={5} // Set an appropriate value based on your use case
+      initialNumToRender={5} // Render more items initially for better performance
+    />
+  );
 };
-
 
 export default HomFlashPhoto;

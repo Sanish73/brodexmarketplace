@@ -20,7 +20,7 @@ export function Products() {
 
   
 
-  const {homePageProducts} = useSelector(state => state.homeScreenProductsReducer);
+  const homePageProducts = useSelector(state => state.homeScreenProductsReducer);
     
 
     const [products,
@@ -101,7 +101,10 @@ export function Products() {
                     // backgroundColor:'red'
                     paddingTop:10
                 }}>
-                    {homePageProducts.map(data => {
+
+                     {/* <Text>{JSON.stringify(homePageProducts.homePageProducts.relatedProducts, null , 4)}</Text> */}
+
+                    {(homePageProducts.homePageProducts.relatedProducts || []).map(data => {
                         return <ProductCard data={data} key={data.id}/>;
                     })}
                 </View>

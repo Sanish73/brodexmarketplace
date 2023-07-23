@@ -1,62 +1,62 @@
-import {View} from 'native-base';
-import React, {Component} from 'react';
+import { View , Text} from 'native-base';
+import React, { useEffect, useState } from 'react';
 import Slideshow from 'react-native-slideshow';
+import { useSelector } from 'react-redux';
 
-export default class SlideshowTest extends Component {
-    constructor(props) {
-        super(props);
+const SlideshowTest = () => {
 
-        this.state = {
-            position: 1,
-            interval: null,
-            dataSource: [
-                {
-                    title: 'Title 1',
-                    caption: 'Caption 1',
-                    url: 'http://placeimg.com/640/480/any'
-                }, {
-                    title: 'Title 2',
-                    caption: 'Caption 2',
-                    url: 'http://placeimg.com/640/480/any'
-                }, {
-                    title: 'Title 3',
-                    caption: 'Caption 3',
-                    url: 'http://placeimg.com/640/480/any'
-                }
-            ]
-        };
-    }
+  
+  const homePageProducts = useSelector(state => state.homeScreenProductsReducer);
+  const [position, setPosition] = useState(1);
+  // const dataSource = [
+  //   {
+  //     title: 'Title 1',
+  //     caption: 'Caption 1',
+  //     url: 'http://placeimg.com/640/480/any'
+  //   },
+  //   {
+  //     title: 'Title 2',
+  //     caption: 'Caption 2',
+  //     url: 'http://placeimg.com/640/480/any'
+  //   },
+  //   {
+  //     title: 'Title 3',
+  //     caption: 'Caption 3',
+  //     url: 'http://placeimg.com/640/480/any'
+  //   }
+  // ];
 
-    componentWillMount() {
-        this.setState({interval: setInterval(() => {
-                this.setState({
-                    position: this.state.position === this.state.dataSource.length
-                        ? 0
-                        : this.state.position + 1
-                });
-            }, 7000)});
-    }
+  const dataSource = homePageProducts.homePageProducts?.slider?.original || []; // Use optional chaining
 
-    componentWillUnmount() {
-        clearInterval(this.state.interval);
-    }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPosition((prevPosition) => (prevPosition === dataSource.length ? 0 : prevPosition + 1));
+    }, 7000);
+    return () => clearInterval(interval);
+  }, []);
 
-    render() {
-        return (
-            <View
-                bgColor={'red.100'}
-                m={2}
-                style={{
-                borderRadius: 8,
-                overflow: 'hidden'
-            }}>
-                <Slideshow
-                    dataSource={this.state.dataSource}
-                    position={this.state.position}
-                    onPositionChanged={position => this.setState({position})}
-                    height={140}
-                    width={200}/>
-            </View>
-        );
-    }
-}
+  
+  return (
+    <View
+      bgColor={'red.100'}
+      m={2}
+      style={{
+        borderRadius: 8,
+        overflow: 'hidden'
+      }}>
+      <Slideshow
+        dataSource={dataSource}
+        position={position}
+        onPositionChanged={setPosition}
+        height={140}
+        width={200}
+      />
+      {/* You can use homePageProducts here */}
+      
+                     {/* <Text>{JSON.stringify(homePageProducts.homePageProducts.slider.original, null , 4)}</Text> */}
+
+    </View>
+  );
+};
+
+export default SlideshowTest;
