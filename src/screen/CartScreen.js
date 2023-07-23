@@ -3,6 +3,7 @@ import CartBox from '../components/CartBox';
 import React, {useState, useEffect} from 'react';
 import CartProductBoxes from '../components/CartProductBoxes';
 import CartBoxSecond from '../components/CartBoxSecond';
+import CartBoxThirdFOrShippingAddress from '../components/CartBoxThirdFOrShippingAddress';
 import CartToPayList from '../components/CartToPayList';
 import CartBoxThird from '../components/CartBoxThird';
 import {useNavigation} from '@react-navigation/native';
@@ -10,6 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import cartReducer from '../Redux/reducers/cartReducers/cartReducer';
 import {useSelector, useDispatch} from 'react-redux';
 import {getAllCartItems} from '../Redux/actions/cartAPIAction';
+import ShippingAddressBox from '../components/ShippingAddressBox'
 import { getAllCartTotal } from '../Redux/actions/cartAPIAction';
 
 export default function CartScreen({route}) {
@@ -76,7 +78,9 @@ export default function CartScreen({route}) {
                     <CartBoxSecond/>
 
                     <CartToPayList />
-                    <CartBoxThird/>
+                    {/* <CartBoxThird/> */}
+                    <CartBoxThirdFOrShippingAddress/>
+                    <ShippingAddressBox head='Shipping Address'/>
                     <Box h={100}></Box>
 
                 </VStack>

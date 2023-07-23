@@ -1,60 +1,46 @@
-import { View , Text} from 'native-base';
-import React, { useEffect, useState } from 'react';
+import { View, Text } from 'native-base';
+import React, { useEffect, useState, useRef } from 'react';
 import Slideshow from 'react-native-slideshow';
 import { useSelector } from 'react-redux';
 
 const SlideshowTest = () => {
-
-  
   const homePageProducts = useSelector(state => state.homeScreenProductsReducer);
-  const [position, setPosition] = useState(1);
-  // const dataSource = [
-  //   {
-  //     title: 'Title 1',
-  //     caption: 'Caption 1',
-  //     url: 'http://placeimg.com/640/480/any'
-  //   },
-  //   {
-  //     title: 'Title 2',
-  //     caption: 'Caption 2',
-  //     url: 'http://placeimg.com/640/480/any'
-  //   },
-  //   {
-  //     title: 'Title 3',
-  //     caption: 'Caption 3',
-  //     url: 'http://placeimg.com/640/480/any'
-  //   }
-  // ];
+  const [position, setPosition] = useState(0); // Initialize position with 0 for the first slide
+  const [isManualSlide, setIsManualSlide] = useState(false); // Flag to track manual slides
+  const slideshowRef = useRef(null);
 
-  const dataSource = homePageProducts.homePageProducts?.slider?.original || []; // Use optional chaining
+  const dataSource = homePageProducts.homePageProducts?.slider?.original || [];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setPosition((prevPosition) => (prevPosition === dataSource.length ? 0 : prevPosition + 1));
-    }, 7000);
-    return () => clearInterval(interval);
-  }, []);
+      if (!isManualSlide) {
+        setPosition(prevPosition => (prevPosition + 1) % dataSource.length); // Use modulus operator to loop the slides
+      }
+    }, 3000); // Adjust the interval as needed for the slide transition
 
-  
+    return () => clearInterval(interval);
+  }, [dataSource, isManualSlide]);
+
+  // Function to handle manual slide changes
+  const handleManualSlide = newPosition => {
+    setIsManualSlide(true);
+    setPosition(newPosition);
+    setTimeout(() => {
+      setIsManualSlide(false);
+    }, 500); // Wait for 500ms before enabling automatic slide changes again
+  };
+
   return (
-    <View
-      bgColor={'red.100'}
-      m={2}
-      style={{
-        borderRadius: 8,
-        overflow: 'hidden'
-      }}>
+    <View bgColor={'red.100'} m={2} style={{ borderRadius: 8, overflow: 'hidden' }}>
       <Slideshow
+        ref={slideshowRef}
         dataSource={dataSource}
         position={position}
-        onPositionChanged={setPosition}
+        onPositionChanged={handleManualSlide} // Use the manual slide handler
         height={140}
         width={200}
       />
       {/* You can use homePageProducts here */}
-      
-                     {/* <Text>{JSON.stringify(homePageProducts.homePageProducts.slider.original, null , 4)}</Text> */}
-
     </View>
   );
 };
