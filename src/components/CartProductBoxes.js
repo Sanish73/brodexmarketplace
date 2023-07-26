@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Alert, ScrollView, TouchableOpacity} from 'react-native';
 import {
     Text,
@@ -13,11 +13,18 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useDispatch , useSelector } from 'react-redux';
 import { getAllCartTotal } from '../Redux/actions/cartAPIAction';
+import { addOrderAction } from '../Redux/actions/orderAction';
 
 export default function CartProductBoxes({data}) {
  
     const [countedNumber, setCountNumber] = useState(data.qty);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+
+        addOrderAction('', data.id)(dispatch);
+
+    }, []);
   
 
     const handlePlusClick = () => {

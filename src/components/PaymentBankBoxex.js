@@ -21,6 +21,10 @@ export default function PaymentBankBoxex({onPress, iconName, selected }) {
    
     return (
       <Box paddingTop={3}>
+
+      {/* <Text>
+        {JSON.stringify(iconName , null , 1)};
+      </Text> */}
         <HStack bgColor={'#fcf5eb'} h={59} borderRadius={5}>
           <VStack w={'17%'} alignItems={'center'} justifyContent={'center'}>
             <Image
@@ -36,12 +40,12 @@ export default function PaymentBankBoxex({onPress, iconName, selected }) {
           <VStack w={'68%'} paddingX={0} justifyContent={'center'} space={1}>
             <VStack>
               <Text bold fontSize={17}>
-                Bank Central Asia
+                {iconName.name}
               </Text>
             </VStack>
             <VStack>
               <Text fontSize={14} color={'#8C8A89'}>
-                Checked Automatically
+              {iconName.number}
               </Text>
             </VStack>
           </VStack>

@@ -22,58 +22,72 @@ export function PaymentBankTransfer() {
     const handleIconPress = (iconName) => {
         setTimeout(() => setSelectedIcon(iconName), 1);
     };
-    return <VStack p={4}>
-        <Box>
-            <HStack style={{
-                alignItems: 'center'
-            }}>
 
-                <VStack>
-                    <Text fontSize={20} fontWeight={'thin'}>
-                        Bank Transfer
-                    </Text>
-                </VStack>
-                <VStack
-                    marginLeft={2}
-                    style={{
-                    backgroundColor: '#FAEFCD',
-                    borderRadius: 50
+    // Define an array of icon names for PaymentBankBoxex components const iconNames
+    // = ["heart", "star", "diamond", "circle"];
+    const iconNames = [
+        {   
+            'id':1,
+            'name': 'Cash On Delivery',
+            'number': "heart",
+            'selectedIcon' : 'heart'
+        },
+        {
+            'id' : 2, 
+            'name': 'eSewa Mobile Wallet',
+            'number':  "star",
+            'selectedIcon' : 'star'
+            
+        }
+    ];
+
+    // by this i can erge two objects const iconNamesNumber = [...iconNames.contenr ,
+    // ...iconNames.number];
+    // const iconNamesNumber = iconNames.contenr;
+    return (
+        <VStack p={4}>
+            <Box>
+                <HStack style={{
+                    alignItems: 'center'
                 }}>
-                    {/* #ffa94d */}
-                    <Icon size={20} // chevron-up
-                        name={'chevron-up'} ba style={{
-                        color: '#ffa94d',
-                        padding: 4
-                    }}></Icon>
+                    <VStack>
+                        <Text fontSize={20} fontWeight={'thin'}>
+                            Select Payment Method
+                        </Text>
+                    </VStack>
+                    <VStack
+                        marginLeft={2}
+                        style={{
+                        backgroundColor: '#FAEFCD',
+                        borderRadius: 50
+                    }}>
+                        <Icon
+                            size={20}
+                            name={'chevron-up'}
+                            ba
+                            style={{
+                            color: '#ffa94d',
+                            padding: 4
+                        }}></Icon>
+                    </VStack>
+                </HStack>
+
+                {iconNames.map((iconName) => (<PaymentBankBoxex
+                    key={iconName.id}
+                    iconName={iconName}
+                    selected={selectedIcon === iconName.selectedIcon}
+                    onPress={() => handleIconPress(iconName.selectedIcon)}/>))}
+
+                <VStack alignItems="center" paddingTop={5}>
+                    <Button
+                        backgroundColor={'#FAEFCD'}
+                        _text={{
+                        color: "#ffa94d",
+                        fontSize: 15,
+                        fontWeight: 'bold'
+                    }}>Show More</Button>
                 </VStack>
-            </HStack>
-
-            <PaymentBankBoxex
-                iconName="heart"
-                selected={selectedIcon === "heart"}
-                onPress={() => handleIconPress("heart")}/>
-            <PaymentBankBoxex
-                iconName="star"
-                selected={selectedIcon === "star"}
-                onPress={() => handleIconPress("star")}/>
-            <PaymentBankBoxex
-                iconName="diamond"
-                selected={selectedIcon === "diamond"}
-                onPress={() => handleIconPress("diamond")}/>
-            <PaymentBankBoxex
-                iconName="circle"
-                selected={selectedIcon === "circle"}
-                onPress={() => handleIconPress("circle")}/>
-
-            <VStack alignItems="center" paddingTop={5}>
-                <Button
-                    backgroundColor={'#FAEFCD'}
-                    _text={{
-                    color: "#ffa94d",
-                    fontSize: 15,
-                    fontWeight: 'bold'
-                }}>Show More</Button>
-            </VStack>
-        </Box>
-    </VStack>
+            </Box>
+        </VStack>
+    );
 }

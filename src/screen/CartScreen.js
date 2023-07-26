@@ -13,6 +13,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {getAllCartItems} from '../Redux/actions/cartAPIAction';
 import ShippingAddressBox from '../components/ShippingAddressBox'
 import { getAllCartTotal } from '../Redux/actions/cartAPIAction';
+import { addOrderAction } from '../Redux/actions/orderAction';
 
 export default function CartScreen({route}) {
     const dispatch = useDispatch();
@@ -52,7 +53,9 @@ export default function CartScreen({route}) {
     ]);
 
     const handlePressGoToPayment = async() => {
-        navigation.navigate('Order');
+        navigation.navigate('Payments');
+       
+        
     }
 
     // console.warn(JSON.stringify((route.params, null, 2)));

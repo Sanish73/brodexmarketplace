@@ -22,8 +22,8 @@ export default function PaymentScreen() {
             <ScrollView>
 
                 <PaymentBankTransfer/>
-                <PaymentCreditDebit/>
-                <PaymentPaypal/>
+                {/* <PaymentCreditDebit/> */}
+                {/* <PaymentPaypal/> */}
                 <Box h={127}></Box>
             </ScrollView>
 

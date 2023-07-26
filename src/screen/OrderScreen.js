@@ -43,7 +43,7 @@ export function OrderScreen() {
                         fontSize: 17,
                         fontWeight: 'bold'
                     }}>
-                        Go to Payment
+                        Go to Payment OrderScreen
                     </Button>
                 </VStack>
             </Box>

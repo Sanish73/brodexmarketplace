@@ -8,6 +8,7 @@ import cartReducer from './cartReducers/cartReducer';
 import getAllCartReducer from './cartReducers/getAllCartReducer';
 import { getCartTotalReducer } from './cartReducers/getCartTotalReducer'; 
 import homeScreenProductsReducer from './homeScreenProductsReducer';
+import { addOrderReducer } from './orderReducer/addOrderReducer';
 
 
 const rootReducer = combineReducers({
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
     cartReducer                 :       cartReducer,
     getAllCartReducer           :       getAllCartReducer,
     getCartTotalReducer         :       getCartTotalReducer,
-    homeScreenProductsReducer   :       homeScreenProductsReducer
+    homeScreenProductsReducer   :       homeScreenProductsReducer,
+    addOrderReducer             :       addOrderReducer
 });
 
 export { rootReducer };
