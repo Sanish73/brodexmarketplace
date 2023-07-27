@@ -9,13 +9,23 @@ import {PaymentBankTransfer} from './PaymentBankTransfer';
 import PaymentCreditDebit from './PaymentCreditDebit';
 import PaymentPaypal from './PaymentPaypal';
 import {useNavigation} from '@react-navigation/native';
+import {useSelector, useDispatch} from 'react-redux';
+import { addOrderAction } from '../Redux/actions/orderAction';
 
-export default function PaymentScreen() {
+export default function PaymentScreen({route}) {
+         
 
+    const dispatch = useDispatch();
     const navigation = useNavigation();
-    const showAlert = () => {
-        navigation.navigate('Success');
+    
+    const { deliveryLocation, deliveryAddress, finalTotal } = route.params;
+
+    const confirmPayemt = () => {
+     
+         addOrderAction('' ,deliveryLocation,deliveryAddress,'sanish Thapa',9844554622,"kadhaghri",finalTotal)(dispatch);
+         navigation.navigate('Success');
     };
+
 
     return (
         <Box h={'100%'}>
@@ -36,8 +46,11 @@ export default function PaymentScreen() {
                 width: '99%'
             }}>
                 <VStack>
+
+                 {/* <Text>{JSON.stringify(finalTotal, null , 4)}</Text> */}
+            
                     <Button
-                        onPress={showAlert}
+                        onPress={confirmPayemt}
                         backgroundColor={'#ffa94d'}
                         _text={{
                         color: "white",

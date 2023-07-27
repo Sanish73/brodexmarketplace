@@ -4,13 +4,10 @@ import {View, TouchableOpacity, Modal, TextInput, Button} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function CartBox() {
+export default function CartBox({ deliveryLocation, setDeliveryLocation, deliveryAddress, setDeliveryAddress }) {
     const [isModalVisible,
         setModalVisible] = useState(false);
-    const [deliveryLocation,
-        setDeliveryLocation] = useState('Home');
-    const [deliveryAddress,
-        setDeliveryAddress] = useState('Kathmandu, Baneshwor');
+   
     const [newDeliveryLocation,
         setNewDeliveryLocation] = useState(deliveryLocation);
     const [newDeliveryAddress,

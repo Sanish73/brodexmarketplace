@@ -6,13 +6,18 @@ const onOrderAddSuccess = (data, page, refresh) => ({
     payload:data
 });
 
-export const addOrderAction = (token, order_no) => async dispatch => {
-    // console.log("this is cartAPIAction===============",{id});
+export const addOrderAction = (token,deliveryAt,location, name,phone,addressInfo,total) => async dispatch => {
+    console.log("this is cartAPIAction===============");
     // dispatch(onTermCatoListWaiting(page, refresh));
 
     const orderEndPoint = `add_order`;
     await request(orderEndPoint, {
-        order_no
+        deliveryAt,
+        location,
+         name,
+         phone,
+         addressInfo,
+         total
     }, function (val, data) {
         if (data) {
             console.log(data, 'cartaAPIAction.js------------------')

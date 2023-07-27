@@ -16,8 +16,20 @@ import { getAllCartTotal } from '../Redux/actions/cartAPIAction';
 import { addOrderAction } from '../Redux/actions/orderAction';
 
 export default function CartScreen({route}) {
+
+    const [deliveryLocation,
+        setDeliveryLocation] = useState('Home');
+    const [deliveryAddress,
+        setDeliveryAddress] = useState('Kathmandu, Baneshwor');
+
+
+        
+
+
+        
+
     const dispatch = useDispatch();
-    console.log('cartScreen.js------------------')
+    // console.log('cartScreen.js------------------',deliveryLocation)
 
     useEffect(() => {
 
@@ -26,10 +38,34 @@ export default function CartScreen({route}) {
     }, []);
 
     const cartItems = useSelector(state => state.getAllCartReducer);
+    //change vako total talako 
+    const cartTotalPrice = useSelector(state => state.getCartTotalReducer);
+
+
+    ////////////////changed total
+    const [changedFinalTotal, setChnageFinalTotal] = useState(cartItems.cartItems.finalTotal);
+    const [changedTotal, setChnageTotal] = useState(cartItems.cartItems.total);
+
+    useEffect(() => {
+        setChnageTotal(cartItems.cartItems.total);
+    },[cartItems.cartItems.total]);
+
+      
+    useEffect(() => {
+        setChnageFinalTotal(cartItems.cartItems.finalTotal);
+    },[cartItems.cartItems.finalTotal]);
+    
+
+    useEffect(() => {
+        setChnageTotal(cartTotalPrice.cartTotalPrice.item_total);
+        setChnageFinalTotal(cartTotalPrice.cartTotalPrice.total);
+    }, [cartTotalPrice]);
+    
+
 
     const handleTotalPriceChange = (newTotalPrice) => {
-      setTotalPrice(newTotalPrice);
-      console.log(newTotalPrice);
+    //   setTotalPrice(newTotalPrice);
+    //   console.log(deliveryLocation);
     };
 
     const navigation = useNavigation();
@@ -51,11 +87,12 @@ export default function CartScreen({route}) {
             productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
         }
     ]);
+    const finalTotal = cartItems.cartItems.finalTotal;
 
-    const handlePressGoToPayment = async() => {
-        navigation.navigate('Payments');
+    const handlePressGoToPayment = () => {
+        // navigation.navigate('Payments');
+        navigation.navigate('Payments', { deliveryLocation, deliveryAddress, finalTotal });
        
-        
     }
 
     // console.warn(JSON.stringify((route.params, null, 2)));
@@ -64,11 +101,18 @@ export default function CartScreen({route}) {
         <View>
 
             <ScrollView >
-            {/* <Text>{JSON.stringify(cartItems.cartItems, null , 4)}</Text> */}
-
+            {/* <Text>{JSON.stringify(changedFinalTotal, null , 4)}</Text> */}
+            
+            {/* <Text>{JSON.stringify(cartItems.cartItems.finalTotal, null , 4)}</Text> */}
+            
                 <VStack p={4}>
 
-                    <CartBox/>
+                <CartBox
+                deliveryLocation={deliveryLocation}
+                setDeliveryLocation={setDeliveryLocation}
+                deliveryAddress={deliveryAddress}
+                setDeliveryAddress={setDeliveryAddress}
+            />
                     <View>
                         {(cartItems.cartItems.items || []).map(data => {
                             return <CartProductBoxes
