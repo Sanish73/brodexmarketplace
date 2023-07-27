@@ -1,5 +1,7 @@
 import {ScrollView, Box, VStack, Button, View , Text} from 'native-base';
 import CartBox from '../components/CartBox';
+import { Alert } from 'react-native';
+
 import React, {useState, useEffect} from 'react';
 import CartProductBoxes from '../components/CartProductBoxes';
 import CartBoxSecond from '../components/CartBoxSecond';
@@ -87,12 +89,18 @@ export default function CartScreen({route}) {
             productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
         }
     ]);
-    const finalTotal = cartItems.cartItems.finalTotal;
+    // const finalTotal = cartItems.cartItems.finalTotal;
 
     const handlePressGoToPayment = () => {
         // navigation.navigate('Payments');
-        navigation.navigate('Payments', { deliveryLocation, deliveryAddress, finalTotal });
-       
+        if (cartItems.cartItems.total === 0 ) {
+           
+            Alert.alert('Cart is not empty', 'Please empty the cart before proceeding to payments.');
+          } else {
+            // Show an alert if the cartItems.total is not empty
+            navigation.navigate('Payments', { deliveryLocation, deliveryAddress, changedFinalTotal });
+          }
+      
     }
 
     // console.warn(JSON.stringify((route.params, null, 2)));
@@ -101,9 +109,9 @@ export default function CartScreen({route}) {
         <View>
 
             <ScrollView >
-            {/* <Text>{JSON.stringify(changedFinalTotal, null , 4)}</Text> */}
+            {/* <Text>{JSON.stringify(cartItems.cartItems.items, null , 4)}</Text> */}
             
-            {/* <Text>{JSON.stringify(cartItems.cartItems.finalTotal, null , 4)}</Text> */}
+            {/* <Text>{JSON.stringify(changedFinalTotal, null , 4)}</Text> */}
             
                 <VStack p={4}>
 

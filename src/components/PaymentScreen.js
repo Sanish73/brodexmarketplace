@@ -18,11 +18,11 @@ export default function PaymentScreen({route}) {
     const dispatch = useDispatch();
     const navigation = useNavigation();
     
-    const { deliveryLocation, deliveryAddress, finalTotal } = route.params;
+    const { deliveryLocation, deliveryAddress, changedFinalTotal } = route.params;
 
     const confirmPayemt = () => {
      
-         addOrderAction('' ,deliveryLocation,deliveryAddress,'sanish Thapa',9844554622,"kadhaghri",finalTotal)(dispatch);
+         addOrderAction('' ,deliveryLocation,deliveryAddress,'sanish Thapa',9844554622,"kadhaghri",changedFinalTotal)(dispatch);
          navigation.navigate('Success');
     };
 
