@@ -19,6 +19,8 @@ export default function PaymentScreen({route}) {
 
     const dispatch = useDispatch();
     const navigation = useNavigation();
+    
+    const { deliveryLocation, deliveryAddress, changedFinalTotal } = route.params;
 
     const [selectedIconName, setSelectedIconName] = useState('');
     const handleIconPress = (iconName) => {
@@ -37,25 +39,8 @@ export default function PaymentScreen({route}) {
     
     const confirmPayemt = () => {
      
-        // if(selectedIconName =='star'){
-        
-        //     Alert.alert('Esewa ', 'eSewa is not integrated yet.');
-        // }else if(selectedIconName =='star'){
-             
-        //  navigation.navigate('Success');
-        // }
-
-
-        if(selectedIconName =='heart'){
-            console.log('hi');
-            addOrderAction('' ,deliveryLocations,deliveryAddresss,'sanish Thapa',9844554622,"kadhaghri",changedFinalTotal)(dispatch);
-            navigation.navigate('Success');
-        }else{
-            Alert.alert('Esewa ', 'eSewa is not integrated yet.');
-        }
-
-        //  addOrderAction('' ,deliveryLocations,deliveryAddresss,'sanish Thapa',9844554622,"kadhaghri",changedFinalTotal)(dispatch);
-        
+         addOrderAction('' ,deliveryLocation,deliveryAddress,'sanish Thapa',9844554622,"kadhaghri",changedFinalTotal)(dispatch);
+         navigation.navigate('Success');
     };
 
 

@@ -101,8 +101,7 @@ export default function CartScreen({route}) {
             Alert.alert('Cart is not empty', 'Please empty the cart before proceeding to payments.');
           } else {
             // Show an alert if the cartItems.total is not empty
-            navigation.navigate('Payments', { deliveryLocation : deliveryLocation || '', deliveryAddress : deliveryAddress || '', changedFinalTotal });
-            console.log('To pament  Screen');
+            navigation.navigate('Payments', { deliveryLocation, deliveryAddress, changedFinalTotal });
           }
       
     }
