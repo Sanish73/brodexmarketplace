@@ -7,7 +7,10 @@ import CartProductBoxes from '../components/CartProductBoxes';
 import CartBoxSecond from '../components/CartBoxSecond';
 import CartBoxThirdFOrShippingAddress from '../components/CartBoxThirdFOrShippingAddress';
 import CartToPayList from '../components/CartToPayList';
-import CartBoxThird from '../components/CartBoxThird';
+import CartBoxThird from 
+
+
+'../components/CartBoxThird';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import cartReducer from '../Redux/reducers/cartReducers/cartReducer';
@@ -98,7 +101,8 @@ export default function CartScreen({route}) {
             Alert.alert('Cart is not empty', 'Please empty the cart before proceeding to payments.');
           } else {
             // Show an alert if the cartItems.total is not empty
-            navigation.navigate('Payments', { deliveryLocation, deliveryAddress, changedFinalTotal });
+            navigation.navigate('Payments', { deliveryLocation : deliveryLocation || '', deliveryAddress : deliveryAddress || '', changedFinalTotal });
+            console.log('To pament  Screen');
           }
       
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import {ScrollView, Text, Box, VStack, Button} from 'native-base';
 // import ShippingAddressBox from '../components/ShippingAddressBox' import
 // OrderSummary from '../components/OrderSummary' import VoucherBox from
@@ -6,6 +6,8 @@ import {ScrollView, Text, Box, VStack, Button} from 'native-base';
 // '@react-navigation/native'; import {createNativeStackNavigator} from
 // '@react-navigation/native-stack';
 import {PaymentBankTransfer} from './PaymentBankTransfer';
+import { Alert } from 'react-native';
+
 import PaymentCreditDebit from './PaymentCreditDebit';
 import PaymentPaypal from './PaymentPaypal';
 import {useNavigation} from '@react-navigation/native';
@@ -17,21 +19,71 @@ export default function PaymentScreen({route}) {
 
     const dispatch = useDispatch();
     const navigation = useNavigation();
-    
-    const { deliveryLocation, deliveryAddress, changedFinalTotal } = route.params;
 
+    const [selectedIconName, setSelectedIconName] = useState('');
+    const handleIconPress = (iconName) => {
+        setSelectedIconName(iconName);
+        // Do something with the selected iconName if needed
+      };
+
+
+
+  
+    const deliveryLocations = route.params?.deliveryLocation || '';
+    const deliveryAddresss = route.params?.deliveryAddress || '';
+    const changedFinalTotal = route.params?.changedFinalTotal || '';
+
+    
+    
     const confirmPayemt = () => {
      
-         addOrderAction('' ,deliveryLocation,deliveryAddress,'sanish Thapa',9844554622,"kadhaghri",changedFinalTotal)(dispatch);
-         navigation.navigate('Success');
+        // if(selectedIconName =='star'){
+        
+        //     Alert.alert('Esewa ', 'eSewa is not integrated yet.');
+        // }else if(selectedIconName =='star'){
+             
+        //  navigation.navigate('Success');
+        // }
+
+
+        if(selectedIconName =='heart'){
+            console.log('hi');
+            addOrderAction('' ,deliveryLocations,deliveryAddresss,'sanish Thapa',9844554622,"kadhaghri",changedFinalTotal)(dispatch);
+            navigation.navigate('Success');
+        }else{
+            Alert.alert('Esewa ', 'eSewa is not integrated yet.');
+        }
+
+        //  addOrderAction('' ,deliveryLocations,deliveryAddresss,'sanish Thapa',9844554622,"kadhaghri",changedFinalTotal)(dispatch);
+        
     };
 
+
+    const iconNames = [
+        {   
+            'id':1,
+            'name': 'Cash On Delivery',
+            'number': "heart",
+            'selectedIcon' : 'heart'
+        },
+        {
+            'id' : 2, 
+            'name': 'eSewa Mobile Wallet',
+            'number':  "star",
+            'selectedIcon' : 'star'
+            
+        }
+    ];
+    
+
+    
+    // console.log(selectedIconName,"lsfnl");
 
     return (
         <Box h={'100%'}>
             <ScrollView>
 
-                <PaymentBankTransfer/>
+                <PaymentBankTransfer iconNames = {iconNames} onPressIcon={handleIconPress} />
                 {/* <PaymentCreditDebit/> */}
                 {/* <PaymentPaypal/> */}
                 <Box h={127}></Box>

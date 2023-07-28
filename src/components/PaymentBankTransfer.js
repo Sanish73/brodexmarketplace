@@ -15,35 +15,20 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import PaymentBankBoxex from './PaymentBankBoxex';
 import React, {useState} from 'react';
 
-export function PaymentBankTransfer() {
+export function PaymentBankTransfer({iconNames, onPressIcon}) {
     const [selectedIcon,
         setSelectedIcon] = useState('');
 
-    const handleIconPress = (iconName) => {
+    const handleIconPress = (iconName ) => {
         setTimeout(() => setSelectedIcon(iconName), 1);
+        onPressIcon(iconName);
+        
     };
 
     // Define an array of icon names for PaymentBankBoxex components const iconNames
     // = ["heart", "star", "diamond", "circle"];
-    const iconNames = [
-        {   
-            'id':1,
-            'name': 'Cash On Delivery',
-            'number': "heart",
-            'selectedIcon' : 'heart'
-        },
-        {
-            'id' : 2, 
-            'name': 'eSewa Mobile Wallet',
-            'number':  "star",
-            'selectedIcon' : 'star'
-            
-        }
-    ];
+   
 
-    // by this i can erge two objects const iconNamesNumber = [...iconNames.contenr ,
-    // ...iconNames.number];
-    // const iconNamesNumber = iconNames.contenr;
     return (
         <VStack p={4}>
             <Box>
@@ -51,7 +36,7 @@ export function PaymentBankTransfer() {
                     alignItems: 'center'
                 }}>
                     <VStack>
-                        <Text fontSize={20} fontWeight={'thin'}>
+                        <Text bold fontSize={20} fontWeight={'thin'}>
                             Select Payment Method
                         </Text>
                     </VStack>
@@ -72,20 +57,26 @@ export function PaymentBankTransfer() {
                     </VStack>
                 </HStack>
 
-                {iconNames.map((iconName) => (<PaymentBankBoxex
-                    key={iconName.id}
-                    iconName={iconName}
-                    selected={selectedIcon === iconName.selectedIcon}
-                    onPress={() => handleIconPress(iconName.selectedIcon)}/>))}
+                {iconNames.map((iconName) => (
+                        <PaymentBankBoxex
+                            key={iconName.id}
+                            iconName={iconName}
+                            selected={selectedIcon === iconName.selectedIcon}
+                            onPress={() => handleIconPress(iconName.selectedIcon)}
+                        />
+                        ))}
+
+                    {/* //hert is cash on delivery
+                    //star is esewa */}
 
                 <VStack alignItems="center" paddingTop={5}>
-                    <Button
+                    {/* <Button
                         backgroundColor={'#FAEFCD'}
                         _text={{
                         color: "#ffa94d",
                         fontSize: 15,
                         fontWeight: 'bold'
-                    }}>Show More</Button>
+                    }}>Show More</Button> */}
                 </VStack>
             </Box>
         </VStack>

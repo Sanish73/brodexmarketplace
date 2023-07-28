@@ -5,7 +5,7 @@ const onCartAPISuccess = (data, page, refresh) => ({
     payload:data
 });
 
-const onGetAllCartSuccess = (data, page, refresh) => ({
+const onGetAllCartSuccess = (data) => ({
     type: 'GET_ALL_CART_SUCCESS',
     payload:data
 });
@@ -35,7 +35,7 @@ export const cartAPIAction = (token, id,qty,productPrice,productName,productImag
         productImage
     }, function (val, data) {
         if (data) {
-            console.log(data, 'cartaAPIAction.js------------------')
+            console.log( 'cartaAPIAction.js------------------')
             dispatch(onCartAPISuccess(data));
         } else {
             // dispatch(onTermCatoListError(data
@@ -57,14 +57,15 @@ export const getAllCartItems = (token, page) => async dispatch => {
         page
     }, function (val, data) {
         if (data) {
-            console.log(data, 'cartaAPIAction.js===getAllCartItems------------------')
+            console.log( 'cartaAPIAction.js===getAllCartItems------------------')
             dispatch(onGetAllCartSuccess(data));
         } else {
             // dispatch(onTermCatoListError(data
             //     ?.message || "Request Failed. Please try again later."));
         }
-    }, function () {
+    }, function (x) {
         // dispatch(onTermCatoListError("Please check your internet connection and try again later."));
+        console.log(x)
     }, token);
 }
 
@@ -81,7 +82,7 @@ export const getAllCartTotal = (token, id, qty ) => async dispatch => {
         qty
     }, function (val, data) {
         if (data) {
-            console.log(data, 'cartaAPIAction.js===getAllCartTotal------------------')
+            console.log( 'cartaAPIAction.js===getAllCartTotal------------------')
             dispatch(onGetAllCartTotalSuccess(data));
         } else {
             // dispatch(onTermCatoListError(data
