@@ -51,8 +51,8 @@ export function HomeScreen() {
             <ScrollView>
                 <VStack px={1} h={'100%'}>
                     <SlideShowBox/>
-                    <HomeImageGrid/>
-                    <HomeImageGrid/>
+                    {/* <HomeImageGrid/> */}
+                    {/* <HomeImageGrid/> */}
                     <HomeFlashDetaisTop/>
                     <HomeFlashDetaisHead/>
 

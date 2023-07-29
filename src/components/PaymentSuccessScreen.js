@@ -19,8 +19,8 @@ import { useNavigation } from '@react-navigation/native';
 export default function PaymentSuccessScreen() {
     const navigation = useNavigation();
 
-    const showAlert =()=>{
-        navigation.navigate('Payments');
+    const BackToHome =()=>{
+        navigation.navigate('Home');
     }
 
     return (
@@ -37,10 +37,10 @@ export default function PaymentSuccessScreen() {
                 </VStack>
             </Box>
             <VStack height={'15%'} alignItems={'center'}>
-                <Text paddingBottom={3} bold fontSize={23}>Payment Success</Text>
+                <Text paddingBottom={3} bold fontSize={23}>Order Success</Text>
                 <VStack alignItems={'center'}>
-                    <Text fontSize={15} color={'#8C8A89'}>Your payment is successful</Text>
-                    <Text fontSize={15} color={'#8C8A89'}>Just wait Product will arrive at your Location</Text>
+                    <Text fontSize={15} color={'#8C8A89'}>Your Order is successful</Text>
+                    <Text fontSize={15} color={'#8C8A89'}> Product will arrive at your Location</Text>
                 </VStack>
             </VStack>
 
@@ -55,9 +55,9 @@ export default function PaymentSuccessScreen() {
                         color: "white",
                         fontSize: 17,
                         fontWeight: 'bold'
-                    }}>Track Order Success</Button>
+                    }}>Continue Byuing</Button>
                     <Button
-                                             onPress={showAlert}
+                        onPress={BackToHome}
                         height={'40%'}
                         width={'100%'}
                         backgroundColor={'#FAEFCD'}
