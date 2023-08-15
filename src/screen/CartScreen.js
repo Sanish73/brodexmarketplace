@@ -7,10 +7,8 @@ import CartProductBoxes from '../components/CartProductBoxes';
 import CartBoxSecond from '../components/CartBoxSecond';
 import CartBoxThirdFOrShippingAddress from '../components/CartBoxThirdFOrShippingAddress';
 import CartToPayList from '../components/CartToPayList';
-import CartBoxThird from 
-
-
-'../components/CartBoxThird';
+import CartBoxThird from  '../components/CartBoxThird';
+import { useFocusEffect } from '@react-navigation/native';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import cartReducer from '../Redux/reducers/cartReducers/cartReducer';
@@ -36,11 +34,15 @@ export default function CartScreen({route}) {
     const dispatch = useDispatch();
     // console.log('cartScreen.js------------------',deliveryLocation)
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     getAllCartItems('', 1)(dispatch);
+    // }, []);
 
-        getAllCartItems('', 1)(dispatch);
-
-    }, []);
+    useFocusEffect(
+        React.useCallback(() => {
+            getAllCartItems('', 1)(dispatch);
+        }, [])
+    );
 
     const cartItems = useSelector(state => state.getAllCartReducer);
     //change vako total talako 
@@ -140,7 +142,7 @@ export default function CartScreen({route}) {
                     {/* <CartBoxThird/> */}
                     <CartBoxThirdFOrShippingAddress/>
                     <ShippingAddressBox head='Shipping Address'/>
-                    <Box h={100}></Box>
+                    <Box h={500}></Box>
 
                 </VStack>
 
