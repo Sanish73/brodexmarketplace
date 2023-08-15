@@ -94,7 +94,7 @@ export default function CartScreen({route}) {
             productImageList: [require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp'), require('../../assets/images/c08000131_1750x1285.webp')]
         }
     ]);
-    // const finalTotal = cartItems.cartItems.finalTotal;
+  
 
     const handlePressGoToPayment = () => {
         // navigation.navigate('Payments');
