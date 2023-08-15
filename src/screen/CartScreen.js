@@ -114,6 +114,7 @@ export default function CartScreen({route}) {
 
             <ScrollView >
             {/* <Text>{JSON.stringify(cartItems.cartItems.items, null , 4)}</Text> */}
+            {/* // */}
                 <VStack p={4}>
 
                 <CartBox
