@@ -26,13 +26,10 @@ import {
     Image,
 } from 'native-base';
 import {COLOURS, Items} from '../database/Database';
-import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useSelector , useDispatch} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { cartAPIAction } from '../Redux/actions/cartAPIAction';
 
 
@@ -40,62 +37,33 @@ export function ProductInfoScreen({route}) {
     const dispatch = useDispatch();
     const navigation = useNavigation();
 
-const page = 1;
+
 
     const {
-        url,
         id,
         productImage,
         productName,
         productPrice,
-        description,
-        isOff,
-        meta,
         regular_price,
-        isAvailable,
-        offPercentage,
         special_price,
         stock,
-        featured,
-        category,
         productImageList
        
     } = route.params;
     console.log("productInfoScreen ID---->" , id);
    
-    const [selectedColor,
-        setselectedColor] = useState('Black');
-        const [selectedHeight,
-            setselectedHeight] = useState(8);
-            const [selectedWidth,
-                setselectedHWidtht] = useState(8);
-
-
-               
-                // const [cartItems, setCartItems] = useState([]);
 
                 const handleButtonClickStore =  () => {
-                   
-
                     cartAPIAction('', id , 1 ,productPrice, productName,productImage )(dispatch);
-                
                                 
-                if (navigation) {
-                    navigation.navigate('cartScreen');
-                    // console.log('Item added to cart:', item);
-                } else {
-                    console.warn('cartScreen Navigation prop is not defined');
-                }
-              
+                    if (navigation) {
+                        navigation.navigate('cartScreen');
+                        // console.log('Item added to cart:', item);
+                    } else {
+                        console.warn('cartScreen Navigation prop is not defined');
+                    }
                 };
-  
 
- 
-
-   
-
-    
-   
     // console.log(productImage);
     const special_pricePercent = ((special_price / regular_price) * 100).toFixed(0);
     const randomRating = Math.floor(Math.random() * 7) / 2 + 2;
@@ -371,32 +339,6 @@ const page = 1;
                                 </Box>
                             </VStack>
 
-                {/* <VStack paddingTop={2}>
-                    <HStack>
-                        <Heading size="sm">
-                            Choosed Color:
-                        </Heading>
-                        <Text >
-                            {selectedColor}
-                        </Text>
-                    </HStack>
-                    <HStack  flexDirection={'row'}  alignSelf={'flex-start'} alignItems={'center'}  w={'100%'} h={10}>
-                       {options.map((item,index)=>( <TouchableOpacity onPress={()=>ColorPress(item.value)}>
-                               
-                                    <Box   shadow={5} h={item.index === selectedColor ? selectedHeight : 8} w={item.index === selectedColor ? selectedWidth : 8} rounded={100} marginLeft={2} key={index} style={{
-                                         backgroundColor: item.color,
-                                         borderWidth:1
-                                        
-                                    }}>
-
-                                    </Box>
-                              
-                        </TouchableOpacity>))}
-                            
-                        
-                    </HStack>
-                </VStack> */}
-
                 <VStack paddingTop={2}>
                     <Box>
                         <Heading size="sm">
@@ -419,12 +361,14 @@ const page = 1;
                  <Button   onPress={handleButtonClickStore} w={'48%'} rounded={6} leftIcon={<Ionicons name="cart-outline" size={18} color="white" />}>
                     Add to Cart
                 </Button>
-                <Box w={'5%'}>
 
+                <Box w={'5%'}>
                 </Box>
+
                 <Button w={'47%'} rounded={6}   leftIcon={<Ionicons name="cart-outline" size={18} color="white" /> }>
                     Buy Now
                 </Button>
+                
             </HStack>
 
 
