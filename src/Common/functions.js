@@ -14,6 +14,7 @@ export const objectToFormData = (data) => {
     }
     return formBox;
 };
+//
 
 export const request = async($endpoint, data, $callback, $catchFeedback = (e) => {}, authToken = false) => {
     
