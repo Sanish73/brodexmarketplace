@@ -6,14 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {termCatoListing} from '../Redux/actions/brandAction';
 
 export function CategoryRightList({selectedCategory,selectedParentCategories, ForSelectingFirstCategory,subCategoryList}) {
-    // const page = 1;
-    // const refresh = true;
-    // const dispatch = useDispatch();
-
-    // const [getget, setGetget] = useState(ForSelectingFirstCategory[0]);
-    // useEffect(() => {
-    //     setGetget(ForSelectingFirstCategory[0]);
-    //   }, [ForSelectingFirstCategory]);
+   
       
     const navigation = useNavigation();
 
@@ -73,9 +66,10 @@ useEffect(() => {
                 width:"100%",
                 height:"50%"
             }}>
-                {/*
-                <Text>
-                    {JSON.stringify(selectedParentCategories, null, 2)}
+
+                                    
+                {/* <Text>
+                    {JSON.stringify(selectedCategory, null, 2)}
                 </Text> */}
 
                 {selectedCategory.map((item, index) => {
@@ -115,7 +109,7 @@ useEffect(() => {
                                             borderRadius: 15,
                                             width: '100%',
                                             height: '100%'
-                                        }}/>}
+                                        }}/> }
                                 </Center>
 
                                 <Box marginTop={2}>

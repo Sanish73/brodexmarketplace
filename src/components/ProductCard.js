@@ -29,10 +29,10 @@ export const ProductCard = ({data}) => {
             borderRadius: 5,
             marginBottom: 16
         }}>
-{/* 
+
 <Text>
-          {JSON.stringify(data.MediaId, null ,1)};
-        </Text> */}
+          {/* {JSON.stringify(data.MediaId, null ,1)}; */}
+        </Text>
             <View
                 style={{
                 height: 150,
