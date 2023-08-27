@@ -171,7 +171,7 @@ export default function CategoryRightAnimation({
                             justifyContent: 'space-between',
                             paddingTop: 10
                         }}>
-                            <Text>{JSON.stringify(get_related_products, null, 2)}</Text>
+                            {/* <Text>{JSON.stringify(get_related_products, null, 2)}</Text> */}
                             <View
                                 style={{
                                 paddingHorizontal: 6,
