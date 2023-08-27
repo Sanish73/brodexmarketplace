@@ -37,7 +37,7 @@ export function HomeScreen() {
 
     useEffect(() => {
 
-        getHomePageProducts('', 10)(dispatch);
+        getHomePageProducts('', 30)(dispatch);
 
     }, []);
 
