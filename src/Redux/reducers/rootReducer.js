@@ -9,6 +9,7 @@ import getAllCartReducer from './cartReducers/getAllCartReducer';
 import { getCartTotalReducer } from './cartReducers/getCartTotalReducer'; 
 import homeScreenProductsReducer from './homeScreenProductsReducer';
 import { addOrderReducer } from './orderReducer/addOrderReducer';
+import { getAllOrderReducer } from './orderReducer/getAllOrderReducer';
 
 
 const rootReducer = combineReducers({
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
     getAllCartReducer           :       getAllCartReducer,
     getCartTotalReducer         :       getCartTotalReducer,
     homeScreenProductsReducer   :       homeScreenProductsReducer,
-    addOrderReducer             :       addOrderReducer
+    addOrderReducer             :       addOrderReducer,
+    getAllOrderReducer          :       getAllOrderReducer
 });
 
 export { rootReducer };
