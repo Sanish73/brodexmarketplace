@@ -14,8 +14,8 @@ import MyTab from '../components/MyTab'
 
 function OOOrder({route}) {
 
-    const { ordersList } = route.params;
-    console.log(ordersList,'---0000000--');
+    const  ordersList = route.params;
+    
 
     const dataset = [
         {
@@ -36,10 +36,11 @@ function OOOrder({route}) {
             paddingHorizontal: 10
         }}>
 
-          <Text>
-                {JSON.stringify(ordersList,null,2)}
-            </Text>
-            {dataset.map((item) => {
+        <Text>
+            {JSON.stringify(ordersList,null,2)}
+        </Text>
+
+         {dataset.map((item) => {
                 return <OrderItems
                     key={item.id}
                     productId={item
@@ -59,7 +60,13 @@ function OOOrder({route}) {
                     ?.status || ''}
                     photo
                     ={item
-                    ?.image || ''}/>
+                    ?.image || ''}
+                        
+                         
+            
+
+                         
+                    />
 
             })
 }

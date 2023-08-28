@@ -117,13 +117,16 @@ export function AccountScreen() {
         });
     }
     
-    useFocusEffect(
-        React.useCallback(() => {
-            getAllOrder('')(dispatch);
-        }, [])
-    );
+    useEffect(() =>{
+        getAllOrder('')(dispatch);
+    },[] );
+        // React.useCallback(() => {
+        //     
+        // }, [])
+   
 
     const {ordersList} = useSelector(state => state.getAllOrderReducer);
+    // console.log('-----------------------------------------pppppppppppppppp',ordersList);
 
     
     const askForLogout = () => {

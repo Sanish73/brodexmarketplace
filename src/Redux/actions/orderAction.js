@@ -41,13 +41,13 @@ export const addOrderAction = (token,deliveryAt,location, name,phone,addressInfo
 export const getAllOrder = (token) => async dispatch => {
     console.log("this is getallOrder===============");
     // dispatch(onTermCatoListWaiting(page, refresh));
-page = 1;
+    page = 1;
     const orderEndPoint = `get_all_orders`;
     await request(orderEndPoint, {
        page
     }, function (val, data) {
         if (data) {
-            console.log(data, 'cartaAPIAction.js------------------')
+            console.log(data, '-orderAction.js->gelAllorderAction2')
             dispatch(getAllOrderData(data));
         } else {
             // dispatch(onTermCatoListError(data
