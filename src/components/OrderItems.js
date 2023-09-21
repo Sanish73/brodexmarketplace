@@ -22,8 +22,6 @@ export default function OrderItems({
 
 }) {
 
-    console.log(time,'----------------');
-
     // Create a Date object from the dateStrstamp
     const dateObj = new Date(time);
     // Get the year, month, and day
@@ -32,10 +30,11 @@ export default function OrderItems({
     const day = String(dateObj.getDate()).padStart(2, '0');
     // Create the date string in the "YYYY-MM-DD" format
     const dateStr = `${year}-${month}-${day}`;
-    console.log(dateStr); // Output: "2023-08-27"
+    // console.log(dateStr); // Output: "2023-08-27"
 
 
     const randomNumber = Math.floor(Math.random() * 3) + 1;
+    const itemsNumber = Math.floor(Math.random() * 5) + 1;
     // console.log(randomNumber)
 
     const threeState = (state, one, two, zero, four) => {
@@ -112,7 +111,7 @@ export default function OrderItems({
                                     style={{
                                     color: 'grey'
                                 }}>
-                                    {noItems}{' '}
+                                    {itemsNumber}{' '}
                                     ITEMS
                                 </Text>
                             </VStack>
@@ -159,8 +158,8 @@ export default function OrderItems({
                             }}>
                                 <Text bold>
                                     Detail {" "}<Icon name="chevron-forward-sharp" style={{
-        fontSize: 15
-    }}></Icon>
+                                        fontSize: 15
+                                    }}></Icon>
                                 </Text>
                             </Box>
                         </Box>

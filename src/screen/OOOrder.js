@@ -31,14 +31,14 @@ function OOOrder({route}) {
     ];
 
     return <Box>
-        <MyTab/>
+        {/* <MyTab/> */}
         <ScrollView style={{
             paddingHorizontal: 10
         }}>
 
-        <Text>
+        {/* <Text>
             {JSON.stringify(ordersList,null,2)}
-        </Text>
+        </Text> */}
 
 
         {ordersList.map((item) => {
@@ -62,8 +62,6 @@ function OOOrder({route}) {
                     ?.status || ''}/>
 
             })}
-
-
          {/* {dataset.map((item) => {
                 return <OrderItems
                     key={item.id}
@@ -85,9 +83,7 @@ function OOOrder({route}) {
                     photo
                     ={item
                     ?.image || ''}/>
-
             })} */}
-
             <Box h={100}></Box>
 
         </ScrollView>

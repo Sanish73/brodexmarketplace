@@ -42,9 +42,11 @@ export function HomeSearchBox() {
                 }
                 name = "md-search-outline" />}/>
             </Box>
+
             <Box w={'15%'} alignItems={'center'} justifyContent={'center'} flex={1}>
                 <Icon name="scan" size={30}/>
             </Box>
+            
         </HStack>
     );
 }

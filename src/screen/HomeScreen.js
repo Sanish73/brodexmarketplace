@@ -36,14 +36,9 @@ export function HomeScreen() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-
         getHomePageProducts('', 25)(dispatch);
-
     }, []);
 
-    
-
-    
     // console.log(homePageProducts,"0000000000000000000000000000000000000000000000000000000000000");
     return (
         <VStack>
@@ -55,9 +50,7 @@ export function HomeScreen() {
                     {/* <HomeImageGrid/> */}
                     <HomeFlashDetaisTop/>
                     <HomeFlashDetaisHead/>
-
                     <Products/>
-
                     <Box h={100}></Box>
                 </VStack>
             </ScrollView>
