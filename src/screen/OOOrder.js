@@ -40,7 +40,31 @@ function OOOrder({route}) {
             {JSON.stringify(ordersList,null,2)}
         </Text>
 
-         {dataset.map((item) => {
+
+        {ordersList.map((item) => {
+            {console.log(item.id,'ljldksfjklsdjlfjklsdjkfljkl')}
+                return <OrderItems
+                    key={item.id}
+                    productId={item
+                    ?.id || ''}
+                    orderId={item
+                    ?.order_no || ''}
+                    noItems={item
+                    ?.items || ''}
+                    price
+                    ={item
+                    ?.amount || ''}
+                    time={item
+                    ?.created_at || ''}
+                    pricePaidStatus={item
+                    ?.paidStatus || ''}
+                    activityStatus={item
+                    ?.status || ''}/>
+
+            })}
+
+
+         {/* {dataset.map((item) => {
                 return <OrderItems
                     key={item.id}
                     productId={item
@@ -60,16 +84,10 @@ function OOOrder({route}) {
                     ?.status || ''}
                     photo
                     ={item
-                    ?.image || ''}
-                        
-                         
-            
+                    ?.image || ''}/>
 
-                         
-                    />
+            })} */}
 
-            })
-}
             <Box h={100}></Box>
 
         </ScrollView>
