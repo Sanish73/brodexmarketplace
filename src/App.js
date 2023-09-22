@@ -21,6 +21,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getStoredData } from './Common/functions';
 import { loginStateChange } from './Redux';
 import { HomeScreen } from './screen/HomeScreen';
+import SearchResult from './screen/SearchResult';
 
 
 function AppBox() {
@@ -52,6 +53,7 @@ function AppBox() {
           {loginStatus?(
             <>
             <Stack.Screen name="Root" component={RootScreen} />
+            <Stack.Screen name="SearchResult" component={SearchResult} />
             <Stack.Screen name="Home" component={HomeScreen} />
               <Stack.Screen name="Payments" component={PaymentScreen} />
               <Stack.Screen name="Success" component={PaymentSuccessScreen} />
