@@ -28,7 +28,7 @@ import {useNavigation} from '@react-navigation/native';
 export function HomeSearchBox() {
     const dispatch = useDispatch();
     const navigation = useNavigation();
-
+// 
 
     useEffect(() => {
         // getHomePageProducts('', 25)(dispatch);
