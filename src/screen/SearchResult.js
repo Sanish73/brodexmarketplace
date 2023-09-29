@@ -6,6 +6,7 @@ const SearchResult = () => {
     <View>
       <Text>SearchResult</Text>
     </View>
+    
   )
 }
 

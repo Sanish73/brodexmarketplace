@@ -24,30 +24,37 @@ import {useSelector, useDispatch} from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { navigate } from '../navigation/RootNavigation';
 import {useNavigation} from '@react-navigation/native';
+import { searchAction } from '../Redux/actions/searchAction';
 
 export function HomeSearchBox() {
     const dispatch = useDispatch();
     const navigation = useNavigation();
 
-    useEffect(() => {
-        // getHomePageProducts('', 25)(dispatch);
-    }, []);
+   
 
     const [ searchWord , setSearchWord ] = useState('');
  
   
     const submitAndTransferToNextScreen = function()
     {
-
         if (navigation) {
-            navigation.navigate('SearchResult', searchWord);
-            // console.warn(JSON.stringify(ForSelectingFirstCategory, null, 2));
-        } else {
+            if (typeof navigation.navigate === 'function') {
+              navigation.navigate('SearchResult', searchWord);
+                // searchAction('', 'Bag')(dispatch);
+
+                // const {searchList} = useSelector(state => state.searchReducer);
+
+                // console.log('----------------',searchList);
+           
+            } else {
+              console.error("The 'navigation' object does not have a 'navigate' function.");
+            }
+          } else {
             console.warn("Navigation prop is not defined");
-        }
-    
+          }
     };
 
+    
     const handleSearchInputChange = function(x)
     {
         setSearchWord(x);
