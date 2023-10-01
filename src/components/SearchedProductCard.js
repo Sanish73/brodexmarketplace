@@ -8,9 +8,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 
 
-export const ProductCard = ({data}) => {
+export const SearchedProductCard = ({data}) => {
     const navigation = useNavigation();
-    const special_pricePercent = ((data.special_price / data.regular_price) * 100).toFixed(0);
+    const special_pricePercent = ((data?.price?.special_price / data?.price?.regular_price) * 100).toFixed(0);
     const randomRating = Math.floor(Math.random() * 7) / 2 + 2; // Generate random rating between 2 and 5, with a step of 0.5
     const discountAmount = (special_pricePercent/100)*(data.regular_price)
 
@@ -30,10 +30,10 @@ export const ProductCard = ({data}) => {
             marginBottom: 16
         }}>
 
-{/* <Text>
-          {JSON.stringify(data?.preview?.media?.l, null ,1)};
-             <Text>{JSON.stringify(data.preview, null , 4)}</Text>
-        </Text> */}
+<Text>
+          {/* {JSON.stringify(data, null ,1)}; */}
+             {/* <Text>{JSON.stringify(data.preview, null , 4)}</Text> */}
+        </Text>
             <View
                 style={{
                 height: 150,
@@ -43,7 +43,7 @@ export const ProductCard = ({data}) => {
             }}>
                 <Image
                  alt="image"
-                    source={{uri : data.productImage}}
+                    source={{uri : data?.preview?.media?.url}}
                     style={{
                     width: '100%',
                     height: '100%'
@@ -85,7 +85,7 @@ export const ProductCard = ({data}) => {
                         color: COLOURS.black,
                         fontWeight: '500'
                     }}>
-                        {data.productName}
+                        {data?.title}
                     </Text>
                  
                 </View>

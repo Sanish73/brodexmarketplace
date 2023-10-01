@@ -1,5 +1,4 @@
 import React from 'react';
-import {Alert, ScrollView, TouchableOpacity} from 'react-native';
 import {
     Text,
     VStack,
@@ -8,7 +7,6 @@ import {
     Box,
     Image
 } from "native-base";
-import Icon from 'react-native-vector-icons/Ionicons';
 import OrderSummaryBoxes from './OrderSummaryBoxes';
 
 export default function OrderSummary() {

@@ -8,14 +8,12 @@ const searchState = {
   };
   
   export const searchReducer = (state = searchState, action) => {
-    switch (action.type) {
+    switch (action.type) {     
         case 'SEARCH_SUCCESS':
           return {
             ...state,
-            data: action.payload
+            data: action?.payload || {data:[]}
           };
-    
-    
         default:
           return state;
       }

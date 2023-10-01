@@ -73,10 +73,8 @@ const MyProfilScreen = () => {
             height:'100%'
         }}>
             <EditProfilInfo
-               
                 Number={'9844554655'}
                 Password={'password'}/>
-
         </VStack>
     )
 }

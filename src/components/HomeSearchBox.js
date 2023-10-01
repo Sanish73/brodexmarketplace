@@ -1,51 +1,27 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
-    Text,
     Box,
-    VStack,
-    Center,
     HStack,
-    Button,
-    Heading,
-    useColorMode,
     Input
 } from 'native-base';
 import {
-    View,
-    StyleSheet,
-    Alert,
-    ScrollView,
-    FlatList,
-    Image,
     TouchableOpacity
 } from 'react-native';
-import {COLORS} from '../constants';
-import {useSelector, useDispatch} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { navigate } from '../navigation/RootNavigation';
 import {useNavigation} from '@react-navigation/native';
 import { searchAction } from '../Redux/actions/searchAction';
 
 export function HomeSearchBox() {
     const dispatch = useDispatch();
     const navigation = useNavigation();
-
-   
-
     const [ searchWord , setSearchWord ] = useState('');
- 
-  
     const submitAndTransferToNextScreen = function()
     {
         if (navigation) {
             if (typeof navigation.navigate === 'function') {
-              navigation.navigate('SearchResult', searchWord);
-                // searchAction('', 'Bag')(dispatch);
-
-                // const {searchList} = useSelector(state => state.searchReducer);
-
-                // console.log('----------------',searchList);
-           
+                searchAction('', searchWord)(dispatch);
+                navigation.navigate('SearchResult');
             } else {
               console.error("The 'navigation' object does not have a 'navigate' function.");
             }
@@ -53,14 +29,10 @@ export function HomeSearchBox() {
             console.warn("Navigation prop is not defined");
           }
     };
-
-    
     const handleSearchInputChange = function(x)
     {
         setSearchWord(x);
     };
-
-    
     return (
         <HStack top={0} px={3} h={58}>
             <Box w={'85%'} alignItems={'center'} justifyContent={'center'}>
@@ -83,7 +55,6 @@ export function HomeSearchBox() {
                     <Icon name="scan" size={30}  />
                 </Box>
             </TouchableOpacity>
-
         </HStack>
     );
 }
