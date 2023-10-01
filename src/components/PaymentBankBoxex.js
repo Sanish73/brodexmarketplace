@@ -1,21 +1,13 @@
 import {
-    ScrollView,
     Text,
     Box,
     VStack,
-    Button,
     HStack,
     Image
 } from 'native-base';
-import ShippingAddressBox from '../components/ShippingAddressBox'
-import OrderSummary from '../components/OrderSummary'
-import VoucherBox from '../components/VoucherBox'
-import {useNavigation} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {RadioButton} from 'react-native-paper';
-import React , { useState }from 'react';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import React from 'react';
+import { TouchableOpacity} from 'react-native';
 
 export default function PaymentBankBoxex({onPress, iconName, selected }) {
    

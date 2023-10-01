@@ -65,7 +65,7 @@ export function SearchedProducts() {
                         flexDirection: 'row',
                         alignItems: 'center'
                     }}>
-                        <Text
+                        {/* <Text
                             style={{
                             fontSize: 18,
                             color: COLOURS.black,
@@ -73,7 +73,11 @@ export function SearchedProducts() {
                             letterSpacing: 1
                         }}>
                             Products
-                        </Text>
+
+                           
+
+                                        
+                        </Text> */}
                         <Text
                             style={{
                             fontSize: 14,
@@ -82,7 +86,15 @@ export function SearchedProducts() {
                             opacity: 0.5,
                             marginLeft: 10
                         }}>
-                            45
+                            Showing {(data.data || []).length === 0
+                                        ? 0
+                                        : 1}
+                                    {(data.data || []).length !== 0
+                                        ? ` – ${ (data.data || []).length} of ${ (data.data || []).length} results`
+                                        : ' of 0 results'}
+
+                                        {/* {data?.data.length} */}
+
                         </Text>
                     </View>
                     <Text

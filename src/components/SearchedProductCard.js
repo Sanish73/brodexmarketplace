@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {COLOURS} from '../database/Database';
 import {Image} from 'native-base';
-import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
@@ -16,7 +15,7 @@ export const SearchedProductCard = ({data}) => {
 
     const handlePress = (item) => {
     //    console.log(item)
-        navigation.navigate('ProductInfo'  , data);
+        navigation.navigate('ProductInfo'  , item);
     }
 
     return (
@@ -30,10 +29,11 @@ export const SearchedProductCard = ({data}) => {
             marginBottom: 16
         }}>
 
-<Text>
-          {/* {JSON.stringify(data, null ,1)}; */}
-             {/* <Text>{JSON.stringify(data.preview, null , 4)}</Text> */}
-        </Text>
+{/* <Text>
+          {JSON.stringify(data, null ,1)};
+             <Text>{JSON.stringify(data?.price?.special_price, null , 4)}</Text>
+             <Text>{JSON.stringify(data?.price?.price, null , 4)}</Text>
+        </Text> */}
             <View
                 style={{
                 height: 150,
@@ -48,7 +48,7 @@ export const SearchedProductCard = ({data}) => {
                     width: '100%',
                     height: '100%'
                 }}/>
-                {data.special_price  ? <View
+                {data?.price?.special_price  ? <View
                     style={{
                     position: 'absolute',
                     top: 0,
@@ -102,9 +102,9 @@ export const SearchedProductCard = ({data}) => {
                         fontWeight: 'bold',
                         marginLeft: 4
                     }}>
-                        {data.productPrice}
+                        {data?.price?.price}
                     </Text>
-                    {(data.special_price == null ||data.special_price == 0 || data.regular_price == data.special_price)?<></>:<Text
+                    {(data?.price?.special_price == null ||data?.price?.special_price == 0 || data?.price?.regular_price == data?.price?.special_price)?<></>:<Text
                         style={{
                         fontSize: 14,
                         color: COLOURS.grey,
@@ -112,7 +112,7 @@ export const SearchedProductCard = ({data}) => {
                         marginLeft: 4,
                         textDecorationLine: 'line-through'
                     }}>
-                         {data.regular_price}
+                         {data?.price?.regular_price}
                     </Text>}
                 </View>
                 <View
@@ -128,17 +128,17 @@ export const SearchedProductCard = ({data}) => {
                         fontWeight: '500',
                         marginLeft: 4
                     }}>
-                        4.5
+                        {randomRating}
                     </Text>
-                    <Text
+                    {/* <Text
                         style={{
                         fontSize: 14,
                         color: COLOURS.grey,
                         fontWeight: '400',
                         marginLeft: 4
                     }}>
-                         {randomRating}
-                    </Text>
+                         
+                    </Text> */}
                 </View>
             </View>
         </TouchableOpacity>
