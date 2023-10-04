@@ -1,7 +1,6 @@
 import React, {useState,useEffect} from 'react';
-import {Alert, Button, ScrollView, TouchableOpacity} from 'react-native';
+import { ScrollView} from 'react-native';
 import {
-    Text,
     VStack,
     HStack,
     Box
@@ -13,74 +12,44 @@ import {useDispatch, useSelector} from 'react-redux';
 import {productListing} from '../Redux/actions/brandAction';
 
 
-
 function CategoryScreen() {
-  
     const page = 1;
     const refresh = true;
-
     const dispatch = useDispatch();
-
     useEffect(() => {
         productListing('', page, refresh)(dispatch);
     }, []);
-
     const {
-        bListingWaiting,
-        clicked,
-        loading,
-        _page,
-        _refresh,
         _data
     } = useSelector(state => state.listBrand);
-
-
     const _dataOnlyParent = _data.filter(item => item.type === 'category');
-
-    
-
-
-
-    
-
     const [selectedCategory,
         setSelectedCategory] = useState([]);
-
     const [selectedParentCategory,
         setSelectedParentCategory] = useState([]);
-
     const [collection,
         setCollection] = useState([]);
 
     function handlClickEvent(category) {
         var collection2 = [];
-
         for (var i = 0; i < _data.length; i++) {
             const item = _data[i];
-
             if (item.p_id == category.id) {
                 collection2.push(item);
-
             }
         }
         setCollection(collection2);
-
-        //  Alert.alert(JSON.stringify(selectedCategory));
-        // Alert.alert(JSON.stringify(selectedParentCategory));
+        //Alert.alert(JSON.stringify(selectedCategory));
     }
 
     const handleCategorySelectAndClickEvent = (category) => {
         handlClickEvent(category);
         console.log("cateforyScreen-------", category);
         setSelectedParentCategory(category)
-        // setSelectedCategory(category);
     };
 
     return <VStack>
-
         <CategorySearch/>
-        {/* <Text>{JSON.stringify(selectedParentCategory , null , 1)}</Text> */}
-
         <HStack h={'100%'}>
             <VStack w={'20%'} h={'100%'}>
                 <ScrollView>
@@ -92,11 +61,6 @@ function CategoryScreen() {
                     <Box h={100}></Box>
                 </ScrollView>
             </VStack>
-
-            
-  {/* <Text>{JSON.stringify(collection , null , 1)}</Text> */}
-
-
             <VStack w={'80%'} h={'100%'}>
                 <ScrollView>
                     <CategoryRightList
@@ -108,9 +72,7 @@ function CategoryScreen() {
                 </ScrollView>
             </VStack>
         </HStack>
-
     </VStack>
-
 }
 
 export default CategoryScreen;

@@ -1,25 +1,19 @@
 
-import React, {useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import {Alert} from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
 import {
     Text,
-    Button,
     Box,
     Avatar,
     VStack,
-    Link,
     HStack,
-    Checkbox,
     Heading,
-    View,
     ScrollView
 } from 'native-base';
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector, useDispatch} from 'react-redux';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {loginStateChange} from '../Redux/actions/brandAction';
 import {storeData} from '../Common/functions';
 import { getAllOrder } from '../Redux/actions/orderAction';
@@ -47,9 +41,6 @@ function ProfileListItem({
             <HStack>
                 <Box w={'15%'}>
                     <Icon name={firsticonName} color='#ff8e50' size={30}/>
-                    {/* <Text>
-                {JSON.stringify(ordersLists,null,2)}
-            </Text> */}
                 </Box>
                 <Box w={'75%'}>
                     <Text paddingLeft={0} fontSize={22}>{name}</Text>
@@ -63,7 +54,7 @@ function ProfileListItem({
 }
 
 function ProfilHeader() {
-    const {loginStatus, loginData} = useSelector(state => state.forTokenReducer);
+    const { loginData} = useSelector(state => state.forTokenReducer);
 
     return (
         <Box style={styles.mainBackground} shadow={3}>
@@ -103,15 +94,11 @@ function ProfilHeader() {
 
 export function AccountScreen() {
     const navigation = useNavigation();
-
-    const {loginStatus, loginData} = useSelector(state => state.forTokenReducer);
-
-    console.log('AccountScreen=>>>', loginData);
+    const { loginData} = useSelector(state => state.forTokenReducer);
+    console.log('AccountScreen=>>>');
     const dispatch = useDispatch();
 
     const logOutDispatch = () => {
-        // console.log("-------------------------",storeData);  loginStateChange( false
-        // , loginData)(dispatch);
         storeData("@loginstatus", (''), function (dtx) {
             loginStateChange(false, dtx)(dispatch);
         });
@@ -120,15 +107,8 @@ export function AccountScreen() {
     useEffect(() =>{
         getAllOrder('')(dispatch);
     },[] );
-        // React.useCallback(() => {
-        //     
-        // }, [])
-   
 
     const {ordersList} = useSelector(state => state.getAllOrderReducer);
-    // console.log('-----------------------------------------pppppppppppppppp',ordersList);
-
-    
     const askForLogout = () => {
         Alert.alert('Logout', 'Are you sure you want to logout?', [
             {
@@ -139,33 +119,20 @@ export function AccountScreen() {
                 text: 'OK',
                 onPress: () => {
                     logOutDispatch();
-
-                    // const storedCartItems = await AsyncStorage.getItem('token');
-                    // console.log(storedCartItems) Clear the token from AsyncStorage   await
-                    // AsyncStorage.removeItem('token'); Perform any other logout logic here
-                    // Example: Redirect to the login screen or perform any other navigation
-                    // navigation.navigate('LoginScreen');
                 }
             }
         ], {cancelable: false});
     }
-
     const askForOder = () => {
-
         navigation.navigate('MyOrder' , ordersList);
-
     }
     const askForMyProfilEdit = () => {
-        navigation.navigate('MyProfil');
-
+        navigation.navigate('MyProfil')
     }
 
     return (
-
         <ScrollView style={{}}>
-
             <ProfilHeader/>
-
             <Box p={4}>
                 <Box p={5} bg={'white'} rounded={'xl'} shadow={2}>
                     <ProfileListItem
@@ -189,15 +156,11 @@ export function AccountScreen() {
                         callback={askForLogout}/>
                 </Box>
             </Box>
-
             <Box h={100}></Box>
         </ScrollView>
-
     );
 }
-
 const styles = StyleSheet.create({
-
     mainBackground: {
         backgroundColor: '#ff8e50',
         maxW: '100%',
