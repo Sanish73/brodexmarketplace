@@ -1,16 +1,11 @@
 import React from 'react';
 import {ScrollView, Text, Box, VStack, Button} from 'native-base';
-// import { Alert } from 'react-native';
 import ShippingAddressBox from '../components/ShippingAddressBox'
 import OrderSummary from '../components/OrderSummary'
 import VoucherBox from '../components/VoucherBox'
-// import {useNavigation} from '@react-navigation/native'; import
-// {createNativeStackNavigator} from '@react-navigation/native-stack';
-
 import {useNavigation} from '@react-navigation/native';
 
 export function OrderScreen() {
-
     const navigation = useNavigation();
     const showAlert = () => {
         navigation.navigate('Payments');

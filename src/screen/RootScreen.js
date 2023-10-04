@@ -1,18 +1,10 @@
 import React from 'react';
-
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {HomeScreen} from './HomeScreen';
 import CategoryScreen from './CategoryScreen';
-
 import {AccountScreen} from './AccountScreen';
 import CartScreen from './CartScreen';
-import LoginScreen from './LoginScreen';
-
-
-
-// import OrderScreen from './OrderScreen';
-
 export function RootScreen() {
     const Tab = createBottomTabNavigator();
     return (

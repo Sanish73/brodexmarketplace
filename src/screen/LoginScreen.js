@@ -1,44 +1,32 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {login} from '../Redux/actions/brandAction';
 import  {storeData}  from '../Common/functions';
-import  {getStoredData}  from '../Common/functions';
 import { loginStateChange } from '../Redux/actions/brandAction';
 
 const LoginScreen = () => {
-
   const page = 1;
   const refresh = true;
-
   const dispatch = useDispatch();
-
-
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const email  = 'admin@admin.com';
   const password = 'fancystore';
-
   const handleLogin = () => {
     login('', email , password, page, refresh, function(dt){
       // console.log("++++++++++++++++++++++",dt);
-      
-    
       if(dt?.status){
-       
         //  console.log("++++++++++++++++++++++++++++++++++++++++");
         storeData("@loginstatus",dt,function(dtx){
           loginStateChange( dt?.status , dtx)(dispatch);
           //fortokenREduxer.js
              });
-
       }else(
         Alert.alert("Error","Invalid Email or Password")
       )
     })(dispatch);
-   
   };
 
   return (

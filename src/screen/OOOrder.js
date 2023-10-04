@@ -1,22 +1,13 @@
 import React from 'react';
-import {Alert, Button, ScrollView, TouchableOpacity} from 'react-native';
+import {ScrollView} from 'react-native';
 import {
-    Text,
-    VStack,
-    HStack,
     Box,
-    Image,
-    Badge
 } from "native-base";
-import Icon from 'react-native-vector-icons/Ionicons';
 import OrderItems from '../components/OrderItems';
 import MyTab from '../components/MyTab'
 
 function OOOrder({route}) {
-
     const  ordersList = route.params;
-    
-
     const dataset = [
         {
             id: 1,
@@ -29,18 +20,11 @@ function OOOrder({route}) {
             image: 'https://picsum.photos/id/10/200/300'
         }
     ];
-
     return <Box>
         {/* <MyTab/> */}
         <ScrollView style={{
             paddingHorizontal: 10
         }}>
-
-        {/* <Text>
-            {JSON.stringify(ordersList,null,2)}
-        </Text> */}
-
-
         {ordersList.map((item) => {
             {console.log(item.id,'ljldksfjklsdjlfjklsdjkfljkl')}
                 return <OrderItems
@@ -60,32 +44,8 @@ function OOOrder({route}) {
                     ?.paidStatus || ''}
                     activityStatus={item
                     ?.status || ''}/>
-
             })}
-         {/* {dataset.map((item) => {
-                return <OrderItems
-                    key={item.id}
-                    productId={item
-                    ?.id || ''}
-                    orderId={item
-                    ?.orderId || ''}
-                    noItems={item
-                    ?.items || ''}
-                    price
-                    ={item
-                    ?.amount || ''}
-                    time={item
-                    ?.timeString || ''}
-                    pricePaidStatus={item
-                    ?.paidStatus || ''}
-                    activityStatus={item
-                    ?.status || ''}
-                    photo
-                    ={item
-                    ?.image || ''}/>
-            })} */}
             <Box h={100}></Box>
-
         </ScrollView>
     </Box>
 
