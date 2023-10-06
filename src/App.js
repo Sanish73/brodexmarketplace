@@ -27,21 +27,13 @@ import SearchResult from './screen/SearchResult';
 function AppBox() {
     const Stack = createNativeStackNavigator();
     const dispatch = useDispatch();
-
-
       const { 
         loginStatus
-
        } =  useSelector( state => state.forTokenReducer );
-
-      
       useEffect(() => {
         // getHomePageProducts('', 50)(dispatch);
         getStoredData('@loginstatus', function(statee , dta){
           loginStateChange( dta?.status , dta)(dispatch);
-          
-
-          // console.log("2+++++++++++++++342342342342342342342=============",dta);
         });
       }, []);
        console.log("App.js Token GLobal ----->>>>>",loginStatus);

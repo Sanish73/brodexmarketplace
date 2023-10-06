@@ -253,7 +253,7 @@ export function ProductInfoScreen({route}) {
                                                    
                     <Icon name="star" size={20} color="#FFA500" />
                         <Text bold paddingLeft={1}> 
-                          0
+                        {randomRating}
                         </Text>
                     </HStack>
                         <HStack rounded={15} marginLeft={2} alignItems={'center'} paddingX={2}> 
@@ -326,17 +326,11 @@ export function ProductInfoScreen({route}) {
 
                 </HStack>
 
-                            <VStack paddingY={3} space={2}>
+                            <VStack paddingY={3} >
                                 <Box>
-                                <Image size={"xs"} w={20} borderRadius={1} source={{
-                                uri: "https://wallpaperaccess.com/full/317501.jpg"
-                                }} alt="Alternate Text" />
+                                    <Image size={"lg"} w={20}  borderRadius={8}  source={{uri : productImage}} alt="Alternate Text" />
                                 </Box>
-                                <Box>
-                                    <Text underline>
-                            {/* {meta} */}
-                                    </Text>
-                                </Box>
+                              
                             </VStack>
 
                 <VStack paddingTop={2}>
@@ -358,16 +352,16 @@ export function ProductInfoScreen({route}) {
 
             </ScrollView>
             <HStack bottom={2} >
-                 <Button   onPress={handleButtonClickStore} w={'48%'} rounded={6} leftIcon={<Ionicons name="cart-outline" size={18} color="white" />}>
+                 <Button   onPress={handleButtonClickStore} w={'100%'} rounded={5} leftIcon={<Ionicons name="cart-outline" size={18} color="white" />}>
                     Add to Cart
                 </Button>
 
-                <Box w={'5%'}>
-                </Box>
-
+                {/* <Box w={'5%'}>
+                </Box> */}
+{/* 
                 <Button w={'47%'} rounded={6}   leftIcon={<Ionicons name="cart-outline" size={18} color="white" /> }>
                     Buy Now
-                </Button>
+                </Button> */}
                 
             </HStack>
 

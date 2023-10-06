@@ -16,12 +16,9 @@ const LoginScreen = () => {
   const password = 'fancystore';
   const handleLogin = () => {
     login('', email , password, page, refresh, function(dt){
-      // console.log("++++++++++++++++++++++",dt);
       if(dt?.status){
-        //  console.log("++++++++++++++++++++++++++++++++++++++++");
         storeData("@loginstatus",dt,function(dtx){
           loginStateChange( dt?.status , dtx)(dispatch);
-          //fortokenREduxer.js
              });
       }else(
         Alert.alert("Error","Invalid Email or Password")

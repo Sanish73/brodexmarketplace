@@ -1,12 +1,7 @@
-import {
-    Box,
-    VStack
-} from 'native-base';
-import {
-    ScrollView
-} from 'react-native';
+import {Box, VStack} from 'native-base';
+import {ScrollView} from 'react-native';
 import React from 'react'
-import { SearchedProducts } from '../components/SearchedProducts'; 
+import {SearchedProducts} from '../components/SearchedProducts';
 
 const SearchResult = () => {
     return (
