@@ -32,13 +32,23 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { useDispatch} from 'react-redux';
 import { cartAPIAction } from '../Redux/actions/cartAPIAction';
 
+const showImageInZoom = (image , navigation) => {
+
+    const jsonString = JSON.stringify(image, null, 2);
+    console.log(jsonString);
+    if(image){
+        if (navigation) {
+            navigation.navigate('ShowImageFromProductInfo' , image);
+        } else {
+            console.warn('ShowImageFromProductInfo not found');
+        }
+    }
+  };
+
 
 export function ProductInfoScreen({route}) {
     const dispatch = useDispatch();
     const navigation = useNavigation();
-
-
-
     const {
         id,
         productImage,
@@ -48,30 +58,27 @@ export function ProductInfoScreen({route}) {
         special_price,
         stock,
         productImageList
-       
     } = route.params;
+    
     console.log("productInfoScreen ID---->" , id);
    
-
-                const handleButtonClickStore =  () => {
-                    cartAPIAction('', id , 1 ,productPrice, productName,productImage )(dispatch);
-                                
-                    if (navigation) {
-                        navigation.navigate('cartScreen');
-                        // console.log('Item added to cart:', item);
-                    } else {
-                        console.warn('cartScreen Navigation prop is not defined');
-                    }
-                };
-
-    // console.log(productImage);
+    const handleButtonClickStore =  () => {
+        cartAPIAction('', id , 1 ,productPrice, productName,productImage )(dispatch); 
+        if (navigation) {
+            navigation.navigate('cartScreen');
+        } else {
+            console.warn('cartScreen Navigation prop is not defined');
+        }
+    };
     const special_pricePercent = ((special_price / regular_price) * 100).toFixed(0);
     const randomRating = Math.floor(Math.random() * 7) / 2 + 2;
-
-
+    const randomforreviews= Math.floor(Math.random() * 11) + 10;
+    const randomorders= Math.floor(Math.random() * 20) + 10;
+    const randomowishes =  Math.floor(Math.random() * 8) + 10;
     const {width} = Dimensions.get('window');
     const [scrollX,
         setScrollX] = useState(new Animated.Value(0));
+        
     const renderProduct = ({item, index}) => {
         return (
             <View
@@ -80,7 +87,6 @@ export function ProductInfoScreen({route}) {
                 height: 250
             }}>
              {/* <Text>{JSON.stringify(productName, null, 2)}</Text> */}
-             {/* <Text>Topppppppppppppppppppppppp</Text> */}
                 <Image
                  alt="image"
                     source={{uri : productImage}}
@@ -106,16 +112,11 @@ export function ProductInfoScreen({route}) {
             <StatusBar backgroundColor={COLOURS.backgroundLight} barStyle="dark-content"/>
             <ScrollView >
                 <View
-                
                     style={{
                     width: '100%',
                     height: 250,
-                    
-                    
                 }}>
                     <FlatList
-                   
-                 
                         data={productImage || []}
                         horizontal
                         renderItem={renderProduct}
@@ -169,8 +170,8 @@ export function ProductInfoScreen({route}) {
                                 }}/>);
                             })
                             : null}
-
                     </View>
+
                     {stock==1 ? <View
                     style={{
                     position: 'absolute',
@@ -179,17 +180,16 @@ export function ProductInfoScreen({route}) {
                     backgroundColor: COLOURS.red,
                     padding: 4,
                     borderRadius: 5
-                }}>
-                    <Text
-                        style={{
-                        color: COLOURS.white,
-                        fontWeight: 'bold'
                     }}>
-                        {special_pricePercent}% OFF
-                    </Text>
-                </View>:<></>}
-
-                </View>
+                        <Text
+                            style={{
+                            color: COLOURS.white,
+                            fontWeight: 'bold'
+                        }}>
+                            {special_pricePercent}% OFF
+                        </Text>
+                    </View>:<></>}
+                    </View>
 
                 <HStack  paddingTop={2}>
                     <HStack  w={'80%'} alignItems={'center'} paddingX={0}>
@@ -211,7 +211,6 @@ export function ProductInfoScreen({route}) {
                                 />
                         </Box>
                         <Box>
-                         
                             <Ionicons
                                 name="heart-outline"
                                 size={22}
@@ -225,16 +224,14 @@ export function ProductInfoScreen({route}) {
               
 
                 <View
-                 
                     style={{
                         paddingHorizontal:1,
                         paddingVertical:4,
-                    flexDirection: 'row',
-                    alignItems: 'center'
+                        flexDirection: 'row',
+                        alignItems: 'center'
                 }}>
                     <FontAwesome name="rupee" size={14} color={COLOURS.blue}/>
                     <Text
-                   
                         style={{
                         fontSize: 16,
                         color: COLOURS.blue,
@@ -245,8 +242,6 @@ export function ProductInfoScreen({route}) {
                       {productPrice}
                     </Text>
                 </View>
-
-                
 
                 <HStack paddingTop={1} >
                     <HStack  rounded={15} alignItems={'center'} paddingX={0}>
@@ -263,7 +258,7 @@ export function ProductInfoScreen({route}) {
                                 fontWeight: 'bold',
                                 marginLeft: 4
                             }}>
-                                 0
+                                {randomforreviews}
                             </Text>
                         <Text style={{
                                 fontSize: 16,
@@ -287,7 +282,7 @@ export function ProductInfoScreen({route}) {
                                 fontWeight: 'bold',
                                 marginLeft: 4
                             }}>
-                                 0
+                                 {randomorders}
                             </Text>
                         <Text style={{
                                 fontSize: 16,
@@ -311,7 +306,7 @@ export function ProductInfoScreen({route}) {
                                 fontWeight: 'bold',
                                 marginLeft: 4
                             }}>
-                                 0
+                                 {randomowishes}
                             </Text>
                         <Text style={{
                                 fontSize: 16,
@@ -321,17 +316,16 @@ export function ProductInfoScreen({route}) {
                             }} paddingLeft={1}>
                                 wish
                         </Text>
-                        
                         </HStack>
-
                 </HStack>
-
-                            <VStack paddingY={3} >
-                                <Box>
-                                    <Image size={"lg"} w={20}  borderRadius={8}  source={{uri : productImage}} alt="Alternate Text" />
-                                </Box>
-                              
-                            </VStack>
+                
+               
+                    <VStack paddingY={3}>
+                     <TouchableOpacity  onPress={() => showImageInZoom(productImage , navigation)}>
+                        <Image  size={"lg"} w={20} borderRadius={8} source={{ uri: productImage }} alt="Alternate Text" />
+                    </TouchableOpacity>
+                    </VStack>
+              
 
                 <VStack paddingTop={2}>
                     <Box>
@@ -349,7 +343,6 @@ export function ProductInfoScreen({route}) {
                     </HStack>
                 </VStack>
                 
-
             </ScrollView>
             <HStack bottom={2} >
                  <Button   onPress={handleButtonClickStore} w={'100%'} rounded={5} leftIcon={<Ionicons name="cart-outline" size={18} color="white" />}>
@@ -362,10 +355,7 @@ export function ProductInfoScreen({route}) {
                 <Button w={'47%'} rounded={6}   leftIcon={<Ionicons name="cart-outline" size={18} color="white" /> }>
                     Buy Now
                 </Button> */}
-                
             </HStack>
-
-
         </View>
     );
 }

@@ -22,6 +22,7 @@ import { getStoredData } from './Common/functions';
 import { loginStateChange } from './Redux';
 import { HomeScreen } from './screen/HomeScreen';
 import SearchResult from './screen/SearchResult';
+import { ShowImageFromProductInfo } from './components/ShowImageFromProductInfo';
 
 
 function AppBox() {
@@ -37,8 +38,6 @@ function AppBox() {
         });
       }, []);
        console.log("App.js Token GLobal ----->>>>>",loginStatus);
-  
-   
     return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -58,6 +57,9 @@ function AppBox() {
               <Stack.Screen name="MyOrder" component={OOOrder} />
               <Stack.Screen name="cartScreen" component={CartScreen} />
               <Stack.Screen name="MyProfil" component={MyProfilScreen} />
+              <Stack.Screen name="ShowImageFromProductInfo" component={ShowImageFromProductInfo} />
+              
+
               </>
           ) : (
             <Stack.Screen name="Account" component={LoginScreen} />          
