@@ -1,5 +1,4 @@
 import React from 'react';
-import {Alert, ScrollView, TouchableOpacity} from 'react-native';
 import {
     Text,
     VStack,
@@ -8,10 +7,8 @@ import {
     Box,
     Image
 } from "native-base";
-import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function OrderSummaryBoxes({data}) {
-
     return (
         <Box paddingTop={3}>
             <HStack justifyContent={'space-between'}>
@@ -45,7 +42,6 @@ export default function OrderSummaryBoxes({data}) {
                         <Text paddingLeft={1}>
                             X
                         </Text>
-
                         <Text >
                             10000
                         </Text>

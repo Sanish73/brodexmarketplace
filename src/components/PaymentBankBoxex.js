@@ -10,10 +10,8 @@ import React from 'react';
 import { TouchableOpacity} from 'react-native';
 
 export default function PaymentBankBoxex({onPress, iconName, selected }) {
-   
     return (
       <Box paddingTop={3}>
-
       {/* <Text>
         {JSON.stringify(iconName , null , 1)};
       </Text> */}
@@ -52,8 +50,6 @@ export default function PaymentBankBoxex({onPress, iconName, selected }) {
               }}
             />
             </TouchableOpacity>
-            
-         
           </VStack>
         </HStack>
       </Box>

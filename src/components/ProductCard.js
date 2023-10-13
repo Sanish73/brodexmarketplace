@@ -2,26 +2,21 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {COLOURS} from '../database/Database';
 import {Image} from 'native-base';
-import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
-
 
 export const ProductCard = ({data}) => {
     const navigation = useNavigation();
     const special_pricePercent = ((data.special_price / data.regular_price) * 100).toFixed(0);
     const randomRating = Math.floor(Math.random() * 7) / 2 + 2; // Generate random rating between 2 and 5, with a step of 0.5
     const discountAmount = (special_pricePercent/100)*(data.regular_price)
-
     const handlePress = (item) => {
     //    console.log(item)
         navigation.navigate('ProductInfo'  , data);
     }
-
     return (
         <TouchableOpacity
-        
         onPress={()=>handlePress(data)}
             style={{
             backgroundColor: COLOURS.white,
@@ -29,9 +24,8 @@ export const ProductCard = ({data}) => {
             borderRadius: 5,
             marginBottom: 16
         }}>
-
-{/* <Text>
-          {JSON.stringify(data?.preview?.media?.l, null ,1)};
+        {/* <Text>
+              {JSON.stringify(data?.preview?.media?.l, null ,1)};
              <Text>{JSON.stringify(data.preview, null , 4)}</Text>
         </Text> */}
             <View
@@ -39,7 +33,6 @@ export const ProductCard = ({data}) => {
                 height: 150,
                 overflow: 'hidden',
                 borderTopLeftRadius: 18,
-              
             }}>
                 <Image
                  alt="image"
@@ -83,11 +76,11 @@ export const ProductCard = ({data}) => {
                         style={{
                         fontSize: 14,
                         color: COLOURS.black,
+                        textTransform: 'uppercase',
                         fontWeight: '500'
                     }}>
                         {data.productName}
                     </Text>
-                 
                 </View>
                 <View
                     style={{
@@ -128,16 +121,7 @@ export const ProductCard = ({data}) => {
                         fontWeight: '500',
                         marginLeft: 4
                     }}>
-                        4.5
-                    </Text>
-                    <Text
-                        style={{
-                        fontSize: 14,
-                        color: COLOURS.grey,
-                        fontWeight: '400',
-                        marginLeft: 4
-                    }}>
-                         {randomRating}
+                        {randomRating}
                     </Text>
                 </View>
             </View>

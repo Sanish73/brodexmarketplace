@@ -45,7 +45,6 @@ export default function CartProductBoxes({data}) {
       if (countedNumber > 1) {
         setCountNumber(countedNumber - 1);
         getAllCartTotal('', data.id, countedNumber - 1)(dispatch);
-       
       }
     };
   

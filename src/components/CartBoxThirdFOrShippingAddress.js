@@ -27,13 +27,10 @@ export default function CartBoxThirdFOrShippingAddress() {
                 </Center>
                 <VStack w={'64%'}>
                     <HStack alignSelf={'flex-start'} alignItems={'center'}>
-
                         <Text fontSize={17} pl={1}>
                            Shipping Address
                         </Text>
-
                     </HStack>
-
                 </VStack>
                 <VStack w={'16%'}>
                     <Text fontSize={16} color={'#F57F17'} bold>

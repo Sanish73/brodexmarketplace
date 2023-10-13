@@ -15,12 +15,11 @@ export const SearchedProductCard = ({data}) => {
 
     const handlePress = (item) => {
     //    console.log(item)
-        navigation.navigate('ProductInfo'  , item);
+        navigation.navigate('ProductInfoScreenSearched'  , item);
     }
 
     return (
         <TouchableOpacity
-        
         onPress={()=>handlePress(data)}
             style={{
             backgroundColor: COLOURS.white,

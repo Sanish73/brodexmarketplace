@@ -23,6 +23,7 @@ import { loginStateChange } from './Redux';
 import { HomeScreen } from './screen/HomeScreen';
 import SearchResult from './screen/SearchResult';
 import { ShowImageFromProductInfo } from './components/ShowImageFromProductInfo';
+import { ProductInfoScreenSearched } from './components/ProductInfoScreenSearched';
 
 
 function AppBox() {
@@ -50,6 +51,7 @@ function AppBox() {
               <Stack.Screen name="Success" component={PaymentSuccessScreen} />
               <Stack.Screen name="Order" component={OrderScreen} />
               <Stack.Screen name="ProductInfo" component={ProductInfoScreen} />
+              <Stack.Screen name="ProductInfoScreenSearched" component={ProductInfoScreenSearched} />
               <Stack.Screen
                 name="CategorySubCategoDetails"
                 component={CategorySubCatDetailScree}
