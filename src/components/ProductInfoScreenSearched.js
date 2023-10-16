@@ -1,26 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import {
     View,
-
     StatusBar,
     ScrollView,
     TouchableOpacity,
     FlatList,
-    
     Dimensions,
     Animated,
-    ToastAndroid,Alert,
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
 import {
     Box,
     Text,
-    Center,
     HStack,
     VStack,
-    Radio,
-    Stack,
     Button,
     Heading,
     Image,
@@ -31,11 +24,9 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useDispatch} from 'react-redux';
 import { cartAPIAction } from '../Redux/actions/cartAPIAction';
-
 const showImageInZoom = (image , navigation) => {
-
-    const jsonString = JSON.stringify(image, null, 2);
-    console.log(jsonString);
+    // const jsonString = JSON.stringify(image, null, 2);
+    // console.log(jsonString);
     if(image){
         if (navigation) {
             navigation.navigate('ShowImageFromProductInfo' , image);
@@ -44,8 +35,6 @@ const showImageInZoom = (image , navigation) => {
         }
     }
   };
-
-
 export function ProductInfoScreenSearched({route}) {
     const dispatch = useDispatch();
     const navigation = useNavigation();
@@ -54,13 +43,12 @@ export function ProductInfoScreenSearched({route}) {
     const productPrice = route.params.price.price;
     const regular_price = route.params.price.regular_price;
     const special_price = route.params.price.special_price;
-
+    const  stock= 1;
     const {
         id,
-        stock,
+       
         productImageList
     } = route.params;
-    
     console.log("productInfoScreenSearched ID---->" , id);
    
     const handleButtonClickStore =  () => {
@@ -87,7 +75,6 @@ export function ProductInfoScreenSearched({route}) {
                 width,
                 height: 250
             }}>
-            
                 <Image
                  alt="image"
                     source={{uri : productImage}}
@@ -117,7 +104,6 @@ export function ProductInfoScreenSearched({route}) {
                     width: '100%',
                     height: 250,
                 }}>
-               
                     <FlatList
                         data={productImage || []}
                         horizontal
@@ -144,7 +130,6 @@ export function ProductInfoScreenSearched({route}) {
                         flexDirection: 'row',
                         justifyContent: 'center',
                         alignItems: 'center',
-                       
                     }}>
                         {productImageList
                             ? productImageList.map((data, index) => {
@@ -173,7 +158,6 @@ export function ProductInfoScreenSearched({route}) {
                             })
                             : null}
                     </View>
-
                     {stock==1 ? <View
                     style={{
                     position: 'absolute',
@@ -190,10 +174,8 @@ export function ProductInfoScreenSearched({route}) {
                         }}>
                             {special_pricePercent}% OFF
                         </Text>
-                        
                     </View>:<></>}
                     </View>
-
                 <HStack  paddingTop={2}>
                     <HStack  w={'80%'} alignItems={'center'} paddingX={0}>
                         <Text  bold fontSize={19}>
@@ -204,9 +186,7 @@ export function ProductInfoScreenSearched({route}) {
                         </Text> */}
                     </HStack>
                     <HStack w={'20%'} justifyContent={'space-between'} alignItems={'center'}>
-                    
                         <Box>
-                           
                              <Ionicons
                                 name="share-outline"
                                 size={22}
@@ -222,12 +202,8 @@ export function ProductInfoScreenSearched({route}) {
                                 style={{ marginRight: 10 }}
                            />
                         </Box>
-
                     </HStack>
-                    
                 </HStack>
-              
-
                 <View
                     style={{
                         paddingHorizontal:1,
@@ -247,7 +223,6 @@ export function ProductInfoScreenSearched({route}) {
                       {productPrice}
                     </Text>
                 </View>
-
                 <HStack paddingTop={1} >
                     <HStack  rounded={15} alignItems={'center'} paddingX={0}>
                                                    
@@ -323,15 +298,11 @@ export function ProductInfoScreenSearched({route}) {
                         </Text>
                         </HStack>
                 </HStack>
-                
-               
                     <VStack paddingY={3}>
-                     <TouchableOpacity  onPress={() => showImageInZoom(productImage , navigation)}>
-                        <Image  size={"lg"} w={20} borderRadius={8} source={{ uri: productImage }} alt="Alternate Text" />
-                    </TouchableOpacity>
+                        <TouchableOpacity  onPress={() => showImageInZoom(productImage , navigation)}>
+                            <Image  size={"lg"} w={20} borderRadius={8} source={{ uri: productImage }} alt="Alternate Text" />
+                        </TouchableOpacity>
                     </VStack>
-              
-
                 <VStack paddingTop={2}>
                     <Box>
                         <Heading size="sm">
@@ -347,13 +318,11 @@ export function ProductInfoScreenSearched({route}) {
                         </Button>
                     </HStack>
                 </VStack>
-                
             </ScrollView>
             <HStack bottom={2} >
                  <Button   onPress={handleButtonClickStore} w={'100%'} rounded={5} leftIcon={<Ionicons name="cart-outline" size={18} color="white" />}>
                     Add to Cart
                 </Button>
-
                 {/* <Box w={'5%'}>
                 </Box> */}
 {/* 
@@ -361,7 +330,7 @@ export function ProductInfoScreenSearched({route}) {
                     Buy Now
                 </Button> */}
             </HStack>
-            <Text>{JSON.stringify(route.params, null ,1)}</Text>
+            {/* <Text>{JSON.stringify(route.params, null ,1)}</Text> */}
         </View>
     );
 }

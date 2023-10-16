@@ -54,7 +54,6 @@ function CategoryScreen() {
             <VStack w={'20%'} h={'100%'}>
                 <ScrollView>
                     <CategoryLeftList
-                        categories={data}
                         APIcat={_dataOnlyParent}
                         APIcatToPreSelect={_dataOnlyParent[0]}
                         onSelectCategory={handleCategorySelectAndClickEvent}/>

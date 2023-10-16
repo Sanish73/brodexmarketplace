@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {NativeBaseProvider} from 'native-base';
-
-import {RootTagContext, SafeAreaView, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {RootScreen} from './screen/RootScreen';
@@ -17,7 +16,6 @@ import {store} from './Redux/store';
 import CartScreen from './screen/CartScreen';
 import LoginScreen from './screen/LoginScreen';
 import { useSelector ,useDispatch } from 'react-redux';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getStoredData } from './Common/functions';
 import { loginStateChange } from './Redux';
 import { HomeScreen } from './screen/HomeScreen';
