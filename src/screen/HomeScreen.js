@@ -28,7 +28,12 @@ export function HomeScreen() {
                     <SlideShowBox/>
                     {/* <HomeImageGrid/>
                     <HomeImageGrid/> */}
-                    <HomeFlashDetaisTop/>
+                    <HomeFlashDetaisTop/> 
+
+
+
+
+                    
                     <HomeFlashDetaisHead/>
                     <Products/>
                     <Box h={100}></Box>

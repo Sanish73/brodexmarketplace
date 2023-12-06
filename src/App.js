@@ -42,9 +42,9 @@ function AppBox() {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           {loginStatus?(
             <>
-            <Stack.Screen name="Root" component={RootScreen} />
-            <Stack.Screen name="SearchResult" component={SearchResult} />
-            <Stack.Screen name="Home" component={HomeScreen} />
+              <Stack.Screen name="Root" component={RootScreen} />
+              <Stack.Screen name="SearchResult" component={SearchResult} />
+              <Stack.Screen name="Home" component={HomeScreen} />
               <Stack.Screen name="Payments" component={PaymentScreen} />
               <Stack.Screen name="Success" component={PaymentSuccessScreen} />
               <Stack.Screen name="Order" component={OrderScreen} />
@@ -58,8 +58,6 @@ function AppBox() {
               <Stack.Screen name="cartScreen" component={CartScreen} />
               <Stack.Screen name="MyProfil" component={MyProfilScreen} />
               <Stack.Screen name="ShowImageFromProductInfo" component={ShowImageFromProductInfo} />
-              
-
               </>
           ) : (
             <Stack.Screen name="Account" component={LoginScreen} />          
@@ -75,7 +73,6 @@ export default function App() {
         <Provider store={store}>
             <NativeBaseProvider>
                 <AppBox/>
-
             </NativeBaseProvider>
         </Provider>
     );

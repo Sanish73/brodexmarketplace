@@ -2,27 +2,14 @@ import React, {useState, useEffect} from 'react';
 import {
     View,
     Text,
-    StatusBar,
-    ScrollView,
-    TouchableOpacity,
-    Image
 } from 'react-native';
-import {COLOURS, Items} from '../database/Database';
-import Entypo from 'react-native-vector-icons/Entypo';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {COLOURS, } from '../database/Database';
 import { Box } from 'native-base';
 import { ProductCard } from './ProductCard';
-import {useSelector, useDispatch} from 'react-redux';
-
+import {useSelector, } from 'react-redux';
 
 export function Products() {
-
-  
-
   const homePageProducts = useSelector(state => state.homeScreenProductsReducer);
-    
-
     const [products,
         setProducts] = useState([
             {
@@ -41,13 +28,10 @@ export function Products() {
                   require('../../assets/images/2503231679712494641e60eed7930.webp'),
                   require('../../assets/images/c08000131_1750x1285.webp'),
                   require('../../assets/images/01042316803342086427dd809514b.webp'),
-                 
                 ],
               }
         ]);
-  
-
-    return (
+return (
         <Box>
         
             <View style={{

@@ -2,18 +2,10 @@ import React, {useState, useEffect} from 'react';
 import {
     View,
     Text,
-    StatusBar,
-    ScrollView,
-    TouchableOpacity,
-    Image
 } from 'react-native';
 import {COLOURS, Items} from '../database/Database';
-import Entypo from 'react-native-vector-icons/Entypo';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { Box } from 'native-base';
-import { ProductCard } from './ProductCard';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import { SearchedProductCard } from './SearchedProductCard';
 
 
@@ -72,11 +64,7 @@ export function SearchedProducts() {
                             fontWeight: '500',
                             letterSpacing: 1
                         }}>
-                            Products
-
-                           
-
-                                        
+                            Products               
                         </Text> */}
                         <Text
                             style={{
@@ -92,9 +80,7 @@ export function SearchedProducts() {
                                     {(data.data || []).length !== 0
                                         ? ` – ${ (data.data || []).length} of ${ (data.data || []).length} results`
                                         : ' of 0 results'}
-
                                         {/* {data?.data.length} */}
-
                         </Text>
                     </View>
                     <Text
@@ -114,9 +100,7 @@ export function SearchedProducts() {
                     // backgroundColor:'red'
                     paddingTop:10
                 }}>
-
                      {/* <Text>{JSON.stringify(data.data, null , 4)}</Text> */}
-
                     {(data?.data || []).map(item => {
                         return <SearchedProductCard data={item} key={item.id}/>;
                     })}

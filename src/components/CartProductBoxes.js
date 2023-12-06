@@ -68,12 +68,23 @@ export default function CartProductBoxes({data}) {
                             borderRadius={7}/>
                     </Box>
                 </VStack>
-                <VStack width={'56%'} paddingX={3} justifyContent={'space-between'}>
-                    <VStack style={{
-                        height: '60%'
+                <VStack width={'56%'} paddingX={3} justifyContent={'space-between'} style={{
                     }}>
-                        <Text bold fontSize={16}>{data.productName}</Text>
-                        <Text fontSize={14} color={'#8C8A89'}>Quantity: {data.qty}</Text>
+                    <VStack style={{
+                        height: '60%',
+                    }}>
+                        <Box style={{
+                        height: '60%',
+                         }}>
+                             <Text bold fontSize={16}>{data.productName ?? 'No name'}</Text>
+                        </Box>
+
+                        <HStack  style={{
+                        height: '40%',
+                         }}>
+                         <Text fontSize={10} color={'#8C8A89'}>Quantity:-</Text>
+                             <Text fontSize={11} color={'black'}> {data.qty ?? '0'}</Text>
+                        </HStack>
                     </VStack>
 
                     <HStack
@@ -84,10 +95,10 @@ export default function CartProductBoxes({data}) {
 
                         <Box p={1}>
 
-                            <FontAwesome name="rupee" size={10} color={'black'}/>
+                            <FontAwesome name="rupee" size={15} color={'black'}/>
                         </Box>
                         <Box>
-                            <Text bold fontSize={15} color={'black'}>{data.productPrice}</Text>
+                            <Text bold fontSize={15} color={'black'}>{data.productPrice?? '*'}</Text>
                         </Box>
 
                     </HStack>
