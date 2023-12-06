@@ -17,7 +17,7 @@ export default function CartBoxThirdFOrShippingAddress() {
                 <Center w={'15%'}>
                     <Icon
                         size={27}
-                        name={'ios-wallet'}
+                        name={'subway'}
                         ba
                         style={{
                         color: '#F57F17',

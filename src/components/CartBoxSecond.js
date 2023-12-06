@@ -17,8 +17,7 @@ export default function CartBoxSecond() {
                 <Center w={'15%'}>
                     <Icon
                         size={27}
-                        name={'ios-wallet'}
-                        ba
+                        name={'wallet'}
                         style={{
                         color: '#F57F17',
                         padding: 2

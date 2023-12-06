@@ -34,25 +34,26 @@ export function HomeSearchBox() {
         setSearchWord(x);
     };
     return (
-        <HStack top={0} px={3} h={58}>
+        <HStack top={0} px={3} h={58} >
             <Box w={'85%'} alignItems={'center'} justifyContent={'center'}>
                 <Input
-                    placeholder="Search"
+                    placeholder="Search Product"
                     bgColor='#dfdedc'
                     variant="filled"
                     width="100%"
                     borderRadius={13}
                     py={1}
                     px={2}
-                    InputLeftElement={< Icon ml = {5}size = {20}name = "md-search-outline" />}
+                    InputLeftElement={< Icon ml = {8} size = {22} color="black" name = "search" />}
                     onChangeText={handleSearchInputChange}
                     onSubmitEditing={submitAndTransferToNextScreen}
                     value={searchWord}
                     />
             </Box>
+            <Icon name={'gride'} size={14} color={'#FFF176'}/>
             <TouchableOpacity  w={'15%'}  bgColor={'blue.100'} >          
-                 <Box bgColor={'red.100'} w={'100%'}  alignItems={'center'} justifyContent={'center'} flex={1}    >
-                    <Icon name="scan" size={30}  />
+                 <Box  w={'100%'}  alignItems={'center'} justifyContent={'center'} flex={1}    >
+                    <Icon name="scan"  color="black" size={30}  />
                 </Box>
             </TouchableOpacity>
         </HStack>

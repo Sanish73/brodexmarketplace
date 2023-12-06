@@ -38,7 +38,7 @@ export default function CategorySearch() {
                 size = {
                     20
                 }
-                 name = "md-search-outline" />}/>
+                 name = "search" color="black" />}/>
             </Box>
         </HStack>
     )

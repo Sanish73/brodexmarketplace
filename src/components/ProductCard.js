@@ -4,6 +4,8 @@ import {COLOURS} from '../database/Database';
 import {Image} from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 
 export const ProductCard = ({data}) => {
@@ -87,7 +89,8 @@ export const ProductCard = ({data}) => {
                     flexDirection: 'row',
                     alignItems: 'center'
                 }}>
-                    <FontAwesome name="rupee" size={14} color={COLOURS.re}/>
+                    <FontAwesome name="rupee" size={14} color={COLOURS.black}/>
+                    {/* <Icon name={'grid'} size={27} color={'black'}/> */}
                     <Text
                         style={{
                         fontSize: 16,
@@ -113,7 +116,7 @@ export const ProductCard = ({data}) => {
                     flexDirection: 'row',
                     alignItems: 'center'
                 }}>
-                    <MaterialCommunityIcons name="star" size={14} color={COLOURS.yellow}/>
+                    <MaterialCommunityIcons name="star" size={20} color={'#FFB300'}/>
                     <Text
                         style={{
                         fontSize: 14,

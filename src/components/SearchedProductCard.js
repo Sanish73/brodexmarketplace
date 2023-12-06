@@ -93,7 +93,7 @@ export const SearchedProductCard = ({data}) => {
                     flexDirection: 'row',
                     alignItems: 'center'
                 }}>
-                    <FontAwesome name="rupee" size={14} color={COLOURS.re}/>
+                    <FontAwesome name="rupee" size={14} color={'black'}/>
                     <Text
                         style={{
                         fontSize: 16,

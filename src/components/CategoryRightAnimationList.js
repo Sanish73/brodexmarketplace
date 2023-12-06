@@ -111,7 +111,7 @@ export const CategoryRightAnimationList = ({data}) => {
                     flexDirection: 'row',
                     alignItems: 'center'
                 }}>
-                    <FontAwesome name="rupee" size={14} color={COLOURS.re}/>
+                    <FontAwesome name="rupee" size={14} color={'black'}/>
                     <Text
                    
                         style={{
@@ -139,7 +139,7 @@ export const CategoryRightAnimationList = ({data}) => {
                     flexDirection: 'row',
                     alignItems: 'center'
                 }}>
-                    <MaterialCommunityIcons name="star" size={14} color={COLOURS.yellow}/>
+                    <MaterialCommunityIcons name="star" size={20} color={COLOURS.yellow}/>
                     <Text
                         style={{
                         fontSize: 14,

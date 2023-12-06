@@ -7,6 +7,8 @@ import {
     Avatar
 } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { navigate } from '../navigation/RootNavigation';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -55,6 +57,7 @@ setSearchTerm
                     InputLeftElement={
                         <Box marginLeft={3}>
                             <Icon size={20} name="search" />
+                            
                         </Box>
                     }
                     InputRightElement={ 
