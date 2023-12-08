@@ -79,12 +79,12 @@ export default function CartProductBoxes({data}) {
                              <Text bold fontSize={16}>{data.productName ?? 'No name'}</Text>
                         </Box>
 
-                        <HStack  style={{
+                        {/* <HStack  style={{
                         height: '40%',
                          }}>
                          <Text fontSize={10} color={'#8C8A89'}>Quantity:-</Text>
                              <Text fontSize={11} color={'black'}> {data.qty ?? '0'}</Text>
-                        </HStack>
+                        </HStack> */}
                     </VStack>
 
                     <HStack

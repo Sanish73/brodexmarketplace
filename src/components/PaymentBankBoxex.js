@@ -33,17 +33,17 @@ export default function PaymentBankBoxex({onPress, iconName, selected }) {
                 {iconName.name}
               </Text>
             </VStack>
-            <VStack>
-              <Text fontSize={14} color={'#8C8A89'}>
+            {/* <VStack>
+              <Text hidefontSize={14} color={'#8C8A89'}>
               {iconName.number}
               </Text>
-            </VStack>
+            </VStack> */}
           </VStack>
           <VStack w={'15%'} alignItems={'center'} justifyContent={'center'}>
             <TouchableOpacity onPress={onPress}>
             <Icon
               size={20}
-              name={selected ? "md-radio-button-on-outline" : "md-radio-button-off"}
+              name={selected ? "radio-button-on-outline" : "radio-button-off"}
               style={{
                 color: "#ffa94d",
                 padding: 4,
